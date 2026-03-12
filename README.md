@@ -268,3 +268,6 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - Framer Motion
 - Lucide React
 - Vercel
+
+
+now the generated componets ads in after conttext usp and template should be as the generate estiamate output move this campaign generated into a new side bar called ads generater

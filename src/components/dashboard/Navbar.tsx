@@ -68,10 +68,12 @@ export function Navbar() {
             <Input 
               placeholder="Search anything..." 
               borderRadius="full"
-              bg="white"
+              bg="bgBase"
               borderColor="borderCore"
+              color="textPrimary"
               fontSize="sm"
-              _focus={{ borderColor: 'accentViolet', ring: "2px", ringColor: 'accentViolet/10' }}
+              _placeholder={{ color: 'textMuted' }}
+              _focus={{ borderColor: 'accentViolet', ring: "2px", ringColor: 'accentViolet/10', bg: 'white' }}
             />
           </InputGroup>
 

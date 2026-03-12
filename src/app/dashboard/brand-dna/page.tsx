@@ -122,6 +122,8 @@ export default function BrandDNAPage() {
     setIsGenerating(true)
     
     try {
+      // In a real app, this would be an API call
+      // For now, we simulate generation and show the sidebar
       const result = await generateCampaign({
         userId,
         brandDnaId: brandDna.id || 'dna_123',
@@ -131,6 +133,7 @@ export default function BrandDNAPage() {
         goal: campaignGoal
       })
       
+      // Simulate progress and then redirect
       setTimeout(() => {
         router.push(`/dashboard/campaigns/${result.campaignId}`)
       }, 3000)

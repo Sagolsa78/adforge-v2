@@ -33,6 +33,7 @@ export default function DashboardLayout({
         h="full" 
         overflow="hidden"
         transition="all 0.3s ease-in-out"
+        position="relative"
       >
         {/* Navbar */}
         <Navbar />
