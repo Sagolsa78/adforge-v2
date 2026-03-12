@@ -88,6 +88,7 @@ export default function Navbar() {
         <Box
           display={{ base: "flex", md: "none" }}
           as="button"
+          aria-label="Toggle Navigation"
           onClick={() => setMobileOpen(!mobileOpen)}
           color="gray.700"
           p="1"

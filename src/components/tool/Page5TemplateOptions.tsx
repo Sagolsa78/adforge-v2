@@ -1,6 +1,6 @@
 "use client";
 
-import { BrandContext, AuthState } from "@/types/tool";
+import { BrandContext } from "@/types/tool";
 import { TPLS, IG_TPLS, TPL_META, TPL_EXAMPLES } from "@/config/toolData";
 import {
   Box,
@@ -31,7 +31,7 @@ interface Props {
   cta: string;
   offer: string;
   slideN: number;
-  auth: AuthState;
+  isLoggedIn: boolean;
   onBack: () => void;
   onSelPlatform: (p: string) => void;
   onSelTpl: (id: string) => void;
@@ -79,7 +79,7 @@ export default function Page5TemplateOptions(props: Props) {
     cta,
     offer,
     slideN,
-    auth,
+    isLoggedIn,
     onBack,
     onSelPlatform,
     onSelTpl,
@@ -118,10 +118,10 @@ export default function Page5TemplateOptions(props: Props) {
             px={3}
             py={1}
             rounded="full"
-            bg="blue.50"
+            bg="rgba(138,44,226,0.08)"
             border="1px solid"
-            borderColor="blue.100"
-            color="blue.600"
+            borderColor="rgba(138,44,226,0.2)"
+            color="#8a2ce2"
             fontSize="11px"
             fontWeight="bold"
             textTransform="uppercase"
@@ -132,9 +132,9 @@ export default function Page5TemplateOptions(props: Props) {
               w="6px"
               h="6px"
               rounded="full"
-              bg="blue.500"
+              bg="#8a2ce2"
               mr={2}
-              animation="pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite"
+              className="animate-pulse"
             />
             Step 5 of 7
           </Box>
@@ -147,7 +147,7 @@ export default function Page5TemplateOptions(props: Props) {
             fontFamily="display"
           >
             Template{" "}
-            <Text as="span" color="blue.500">
+            <Text as="span" color="#8a2ce2">
               & Options
             </Text>
           </Text>
@@ -159,20 +159,20 @@ export default function Page5TemplateOptions(props: Props) {
 
         {ctxObj && (
           <Flex
-            bg="blue.50"
+            bg="rgba(138,44,226,0.06)"
             border="1px solid"
-            borderColor="blue.200"
+            borderColor="rgba(138,44,226,0.2)"
             rounded="xl"
             p={4}
             mb={8}
             align="center"
             gap={4}
           >
-            <Box w={2} h={2} rounded="full" bg="blue.500" flexShrink={0} />
+            <Box w={2} h={2} rounded="full" bg="#8a2ce2" flexShrink={0} />
             <Box>
               <Text
                 fontSize="10px"
-                color="blue.600"
+                color="#8a2ce2"
                 fontWeight="bold"
                 letterSpacing="wider"
                 textTransform="uppercase"
@@ -245,15 +245,15 @@ export default function Page5TemplateOptions(props: Props) {
                         <Box
                           key={t.id}
                           border="2px solid"
-                          borderColor={isSel ? "blue.500" : "gray.200"}
-                          bg={isSel ? "blue.50" : "white"}
+                          borderColor={isSel ? "#8a2ce2" : "gray.200"}
+                          bg={isSel ? "rgba(138,44,226,0.06)" : "white"}
                           rounded="xl"
                           cursor="pointer"
                           position="relative"
                           overflow="hidden"
                           transition="all 0.2s"
                           _hover={{
-                            borderColor: isSel ? "blue.600" : "gray.300",
+                            borderColor: isSel ? "#7c28cb" : "gray.300",
                             transform: "translateY(-2px)",
                             shadow: "md",
                           }}
@@ -268,7 +268,7 @@ export default function Page5TemplateOptions(props: Props) {
                               right={3}
                               w={6}
                               h={6}
-                              bg="blue.500"
+                              bg="#8a2ce2"
                               rounded="full"
                               align="center"
                               justify="center"
@@ -283,7 +283,7 @@ export default function Page5TemplateOptions(props: Props) {
                             h="100px"
                             bg={
                               t.cls === "ta-l"
-                                ? "blue.800"
+                                ? "#111827"
                                 : t.cls === "ta-r"
                                   ? "pink.800"
                                   : t.cls === "ta-h"
@@ -421,12 +421,12 @@ export default function Page5TemplateOptions(props: Props) {
                               p={4}
                               rounded="lg"
                               borderLeft="3px solid"
-                              borderColor="blue.400"
+                              borderColor="#8a2ce2"
                             >
                               <Text
                                 fontSize="10px"
                                 fontWeight="bold"
-                                color="blue.600"
+                                color="#8a2ce2"
                                 mb={1}
                               >
                                 SLIDE {i + 1}
@@ -468,8 +468,8 @@ export default function Page5TemplateOptions(props: Props) {
                       <Box
                         key={t.id}
                         border="2px solid"
-                        borderColor={isSel ? "pink.500" : "gray.200"}
-                        bg={isSel ? "pink.50" : "white"}
+                        borderColor={isSel ? "#8a2ce2" : "gray.200"}
+                        bg={isSel ? "rgba(138,44,226,0.06)" : "white"}
                         rounded="xl"
                         cursor="pointer"
                         position="relative"
@@ -489,7 +489,7 @@ export default function Page5TemplateOptions(props: Props) {
                             right={2}
                             w={5}
                             h={5}
-                            bg="pink.500"
+                            bg="#8a2ce2"
                             rounded="full"
                             align="center"
                             justify="center"
@@ -506,7 +506,7 @@ export default function Page5TemplateOptions(props: Props) {
                             t.cls === "iga-1"
                               ? "purple.500"
                               : t.cls === "iga-2"
-                                ? "blue.500"
+                                ? "#8a2ce2"
                                 : t.cls === "iga-3"
                                   ? "orange.500"
                                   : t.cls === "iga-4"
@@ -631,7 +631,7 @@ export default function Page5TemplateOptions(props: Props) {
                       <Flex gap={2} flexWrap="wrap">
                         {IG_TPLS.find((t) => t.id === selIgTpl)?.tags.map(
                           (tag: string, idx: number) => (
-                            <Text key={idx} color="blue.600" fontSize="xs" fontWeight="medium" bg="blue.50" px={2} py={1} rounded="md">
+                            <Text key={idx} color="#8a2ce2" fontSize="xs" fontWeight="medium" bg="rgba(138,44,226,0.06)" px={2} py={1} rounded="md">
                               #{tag}
                             </Text>
                           ),
@@ -697,7 +697,7 @@ export default function Page5TemplateOptions(props: Props) {
                                 🚨 Educational
                               </Table.Cell>
                               <Table.Cell>
-                                <Badge colorScheme="blue" fontSize="9px">
+                                <Badge colorPalette="purple" fontSize="9px">
                                   Trust
                                 </Badge>
                               </Table.Cell>
@@ -787,9 +787,9 @@ export default function Page5TemplateOptions(props: Props) {
                   <Button
                     key={t.id}
                     variant={tone === t.id ? "solid" : "outline"}
-                    colorScheme={tone === t.id ? "blue" : "gray"}
-                    bg={tone === t.id ? "blue.500" : "white"}
+                    bg={tone === t.id ? "#8a2ce2" : "white"}
                     color={tone === t.id ? "white" : "gray.600"}
+                    borderColor={tone === t.id ? "#8a2ce2" : "gray.200"}
                     size="sm"
                     rounded="full"
                     onClick={() => onSelTone(t.id)}
@@ -911,24 +911,24 @@ export default function Page5TemplateOptions(props: Props) {
                       defaultValue={[slideN]}
                       value={[slideN]}
                       onValueChange={(v) => onSetSlideN(v.value[0])}
-                      colorScheme="blue"
+                      colorPalette="purple"
                       flex="1"
                     >
                       <Slider.Track bg="gray.200">
-                        <Slider.Range bg="blue.500" />
+                        <Slider.Range bg="#8a2ce2" />
                       </Slider.Track>
                       <Slider.Thumb
                         index={0}
                         boxSize={4}
                         bg="white"
                         border="2px solid"
-                        borderColor="blue.500"
+                        borderColor="#8a2ce2"
                       />
                     </Slider.Root>
                     <Text
                       fontSize="lg"
                       fontWeight="black"
-                      color="blue.600"
+                      color="#8a2ce2"
                       w="24px"
                       textAlign="center"
                     >
@@ -940,7 +940,7 @@ export default function Page5TemplateOptions(props: Props) {
 
               <Separator my={5} />
 
-              {!auth.loggedIn ? (
+              {!isLoggedIn ? (
                 <Box textAlign="center">
                   <Text fontSize="xs" color="gray.500" mb={3}>
                     Login required to generate content
@@ -948,10 +948,14 @@ export default function Page5TemplateOptions(props: Props) {
                   <Button
                     w="full"
                     size="lg"
-                    colorScheme="blue"
+                    bg="#8a2ce2"
+                    color="white"
                     onClick={onOpenLogin}
-                    rounded="xl"
+                    rounded="full"
                     fontWeight="bold"
+                    boxShadow="0 4px 14px rgba(138,44,226,0.3)"
+                    _hover={{ bg: "#7c28cb", transform: "translateY(-1px)" }}
+                    transition="all 0.2s"
                   >
                     Sign In to Generate
                   </Button>
@@ -960,19 +964,18 @@ export default function Page5TemplateOptions(props: Props) {
                 <Button
                   w="full"
                   size="lg"
-                  colorScheme={hasTemplate ? "blue" : "gray"}
-                  bg={hasTemplate ? "blue.600" : "gray.100"}
+                  bg={hasTemplate ? "#8a2ce2" : "gray.100"}
                   color={hasTemplate ? "white" : "gray.400"}
                   disabled={!hasTemplate}
                   onClick={onGenerate}
-                  rounded="xl"
+                  rounded="full"
                   fontWeight="bold"
+                  boxShadow={hasTemplate ? "0 4px 14px rgba(138,44,226,0.3)" : "none"}
                   _hover={
                     hasTemplate
                       ? {
-                          bg: "blue.700",
+                          bg: "#7c28cb",
                           transform: "translateY(-1px)",
-                          shadow: "md",
                         }
                       : {}
                   }

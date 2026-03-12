@@ -2,6 +2,7 @@
 
 import { Box } from "@chakra-ui/react";
 import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
 import HeroSection from "@/components/landing/HeroSection";
 import UseCases from "@/components/landing/UseCases";
 import HowItWorks from "@/components/landing/HowItWorks";
@@ -17,6 +18,8 @@ export default function Home() {
       <HowItWorks />
       <FeatureGrid />
       <FinalCTA />
+      <Footer />
     </Box>
   );
 }
+

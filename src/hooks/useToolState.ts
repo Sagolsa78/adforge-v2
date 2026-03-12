@@ -1,175 +1,232 @@
-import { useState, useCallback, useMemo } from "react";
-import { AuthState, BrandContext, GeneratedContent } from "@/types/tool";
+"use client";
+
+import { useState, useCallback } from "react";
+import type { BrandContext, GeneratedContent } from "@/types/tool";
 import { CTXS } from "@/config/toolData";
-import { buildContent } from "@/utils/contentEngine";
 
 export function useToolState() {
+  // Step navigation
   const [curStep, setCurStep] = useState(1);
   const [maxReached, setMaxReached] = useState(1);
+
+  // Page 1
   const [url, setUrl] = useState("");
   const [brandName, setBrandName] = useState("");
-  const [ctx] = useState<BrandContext[]>(CTXS);
+
+  // Page 3 – Brand contexts
+  const [ctx, setCtx] = useState<BrandContext[]>(CTXS);
   const [ratings, setRatings] = useState<Record<number, number>>({});
   const [bm, setBm] = useState<Set<number>>(new Set());
   const [likes, setLikes] = useState<Set<number>>(new Set());
   const [selCtx, setSelCtx] = useState<number | null>(null);
+
+  // Page 5 – Template / options
   const [selTpl, setSelTpl] = useState<string | null>(null);
   const [selIgTpl, setSelIgTpl] = useState<string | null>(null);
+  const [platform, setPlatform] = useState<string>("carousel");
   const [tone, setTone] = useState<string | null>(null);
-  const [emoji, setEmoji] = useState("minimal");
-  const [platform, setPlatform] = useState("linkedin");
-  const [cta, setCta] = useState("");
-  const [offer, setOffer] = useState("");
-  const [slideN, setSlideN] = useState(6);
-  const [gen, setGen] = useState<GeneratedContent | null>(null);
-  const [auth, setAuth] = useState<AuthState>({ loggedIn: false, name: "", email: "" });
-  const [modalOpen, setModalOpen] = useState(false);
-  const [modalMode, setModalMode] = useState<"login" | "signup">("login");
-  const [toastMsg, setToastMsg] = useState("");
-  const [toastVisible, setToastVisible] = useState(false);
+  const [emoji, setEmoji] = useState<string>("moderate");
+  const [cta, setCta] = useState<string>("");
+  const [offer, setOffer] = useState<string>("");
+  const [slideN, setSlideN] = useState<number>(5);
+
+  // Dynamic template fields
   const [dynFields, setDynFields] = useState<Record<string, string>>({});
 
-  const goStep = useCallback((n: number) => {
-    setCurStep(n);
-    setMaxReached((p) => Math.max(p, n));
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }, []);
+  // Output
+  const [gen, setGen] = useState<GeneratedContent | null>(null);
 
-  const toast = useCallback((msg: string) => {
-    setToastMsg(msg);
-    setToastVisible(true);
-    setTimeout(() => setToastVisible(false), 2200);
-  }, []);
+  // Modal state
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalMode, setModalMode] = useState<"login" | "signup">("login");
 
-  const copyToCB = useCallback((text: string) => {
-    navigator.clipboard.writeText(text).then(() => toast("Copied to clipboard!")).catch(() => toast("Copy failed"));
-  }, [toast]);
+  // Clipboard toast
+  const [toastMsg, setToastMsg] = useState("");
+  const [toastVisible, setToastVisible] = useState(false);
 
-  const handleAnalyse = useCallback((u: string, bName: string) => {
-    setUrl(u);
-    setBrandName(bName);
-    goStep(2);
-  }, [goStep]);
+  // View mode for results page
+  const [p3View, setP3View] = useState<"list" | "grid">("list");
 
-  const handleAnalysisDone = useCallback(() => goStep(3), [goStep]);
+  // ─── Navigation ────────────────────────────────────────────────────
 
-  const handleSelectCtx = useCallback((id: number) => {
+  const goTo = useCallback(
+    (step: number) => {
+      setCurStep(step);
+      setMaxReached((prev) => Math.max(prev, step));
+    },
+    []
+  );
+
+  const next = useCallback(() => goTo(curStep + 1), [curStep, goTo]);
+  const prev = useCallback(() => goTo(Math.max(1, curStep - 1)), [curStep, goTo]);
+
+  // ─── Page 1 ────────────────────────────────────────────────────────
+
+  const handleAnalyse = useCallback(
+    (inputUrl: string, inputBrandName: string) => {
+      setUrl(inputUrl);
+      setBrandName(inputBrandName);
+      goTo(2);
+    },
+    [goTo]
+  );
+
+  // ─── Page 3 actions ────────────────────────────────────────────────
+
+  const selectCtx = useCallback((id: number) => {
     setSelCtx((prev) => (prev === id ? null : id));
   }, []);
 
-  const handleRate = useCallback((id: number, stars: number) => {
-    setRatings((p) => ({ ...p, [id]: stars }));
+  const rateCtx = useCallback((id: number, stars: number) => {
+    setRatings((prev) => ({ ...prev, [id]: stars }));
   }, []);
 
-  const handleToggleBm = useCallback((id: number) => {
-    setBm((p) => { const n = new Set(p); n.has(id) ? n.delete(id) : n.add(id); return n; });
+  const toggleBm = useCallback((id: number) => {
+    setBm((prev) => {
+      const n = new Set(prev);
+      n.has(id) ? n.delete(id) : n.add(id);
+      return n;
+    });
   }, []);
 
-  const handleToggleLike = useCallback((id: number) => {
-    setLikes((p) => { const n = new Set(p); n.has(id) ? n.delete(id) : n.add(id); return n; });
+  const toggleLike = useCallback((id: number) => {
+    setLikes((prev) => {
+      const n = new Set(prev);
+      n.has(id) ? n.delete(id) : n.add(id);
+      return n;
+    });
   }, []);
 
-  const handleUseSelected = useCallback(() => { if (selCtx != null) goStep(4); }, [selCtx, goStep]);
-  const handleGoTemplates = useCallback(() => goStep(5), [goStep]);
+  const useSelected = useCallback(() => {
+    if (selCtx !== null) goTo(4);
+  }, [selCtx, goTo]);
+
+  // ─── Page 5 ────────────────────────────────────────────────────────
+
+  const setField = useCallback((fieldId: string, value: string) => {
+    setDynFields((prev) => ({ ...prev, [fieldId]: value }));
+  }, []);
 
   const handleGenerate = useCallback(() => {
-    if (!auth.loggedIn) { setModalOpen(true); return; }
-    goStep(6);
-  }, [auth.loggedIn, goStep]);
+    goTo(6);
+  }, [goTo]);
 
-  const handleGenerateDone = useCallback(() => {
-    try {
-      const content = buildContent({
-        url, ctx, ratings, bm, likes, selCtx, selTpl, selIgTpl,
-        tone, emoji, platform, cta, offer, slideN, curStep, gen,
-        hookQuestion: dynFields.hookQuestion || "",
-        mythStatement: dynFields.mythStatement || "",
-        realityStatement: dynFields.realityStatement || "",
-        problemStatement: dynFields.problemStatement || "",
-        solutionStatement: dynFields.solutionStatement || "",
-        stepCount: dynFields.stepCount || "",
-        frameworkName: dynFields.frameworkName || "",
-        clientName: dynFields.clientName || "",
-        resultBefore: dynFields.resultBefore || "",
-        resultAfter: dynFields.resultAfter || "",
-        statFact: dynFields.statFact || "",
-        visionOutcome: dynFields.visionOutcome || "",
-        processStep: dynFields.processStep || "",
-        ownBrand: dynFields.ownBrand || "",
-        rivalBrand: dynFields.rivalBrand || "",
-        communityTag: dynFields.communityTag || "",
-        igStoryAngle: dynFields.igStoryAngle || "",
-        igHeroMoment: dynFields.igHeroMoment || "",
-        igCoreFact: dynFields.igCoreFact || "",
-        igBrandSolution: dynFields.igBrandSolution || "",
-        igProof: dynFields.igProof || "",
-        igOfferDetails: dynFields.igOfferDetails || "",
-        igDeadline: dynFields.igDeadline || "",
-        igPrice: dynFields.igPrice || "",
-        igKeyBenefits: dynFields.igKeyBenefits || "",
-        igCustomerName: dynFields.igCustomerName || "",
-        igQuote: dynFields.igQuote || "",
-        igVariety: dynFields.igVariety || "",
-        igResult: dynFields.igResult || "",
-        igMission: dynFields.igMission || "",
-        igImpactStat: dynFields.igImpactStat || "",
-        igCampaign: dynFields.igCampaign || "",
-        igCTA: dynFields.igCTA || "",
-        modalOpen, modalMode, toastMsg, toastVisible, toastColor: "",
-        p3View: "list",
-      });
-      setGen(content);
-    } catch {
-      setGen({
-        slides: [{ h: "Generated Content", b: "Your content has been generated based on your selections.", num: 1, cov: true }],
-        caption: "Your content caption here.",
-        hashtags: ["#BrandDNA", "#ContentMarketing"],
-        prompts: [{ lbl: "Cover Image", txt: "Clean editorial design with brand colors and bold typography." }],
-      });
-    }
-    goStep(7);
-  }, [url, ctx, ratings, bm, likes, selCtx, selTpl, selIgTpl, tone, emoji, platform, cta, offer, slideN, curStep, gen, dynFields, modalOpen, modalMode, toastMsg, toastVisible, goStep]);
+  // ─── Copy helper ──────────────────────────────────────────────────
 
-  const handleAuth = useCallback((name: string, email: string) => {
-    setAuth({ loggedIn: true, name, email });
-    setModalOpen(false);
-    toast(`Welcome, ${name}!`);
-  }, [toast]);
-
-  const handleLogout = useCallback(() => {
-    setAuth({ loggedIn: false, name: "", email: "" });
-    toast("Logged out");
-  }, [toast]);
-
-  const handleSetField = useCallback((key: string, val: string) => {
-    setDynFields((p) => ({ ...p, [key]: val }));
+  const copyText = useCallback((text: string) => {
+    navigator.clipboard.writeText(text).then(() => {
+      setToastMsg("Copied to clipboard!");
+      setToastVisible(true);
+      setTimeout(() => setToastVisible(false), 2000);
+    });
   }, []);
 
-  const handleNewAnalysis = useCallback(() => {
+  // ─── Modal helpers ─────────────────────────────────────────────────
+
+  const openLogin = useCallback(() => {
+    setModalMode("login");
+    setModalOpen(true);
+  }, []);
+
+  const openSignup = useCallback(() => {
+    setModalMode("signup");
+    setModalOpen(true);
+  }, []);
+
+  const closeModal = useCallback(() => setModalOpen(false), []);
+
+  // ─── Reset ─────────────────────────────────────────────────────────
+
+  const newAnalysis = useCallback(() => {
     setUrl("");
     setBrandName("");
-    setSelCtx(null);
-    setSelTpl(null);
-    setSelIgTpl(null);
-    setGen(null);
+    setCtx(CTXS);
     setRatings({});
     setBm(new Set());
     setLikes(new Set());
+    setSelCtx(null);
+    setSelTpl(null);
+    setSelIgTpl(null);
+    setTone(null);
+    setEmoji("moderate");
+    setCta("");
+    setOffer("");
+    setSlideN(5);
     setDynFields({});
+    setGen(null);
+    setPlatform("carousel");
     setCurStep(1);
     setMaxReached(1);
+    setP3View("list");
   }, []);
 
-  const memoedBm = useMemo(() => bm, [bm]);
-  const memoedLikes = useMemo(() => likes, [likes]);
-
   return {
-    curStep, maxReached, url, brandName, ctx, ratings, bm: memoedBm, likes: memoedLikes,
-    selCtx, selTpl, selIgTpl, tone, emoji, platform, cta, offer, slideN, gen, auth,
-    modalOpen, modalMode, toastMsg, toastVisible,
-    setModalMode, setModalOpen, setPlatform, setSelTpl, setSelIgTpl, setTone, setEmoji, setCta, setOffer, setSlideN,
-    goStep, handleAnalyse, handleAnalysisDone, handleSelectCtx, handleRate, handleToggleBm, handleToggleLike,
-    handleUseSelected, handleGoTemplates, handleGenerate, handleGenerateDone, handleAuth, handleLogout,
-    handleSetField, handleNewAnalysis, copyToCB
+    // State
+    curStep,
+    maxReached,
+    url,
+    brandName,
+    ctx,
+    ratings,
+    bm,
+    likes,
+    selCtx,
+    selTpl,
+    selIgTpl,
+    platform,
+    tone,
+    emoji,
+    cta,
+    offer,
+    slideN,
+    dynFields,
+    gen,
+    modalOpen,
+    modalMode,
+    toastMsg,
+    toastVisible,
+    p3View,
+
+    // Navigation
+    goTo,
+    next,
+    prev,
+
+    // Page 1
+    handleAnalyse,
+    setBrandName,
+
+    // Page 3
+    selectCtx,
+    rateCtx,
+    toggleBm,
+    toggleLike,
+    useSelected,
+
+    // Page 5
+    setPlatform,
+    setSelTpl,
+    setSelIgTpl,
+    setTone,
+    setEmoji,
+    setCta,
+    setOffer,
+    setSlideN,
+    setField,
+    handleGenerate,
+    setGen,
+
+    // Modal
+    openLogin,
+    openSignup,
+    closeModal,
+    setModalMode,
+    setModalOpen,
+
+    // Misc
+    copyText,
+    newAnalysis,
+    setP3View,
+    setCtx,
   };
 }

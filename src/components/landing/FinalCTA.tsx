@@ -17,7 +17,7 @@ export default function FinalCTA() {
       overflow="hidden"
     >
       <MotionBox
-        maxW="4xl"
+        maxW="5xl"
         mx="auto"
         textAlign="center"
         position="relative"

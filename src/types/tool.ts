@@ -131,3 +131,54 @@ export interface ToolState {
   // View mode
   p3View: "list" | "grid";
 }
+
+// --- API Types ---
+
+export interface ApiError {
+  message: string;
+  status: number;
+}
+
+export interface ContextBlock {
+  context_index: 1 | 2 | 3 | 4 | 5;
+  content: string;
+  title: string;
+}
+
+export interface AdVariation {
+  id: string;
+  headline: string;
+  body: string;
+  cta: string;
+  platform: string;
+}
+
+export interface AuthUser {
+  id: string;
+  email: string;
+  name: string;
+}
+
+export interface BrandEvent {
+  step: string;
+  message: string;
+  brand_id?: string;
+  progress?: number;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  data?: any;
+}
+
+export interface AdVariationsPayload {
+  context_index: 1 | 2 | 3 | 4 | 5;
+  user_brief: string;
+  ad_type: string | null;
+}
+
+export interface PendingAction {
+  type: "GENERATE_VARIATIONS";
+  params: {
+    context_index: 1 | 2 | 3 | 4 | 5;
+    user_brief: string;
+    ad_type: string | null;
+  };
+}

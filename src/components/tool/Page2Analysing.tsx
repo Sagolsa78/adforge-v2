@@ -1,9 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Box, Flex, Text, VStack, Spinner, HStack } from "@chakra-ui/react";
+import { Box, Flex, Text, VStack, Spinner, HStack, Button } from "@chakra-ui/react";
 import { Check } from "lucide-react";
-import { createBrandStream } from "@/api/brand";
+import { createBrandStream } from "@/lib/api";
+import { savePendingBrandId } from "@/lib/delayedAuth";
 
 const STEPS = [
   "Scraping website content",
@@ -16,13 +17,14 @@ const STEPS = [
 interface Props {
   url: string;
   brandName?: string;
+  token?: string;
   onDone: () => void;
+  onBack: () => void;
 }
 
-export default function Page2Analysing({ url, brandName, onDone }: Props) {
+export default function Page2Analysing({ url, brandName, token, onDone, onBack }: Props) {
   const [progress, setProgress] = useState(0);
   const [activeStep, setActiveStep] = useState(0);
-
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
   useEffect(() => {
@@ -30,7 +32,7 @@ export default function Page2Analysing({ url, brandName, onDone }: Props) {
 
     async function processStream() {
       try {
-        const stream = createBrandStream(url, brandName || "");
+        const stream = createBrandStream(url, brandName || "", token);
 
         for await (const data of stream) {
           if (!active) break;
@@ -40,8 +42,8 @@ export default function Page2Analysing({ url, brandName, onDone }: Props) {
           }
 
           if (data.step === "brand_created" && data.brand_id) {
-            localStorage.setItem("adforge_brand_id", data.brand_id);
-          } else if (data.step === "completed" || data.progress! >= 100) {
+            savePendingBrandId(data.brand_id);
+          } else if (data.step === "completed" || (data.progress ?? 0) >= 100) {
             setProgress(100);
             setActiveStep(4);
             setTimeout(() => {
@@ -56,17 +58,18 @@ export default function Page2Analysing({ url, brandName, onDone }: Props) {
             break;
           }
 
-          // Move step forward randomly or via backend index if provided in data.step updates
           if (data.step === "scraping_started") setActiveStep(0);
           if (data.step === "extracting_signals") setActiveStep(1);
           if (data.step === "analysing_tone") setActiveStep(2);
           if (data.step === "generating_contexts") setActiveStep(3);
         }
-      } catch (err: any) {
-        if (active)
+      } catch (err: unknown) {
+        if (active) {
+          const error = err as { message?: string };
           setErrorMsg(
-            err.message || "Failed to connect to the analysis stream.",
+            error.message || "Failed to connect to the analysis stream."
           );
+        }
       }
     }
 
@@ -75,7 +78,7 @@ export default function Page2Analysing({ url, brandName, onDone }: Props) {
     return () => {
       active = false;
     };
-  }, [url, brandName, onDone]);
+  }, [url, brandName, token, onDone]);
 
   return (
     <Flex
@@ -87,79 +90,91 @@ export default function Page2Analysing({ url, brandName, onDone }: Props) {
       px={4}
       py={12}
     >
-      <Box
-        position="absolute"
-        top="50%"
-        left="50%"
-        transform="translate(-50%, -50%)"
-        w="480px"
-        h="480px"
-        bg="radial-gradient(circle, rgba(79,63,237,0.09), transparent 70%)"
-        zIndex="0"
-        pointerEvents="none"
-      />
+      {/* Background blobs */}
+      <Box position="absolute" top="-10%" left="-5%" w="400px" h="400px" bg="#e0e7ff" rounded="full" filter="blur(80px)" opacity={0.5} pointerEvents="none" />
+      <Box position="absolute" bottom="-10%" right="-5%" w="400px" h="400px" bg="#fae8ff" rounded="full" filter="blur(80px)" opacity={0.5} pointerEvents="none" />
 
-      <Box
-        position="relative"
-        zIndex="1"
-        w="full"
-        maxW="480px"
-        mx="auto"
-        textAlign="center"
-      >
+      <Box position="relative" zIndex="1" w="full" maxW="480px" mx="auto" textAlign="center">
         <Flex justify="center" mb={6}>
-          <Spinner
-            size="lg"
-            color="blue.500"
-            borderWidth="3px"
-            animationDuration="0.65s"
-          />
+          {errorMsg ? (
+            <Box
+              w="12"
+              h="12"
+              rounded="full"
+              bg="red.50"
+              color="red.500"
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+              fontSize="2xl"
+              fontWeight="bold"
+            >
+              !
+            </Box>
+          ) : (
+            <Spinner
+              size="lg"
+              color="#8a2ce2"
+              borderWidth="3px"
+              animationDuration="0.65s"
+            />
+          )}
         </Flex>
 
         <Text
           fontSize="2xl"
           fontWeight="black"
-          color="gray.900"
+          color="#111827"
           letterSpacing="tight"
           mb={1}
-          fontFamily="display"
         >
-          Analysing Your Brand
+          {errorMsg ? "Analysis Failed" : "Analysing Your Brand"}
         </Text>
 
-        <Text color="gray.500" fontSize="sm" fontWeight="medium" mb={6}>
+        <Text color="#6b7280" fontSize="sm" fontWeight="medium" mb={6}>
           {url}
         </Text>
 
         {errorMsg && (
-          <Text color="red.500" fontSize="sm" fontWeight="bold" mb={4}>
-            {errorMsg}
-          </Text>
+          <VStack gap={4} mb={8}>
+            <Text color="red.500" fontSize="sm" fontWeight="bold">
+              {errorMsg}
+            </Text>
+            <Button
+              onClick={onBack}
+              size="md"
+              bg="white"
+              border="1px solid"
+              borderColor="gray.200"
+              rounded="full"
+              px={8}
+              _hover={{ bg: "gray.50" }}
+            >
+              Go Back & Try Again
+            </Button>
+          </VStack>
         )}
 
-        <Box
-          w="full"
-          h="4px"
-          bg="gray.100"
-          rounded="full"
-          overflow="hidden"
-          mb={8}
-        >
-          <Box
-            h="full"
-            bg="blue.500"
-            w={`${progress}%`}
-            transition="width 0.1s linear"
-          />
-        </Box>
+        {/* Progress bar */}
+        {!errorMsg && (
+          <Box w="full" h="4px" bg="gray.100" rounded="full" overflow="hidden" mb={8}>
+            <Box
+              h="full"
+              bg="#8a2ce2"
+              w={`${progress}%`}
+              transition="width 0.1s linear"
+            />
+          </Box>
+        )}
 
+        {/* Steps card */}
         <Box
           bg="white"
           border="1px solid"
           borderColor="gray.100"
           rounded="2xl"
           p={6}
-          boxShadow="xl"
+          boxShadow="0 4px 20px rgba(0,0,0,0.06)"
           textAlign="left"
         >
           <VStack align="stretch" gap={4}>
@@ -168,22 +183,22 @@ export default function Page2Analysing({ url, brandName, onDone }: Props) {
               const isDone = i < activeStep;
 
               let color = "gray.300";
-              let weight = "medium";
+              let weight: "medium" | "bold" = "medium";
               let iconBg = "gray.100";
               let iconColor = "gray.400";
               let iconBorder = "transparent";
 
               if (isActive) {
-                color = "gray.900";
+                color = "#111827";
                 weight = "bold";
-                iconBg = "blue.50";
-                iconColor = "blue.600";
-                iconBorder = "blue.200";
+                iconBg = "rgba(138,44,226,0.08)";
+                iconColor = "#8a2ce2";
+                iconBorder = "rgba(138,44,226,0.3)";
               } else if (isDone) {
                 color = "gray.600";
-                iconBg = "green.500";
+                iconBg = "#059669";
                 iconColor = "white";
-                iconBorder = "green.500";
+                iconBorder = "#059669";
               }
 
               return (

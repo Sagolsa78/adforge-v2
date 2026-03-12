@@ -26,13 +26,14 @@ export default function HeroSection() {
       pb={{ base: "16", md: "24" }}
       bg="#faf5ff"
       overflow="hidden"
+      overflowX="hidden"
       textAlign="center"
     >
       {/* Background blurs */}
       <Box position="absolute" top="5%" left={{ base: "-20%", md: "10%" }} w={{ base: "300px", md: "420px" }} h={{ base: "300px", md: "420px" }} bg="#e0e7ff" filter="blur(80px)" borderRadius="full" opacity={0.55} pointerEvents="none" />
       <Box position="absolute" bottom="5%" right={{ base: "-20%", md: "10%" }} w={{ base: "300px", md: "480px" }} h={{ base: "300px", md: "480px" }} bg="#fae8ff" filter="blur(100px)" borderRadius="full" opacity={0.55} pointerEvents="none" />
 
-      <Container maxW="5xl" position="relative" zIndex={1} px={{ base: "4", md: "8" }}>
+      <Container maxW="6xl" mx="auto" position="relative" zIndex={1} px={{ base: "4", md: "8" }}>
         <MotionFlex direction="column" align="center" variants={containerVariants} initial="hidden" animate="visible">
 
           {/* Badge */}

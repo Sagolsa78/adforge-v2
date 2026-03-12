@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Space_Grotesk } from "next/font/google";
 import { Provider } from "@/components/ui/provider";
-import Footer from "@/components/layout/Footer";
 import "@/styles/globals.css";
 const spaceGrotesk = Space_Grotesk({ subsets: ["latin"] });
 
@@ -21,7 +20,6 @@ export default function RootLayout({
         <Provider>
           <div style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
             <main style={{ flex: 1 }}>{children}</main>
-            <Footer />
           </div>
         </Provider>
       </body>

@@ -61,7 +61,7 @@ export default function HowItWorks() {
       bg="linear-gradient(180deg, #faf5ff 0%, #ffffff 100%)"
       id="how-it-works"
     >
-      <Box maxW={{ base: "100%", md: "5xl" }} mx="auto">
+      <Box maxW={{ base: "100%", md: "6xl" }} mx="auto">
         {/* Header */}
         <MotionBox
           textAlign="center"
