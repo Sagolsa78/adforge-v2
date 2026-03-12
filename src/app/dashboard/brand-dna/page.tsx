@@ -225,8 +225,10 @@ export default function BrandDNAPage() {
                     borderRadius="16px"
                     borderColor="borderCore"
                     bg="bgBase/40"
+                    color="textPrimary"
                     p={4}
                     fontSize="sm"
+                    _placeholder={{ color: 'textMuted' }}
                     _focus={{ borderColor: 'accentViolet', bg: 'white', ring: "2px", ringColor: 'accentViolet/10' }}
                     minH="90px"
                 />

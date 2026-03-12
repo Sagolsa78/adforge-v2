@@ -30,10 +30,25 @@ const customConfig = defineConfig({
     semanticTokens: {
       colors: {
         bg: { value: "{colors.bgBase}" },
-        text: { value: "{colors.textPrimary}" }
+        fg: { value: "{colors.textPrimary}" },
+        text: { value: "{colors.textPrimary}" },
+        border: { value: "{colors.borderCore}" }
       }
     }
   },
+  globalCss: {
+    "input, textarea, select": {
+      color: "#0F0E1A !important",
+      bg: "white !important",
+      borderColor: "#E8E6F0 !important",
+      _placeholder: {
+        color: "#A09DB8 !important",
+      },
+      _focus: {
+        borderColor: "#7C3AED !important",
+      }
+    }
+  }
 })
 
 export const system = createSystem(defaultConfig, customConfig)
