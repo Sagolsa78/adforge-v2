@@ -11,7 +11,6 @@ import AuthModal from "@/components/tool/AuthModal";
 import URLInput from "@/components/tool/URLInput";
 import BrandAnalysis from "@/components/tool/BrandAnalysis";
 import ContextResults from "@/components/tool/ContextResults";
-import ContextSelector from "@/components/tool/ContextSelector";
 import TemplateOptions from "@/components/tool/TemplateOptions";
 import AdGeneration from "@/components/tool/AdGeneration";
 import AdOutput from "@/components/tool/AdOutput";
@@ -53,7 +52,7 @@ function ToolContent() {
         <BrandAnalysis
           url={ts.url}
           brandName={ts.brandName}
-          onDone={() => ts.goTo(3)}
+          onDone={ts.handleAnalysisDone}
         />
       )}
 
@@ -69,23 +68,13 @@ function ToolContent() {
           onRate={ts.rateCtx}
           onToggleBm={ts.toggleBm}
           onToggleLike={ts.toggleLike}
-          onUseSelected={ts.useSelected}
+          onUseSelected={ts.handleGoTemplates}
           onNewAnalysis={ts.newAnalysis}
           onCopy={ts.copyText}
         />
       )}
 
       {ts.curStep === 4 && (
-        <ContextSelector
-          ctx={ts.ctx}
-          selCtx={ts.selCtx}
-          onSelect={ts.selectCtx}
-          onBack={ts.prev}
-          onNext={ts.next}
-        />
-      )}
-
-      {ts.curStep === 5 && (
         <TemplateOptions
           ctx={ts.ctx}
           selCtx={ts.selCtx}
@@ -97,6 +86,7 @@ function ToolContent() {
           cta={ts.cta}
           offer={ts.offer}
           slideN={ts.slideN}
+          userBrief={ts.userBrief}
           isLoggedIn={false}
           onBack={ts.prev}
           onSelPlatform={ts.setPlatform}
@@ -107,15 +97,16 @@ function ToolContent() {
           onSetCta={ts.setCta}
           onSetOffer={ts.setOffer}
           onSetSlideN={ts.setSlideN}
+          onSetUserBrief={ts.setUserBrief}
           onSetField={ts.setField}
           onGenerate={ts.handleGenerate}
           onOpenLogin={ts.openLogin}
         />
       )}
 
-      {ts.curStep === 6 && <AdGeneration onDone={() => ts.goTo(7)} />}
+      {ts.curStep === 5 && <AdGeneration onDone={() => ts.goTo(6)} />}
 
-      {ts.curStep === 7 && ts.gen && (
+      {ts.curStep === 6 && ts.gen && (
         <AdOutput
           gen={ts.gen}
           onCopy={ts.copyText}

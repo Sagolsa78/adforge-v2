@@ -22,6 +22,7 @@ export interface DiscoveryStreamResult {
   contexts: string[];
   browserImage: string;
   error: string | null;
+  brandId: string | null;
   startDiscovery: (url: string, brandName: string) => void;
   stopDiscovery: () => void;
   resetDiscovery: () => void;

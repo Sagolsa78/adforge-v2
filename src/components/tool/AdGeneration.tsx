@@ -22,7 +22,7 @@ export default function AdGeneration({ onDone }: Props) {
       const elapsed = Date.now() - start;
       const pct = Math.min((elapsed / dur) * 100, 100);
       setProgress(pct);
-      setActiveStep(Math.min(Math.floor((elapsed / dur) * 6), 5));
+      setActiveStep(Math.min(Math.floor((elapsed / dur) * 5), 4));
       if (elapsed >= dur) {
         clearInterval(iv);
         setTimeout(onDone, 400);

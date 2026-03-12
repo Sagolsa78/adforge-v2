@@ -13,8 +13,6 @@ import { STATUS_COLORS } from "@/constants/page2";
 export default function Page2Analysing({ url, brandName, onDone }: Page2AnalysingProps) {
   const [showThoughts, setShowThoughts] = useState(true);
   const [selectedContextIndex, setSelectedContextIndex] = useState<number | null>(null);
-  const [streamedContent, setStreamedContent] = useState("");
-  const [isStreaming, setIsStreaming] = useState(false);
 
   const {
     isRunning,
@@ -41,29 +39,6 @@ export default function Page2Analysing({ url, brandName, onDone }: Page2Analysin
       return () => clearTimeout(timer);
     }
   }, [status, contexts, onDone]);
-
-  // Stream content when modal opens
-  useEffect(() => {
-    if (selectedContextIndex !== null && contexts[selectedContextIndex]) {
-      setIsStreaming(true);
-      setStreamedContent("");
-      const fullContent = contexts[selectedContextIndex];
-      let charIndex = 0;
-      
-      const streamInterval = setInterval(() => {
-        if (charIndex < fullContent.length) {
-          setStreamedContent(fullContent.substring(0, charIndex + 50));
-          charIndex += 50;
-        } else {
-          setStreamedContent(fullContent);
-          setIsStreaming(false);
-          clearInterval(streamInterval);
-        }
-      }, 16); // ~60fps streaming
-      
-      return () => clearInterval(streamInterval);
-    }
-  }, [selectedContextIndex, contexts]);
 
   const handleViewResults = () => {
     onDone(contexts);
@@ -600,29 +575,23 @@ export default function Page2Analysing({ url, brandName, onDone }: Page2Analysin
           align="center"
           justify="center"
           p={4}
-          onClick={() => {
-            setSelectedContextIndex(null);
-            setStreamedContent("");
-            setIsStreaming(false);
-          }}
-          animation="fadeIn 0.2s ease-out"
+          onClick={() => setSelectedContextIndex(null)}
         >
           <Box
             w="full"
-            maxW="600px"
-            maxH="80vh"
+            maxW="900px"
+            maxH="85vh"
             bg="white"
             borderRadius="2xl"
             boxShadow="2xl"
             overflow="hidden"
             onClick={(e) => e.stopPropagation()}
-            animation="cardScaleIn 0.3s ease-out"
           >
             {/* Modal Header */}
             <Flex
               align="center"
               justify="space-between"
-              p={5}
+              p={6}
               bg="violet.50"
               borderBottom="1px solid"
               borderColor="violet.200"
@@ -640,25 +609,19 @@ export default function Page2Analysing({ url, brandName, onDone }: Page2Analysin
                 >
                   {String(selectedContextIndex + 1).padStart(2, "0")}
                 </Box>
-                <Text fontSize="lg" fontWeight="bold" color="gray.900">
-                  Brand Identity {selectedContextIndex + 1}
+                <Text fontSize="xl" fontWeight="bold" color="gray.900">
+                  {(() => {
+                    const content = contexts[selectedContextIndex];
+                    const titleMatch = content.match(/^##\s*\d+\.\s*(.+)$/m);
+                    return titleMatch ? titleMatch[1].trim() : `Brand Identity ${selectedContextIndex + 1}`;
+                  })()}
                 </Text>
-                {isStreaming && (
-                  <Flex align="center" gap={2} ml={3} px={3} py={1} bg="violet.100" borderRadius="full">
-                    <Box w={2} h={2} borderRadius="full" bg="violet.500" animation="pulse 2s infinite" />
-                    <Text fontSize="xs" color="violet.700" fontWeight="medium">Streaming...</Text>
-                  </Flex>
-                )}
               </Flex>
               <Box
                 as="button"
-                onClick={() => {
-                  setSelectedContextIndex(null);
-                  setStreamedContent("");
-                  setIsStreaming(false);
-                }}
-                w={8}
-                h={8}
+                onClick={() => setSelectedContextIndex(null)}
+                w={10}
+                h={10}
                 borderRadius="lg"
                 display="flex"
                 alignItems="center"
@@ -670,66 +633,27 @@ export default function Page2Analysing({ url, brandName, onDone }: Page2Analysin
               </Box>
             </Flex>
 
-            {/* Modal Content - Streaming */}
+            {/* Modal Content - Full content displayed statically */}
             <Box
-              p={6}
+              p={8}
               overflowY="auto"
-              maxH="calc(80vh - 80px)"
+              maxH="calc(85vh - 100px)"
               css={{
-                "&::-webkit-scrollbar": { width: "6px" },
+                "&::-webkit-scrollbar": { width: "8px" },
                 "&::-webkit-scrollbar-track": { bg: "transparent" },
-                "&::-webkit-scrollbar-thumb": { bg: "#E5E7EB", borderRadius: "3px" },
+                "&::-webkit-scrollbar-thumb": { bg: "#E5E7EB", borderRadius: "4px" },
               }}
             >
               <Box
-                fontSize="sm"
+                fontSize="base"
                 color="gray.700"
                 lineHeight="relaxed"
                 position="relative"
+                whiteSpace="pre-wrap"
               >
-                <Box
-                  dangerouslySetInnerHTML={{ __html: streamedContent }}
-                />
-                {isStreaming && (
-                  <Box
-                    as="span"
-                    display="inline-block"
-                    w="2px"
-                    h="4"
-                    bg="violet.500"
-                    ml="1px"
-                    animation="blink 1s infinite"
-                    verticalAlign="middle"
-                  />
-                )}
+                {contexts[selectedContextIndex]}
               </Box>
             </Box>
-
-            {/* Modal Footer */}
-            <Flex
-              p={4}
-              bg="gray.50"
-              borderTop="1px solid"
-              borderColor="gray.200"
-              justify="flex-end"
-              gap={3}
-            >
-              <Button
-                variant="outline"
-                size="md"
-                onClick={() => {
-                  setSelectedContextIndex(null);
-                  setStreamedContent("");
-                  setIsStreaming(false);
-                }}
-                borderRadius="xl"
-                borderColor="gray.300"
-                color="gray.700"
-                _hover={{ bg: "gray.100" }}
-              >
-                Close
-              </Button>
-            </Flex>
           </Box>
         </Flex>
       )}

@@ -57,7 +57,7 @@ export default function HeroSection() {
               mb={{ base: "6", md: "8" }}
             >
               <Box w="2" h="2" borderRadius="full" bg="#8a2ce2" flexShrink={0} />
-              AdForge 2.0 — AI-Powered Ad Automation
+              Plug and Play Agent — AI-Powered Ad Automation
             </Flex>
           </MotionBox>
 

@@ -2,7 +2,6 @@
 
 import { useState, useCallback } from "react";
 import { BrandContext } from "@/types/onboarding.types";
-import { CTX_META } from "@/config";
 
 interface Props {
   url: string;
@@ -98,7 +97,6 @@ export default function Page3Results({ url, ctx, ratings, bm, likes, selCtx, onS
         <div className={view === "grid" ? "ctx-grid-view" : "ctx-list"}>
           {filtered.map((c) => {
             const idx = c.id - 1;
-            const meta = CTX_META[idx];
             const isExp = expanded.has(c.id);
             const isSel = selCtx === c.id;
             return (
@@ -111,10 +109,6 @@ export default function Page3Results({ url, ctx, ratings, bm, likes, selCtx, onS
                       <div>
                         <div className="ctx-title">{c.title}</div>
                       </div>
-                    </div>
-                    <div className="ctx-tags">
-                      <span className={`ctx-tag ctx-tag-${idx % 5}`}>{meta?.funnel}</span>
-                      <span className={`ctx-tag ctx-tag-${idx % 5}`}>{meta?.angle}</span>
                     </div>
                     <div className={`ctx-body-text${!isExp ? " collapsed" : ""}`}>{c.body}</div>
                     <button className={`ctx-expand-btn${isExp ? " open" : ""}`} onClick={() => toggle(c.id)}>

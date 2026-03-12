@@ -30,6 +30,7 @@ interface Props {
   cta: string;
   offer: string;
   slideN: number;
+  userBrief: string;
   isLoggedIn: boolean;
   onBack: () => void;
   onSelPlatform: (p: string) => void;
@@ -40,6 +41,7 @@ interface Props {
   onSetCta: (v: string) => void;
   onSetOffer: (v: string) => void;
   onSetSlideN: (n: number) => void;
+  onSetUserBrief: (v: string) => void;
   onSetField: (key: string, val: string) => void;
   onGenerate: () => void;
   onOpenLogin: () => void;
@@ -78,6 +80,7 @@ export default function TemplateOptions(props: Props) {
     cta,
     offer,
     slideN,
+    userBrief,
     isLoggedIn,
     onBack,
     onSelPlatform,
@@ -88,6 +91,7 @@ export default function TemplateOptions(props: Props) {
     onSetCta,
     onSetOffer,
     onSetSlideN,
+    onSetUserBrief,
     onSetField,
     onGenerate,
     onOpenLogin,
@@ -188,6 +192,28 @@ export default function TemplateOptions(props: Props) {
 
         <Grid templateColumns={{ base: "1fr", lg: "2fr 1fr" }} gap={10}>
           <Box>
+            {/* User Brief Input */}
+            <Box mb={8}>
+              <Text fontSize="sm" fontWeight="bold" color="gray.700" mb={1.5}>
+                Content Brief <Text as="span" color="gray.400" fontWeight="normal">(Optional)</Text>
+              </Text>
+              <Input
+                h="48px"
+                placeholder="e.g., Summer sale focus, new product launch, brand awareness..."
+                bg="white"
+                border="1px solid"
+                borderColor="gray.200"
+                rounded="xl"
+                fontSize="14px"
+                _focus={{ borderColor: "#8a2ce2", bg: "white", boxShadow: "0 0 0 3px rgba(138,44,226,0.12)" }}
+                value={userBrief}
+                onChange={(e) => onSetUserBrief(e.target.value)}
+              />
+              <Text fontSize="xs" color="gray.500" mt={1.5}>
+                Tell us what you want to focus on. This helps tailor the generated content to your goals.
+              </Text>
+            </Box>
+
             <Box mb={8}>
               <Text fontSize="sm" fontWeight="bold" color="gray.700" mb={3}>
                 Target Platform

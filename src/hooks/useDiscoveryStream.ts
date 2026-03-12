@@ -3,6 +3,7 @@
 import { useEffect, useRef, useCallback, useState } from "react";
 import { DiscoveryStreamResult, DiscoveryStatus } from "@/interfaces/discovery";
 import { getBrandStreamUrl } from "@/api/brand";
+import { savePendingBrandId } from "@/lib/delayedAuth";
 
 export function useDiscoveryStream(): DiscoveryStreamResult {
   const [isRunning, setIsRunning] = useState(false);
@@ -11,9 +12,17 @@ export function useDiscoveryStream(): DiscoveryStreamResult {
   const [contexts, setContexts] = useState<string[]>([]);
   const [browserImage, setBrowserImage] = useState<string>("");
   const [error, setError] = useState<string | null>(null);
+  const [brandId, setBrandId] = useState<string | null>(null);
 
   const eventSourceRef = useRef<EventSource | null>(null);
   const fullMarkdownRef = useRef("");
+
+  const stopDiscovery = useCallback(() => {
+    if (eventSourceRef.current) {
+      eventSourceRef.current.close();
+      eventSourceRef.current = null;
+    }
+  }, []);
 
   const resetDiscovery = useCallback(() => {
     stopDiscovery();
@@ -23,15 +32,9 @@ export function useDiscoveryStream(): DiscoveryStreamResult {
     setContexts([]);
     setBrowserImage("");
     setError(null);
+    setBrandId(null);
     fullMarkdownRef.current = "";
-  }, []);
-
-  const stopDiscovery = useCallback(() => {
-    if (eventSourceRef.current) {
-      eventSourceRef.current.close();
-      eventSourceRef.current = null;
-    }
-  }, []);
+  }, [stopDiscovery]);
 
   const startDiscovery = useCallback((url: string, brandName: string) => {
     resetDiscovery();
@@ -54,6 +57,13 @@ export function useDiscoveryStream(): DiscoveryStreamResult {
     eventSource.addEventListener("progress", (e) => {
       const data = JSON.parse(e.data);
       setThoughts((prev) => [...prev, data.message || "Processing..."]);
+      
+      // Save brand_id when received from the stream
+      if (data.brand_id) {
+        setBrandId(data.brand_id);
+        savePendingBrandId(data.brand_id);
+      }
+      
       if (data.step === "generating_context") {
         setStatus("generating");
       }
@@ -107,6 +117,7 @@ export function useDiscoveryStream(): DiscoveryStreamResult {
     contexts,
     browserImage,
     error,
+    brandId,
     startDiscovery,
     stopDiscovery,
     resetDiscovery,

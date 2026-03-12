@@ -1,8 +1,11 @@
 "use client";
 
 import { useState, useCallback } from "react";
-import type { BrandContext, GeneratedContent } from "@/types/onboarding.types";
+import type { BrandContext, GeneratedContent, PendingAction } from "@/types/onboarding.types";
 import { CTXS } from "@/config";
+import { buildContent } from "@/utils/contentEngine";
+import { savePendingAction } from "@/lib/delayedAuth";
+import { buildAdVariationsPayload } from "@/utils/payloadBuilder";
 
 export function useOnboardingFlow() {
   // Step navigation
@@ -29,6 +32,7 @@ export function useOnboardingFlow() {
   const [cta, setCta] = useState<string>("");
   const [offer, setOffer] = useState<string>("");
   const [slideN, setSlideN] = useState<number>(5);
+  const [userBrief, setUserBrief] = useState<string>("");
 
   // Dynamic template fields
   const [dynFields, setDynFields] = useState<Record<string, string>>({});
@@ -71,6 +75,27 @@ export function useOnboardingFlow() {
     [goTo]
   );
 
+  // ─── Page 2 (Analysis complete) ────────────────────────────────────
+
+  const handleAnalysisDone = useCallback((contexts: string[]) => {
+    if (contexts && contexts.length > 0) {
+      const newContexts: BrandContext[] = contexts.map((body, idx) => {
+        // Extract title from markdown heading (e.g., "## 1. Environmental Impact" -> "Environmental Impact")
+        const titleMatch = body.match(/^##\s*\d+\.\s*(.+)$/m);
+        const title = titleMatch ? titleMatch[1].trim() : `Brand Identity ${idx + 1}`;
+        // Remove the heading from body for cleaner display
+        const cleanBody = body.replace(/^##\s*\d+\.\s*.+$/m, "").trim();
+        return {
+          id: idx + 1,
+          title,
+          body: cleanBody,
+        };
+      });
+      setCtx(newContexts);
+    }
+    goTo(3);
+  }, [goTo]);
+
   // ─── Page 3 actions ────────────────────────────────────────────────
 
   const selectCtx = useCallback((id: number) => {
@@ -101,15 +126,26 @@ export function useOnboardingFlow() {
     if (selCtx !== null) goTo(4);
   }, [selCtx, goTo]);
 
-  // ─── Page 5 ────────────────────────────────────────────────────────
+  const handleGoTemplates = useCallback(() => {
+    if (selCtx !== null) goTo(4);
+  }, [selCtx, goTo]);
 
   const setField = useCallback((fieldId: string, value: string) => {
     setDynFields((prev) => ({ ...prev, [fieldId]: value }));
   }, []);
 
   const handleGenerate = useCallback(() => {
+    // Save pending action for delayed authentication flow
+    if (selCtx !== null) {
+      const payload = buildAdVariationsPayload(selCtx, userBrief, platform);
+      const pendingAction: PendingAction = {
+        type: "GENERATE_VARIATIONS",
+        params: payload,
+      };
+      savePendingAction(pendingAction);
+    }
     goTo(6);
-  }, [goTo]);
+  }, [goTo, selCtx, userBrief, platform]);
 
   // ─── Copy helper ──────────────────────────────────────────────────
 
@@ -152,6 +188,7 @@ export function useOnboardingFlow() {
     setCta("");
     setOffer("");
     setSlideN(5);
+    setUserBrief("");
     setDynFields({});
     setGen(null);
     setPlatform("carousel");
@@ -179,6 +216,7 @@ export function useOnboardingFlow() {
     cta,
     offer,
     slideN,
+    userBrief,
     dynFields,
     gen,
     modalOpen,
@@ -196,12 +234,16 @@ export function useOnboardingFlow() {
     handleAnalyse,
     setBrandName,
 
+    // Page 2
+    handleAnalysisDone,
+
     // Page 3
     selectCtx,
     rateCtx,
     toggleBm,
     toggleLike,
     useSelected,
+    handleGoTemplates,
 
     // Page 5
     setPlatform,
@@ -212,6 +254,7 @@ export function useOnboardingFlow() {
     setCta,
     setOffer,
     setSlideN,
+    setUserBrief,
     setField,
     handleGenerate,
     setGen,

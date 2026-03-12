@@ -4,7 +4,6 @@ import { useState, useCallback } from "react";
 import { Box, Flex, Text, Button, HStack, VStack, SimpleGrid } from "@chakra-ui/react";
 import { Star, Bookmark, Heart, Copy, ChevronDown, ChevronUp, ArrowRight, RotateCcw } from "lucide-react";
 import { BrandContext } from "@/types/onboarding.types";
-import { CTX_META } from "@/config";
 
 interface Props {
   url: string;
@@ -191,7 +190,6 @@ export default function ContextResults({
         <SimpleGrid columns={view === "grid" ? { base: 1, md: 2 } : 1} gap={5} mb={8}>
           {filtered.map((c) => {
             const idx = c.id - 1;
-            const meta = CTX_META[idx];
             const isExp = expanded.has(c.id);
             const isSel = selCtx === c.id;
             const col = BADGE_COLORS[idx % 5];
@@ -232,14 +230,6 @@ export default function ContextResults({
                         <Text fontSize="15px" fontWeight="bold" color="#111827" lineHeight="1.3" mb={1}>
                           {c.title}
                         </Text>
-                        <Flex gap={2} flexWrap="wrap">
-                          <Box bg={col.bg} color={col.text} border="1px solid" borderColor={col.border} rounded="md" px={2} py={0} fontSize="10px" fontWeight="bold">
-                            {meta?.funnel}
-                          </Box>
-                          <Box bg="gray.100" color="gray.600" border="1px solid" borderColor="gray.200" rounded="md" px={2} py={0} fontSize="10px" fontWeight="bold">
-                            {meta?.angle}
-                          </Box>
-                        </Flex>
                       </Box>
                     </Flex>
 

@@ -62,7 +62,6 @@ export const TOOL_STEPS = [
   "URL",
   "Analyse",
   "Results",
-  "Context",
   "Template",
   "Generate",
   "Output",
@@ -90,7 +89,6 @@ export const GENERATION_PROGRESS_STEPS = [
   "Applying template structure",
   "Composing slides",
   "Writing caption & hashtags",
-  "Generating image prompts",
   "Finalising output",
 ] as const;
 

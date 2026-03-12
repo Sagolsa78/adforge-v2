@@ -50,9 +50,10 @@ function toAuthUser(supaUser: { id: string; email?: string; user_metadata?: Reco
 interface AuthProviderProps {
   children: ReactNode;
   onDelayedAuthComplete?: () => void;
+  onDelayedAuthError?: (error: { code: string; message: string }) => void;
 }
 
-export function AuthProvider({ children, onDelayedAuthComplete }: AuthProviderProps) {
+export function AuthProvider({ children, onDelayedAuthComplete, onDelayedAuthError }: AuthProviderProps) {
   const [user, setUser] = useState<AuthUser | null>(null);
   const [session, setSession] = useState<Session | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -60,28 +61,69 @@ export function AuthProvider({ children, onDelayedAuthComplete }: AuthProviderPr
   // ── Delayed-auth handler (guest → claim) ─────────────────────────
   const handleDelayedAuth = useCallback(
     async (token: string) => {
-      try {
-        const pendingBrandId = getPendingBrandId();
-        if (pendingBrandId) {
+      const pendingBrandId = getPendingBrandId();
+      
+      if (pendingBrandId) {
+        try {
+          // Step 1: Claim the brand
           await claimBrand(pendingBrandId, token);
+          console.log("✓ Brand claimed successfully:", pendingBrandId);
 
+          // Step 2: Generate ad variations if pending action exists
           const pendingAction = getPendingAction();
           if (pendingAction?.type === "GENERATE_VARIATIONS") {
+            console.log("✓ Generating ad variations for pending action");
             await generateAdVariations(
               pendingBrandId,
               pendingAction.params,
               token
             );
+            console.log("✓ Ad variations generated successfully");
           }
+
+          // Success callback
+          onDelayedAuthComplete?.();
+        } catch (err) {
+          const error = err as { message?: string; status?: number };
+          
+          // Determine error type
+          let errorCode = "UNKNOWN_ERROR";
+          let errorMessage = error.message || "Failed to complete authentication flow";
+
+          if (error.status === 401 || error.status === 403) {
+            errorCode = "AUTH_ERROR";
+            errorMessage = "Authentication failed. Please sign in again.";
+          } else if (error.status === 409) {
+            // Brand already claimed - not a critical error
+            errorCode = "BRAND_ALREADY_CLAIMED";
+            errorMessage = "Brand already linked to your account.";
+            console.log("ℹ️ Brand was already claimed:", pendingBrandId);
+          } else if (error.status === 404) {
+            errorCode = "BRAND_NOT_FOUND";
+            errorMessage = "Brand not found. Starting fresh session.";
+          } else if (error.status && error.status >= 500) {
+            errorCode = "SERVER_ERROR";
+            errorMessage = "Server error. Please try again.";
+          }
+
+          console.error("Delayed auth flow error:", {
+            code: errorCode,
+            message: errorMessage,
+            originalError: error,
+          });
+
+          // Error callback - allows parent to show user feedback
+          onDelayedAuthError?.({ code: errorCode, message: errorMessage });
+        } finally {
+          // Always clear pending state (success or error)
+          clearDelayedAuthState();
         }
-      } catch (err) {
-        console.error("Delayed auth flow error:", err);
-      } finally {
-        clearDelayedAuthState();
+      } else {
+        // No pending brand - just call complete callback
         onDelayedAuthComplete?.();
       }
     },
-    [onDelayedAuthComplete]
+    [onDelayedAuthComplete, onDelayedAuthError]
   );
 
   // ── Bootstrap session + listen for auth changes ──────────────────
