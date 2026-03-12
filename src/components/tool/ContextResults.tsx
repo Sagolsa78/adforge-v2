@@ -30,7 +30,7 @@ const BADGE_COLORS = [
   { bg: "rgba(79,70,229,0.08)", text: "#4f46e5", border: "rgba(79,70,229,0.2)" },
 ];
 
-export default function Page3Results({
+export default function ContextResults({
   url, ctx, ratings, bm, likes, selCtx,
   onSelect, onRate, onToggleBm, onToggleLike, onUseSelected, onNewAnalysis, onCopy,
 }: Props) {

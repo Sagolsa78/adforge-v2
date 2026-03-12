@@ -11,7 +11,7 @@ interface Props {
   onDone: () => void;
 }
 
-export default function Page6Generating({ onDone }: Props) {
+export default function AdGeneration({ onDone }: Props) {
   const [progress, setProgress] = useState(0);
   const [activeStep, setActiveStep] = useState(0);
 

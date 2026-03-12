@@ -1,9 +1,3 @@
-export interface AuthState {
-  loggedIn: boolean;
-  name: string;
-  email: string;
-}
-
 export interface BrandContext {
   id: number;
   title: string;

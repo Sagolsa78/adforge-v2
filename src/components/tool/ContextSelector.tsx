@@ -21,7 +21,7 @@ const COLORS = [
   { bg: "rgba(79,70,229,0.06)", text: "#4f46e5", border: "rgba(79,70,229,0.2)", accent: "#4f46e5" },
 ];
 
-export default function Page4SelectContext({ ctx, selCtx, onSelect, onBack, onNext }: Props) {
+export default function ContextSelector({ ctx, selCtx, onSelect, onBack, onNext }: Props) {
   return (
     <Box w="full" px={4} py={12} minH="calc(100vh - 140px)" position="relative">
       {/* Background blobs */}

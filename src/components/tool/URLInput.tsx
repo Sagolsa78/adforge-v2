@@ -8,7 +8,7 @@ interface Props {
   onAnalyse: (url: string, brandName: string) => void;
 }
 
-export default function Page1URL({ onAnalyse }: Props) {
+export default function URLInput({ onAnalyse }: Props) {
   const [url, setUrl] = useState("");
   const [brandName, setBrandName] = useState("");
   const [err, setErr] = useState(false);

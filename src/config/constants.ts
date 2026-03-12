@@ -56,7 +56,7 @@ export const SUPABASE_PROJECT_URL =
 
 // ─── Tool Steps ───────────────────────────────────────────────────────────────
 // Used in: StepBar.tsx (renamed from StepBar.tsx — see renames below)
-// Derived type used in useOnboardingFlow.ts (renamed from useToolState.ts)
+// Derived type used in useOnboardingFlow.ts
 
 export const TOOL_STEPS = [
   "URL",
@@ -72,7 +72,7 @@ export type ToolStep = typeof TOOL_STEPS[number];
 export const TOTAL_STEPS = TOOL_STEPS.length;
 
 // ─── Analysis Progress Steps ──────────────────────────────────────────────────
-// Used in: BrandAnalysis.tsx (renamed from Page2Analysing.tsx)
+// Used in: BrandAnalysis.tsx
 
 export const ANALYSIS_PROGRESS_STEPS = [
   "Scraping website content",
@@ -83,7 +83,7 @@ export const ANALYSIS_PROGRESS_STEPS = [
 ] as const;
 
 // ─── Generation Progress Steps ────────────────────────────────────────────────
-// Used in: AdGeneration.tsx (renamed from Page6Generating.tsx)
+// Used in: AdGeneration.tsx
 
 export const GENERATION_PROGRESS_STEPS = [
   "Loading selected context",

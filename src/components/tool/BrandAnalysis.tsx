@@ -17,7 +17,7 @@ interface Props {
   onBack: () => void;
 }
 
-export default function Page2Analysing({ url, brandName, token, onDone, onBack }: Props) {
+export default function BrandAnalysis({ url, brandName, token, onDone, onBack }: Props) {
   const [progress, setProgress] = useState(0);
   const [activeStep, setActiveStep] = useState(0);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);

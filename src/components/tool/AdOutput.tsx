@@ -11,7 +11,7 @@ interface Props {
   onNewAnalysis: () => void;
 }
 
-export default function Page7Output({ gen, onCopy, onBack, onNewAnalysis }: Props) {
+export default function AdOutput({ gen, onCopy, onBack, onNewAnalysis }: Props) {
   return (
     <Box w="full" px={4} py={12} minH="calc(100vh - 140px)" position="relative">
       {/* Background blobs */}

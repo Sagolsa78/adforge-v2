@@ -66,7 +66,7 @@ const EMOJIS = [
   { id: "heavy", label: "Heavy", samp: "🚀🎯🔥" },
 ];
 
-export default function Page5TemplateOptions(props: Props) {
+export default function TemplateOptions(props: Props) {
   const {
     ctx,
     selCtx,
