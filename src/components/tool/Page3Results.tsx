@@ -51,7 +51,8 @@ export default function Page3Results({ url, ctx, ratings, bm, likes, selCtx, onS
             <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
               <p style={{ color: "var(--ink3)", fontSize: 13, fontWeight: 500 }}>{url}</p>
               <div style={{ display: "inline-flex", alignItems: "center", gap: 5, background: "rgba(5,150,105,.08)", border: "1px solid rgba(5,150,105,.2)", color: "var(--emerald)", padding: "3px 10px", borderRadius: 10, fontSize: 11, fontWeight: 700 }}>
-                <span className="pulse" />5 Contexts Generated
+                <span className="pulse" />
+                {ctx.length} Brand Identities Generated
               </div>
             </div>
           </div>
@@ -70,11 +71,14 @@ export default function Page3Results({ url, ctx, ratings, bm, likes, selCtx, onS
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12, marginBottom: 20, padding: "10px 16px", background: "#fff", border: "1.5px solid var(--border)", borderRadius: "var(--r12)", boxShadow: "var(--sh0)", flexWrap: "wrap" }}>
           <div style={{ display: "flex", gap: 6, flexWrap: "wrap", alignItems: "center" }}>
             <span style={{ fontSize: 11, fontWeight: 700, color: "var(--ink3)", textTransform: "uppercase", letterSpacing: ".07em", marginRight: 4 }}>Filter</span>
-            {(["all", "fav", "bm"] as const).map((f) => (
-              <button key={f} className={`ftab${filter === f ? " on" : ""}`} onClick={() => setFilter(f)} style={{ padding: "5px 14px", borderRadius: 20, border: "1.5px solid var(--border)", background: filter === f ? "var(--violet)" : "transparent", color: filter === f ? "#fff" : "var(--ink2)", fontSize: "12.5px", fontWeight: 600, cursor: "pointer", fontFamily: "'DM Sans',sans-serif" }}>
-                {f === "all" ? "All 5" : f === "fav" ? "⭐ Favourited" : "🔖 Bookmarked"}
-              </button>
-            ))}
+            {(["all", "fav", "bm"] as const).map((f) => {
+              const count = f === "all" ? ctx.length : f === "fav" ? Array.from(likes).length : bm.size;
+              return (
+                <button key={f} className={`ftab${filter === f ? " on" : ""}`} onClick={() => setFilter(f)} style={{ padding: "5px 14px", borderRadius: 20, border: "1.5px solid var(--border)", background: filter === f ? "var(--violet)" : "transparent", color: filter === f ? "#fff" : "var(--ink2)", fontSize: "12.5px", fontWeight: 600, cursor: "pointer", fontFamily: "'DM Sans',sans-serif" }}>
+                  {f === "all" ? `All ${count}` : f === "fav" ? `⭐ Favourited (${count})` : `🔖 Bookmarked (${count})`}
+                </button>
+              );
+            })}
           </div>
           <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
             <span style={{ fontSize: 11, fontWeight: 700, color: "var(--ink3)", textTransform: "uppercase", letterSpacing: ".07em" }}>View</span>

@@ -8,7 +8,7 @@ export function useToolState() {
   const [maxReached, setMaxReached] = useState(1);
   const [url, setUrl] = useState("");
   const [brandName, setBrandName] = useState("");
-  const [ctx] = useState<BrandContext[]>(CTXS);
+  const [ctx, setCtx] = useState<BrandContext[]>(CTXS);
   const [ratings, setRatings] = useState<Record<number, number>>({});
   const [bm, setBm] = useState<Set<number>>(new Set());
   const [likes, setLikes] = useState<Set<number>>(new Set());
@@ -51,7 +51,29 @@ export function useToolState() {
     goStep(2);
   }, [goStep]);
 
-  const handleAnalysisDone = useCallback(() => goStep(3), [goStep]);
+  const handleAnalysisDone = useCallback((contexts?: string[]) => {
+    if (contexts && contexts.length > 0) {
+      // Convert API contexts to BrandContext format
+      const newContexts: BrandContext[] = contexts.map((body, idx) => ({
+        id: idx + 1,
+        title: `Brand Identity ${idx + 1}`,
+        body,
+      }));
+      setCtx(newContexts);
+    }
+    goStep(3);
+  }, [goStep]);
+
+  const handleUpdateContexts = useCallback((newContexts: string[]) => {
+    if (newContexts.length > 0) {
+      const formattedContexts: BrandContext[] = newContexts.map((body, idx) => ({
+        id: idx + 1,
+        title: `Brand Identity ${idx + 1}`,
+        body,
+      }));
+      setCtx(formattedContexts);
+    }
+  }, []);
 
   const handleSelectCtx = useCallback((id: number) => {
     setSelCtx((prev) => (prev === id ? null : id));
@@ -148,6 +170,7 @@ export function useToolState() {
   const handleNewAnalysis = useCallback(() => {
     setUrl("");
     setBrandName("");
+    setCtx(CTXS);
     setSelCtx(null);
     setSelTpl(null);
     setSelIgTpl(null);
@@ -168,7 +191,7 @@ export function useToolState() {
     selCtx, selTpl, selIgTpl, tone, emoji, platform, cta, offer, slideN, gen, auth,
     modalOpen, modalMode, toastMsg, toastVisible,
     setModalMode, setModalOpen, setPlatform, setSelTpl, setSelIgTpl, setTone, setEmoji, setCta, setOffer, setSlideN,
-    goStep, handleAnalyse, handleAnalysisDone, handleSelectCtx, handleRate, handleToggleBm, handleToggleLike,
+    goStep, handleAnalyse, handleAnalysisDone, handleUpdateContexts, handleSelectCtx, handleRate, handleToggleBm, handleToggleLike,
     handleUseSelected, handleGoTemplates, handleGenerate, handleGenerateDone, handleAuth, handleLogout,
     handleSetField, handleNewAnalysis, copyToCB
   };

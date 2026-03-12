@@ -21,7 +21,7 @@ export default function ToolPage() {
     selCtx, selTpl, selIgTpl, tone, emoji, platform, cta, offer, slideN, gen, auth,
     modalOpen, modalMode, toastMsg, toastVisible,
     setModalMode, setModalOpen, setPlatform, setSelTpl, setSelIgTpl, setTone, setEmoji, setCta, setOffer, setSlideN,
-    goStep, handleAnalyse, handleAnalysisDone, handleSelectCtx, handleRate, handleToggleBm, handleToggleLike,
+    goStep, handleAnalyse, handleAnalysisDone, handleUpdateContexts, handleSelectCtx, handleRate, handleToggleBm, handleToggleLike,
     handleUseSelected, handleGoTemplates, handleGenerate, handleGenerateDone, handleAuth, handleLogout,
     handleSetField, handleNewAnalysis, copyToCB
   } = useToolState();
