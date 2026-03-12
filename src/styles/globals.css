@@ -1,4 +1,23 @@
-@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-base: #F8F7FF;
+  --bg-surface: #FFFFFF;
+  --bg-surface-hover: #F3EEFF;
+  --border: #E8E6F0;
+  --accent-violet: #7C3AED;
+  --accent-orange: #EA580C;
+  --accent-violet-light: #F3EEFF;
+  --text-primary: #0F0E1A;
+  --text-secondary: #6B6880;
+  --text-muted: #A09DB8;
+  --success: #10B981;
+  --font: 'DM Sans', sans-serif;
+}
 
 * {
   margin: 0;
@@ -7,9 +26,9 @@
 }
 
 html, body {
-  font-family: "Space Grotesk", system-ui, sans-serif;
-  background: #faf5ff;
-  color: #111827;
+  font-family: var(--font);
+  background: var(--bg-base);
+  color: var(--text-primary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;

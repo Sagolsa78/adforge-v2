@@ -1,0 +1,4759 @@
+[      60ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/dashboard/brand-dna:0
+[     313ms] Error: ./src/app/dashboard/brand-dna/page.tsx:5:1
+Export useToast doesn't exist in target module
+   3 | import React, { useState, useEffect } from 'react';
+   4 | import { useRouter } from 'next/navigation';
+>  5 | import { 
+     | ^^^^^^^^^
+>  6 |   Box, 
+     | ^^^^^^^
+>  7 |   Flex, 
+     | ^^^^^^^
+>  8 |   Heading, 
+     | ^^^^^^^
+>  9 |   Text, 
+     | ^^^^^^^
+> 10 |   Button, 
+     | ^^^^^^^
+> 11 |   SimpleGrid, 
+     | ^^^^^^^
+> 12 |   Icon, 
+     | ^^^^^^^
+> 13 |   Stack, 
+     | ^^^^^^^
+> 14 |   Badge, 
+     | ^^^^^^^
+> 15 |   Circle, 
+     | ^^^^^^^
+> 16 |   Textarea, 
+     | ^^^^^^^
+> 17 |   Spinner, 
+     | ^^^^^^^
+> 18 |   Progress,
+     | ^^^^^^^
+> 19 |   useToast,
+     | ^^^^^^^
+> 20 |   Skeleton,
+     | ^^^^^^^
+> 21 |   SkeletonText,
+     | ^^^^^^^
+> 22 |   Center
+     | ^^^^^^^
+> 23 | } from '@chakra-ui/react';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  24 | import { 
+  25 |   ArrowLeft, 
+  26 |   ArrowRight, 
+
+The export useToast was not found in module [project]/node_modules/@chakra-ui/react/dist/esm/index.js [app-client] (ecmascript).
+Did you mean to import useTabs?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component Browser]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component SSR]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+
+    at <unknown> (Error: ./src/app/dashboard/brand-dna/page.tsx:5:1)
+    at Object.getCompilationErrors (file:///mnt/Drive_01/Bhuexpert01/adforge_design/adforge-app/node_modules/next/dist/server/dev/hot-reloader-turbopack.js:1008:59)
+    at DevBundlerService.getCompilationError (file:///mnt/Drive_01/Bhuexpert01/adforge_design/adforge-app/node_modules/next/dist/server/lib/dev-bundler-service.js:44:55)
+    at DevServer.getCompilationError (file:///mnt/Drive_01/Bhuexpert01/adforge_design/adforge-app/node_modules/next/dist/server/dev/next-dev-server.js:706:42)
+    at DevServer.findPageComponents (file:///mnt/Drive_01/Bhuexpert01/adforge_design/adforge-app/node_modules/next/dist/server/dev/next-dev-server.js:676:43)
+    at async DevServer.renderErrorToResponseImpl (file:///mnt/Drive_01/Bhuexpert01/adforge_design/adforge-app/node_modules/next/dist/server/base-server.js:1733:26)
+[     321ms] [ERROR] ./src/app/dashboard/brand-dna/page.tsx:5:1
+Export useToast doesn't exist in target module
+   3 | import React, { useState, useEffect } from 'react';
+   4 | import { useRouter } from 'next/navigation';
+>  5 | import { 
+     | ^^^^^^^^^
+>  6 |   Box, 
+     | ^^^^^^^
+>  7 |   Flex, 
+     | ^^^^^^^
+>  8 |   Heading, 
+     | ^^^^^^^
+>  9 |   Text, 
+     | ^^^^^^^
+> 10 |   Button, 
+     | ^^^^^^^
+> 11 |   SimpleGrid, 
+     | ^^^^^^^
+> 12 |   Icon, 
+     | ^^^^^^^
+> 13 |   Stack, 
+     | ^^^^^^^
+> 14 |   Badge, 
+     | ^^^^^^^
+> 15 |   Circle, 
+     | ^^^^^^^
+> 16 |   Textarea, 
+     | ^^^^^^^
+> 17 |   Spinner, 
+     | ^^^^^^^
+> 18 |   Progress,
+     | ^^^^^^^
+> 19 |   useToast,
+     | ^^^^^^^
+> 20 |   Skeleton,
+     | ^^^^^^^
+> 21 |   SkeletonText,
+     | ^^^^^^^
+> 22 |   Center
+     | ^^^^^^^
+> 23 | } from '@chakra-ui/react';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  24 | import { 
+  25 |   ArrowLeft, 
+  26 |   ArrowRight, 
+
+The export useToast was not found in module [project]/node_modules/@chakra-ui/react/dist/esm/index.js [app-client] (ecmascript).
+Did you mean to import useTabs?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component Browser]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component SSR]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1920
+[     322ms] [ERROR] ./src/app/dashboard/brand-dna/page.tsx:5:1
+Export useToast doesn't exist in target module
+   3 | import React, { useState, useEffect } from 'react';
+   4 | import { useRouter } from 'next/navigation';
+>  5 | import { 
+     | ^^^^^^^^^
+>  6 |   Box, 
+     | ^^^^^^^
+>  7 |   Flex, 
+     | ^^^^^^^
+>  8 |   Heading, 
+     | ^^^^^^^
+>  9 |   Text, 
+     | ^^^^^^^
+> 10 |   Button, 
+     | ^^^^^^^
+> 11 |   SimpleGrid, 
+     | ^^^^^^^
+> 12 |   Icon, 
+     | ^^^^^^^
+> 13 |   Stack, 
+     | ^^^^^^^
+> 14 |   Badge, 
+     | ^^^^^^^
+> 15 |   Circle, 
+     | ^^^^^^^
+> 16 |   Textarea, 
+     | ^^^^^^^
+> 17 |   Spinner, 
+     | ^^^^^^^
+> 18 |   Progress,
+     | ^^^^^^^
+> 19 |   useToast,
+     | ^^^^^^^
+> 20 |   Skeleton,
+     | ^^^^^^^
+> 21 |   SkeletonText,
+     | ^^^^^^^
+> 22 |   Center
+     | ^^^^^^^
+> 23 | } from '@chakra-ui/react';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  24 | import { 
+  25 |   ArrowLeft, 
+  26 |   ArrowRight, 
+
+The export useToast was not found in module [project]/node_modules/@chakra-ui/react/dist/esm/index.js [app-ssr] (ecmascript).
+Did you mean to import useTabs?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component Browser]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component SSR]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1920
+[     359ms] [ERROR] ./src/app/dashboard/brand-dna/page.tsx:5:1
+Export useToast doesn't exist in target module
+   3 | import React, { useState, useEffect } from 'react';
+   4 | import { useRouter } from 'next/navigation';
+>  5 | import { 
+     | ^^^^^^^^^
+>  6 |   Box, 
+     | ^^^^^^^
+>  7 |   Flex, 
+     | ^^^^^^^
+>  8 |   Heading, 
+     | ^^^^^^^
+>  9 |   Text, 
+     | ^^^^^^^
+> 10 |   Button, 
+     | ^^^^^^^
+> 11 |   SimpleGrid, 
+     | ^^^^^^^
+> 12 |   Icon, 
+     | ^^^^^^^
+> 13 |   Stack, 
+     | ^^^^^^^
+> 14 |   Badge, 
+     | ^^^^^^^
+> 15 |   Circle, 
+     | ^^^^^^^
+> 16 |   Textarea, 
+     | ^^^^^^^
+> 17 |   Spinner, 
+     | ^^^^^^^
+> 18 |   Progress,
+     | ^^^^^^^
+> 19 |   useToast,
+     | ^^^^^^^
+> 20 |   Skeleton,
+     | ^^^^^^^
+> 21 |   SkeletonText,
+     | ^^^^^^^
+> 22 |   Center
+     | ^^^^^^^
+> 23 | } from '@chakra-ui/react';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  24 | import { 
+  25 |   ArrowLeft, 
+  26 |   ArrowRight, 
+
+The export useToast was not found in module [project]/node_modules/@chakra-ui/react/dist/esm/index.js [app-client] (ecmascript).
+Did you mean to import useTabs?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component Browser]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component SSR]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1920
+[     359ms] [ERROR] ./src/app/dashboard/brand-dna/page.tsx:5:1
+Export useToast doesn't exist in target module
+   3 | import React, { useState, useEffect } from 'react';
+   4 | import { useRouter } from 'next/navigation';
+>  5 | import { 
+     | ^^^^^^^^^
+>  6 |   Box, 
+     | ^^^^^^^
+>  7 |   Flex, 
+     | ^^^^^^^
+>  8 |   Heading, 
+     | ^^^^^^^
+>  9 |   Text, 
+     | ^^^^^^^
+> 10 |   Button, 
+     | ^^^^^^^
+> 11 |   SimpleGrid, 
+     | ^^^^^^^
+> 12 |   Icon, 
+     | ^^^^^^^
+> 13 |   Stack, 
+     | ^^^^^^^
+> 14 |   Badge, 
+     | ^^^^^^^
+> 15 |   Circle, 
+     | ^^^^^^^
+> 16 |   Textarea, 
+     | ^^^^^^^
+> 17 |   Spinner, 
+     | ^^^^^^^
+> 18 |   Progress,
+     | ^^^^^^^
+> 19 |   useToast,
+     | ^^^^^^^
+> 20 |   Skeleton,
+     | ^^^^^^^
+> 21 |   SkeletonText,
+     | ^^^^^^^
+> 22 |   Center
+     | ^^^^^^^
+> 23 | } from '@chakra-ui/react';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  24 | import { 
+  25 |   ArrowLeft, 
+  26 |   ArrowRight, 
+
+The export useToast was not found in module [project]/node_modules/@chakra-ui/react/dist/esm/index.js [app-ssr] (ecmascript).
+Did you mean to import useTabs?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component Browser]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component SSR]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1920
+[     537ms] [ERROR] ./src/app/dashboard/brand-dna/page.tsx:5:1
+Export useToast doesn't exist in target module
+   3 | import React, { useState, useEffect } from 'react';
+   4 | import { useRouter } from 'next/navigation';
+>  5 | import { 
+     | ^^^^^^^^^
+>  6 |   Box, 
+     | ^^^^^^^
+>  7 |   Flex, 
+     | ^^^^^^^
+>  8 |   Heading, 
+     | ^^^^^^^
+>  9 |   Text, 
+     | ^^^^^^^
+> 10 |   Button, 
+     | ^^^^^^^
+> 11 |   SimpleGrid, 
+     | ^^^^^^^
+> 12 |   Icon, 
+     | ^^^^^^^
+> 13 |   Stack, 
+     | ^^^^^^^
+> 14 |   Badge, 
+     | ^^^^^^^
+> 15 |   Circle, 
+     | ^^^^^^^
+> 16 |   Textarea, 
+     | ^^^^^^^
+> 17 |   Spinner, 
+     | ^^^^^^^
+> 18 |   Progress,
+     | ^^^^^^^
+> 19 |   useToast,
+     | ^^^^^^^
+> 20 |   Skeleton,
+     | ^^^^^^^
+> 21 |   SkeletonText,
+     | ^^^^^^^
+> 22 |   Center
+     | ^^^^^^^
+> 23 | } from '@chakra-ui/react';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  24 | import { 
+  25 |   ArrowLeft, 
+  26 |   ArrowRight, 
+
+The export useToast was not found in module [project]/node_modules/@chakra-ui/react/dist/esm/index.js [app-client] (ecmascript).
+Did you mean to import useTabs?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component Browser]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component SSR]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1920
+[     538ms] [ERROR] ./src/app/dashboard/brand-dna/page.tsx:5:1
+Export useToast doesn't exist in target module
+   3 | import React, { useState, useEffect } from 'react';
+   4 | import { useRouter } from 'next/navigation';
+>  5 | import { 
+     | ^^^^^^^^^
+>  6 |   Box, 
+     | ^^^^^^^
+>  7 |   Flex, 
+     | ^^^^^^^
+>  8 |   Heading, 
+     | ^^^^^^^
+>  9 |   Text, 
+     | ^^^^^^^
+> 10 |   Button, 
+     | ^^^^^^^
+> 11 |   SimpleGrid, 
+     | ^^^^^^^
+> 12 |   Icon, 
+     | ^^^^^^^
+> 13 |   Stack, 
+     | ^^^^^^^
+> 14 |   Badge, 
+     | ^^^^^^^
+> 15 |   Circle, 
+     | ^^^^^^^
+> 16 |   Textarea, 
+     | ^^^^^^^
+> 17 |   Spinner, 
+     | ^^^^^^^
+> 18 |   Progress,
+     | ^^^^^^^
+> 19 |   useToast,
+     | ^^^^^^^
+> 20 |   Skeleton,
+     | ^^^^^^^
+> 21 |   SkeletonText,
+     | ^^^^^^^
+> 22 |   Center
+     | ^^^^^^^
+> 23 | } from '@chakra-ui/react';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  24 | import { 
+  25 |   ArrowLeft, 
+  26 |   ArrowRight, 
+
+The export useToast was not found in module [project]/node_modules/@chakra-ui/react/dist/esm/index.js [app-ssr] (ecmascript).
+Did you mean to import useTabs?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component Browser]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component SSR]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1920
+[   81663ms] [ERROR] ./src/app/dashboard/brand-dna/page.tsx:5:1
+Export useToast doesn't exist in target module
+   3 | import React, { useState, useEffect } from 'react';
+   4 | import { useRouter } from 'next/navigation';
+>  5 | import { 
+     | ^^^^^^^^^
+>  6 |   Box, 
+     | ^^^^^^^
+>  7 |   Flex, 
+     | ^^^^^^^
+>  8 |   Heading, 
+     | ^^^^^^^
+>  9 |   Text, 
+     | ^^^^^^^
+> 10 |   Button, 
+     | ^^^^^^^
+> 11 |   SimpleGrid, 
+     | ^^^^^^^
+> 12 |   Icon, 
+     | ^^^^^^^
+> 13 |   Stack, 
+     | ^^^^^^^
+> 14 |   Badge, 
+     | ^^^^^^^
+> 15 |   Circle, 
+     | ^^^^^^^
+> 16 |   Textarea, 
+     | ^^^^^^^
+> 17 |   Spinner, 
+     | ^^^^^^^
+> 18 |   Progress,
+     | ^^^^^^^
+> 19 |   useToast,
+     | ^^^^^^^
+> 20 |   Skeleton,
+     | ^^^^^^^
+> 21 |   SkeletonText,
+     | ^^^^^^^
+> 22 |   Center
+     | ^^^^^^^
+> 23 | } from '@chakra-ui/react';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  24 | import { 
+  25 |   ArrowLeft, 
+  26 |   ArrowRight, 
+
+The export useToast was not found in module [project]/node_modules/@chakra-ui/react/dist/esm/index.js [app-client] (ecmascript).
+Did you mean to import useTabs?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component Browser]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component SSR]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1920
+[   81663ms] [ERROR] ./src/app/dashboard/brand-dna/page.tsx:5:1
+Export useToast doesn't exist in target module
+   3 | import React, { useState, useEffect } from 'react';
+   4 | import { useRouter } from 'next/navigation';
+>  5 | import { 
+     | ^^^^^^^^^
+>  6 |   Box, 
+     | ^^^^^^^
+>  7 |   Flex, 
+     | ^^^^^^^
+>  8 |   Heading, 
+     | ^^^^^^^
+>  9 |   Text, 
+     | ^^^^^^^
+> 10 |   Button, 
+     | ^^^^^^^
+> 11 |   SimpleGrid, 
+     | ^^^^^^^
+> 12 |   Icon, 
+     | ^^^^^^^
+> 13 |   Stack, 
+     | ^^^^^^^
+> 14 |   Badge, 
+     | ^^^^^^^
+> 15 |   Circle, 
+     | ^^^^^^^
+> 16 |   Textarea, 
+     | ^^^^^^^
+> 17 |   Spinner, 
+     | ^^^^^^^
+> 18 |   Progress,
+     | ^^^^^^^
+> 19 |   useToast,
+     | ^^^^^^^
+> 20 |   Skeleton,
+     | ^^^^^^^
+> 21 |   SkeletonText,
+     | ^^^^^^^
+> 22 |   Center
+     | ^^^^^^^
+> 23 | } from '@chakra-ui/react';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  24 | import { 
+  25 |   ArrowLeft, 
+  26 |   ArrowRight, 
+
+The export useToast was not found in module [project]/node_modules/@chakra-ui/react/dist/esm/index.js [app-ssr] (ecmascript).
+Did you mean to import useTabs?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component Browser]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component SSR]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1920
+[   82573ms] [ERROR] ./src/app/dashboard/brand-dna/page.tsx:5:1
+Export useToast doesn't exist in target module
+   3 | import React, { useState, useEffect } from 'react';
+   4 | import { useRouter } from 'next/navigation';
+>  5 | import { 
+     | ^^^^^^^^^
+>  6 |   Box, 
+     | ^^^^^^^
+>  7 |   Flex, 
+     | ^^^^^^^
+>  8 |   Heading, 
+     | ^^^^^^^
+>  9 |   Text, 
+     | ^^^^^^^
+> 10 |   Button, 
+     | ^^^^^^^
+> 11 |   SimpleGrid, 
+     | ^^^^^^^
+> 12 |   Icon, 
+     | ^^^^^^^
+> 13 |   Stack, 
+     | ^^^^^^^
+> 14 |   Badge, 
+     | ^^^^^^^
+> 15 |   Circle, 
+     | ^^^^^^^
+> 16 |   Textarea, 
+     | ^^^^^^^
+> 17 |   Spinner, 
+     | ^^^^^^^
+> 18 |   Progress,
+     | ^^^^^^^
+> 19 |   useToast,
+     | ^^^^^^^
+> 20 |   Skeleton,
+     | ^^^^^^^
+> 21 |   SkeletonText,
+     | ^^^^^^^
+> 22 |   Center
+     | ^^^^^^^
+> 23 | } from '@chakra-ui/react';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  24 | import { 
+  25 |   ArrowLeft, 
+  26 |   ArrowRight, 
+
+The export useToast was not found in module [project]/node_modules/@chakra-ui/react/dist/esm/index.js [app-client] (ecmascript).
+Did you mean to import useTabs?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component Browser]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component SSR]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1920
+[   82573ms] [ERROR] ./src/app/dashboard/brand-dna/page.tsx:5:1
+Export useToast doesn't exist in target module
+   3 | import React, { useState, useEffect } from 'react';
+   4 | import { useRouter } from 'next/navigation';
+>  5 | import { 
+     | ^^^^^^^^^
+>  6 |   Box, 
+     | ^^^^^^^
+>  7 |   Flex, 
+     | ^^^^^^^
+>  8 |   Heading, 
+     | ^^^^^^^
+>  9 |   Text, 
+     | ^^^^^^^
+> 10 |   Button, 
+     | ^^^^^^^
+> 11 |   SimpleGrid, 
+     | ^^^^^^^
+> 12 |   Icon, 
+     | ^^^^^^^
+> 13 |   Stack, 
+     | ^^^^^^^
+> 14 |   Badge, 
+     | ^^^^^^^
+> 15 |   Circle, 
+     | ^^^^^^^
+> 16 |   Textarea, 
+     | ^^^^^^^
+> 17 |   Spinner, 
+     | ^^^^^^^
+> 18 |   Progress,
+     | ^^^^^^^
+> 19 |   useToast,
+     | ^^^^^^^
+> 20 |   Skeleton,
+     | ^^^^^^^
+> 21 |   SkeletonText,
+     | ^^^^^^^
+> 22 |   Center
+     | ^^^^^^^
+> 23 | } from '@chakra-ui/react';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  24 | import { 
+  25 |   ArrowLeft, 
+  26 |   ArrowRight, 
+
+The export useToast was not found in module [project]/node_modules/@chakra-ui/react/dist/esm/index.js [app-ssr] (ecmascript).
+Did you mean to import useTabs?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component Browser]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component SSR]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1920
+[   82824ms] [ERROR] ./src/app/dashboard/brand-dna/page.tsx:5:1
+Export useToast doesn't exist in target module
+   3 | import React, { useState, useEffect } from 'react';
+   4 | import { useRouter } from 'next/navigation';
+>  5 | import { 
+     | ^^^^^^^^^
+>  6 |   Box, 
+     | ^^^^^^^
+>  7 |   Flex, 
+     | ^^^^^^^
+>  8 |   Heading, 
+     | ^^^^^^^
+>  9 |   Text, 
+     | ^^^^^^^
+> 10 |   Button, 
+     | ^^^^^^^
+> 11 |   SimpleGrid, 
+     | ^^^^^^^
+> 12 |   Icon, 
+     | ^^^^^^^
+> 13 |   Stack, 
+     | ^^^^^^^
+> 14 |   Badge, 
+     | ^^^^^^^
+> 15 |   Circle, 
+     | ^^^^^^^
+> 16 |   Textarea, 
+     | ^^^^^^^
+> 17 |   Spinner, 
+     | ^^^^^^^
+> 18 |   Progress,
+     | ^^^^^^^
+> 19 |   useToast,
+     | ^^^^^^^
+> 20 |   Skeleton,
+     | ^^^^^^^
+> 21 |   SkeletonText,
+     | ^^^^^^^
+> 22 |   Center
+     | ^^^^^^^
+> 23 | } from '@chakra-ui/react';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  24 | import { 
+  25 |   ArrowLeft, 
+  26 |   ArrowRight, 
+
+The export useToast was not found in module [project]/node_modules/@chakra-ui/react/dist/esm/index.js [app-client] (ecmascript).
+Did you mean to import useTabs?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component Browser]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component SSR]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1920
+[   82825ms] [ERROR] ./src/app/dashboard/brand-dna/page.tsx:5:1
+Export useToast doesn't exist in target module
+   3 | import React, { useState, useEffect } from 'react';
+   4 | import { useRouter } from 'next/navigation';
+>  5 | import { 
+     | ^^^^^^^^^
+>  6 |   Box, 
+     | ^^^^^^^
+>  7 |   Flex, 
+     | ^^^^^^^
+>  8 |   Heading, 
+     | ^^^^^^^
+>  9 |   Text, 
+     | ^^^^^^^
+> 10 |   Button, 
+     | ^^^^^^^
+> 11 |   SimpleGrid, 
+     | ^^^^^^^
+> 12 |   Icon, 
+     | ^^^^^^^
+> 13 |   Stack, 
+     | ^^^^^^^
+> 14 |   Badge, 
+     | ^^^^^^^
+> 15 |   Circle, 
+     | ^^^^^^^
+> 16 |   Textarea, 
+     | ^^^^^^^
+> 17 |   Spinner, 
+     | ^^^^^^^
+> 18 |   Progress,
+     | ^^^^^^^
+> 19 |   useToast,
+     | ^^^^^^^
+> 20 |   Skeleton,
+     | ^^^^^^^
+> 21 |   SkeletonText,
+     | ^^^^^^^
+> 22 |   Center
+     | ^^^^^^^
+> 23 | } from '@chakra-ui/react';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  24 | import { 
+  25 |   ArrowLeft, 
+  26 |   ArrowRight, 
+
+The export useToast was not found in module [project]/node_modules/@chakra-ui/react/dist/esm/index.js [app-ssr] (ecmascript).
+Did you mean to import useTabs?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component Browser]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component SSR]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1920
+[  143430ms] [ERROR] ./src/app/dashboard/brand-dna/page.tsx:5:1
+Export useToast doesn't exist in target module
+   3 | import React, { useState, useEffect } from 'react';
+   4 | import { useRouter } from 'next/navigation';
+>  5 | import { 
+     | ^^^^^^^^^
+>  6 |   Box, 
+     | ^^^^^^^
+>  7 |   Flex, 
+     | ^^^^^^^
+>  8 |   Heading, 
+     | ^^^^^^^
+>  9 |   Text, 
+     | ^^^^^^^
+> 10 |   Button, 
+     | ^^^^^^^
+> 11 |   SimpleGrid, 
+     | ^^^^^^^
+> 12 |   Icon, 
+     | ^^^^^^^
+> 13 |   Stack, 
+     | ^^^^^^^
+> 14 |   Badge, 
+     | ^^^^^^^
+> 15 |   Circle, 
+     | ^^^^^^^
+> 16 |   Textarea, 
+     | ^^^^^^^
+> 17 |   Spinner, 
+     | ^^^^^^^
+> 18 |   Progress,
+     | ^^^^^^^
+> 19 |   useToast,
+     | ^^^^^^^
+> 20 |   Skeleton,
+     | ^^^^^^^
+> 21 |   SkeletonText,
+     | ^^^^^^^
+> 22 |   Center
+     | ^^^^^^^
+> 23 | } from '@chakra-ui/react';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  24 | import { 
+  25 |   ArrowLeft, 
+  26 |   ArrowRight, 
+
+The export useToast was not found in module [project]/node_modules/@chakra-ui/react/dist/esm/index.js [app-client] (ecmascript).
+Did you mean to import useTabs?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component Browser]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component SSR]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1920
+[  143431ms] [ERROR] ./src/app/dashboard/brand-dna/page.tsx:5:1
+Export useToast doesn't exist in target module
+   3 | import React, { useState, useEffect } from 'react';
+   4 | import { useRouter } from 'next/navigation';
+>  5 | import { 
+     | ^^^^^^^^^
+>  6 |   Box, 
+     | ^^^^^^^
+>  7 |   Flex, 
+     | ^^^^^^^
+>  8 |   Heading, 
+     | ^^^^^^^
+>  9 |   Text, 
+     | ^^^^^^^
+> 10 |   Button, 
+     | ^^^^^^^
+> 11 |   SimpleGrid, 
+     | ^^^^^^^
+> 12 |   Icon, 
+     | ^^^^^^^
+> 13 |   Stack, 
+     | ^^^^^^^
+> 14 |   Badge, 
+     | ^^^^^^^
+> 15 |   Circle, 
+     | ^^^^^^^
+> 16 |   Textarea, 
+     | ^^^^^^^
+> 17 |   Spinner, 
+     | ^^^^^^^
+> 18 |   Progress,
+     | ^^^^^^^
+> 19 |   useToast,
+     | ^^^^^^^
+> 20 |   Skeleton,
+     | ^^^^^^^
+> 21 |   SkeletonText,
+     | ^^^^^^^
+> 22 |   Center
+     | ^^^^^^^
+> 23 | } from '@chakra-ui/react';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  24 | import { 
+  25 |   ArrowLeft, 
+  26 |   ArrowRight, 
+
+The export useToast was not found in module [project]/node_modules/@chakra-ui/react/dist/esm/index.js [app-ssr] (ecmascript).
+Did you mean to import useTabs?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component Browser]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component SSR]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1920
+[  143537ms] [ERROR] ./src/app/dashboard/brand-dna/page.tsx:5:1
+Export useToast doesn't exist in target module
+   3 | import React, { useState, useEffect } from 'react';
+   4 | import { useRouter } from 'next/navigation';
+>  5 | import { 
+     | ^^^^^^^^^
+>  6 |   Box, 
+     | ^^^^^^^
+>  7 |   Flex, 
+     | ^^^^^^^
+>  8 |   Heading, 
+     | ^^^^^^^
+>  9 |   Text, 
+     | ^^^^^^^
+> 10 |   Button, 
+     | ^^^^^^^
+> 11 |   SimpleGrid, 
+     | ^^^^^^^
+> 12 |   Icon, 
+     | ^^^^^^^
+> 13 |   Stack, 
+     | ^^^^^^^
+> 14 |   Badge, 
+     | ^^^^^^^
+> 15 |   Circle, 
+     | ^^^^^^^
+> 16 |   Textarea, 
+     | ^^^^^^^
+> 17 |   Spinner, 
+     | ^^^^^^^
+> 18 |   Progress,
+     | ^^^^^^^
+> 19 |   useToast,
+     | ^^^^^^^
+> 20 |   Skeleton,
+     | ^^^^^^^
+> 21 |   SkeletonText,
+     | ^^^^^^^
+> 22 |   Center
+     | ^^^^^^^
+> 23 | } from '@chakra-ui/react';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  24 | import { 
+  25 |   ArrowLeft, 
+  26 |   ArrowRight, 
+
+The export useToast was not found in module [project]/node_modules/@chakra-ui/react/dist/esm/index.js [app-client] (ecmascript).
+Did you mean to import useTabs?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component Browser]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component SSR]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1920
+[  143537ms] [ERROR] ./src/app/dashboard/brand-dna/page.tsx:5:1
+Export useToast doesn't exist in target module
+   3 | import React, { useState, useEffect } from 'react';
+   4 | import { useRouter } from 'next/navigation';
+>  5 | import { 
+     | ^^^^^^^^^
+>  6 |   Box, 
+     | ^^^^^^^
+>  7 |   Flex, 
+     | ^^^^^^^
+>  8 |   Heading, 
+     | ^^^^^^^
+>  9 |   Text, 
+     | ^^^^^^^
+> 10 |   Button, 
+     | ^^^^^^^
+> 11 |   SimpleGrid, 
+     | ^^^^^^^
+> 12 |   Icon, 
+     | ^^^^^^^
+> 13 |   Stack, 
+     | ^^^^^^^
+> 14 |   Badge, 
+     | ^^^^^^^
+> 15 |   Circle, 
+     | ^^^^^^^
+> 16 |   Textarea, 
+     | ^^^^^^^
+> 17 |   Spinner, 
+     | ^^^^^^^
+> 18 |   Progress,
+     | ^^^^^^^
+> 19 |   useToast,
+     | ^^^^^^^
+> 20 |   Skeleton,
+     | ^^^^^^^
+> 21 |   SkeletonText,
+     | ^^^^^^^
+> 22 |   Center
+     | ^^^^^^^
+> 23 | } from '@chakra-ui/react';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  24 | import { 
+  25 |   ArrowLeft, 
+  26 |   ArrowRight, 
+
+The export useToast was not found in module [project]/node_modules/@chakra-ui/react/dist/esm/index.js [app-ssr] (ecmascript).
+Did you mean to import useTabs?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component Browser]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component SSR]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1920
+[  143594ms] [ERROR] ./src/app/dashboard/brand-dna/page.tsx:5:1
+Export useToast doesn't exist in target module
+   3 | import React, { useState, useEffect } from 'react';
+   4 | import { useRouter } from 'next/navigation';
+>  5 | import { 
+     | ^^^^^^^^^
+>  6 |   Box, 
+     | ^^^^^^^
+>  7 |   Flex, 
+     | ^^^^^^^
+>  8 |   Heading, 
+     | ^^^^^^^
+>  9 |   Text, 
+     | ^^^^^^^
+> 10 |   Button, 
+     | ^^^^^^^
+> 11 |   SimpleGrid, 
+     | ^^^^^^^
+> 12 |   Icon, 
+     | ^^^^^^^
+> 13 |   Stack, 
+     | ^^^^^^^
+> 14 |   Badge, 
+     | ^^^^^^^
+> 15 |   Circle, 
+     | ^^^^^^^
+> 16 |   Textarea, 
+     | ^^^^^^^
+> 17 |   Spinner, 
+     | ^^^^^^^
+> 18 |   Progress,
+     | ^^^^^^^
+> 19 |   useToast,
+     | ^^^^^^^
+> 20 |   Skeleton,
+     | ^^^^^^^
+> 21 |   SkeletonText,
+     | ^^^^^^^
+> 22 |   Center
+     | ^^^^^^^
+> 23 | } from '@chakra-ui/react';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  24 | import { 
+  25 |   ArrowLeft, 
+  26 |   ArrowRight, 
+
+The export useToast was not found in module [project]/node_modules/@chakra-ui/react/dist/esm/index.js [app-client] (ecmascript).
+Did you mean to import useTabs?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component Browser]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component SSR]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1920
+[  143595ms] [ERROR] ./src/app/dashboard/brand-dna/page.tsx:5:1
+Export useToast doesn't exist in target module
+   3 | import React, { useState, useEffect } from 'react';
+   4 | import { useRouter } from 'next/navigation';
+>  5 | import { 
+     | ^^^^^^^^^
+>  6 |   Box, 
+     | ^^^^^^^
+>  7 |   Flex, 
+     | ^^^^^^^
+>  8 |   Heading, 
+     | ^^^^^^^
+>  9 |   Text, 
+     | ^^^^^^^
+> 10 |   Button, 
+     | ^^^^^^^
+> 11 |   SimpleGrid, 
+     | ^^^^^^^
+> 12 |   Icon, 
+     | ^^^^^^^
+> 13 |   Stack, 
+     | ^^^^^^^
+> 14 |   Badge, 
+     | ^^^^^^^
+> 15 |   Circle, 
+     | ^^^^^^^
+> 16 |   Textarea, 
+     | ^^^^^^^
+> 17 |   Spinner, 
+     | ^^^^^^^
+> 18 |   Progress,
+     | ^^^^^^^
+> 19 |   useToast,
+     | ^^^^^^^
+> 20 |   Skeleton,
+     | ^^^^^^^
+> 21 |   SkeletonText,
+     | ^^^^^^^
+> 22 |   Center
+     | ^^^^^^^
+> 23 | } from '@chakra-ui/react';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  24 | import { 
+  25 |   ArrowLeft, 
+  26 |   ArrowRight, 
+
+The export useToast was not found in module [project]/node_modules/@chakra-ui/react/dist/esm/index.js [app-ssr] (ecmascript).
+Did you mean to import useTabs?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component Browser]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component SSR]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1920
+[  156653ms] [ERROR] ./src/app/dashboard/brand-dna/page.tsx:5:1
+Export useToast doesn't exist in target module
+   3 | import React, { useState, useEffect } from 'react';
+   4 | import { useRouter } from 'next/navigation';
+>  5 | import { 
+     | ^^^^^^^^^
+>  6 |   Box, 
+     | ^^^^^^^
+>  7 |   Flex, 
+     | ^^^^^^^
+>  8 |   Heading, 
+     | ^^^^^^^
+>  9 |   Text, 
+     | ^^^^^^^
+> 10 |   Button, 
+     | ^^^^^^^
+> 11 |   SimpleGrid, 
+     | ^^^^^^^
+> 12 |   Icon, 
+     | ^^^^^^^
+> 13 |   Stack, 
+     | ^^^^^^^
+> 14 |   Badge, 
+     | ^^^^^^^
+> 15 |   Circle, 
+     | ^^^^^^^
+> 16 |   Textarea, 
+     | ^^^^^^^
+> 17 |   Spinner, 
+     | ^^^^^^^
+> 18 |   Progress,
+     | ^^^^^^^
+> 19 |   useToast,
+     | ^^^^^^^
+> 20 |   Skeleton,
+     | ^^^^^^^
+> 21 |   SkeletonText,
+     | ^^^^^^^
+> 22 |   Center
+     | ^^^^^^^
+> 23 | } from '@chakra-ui/react';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  24 | import { 
+  25 |   ArrowLeft, 
+  26 |   ArrowRight, 
+
+The export useToast was not found in module [project]/node_modules/@chakra-ui/react/dist/esm/index.js [app-client] (ecmascript).
+Did you mean to import useTabs?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component Browser]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component SSR]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1920
+[  156653ms] [ERROR] ./src/app/dashboard/brand-dna/page.tsx:5:1
+Export useToast doesn't exist in target module
+   3 | import React, { useState, useEffect } from 'react';
+   4 | import { useRouter } from 'next/navigation';
+>  5 | import { 
+     | ^^^^^^^^^
+>  6 |   Box, 
+     | ^^^^^^^
+>  7 |   Flex, 
+     | ^^^^^^^
+>  8 |   Heading, 
+     | ^^^^^^^
+>  9 |   Text, 
+     | ^^^^^^^
+> 10 |   Button, 
+     | ^^^^^^^
+> 11 |   SimpleGrid, 
+     | ^^^^^^^
+> 12 |   Icon, 
+     | ^^^^^^^
+> 13 |   Stack, 
+     | ^^^^^^^
+> 14 |   Badge, 
+     | ^^^^^^^
+> 15 |   Circle, 
+     | ^^^^^^^
+> 16 |   Textarea, 
+     | ^^^^^^^
+> 17 |   Spinner, 
+     | ^^^^^^^
+> 18 |   Progress,
+     | ^^^^^^^
+> 19 |   useToast,
+     | ^^^^^^^
+> 20 |   Skeleton,
+     | ^^^^^^^
+> 21 |   SkeletonText,
+     | ^^^^^^^
+> 22 |   Center
+     | ^^^^^^^
+> 23 | } from '@chakra-ui/react';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  24 | import { 
+  25 |   ArrowLeft, 
+  26 |   ArrowRight, 
+
+The export useToast was not found in module [project]/node_modules/@chakra-ui/react/dist/esm/index.js [app-ssr] (ecmascript).
+Did you mean to import useTabs?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component Browser]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component SSR]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1920
+[  203664ms] [ERROR] ./src/app/dashboard/brand-dna/page.tsx:5:1
+Export useToast doesn't exist in target module
+   3 | import React, { useState, useEffect } from 'react';
+   4 | import { useRouter } from 'next/navigation';
+>  5 | import { 
+     | ^^^^^^^^^
+>  6 |   Box, 
+     | ^^^^^^^
+>  7 |   Flex, 
+     | ^^^^^^^
+>  8 |   Heading, 
+     | ^^^^^^^
+>  9 |   Text, 
+     | ^^^^^^^
+> 10 |   Button, 
+     | ^^^^^^^
+> 11 |   SimpleGrid, 
+     | ^^^^^^^
+> 12 |   Icon, 
+     | ^^^^^^^
+> 13 |   Stack, 
+     | ^^^^^^^
+> 14 |   Badge, 
+     | ^^^^^^^
+> 15 |   Circle, 
+     | ^^^^^^^
+> 16 |   Textarea, 
+     | ^^^^^^^
+> 17 |   Spinner, 
+     | ^^^^^^^
+> 18 |   Progress,
+     | ^^^^^^^
+> 19 |   useToast,
+     | ^^^^^^^
+> 20 |   Skeleton,
+     | ^^^^^^^
+> 21 |   SkeletonText,
+     | ^^^^^^^
+> 22 |   Center
+     | ^^^^^^^
+> 23 | } from '@chakra-ui/react';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  24 | import { 
+  25 |   ArrowLeft, 
+  26 |   ArrowRight, 
+
+The export useToast was not found in module [project]/node_modules/@chakra-ui/react/dist/esm/index.js [app-client] (ecmascript).
+Did you mean to import useTabs?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component Browser]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component SSR]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1920
+[  203665ms] [ERROR] ./src/app/dashboard/brand-dna/page.tsx:5:1
+Export useToast doesn't exist in target module
+   3 | import React, { useState, useEffect } from 'react';
+   4 | import { useRouter } from 'next/navigation';
+>  5 | import { 
+     | ^^^^^^^^^
+>  6 |   Box, 
+     | ^^^^^^^
+>  7 |   Flex, 
+     | ^^^^^^^
+>  8 |   Heading, 
+     | ^^^^^^^
+>  9 |   Text, 
+     | ^^^^^^^
+> 10 |   Button, 
+     | ^^^^^^^
+> 11 |   SimpleGrid, 
+     | ^^^^^^^
+> 12 |   Icon, 
+     | ^^^^^^^
+> 13 |   Stack, 
+     | ^^^^^^^
+> 14 |   Badge, 
+     | ^^^^^^^
+> 15 |   Circle, 
+     | ^^^^^^^
+> 16 |   Textarea, 
+     | ^^^^^^^
+> 17 |   Spinner, 
+     | ^^^^^^^
+> 18 |   Progress,
+     | ^^^^^^^
+> 19 |   useToast,
+     | ^^^^^^^
+> 20 |   Skeleton,
+     | ^^^^^^^
+> 21 |   SkeletonText,
+     | ^^^^^^^
+> 22 |   Center
+     | ^^^^^^^
+> 23 | } from '@chakra-ui/react';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  24 | import { 
+  25 |   ArrowLeft, 
+  26 |   ArrowRight, 
+
+The export useToast was not found in module [project]/node_modules/@chakra-ui/react/dist/esm/index.js [app-ssr] (ecmascript).
+Did you mean to import useTabs?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component Browser]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component SSR]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1920
+[  203758ms] [ERROR] ./src/app/dashboard/brand-dna/page.tsx:5:1
+Export useToast doesn't exist in target module
+   3 | import React, { useState, useEffect } from 'react';
+   4 | import { useRouter } from 'next/navigation';
+>  5 | import { 
+     | ^^^^^^^^^
+>  6 |   Box, 
+     | ^^^^^^^
+>  7 |   Flex, 
+     | ^^^^^^^
+>  8 |   Heading, 
+     | ^^^^^^^
+>  9 |   Text, 
+     | ^^^^^^^
+> 10 |   Button, 
+     | ^^^^^^^
+> 11 |   SimpleGrid, 
+     | ^^^^^^^
+> 12 |   Icon, 
+     | ^^^^^^^
+> 13 |   Stack, 
+     | ^^^^^^^
+> 14 |   Badge, 
+     | ^^^^^^^
+> 15 |   Circle, 
+     | ^^^^^^^
+> 16 |   Textarea, 
+     | ^^^^^^^
+> 17 |   Spinner, 
+     | ^^^^^^^
+> 18 |   Progress,
+     | ^^^^^^^
+> 19 |   useToast,
+     | ^^^^^^^
+> 20 |   Skeleton,
+     | ^^^^^^^
+> 21 |   SkeletonText,
+     | ^^^^^^^
+> 22 |   Center
+     | ^^^^^^^
+> 23 | } from '@chakra-ui/react';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  24 | import { 
+  25 |   ArrowLeft, 
+  26 |   ArrowRight, 
+
+The export useToast was not found in module [project]/node_modules/@chakra-ui/react/dist/esm/index.js [app-client] (ecmascript).
+Did you mean to import useTabs?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component Browser]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component SSR]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1920
+[  203758ms] [ERROR] ./src/app/dashboard/brand-dna/page.tsx:5:1
+Export useToast doesn't exist in target module
+   3 | import React, { useState, useEffect } from 'react';
+   4 | import { useRouter } from 'next/navigation';
+>  5 | import { 
+     | ^^^^^^^^^
+>  6 |   Box, 
+     | ^^^^^^^
+>  7 |   Flex, 
+     | ^^^^^^^
+>  8 |   Heading, 
+     | ^^^^^^^
+>  9 |   Text, 
+     | ^^^^^^^
+> 10 |   Button, 
+     | ^^^^^^^
+> 11 |   SimpleGrid, 
+     | ^^^^^^^
+> 12 |   Icon, 
+     | ^^^^^^^
+> 13 |   Stack, 
+     | ^^^^^^^
+> 14 |   Badge, 
+     | ^^^^^^^
+> 15 |   Circle, 
+     | ^^^^^^^
+> 16 |   Textarea, 
+     | ^^^^^^^
+> 17 |   Spinner, 
+     | ^^^^^^^
+> 18 |   Progress,
+     | ^^^^^^^
+> 19 |   useToast,
+     | ^^^^^^^
+> 20 |   Skeleton,
+     | ^^^^^^^
+> 21 |   SkeletonText,
+     | ^^^^^^^
+> 22 |   Center
+     | ^^^^^^^
+> 23 | } from '@chakra-ui/react';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  24 | import { 
+  25 |   ArrowLeft, 
+  26 |   ArrowRight, 
+
+The export useToast was not found in module [project]/node_modules/@chakra-ui/react/dist/esm/index.js [app-ssr] (ecmascript).
+Did you mean to import useTabs?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component Browser]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component SSR]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1920
+[  203818ms] [ERROR] ./src/app/dashboard/brand-dna/page.tsx:5:1
+Export useToast doesn't exist in target module
+   3 | import React, { useState, useEffect } from 'react';
+   4 | import { useRouter } from 'next/navigation';
+>  5 | import { 
+     | ^^^^^^^^^
+>  6 |   Box, 
+     | ^^^^^^^
+>  7 |   Flex, 
+     | ^^^^^^^
+>  8 |   Heading, 
+     | ^^^^^^^
+>  9 |   Text, 
+     | ^^^^^^^
+> 10 |   Button, 
+     | ^^^^^^^
+> 11 |   SimpleGrid, 
+     | ^^^^^^^
+> 12 |   Icon, 
+     | ^^^^^^^
+> 13 |   Stack, 
+     | ^^^^^^^
+> 14 |   Badge, 
+     | ^^^^^^^
+> 15 |   Circle, 
+     | ^^^^^^^
+> 16 |   Textarea, 
+     | ^^^^^^^
+> 17 |   Spinner, 
+     | ^^^^^^^
+> 18 |   Progress,
+     | ^^^^^^^
+> 19 |   useToast,
+     | ^^^^^^^
+> 20 |   Skeleton,
+     | ^^^^^^^
+> 21 |   SkeletonText,
+     | ^^^^^^^
+> 22 |   Center
+     | ^^^^^^^
+> 23 | } from '@chakra-ui/react';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  24 | import { 
+  25 |   ArrowLeft, 
+  26 |   ArrowRight, 
+
+The export useToast was not found in module [project]/node_modules/@chakra-ui/react/dist/esm/index.js [app-client] (ecmascript).
+Did you mean to import useTabs?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component Browser]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component SSR]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1920
+[  203818ms] [ERROR] ./src/app/dashboard/brand-dna/page.tsx:5:1
+Export useToast doesn't exist in target module
+   3 | import React, { useState, useEffect } from 'react';
+   4 | import { useRouter } from 'next/navigation';
+>  5 | import { 
+     | ^^^^^^^^^
+>  6 |   Box, 
+     | ^^^^^^^
+>  7 |   Flex, 
+     | ^^^^^^^
+>  8 |   Heading, 
+     | ^^^^^^^
+>  9 |   Text, 
+     | ^^^^^^^
+> 10 |   Button, 
+     | ^^^^^^^
+> 11 |   SimpleGrid, 
+     | ^^^^^^^
+> 12 |   Icon, 
+     | ^^^^^^^
+> 13 |   Stack, 
+     | ^^^^^^^
+> 14 |   Badge, 
+     | ^^^^^^^
+> 15 |   Circle, 
+     | ^^^^^^^
+> 16 |   Textarea, 
+     | ^^^^^^^
+> 17 |   Spinner, 
+     | ^^^^^^^
+> 18 |   Progress,
+     | ^^^^^^^
+> 19 |   useToast,
+     | ^^^^^^^
+> 20 |   Skeleton,
+     | ^^^^^^^
+> 21 |   SkeletonText,
+     | ^^^^^^^
+> 22 |   Center
+     | ^^^^^^^
+> 23 | } from '@chakra-ui/react';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  24 | import { 
+  25 |   ArrowLeft, 
+  26 |   ArrowRight, 
+
+The export useToast was not found in module [project]/node_modules/@chakra-ui/react/dist/esm/index.js [app-ssr] (ecmascript).
+Did you mean to import useTabs?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component Browser]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component SSR]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1920
+[  203884ms] [ERROR] ./src/app/dashboard/brand-dna/page.tsx:5:1
+Export useToast doesn't exist in target module
+   3 | import React, { useState, useEffect } from 'react';
+   4 | import { useRouter } from 'next/navigation';
+>  5 | import { 
+     | ^^^^^^^^^
+>  6 |   Box, 
+     | ^^^^^^^
+>  7 |   Flex, 
+     | ^^^^^^^
+>  8 |   Heading, 
+     | ^^^^^^^
+>  9 |   Text, 
+     | ^^^^^^^
+> 10 |   Button, 
+     | ^^^^^^^
+> 11 |   SimpleGrid, 
+     | ^^^^^^^
+> 12 |   Icon, 
+     | ^^^^^^^
+> 13 |   Stack, 
+     | ^^^^^^^
+> 14 |   Badge, 
+     | ^^^^^^^
+> 15 |   Circle, 
+     | ^^^^^^^
+> 16 |   Textarea, 
+     | ^^^^^^^
+> 17 |   Spinner, 
+     | ^^^^^^^
+> 18 |   Progress,
+     | ^^^^^^^
+> 19 |   useToast,
+     | ^^^^^^^
+> 20 |   Skeleton,
+     | ^^^^^^^
+> 21 |   SkeletonText,
+     | ^^^^^^^
+> 22 |   Center
+     | ^^^^^^^
+> 23 | } from '@chakra-ui/react';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  24 | import { 
+  25 |   ArrowLeft, 
+  26 |   ArrowRight, 
+
+The export useToast was not found in module [project]/node_modules/@chakra-ui/react/dist/esm/index.js [app-client] (ecmascript).
+Did you mean to import useTabs?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component Browser]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component SSR]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1920
+[  203884ms] [ERROR] ./src/app/dashboard/brand-dna/page.tsx:5:1
+Export useToast doesn't exist in target module
+   3 | import React, { useState, useEffect } from 'react';
+   4 | import { useRouter } from 'next/navigation';
+>  5 | import { 
+     | ^^^^^^^^^
+>  6 |   Box, 
+     | ^^^^^^^
+>  7 |   Flex, 
+     | ^^^^^^^
+>  8 |   Heading, 
+     | ^^^^^^^
+>  9 |   Text, 
+     | ^^^^^^^
+> 10 |   Button, 
+     | ^^^^^^^
+> 11 |   SimpleGrid, 
+     | ^^^^^^^
+> 12 |   Icon, 
+     | ^^^^^^^
+> 13 |   Stack, 
+     | ^^^^^^^
+> 14 |   Badge, 
+     | ^^^^^^^
+> 15 |   Circle, 
+     | ^^^^^^^
+> 16 |   Textarea, 
+     | ^^^^^^^
+> 17 |   Spinner, 
+     | ^^^^^^^
+> 18 |   Progress,
+     | ^^^^^^^
+> 19 |   useToast,
+     | ^^^^^^^
+> 20 |   Skeleton,
+     | ^^^^^^^
+> 21 |   SkeletonText,
+     | ^^^^^^^
+> 22 |   Center
+     | ^^^^^^^
+> 23 | } from '@chakra-ui/react';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  24 | import { 
+  25 |   ArrowLeft, 
+  26 |   ArrowRight, 
+
+The export useToast was not found in module [project]/node_modules/@chakra-ui/react/dist/esm/index.js [app-ssr] (ecmascript).
+Did you mean to import useTabs?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component Browser]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component SSR]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1920
+[  264107ms] [ERROR] ./src/app/dashboard/brand-dna/page.tsx:5:1
+Export useToast doesn't exist in target module
+   3 | import React, { useState, useEffect } from 'react';
+   4 | import { useRouter } from 'next/navigation';
+>  5 | import { 
+     | ^^^^^^^^^
+>  6 |   Box, 
+     | ^^^^^^^
+>  7 |   Flex, 
+     | ^^^^^^^
+>  8 |   Heading, 
+     | ^^^^^^^
+>  9 |   Text, 
+     | ^^^^^^^
+> 10 |   Button, 
+     | ^^^^^^^
+> 11 |   SimpleGrid, 
+     | ^^^^^^^
+> 12 |   Icon, 
+     | ^^^^^^^
+> 13 |   Stack, 
+     | ^^^^^^^
+> 14 |   Badge, 
+     | ^^^^^^^
+> 15 |   Circle, 
+     | ^^^^^^^
+> 16 |   Textarea, 
+     | ^^^^^^^
+> 17 |   Spinner, 
+     | ^^^^^^^
+> 18 |   Progress,
+     | ^^^^^^^
+> 19 |   useToast,
+     | ^^^^^^^
+> 20 |   Skeleton,
+     | ^^^^^^^
+> 21 |   SkeletonText,
+     | ^^^^^^^
+> 22 |   Center
+     | ^^^^^^^
+> 23 | } from '@chakra-ui/react';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  24 | import { 
+  25 |   ArrowLeft, 
+  26 |   ArrowRight, 
+
+The export useToast was not found in module [project]/node_modules/@chakra-ui/react/dist/esm/index.js [app-client] (ecmascript).
+Did you mean to import useTabs?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component Browser]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component SSR]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1920
+[  264107ms] [ERROR] ./src/app/dashboard/brand-dna/page.tsx:5:1
+Export useToast doesn't exist in target module
+   3 | import React, { useState, useEffect } from 'react';
+   4 | import { useRouter } from 'next/navigation';
+>  5 | import { 
+     | ^^^^^^^^^
+>  6 |   Box, 
+     | ^^^^^^^
+>  7 |   Flex, 
+     | ^^^^^^^
+>  8 |   Heading, 
+     | ^^^^^^^
+>  9 |   Text, 
+     | ^^^^^^^
+> 10 |   Button, 
+     | ^^^^^^^
+> 11 |   SimpleGrid, 
+     | ^^^^^^^
+> 12 |   Icon, 
+     | ^^^^^^^
+> 13 |   Stack, 
+     | ^^^^^^^
+> 14 |   Badge, 
+     | ^^^^^^^
+> 15 |   Circle, 
+     | ^^^^^^^
+> 16 |   Textarea, 
+     | ^^^^^^^
+> 17 |   Spinner, 
+     | ^^^^^^^
+> 18 |   Progress,
+     | ^^^^^^^
+> 19 |   useToast,
+     | ^^^^^^^
+> 20 |   Skeleton,
+     | ^^^^^^^
+> 21 |   SkeletonText,
+     | ^^^^^^^
+> 22 |   Center
+     | ^^^^^^^
+> 23 | } from '@chakra-ui/react';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  24 | import { 
+  25 |   ArrowLeft, 
+  26 |   ArrowRight, 
+
+The export useToast was not found in module [project]/node_modules/@chakra-ui/react/dist/esm/index.js [app-ssr] (ecmascript).
+Did you mean to import useTabs?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component Browser]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component SSR]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1920
+[  264210ms] [ERROR] ./src/app/dashboard/brand-dna/page.tsx:5:1
+Export useToast doesn't exist in target module
+   3 | import React, { useState, useEffect } from 'react';
+   4 | import { useRouter } from 'next/navigation';
+>  5 | import { 
+     | ^^^^^^^^^
+>  6 |   Box, 
+     | ^^^^^^^
+>  7 |   Flex, 
+     | ^^^^^^^
+>  8 |   Heading, 
+     | ^^^^^^^
+>  9 |   Text, 
+     | ^^^^^^^
+> 10 |   Button, 
+     | ^^^^^^^
+> 11 |   SimpleGrid, 
+     | ^^^^^^^
+> 12 |   Icon, 
+     | ^^^^^^^
+> 13 |   Stack, 
+     | ^^^^^^^
+> 14 |   Badge, 
+     | ^^^^^^^
+> 15 |   Circle, 
+     | ^^^^^^^
+> 16 |   Textarea, 
+     | ^^^^^^^
+> 17 |   Spinner, 
+     | ^^^^^^^
+> 18 |   Progress,
+     | ^^^^^^^
+> 19 |   useToast,
+     | ^^^^^^^
+> 20 |   Skeleton,
+     | ^^^^^^^
+> 21 |   SkeletonText,
+     | ^^^^^^^
+> 22 |   Center
+     | ^^^^^^^
+> 23 | } from '@chakra-ui/react';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  24 | import { 
+  25 |   ArrowLeft, 
+  26 |   ArrowRight, 
+
+The export useToast was not found in module [project]/node_modules/@chakra-ui/react/dist/esm/index.js [app-client] (ecmascript).
+Did you mean to import useTabs?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component Browser]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component SSR]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1920
+[  264210ms] [ERROR] ./src/app/dashboard/brand-dna/page.tsx:5:1
+Export useToast doesn't exist in target module
+   3 | import React, { useState, useEffect } from 'react';
+   4 | import { useRouter } from 'next/navigation';
+>  5 | import { 
+     | ^^^^^^^^^
+>  6 |   Box, 
+     | ^^^^^^^
+>  7 |   Flex, 
+     | ^^^^^^^
+>  8 |   Heading, 
+     | ^^^^^^^
+>  9 |   Text, 
+     | ^^^^^^^
+> 10 |   Button, 
+     | ^^^^^^^
+> 11 |   SimpleGrid, 
+     | ^^^^^^^
+> 12 |   Icon, 
+     | ^^^^^^^
+> 13 |   Stack, 
+     | ^^^^^^^
+> 14 |   Badge, 
+     | ^^^^^^^
+> 15 |   Circle, 
+     | ^^^^^^^
+> 16 |   Textarea, 
+     | ^^^^^^^
+> 17 |   Spinner, 
+     | ^^^^^^^
+> 18 |   Progress,
+     | ^^^^^^^
+> 19 |   useToast,
+     | ^^^^^^^
+> 20 |   Skeleton,
+     | ^^^^^^^
+> 21 |   SkeletonText,
+     | ^^^^^^^
+> 22 |   Center
+     | ^^^^^^^
+> 23 | } from '@chakra-ui/react';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  24 | import { 
+  25 |   ArrowLeft, 
+  26 |   ArrowRight, 
+
+The export useToast was not found in module [project]/node_modules/@chakra-ui/react/dist/esm/index.js [app-ssr] (ecmascript).
+Did you mean to import useTabs?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component Browser]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component SSR]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1920
+[  264273ms] [ERROR] ./src/app/dashboard/brand-dna/page.tsx:5:1
+Export useToast doesn't exist in target module
+   3 | import React, { useState, useEffect } from 'react';
+   4 | import { useRouter } from 'next/navigation';
+>  5 | import { 
+     | ^^^^^^^^^
+>  6 |   Box, 
+     | ^^^^^^^
+>  7 |   Flex, 
+     | ^^^^^^^
+>  8 |   Heading, 
+     | ^^^^^^^
+>  9 |   Text, 
+     | ^^^^^^^
+> 10 |   Button, 
+     | ^^^^^^^
+> 11 |   SimpleGrid, 
+     | ^^^^^^^
+> 12 |   Icon, 
+     | ^^^^^^^
+> 13 |   Stack, 
+     | ^^^^^^^
+> 14 |   Badge, 
+     | ^^^^^^^
+> 15 |   Circle, 
+     | ^^^^^^^
+> 16 |   Textarea, 
+     | ^^^^^^^
+> 17 |   Spinner, 
+     | ^^^^^^^
+> 18 |   Progress,
+     | ^^^^^^^
+> 19 |   useToast,
+     | ^^^^^^^
+> 20 |   Skeleton,
+     | ^^^^^^^
+> 21 |   SkeletonText,
+     | ^^^^^^^
+> 22 |   Center
+     | ^^^^^^^
+> 23 | } from '@chakra-ui/react';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  24 | import { 
+  25 |   ArrowLeft, 
+  26 |   ArrowRight, 
+
+The export useToast was not found in module [project]/node_modules/@chakra-ui/react/dist/esm/index.js [app-client] (ecmascript).
+Did you mean to import useTabs?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component Browser]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component SSR]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1920
+[  264273ms] [ERROR] ./src/app/dashboard/brand-dna/page.tsx:5:1
+Export useToast doesn't exist in target module
+   3 | import React, { useState, useEffect } from 'react';
+   4 | import { useRouter } from 'next/navigation';
+>  5 | import { 
+     | ^^^^^^^^^
+>  6 |   Box, 
+     | ^^^^^^^
+>  7 |   Flex, 
+     | ^^^^^^^
+>  8 |   Heading, 
+     | ^^^^^^^
+>  9 |   Text, 
+     | ^^^^^^^
+> 10 |   Button, 
+     | ^^^^^^^
+> 11 |   SimpleGrid, 
+     | ^^^^^^^
+> 12 |   Icon, 
+     | ^^^^^^^
+> 13 |   Stack, 
+     | ^^^^^^^
+> 14 |   Badge, 
+     | ^^^^^^^
+> 15 |   Circle, 
+     | ^^^^^^^
+> 16 |   Textarea, 
+     | ^^^^^^^
+> 17 |   Spinner, 
+     | ^^^^^^^
+> 18 |   Progress,
+     | ^^^^^^^
+> 19 |   useToast,
+     | ^^^^^^^
+> 20 |   Skeleton,
+     | ^^^^^^^
+> 21 |   SkeletonText,
+     | ^^^^^^^
+> 22 |   Center
+     | ^^^^^^^
+> 23 | } from '@chakra-ui/react';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  24 | import { 
+  25 |   ArrowLeft, 
+  26 |   ArrowRight, 
+
+The export useToast was not found in module [project]/node_modules/@chakra-ui/react/dist/esm/index.js [app-ssr] (ecmascript).
+Did you mean to import useTabs?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component Browser]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component SSR]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1920
+[  324102ms] [ERROR] ./src/app/dashboard/brand-dna/page.tsx:5:1
+Export useToast doesn't exist in target module
+   3 | import React, { useState, useEffect } from 'react';
+   4 | import { useRouter } from 'next/navigation';
+>  5 | import { 
+     | ^^^^^^^^^
+>  6 |   Box, 
+     | ^^^^^^^
+>  7 |   Flex, 
+     | ^^^^^^^
+>  8 |   Heading, 
+     | ^^^^^^^
+>  9 |   Text, 
+     | ^^^^^^^
+> 10 |   Button, 
+     | ^^^^^^^
+> 11 |   SimpleGrid, 
+     | ^^^^^^^
+> 12 |   Icon, 
+     | ^^^^^^^
+> 13 |   Stack, 
+     | ^^^^^^^
+> 14 |   Badge, 
+     | ^^^^^^^
+> 15 |   Circle, 
+     | ^^^^^^^
+> 16 |   Textarea, 
+     | ^^^^^^^
+> 17 |   Spinner, 
+     | ^^^^^^^
+> 18 |   Progress,
+     | ^^^^^^^
+> 19 |   useToast,
+     | ^^^^^^^
+> 20 |   Skeleton,
+     | ^^^^^^^
+> 21 |   SkeletonText,
+     | ^^^^^^^
+> 22 |   Center
+     | ^^^^^^^
+> 23 | } from '@chakra-ui/react';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  24 | import { 
+  25 |   ArrowLeft, 
+  26 |   ArrowRight, 
+
+The export useToast was not found in module [project]/node_modules/@chakra-ui/react/dist/esm/index.js [app-client] (ecmascript).
+Did you mean to import useTabs?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component Browser]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component SSR]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1920
+[  324103ms] [ERROR] ./src/app/dashboard/brand-dna/page.tsx:5:1
+Export useToast doesn't exist in target module
+   3 | import React, { useState, useEffect } from 'react';
+   4 | import { useRouter } from 'next/navigation';
+>  5 | import { 
+     | ^^^^^^^^^
+>  6 |   Box, 
+     | ^^^^^^^
+>  7 |   Flex, 
+     | ^^^^^^^
+>  8 |   Heading, 
+     | ^^^^^^^
+>  9 |   Text, 
+     | ^^^^^^^
+> 10 |   Button, 
+     | ^^^^^^^
+> 11 |   SimpleGrid, 
+     | ^^^^^^^
+> 12 |   Icon, 
+     | ^^^^^^^
+> 13 |   Stack, 
+     | ^^^^^^^
+> 14 |   Badge, 
+     | ^^^^^^^
+> 15 |   Circle, 
+     | ^^^^^^^
+> 16 |   Textarea, 
+     | ^^^^^^^
+> 17 |   Spinner, 
+     | ^^^^^^^
+> 18 |   Progress,
+     | ^^^^^^^
+> 19 |   useToast,
+     | ^^^^^^^
+> 20 |   Skeleton,
+     | ^^^^^^^
+> 21 |   SkeletonText,
+     | ^^^^^^^
+> 22 |   Center
+     | ^^^^^^^
+> 23 | } from '@chakra-ui/react';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  24 | import { 
+  25 |   ArrowLeft, 
+  26 |   ArrowRight, 
+
+The export useToast was not found in module [project]/node_modules/@chakra-ui/react/dist/esm/index.js [app-ssr] (ecmascript).
+Did you mean to import useTabs?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component Browser]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component SSR]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1920
+[  324194ms] [ERROR] ./src/app/dashboard/brand-dna/page.tsx:5:1
+Export useToast doesn't exist in target module
+   3 | import React, { useState, useEffect } from 'react';
+   4 | import { useRouter } from 'next/navigation';
+>  5 | import { 
+     | ^^^^^^^^^
+>  6 |   Box, 
+     | ^^^^^^^
+>  7 |   Flex, 
+     | ^^^^^^^
+>  8 |   Heading, 
+     | ^^^^^^^
+>  9 |   Text, 
+     | ^^^^^^^
+> 10 |   Button, 
+     | ^^^^^^^
+> 11 |   SimpleGrid, 
+     | ^^^^^^^
+> 12 |   Icon, 
+     | ^^^^^^^
+> 13 |   Stack, 
+     | ^^^^^^^
+> 14 |   Badge, 
+     | ^^^^^^^
+> 15 |   Circle, 
+     | ^^^^^^^
+> 16 |   Textarea, 
+     | ^^^^^^^
+> 17 |   Spinner, 
+     | ^^^^^^^
+> 18 |   Progress,
+     | ^^^^^^^
+> 19 |   useToast,
+     | ^^^^^^^
+> 20 |   Skeleton,
+     | ^^^^^^^
+> 21 |   SkeletonText,
+     | ^^^^^^^
+> 22 |   Center
+     | ^^^^^^^
+> 23 | } from '@chakra-ui/react';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  24 | import { 
+  25 |   ArrowLeft, 
+  26 |   ArrowRight, 
+
+The export useToast was not found in module [project]/node_modules/@chakra-ui/react/dist/esm/index.js [app-client] (ecmascript).
+Did you mean to import useTabs?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component Browser]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component SSR]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1920
+[  324194ms] [ERROR] ./src/app/dashboard/brand-dna/page.tsx:5:1
+Export useToast doesn't exist in target module
+   3 | import React, { useState, useEffect } from 'react';
+   4 | import { useRouter } from 'next/navigation';
+>  5 | import { 
+     | ^^^^^^^^^
+>  6 |   Box, 
+     | ^^^^^^^
+>  7 |   Flex, 
+     | ^^^^^^^
+>  8 |   Heading, 
+     | ^^^^^^^
+>  9 |   Text, 
+     | ^^^^^^^
+> 10 |   Button, 
+     | ^^^^^^^
+> 11 |   SimpleGrid, 
+     | ^^^^^^^
+> 12 |   Icon, 
+     | ^^^^^^^
+> 13 |   Stack, 
+     | ^^^^^^^
+> 14 |   Badge, 
+     | ^^^^^^^
+> 15 |   Circle, 
+     | ^^^^^^^
+> 16 |   Textarea, 
+     | ^^^^^^^
+> 17 |   Spinner, 
+     | ^^^^^^^
+> 18 |   Progress,
+     | ^^^^^^^
+> 19 |   useToast,
+     | ^^^^^^^
+> 20 |   Skeleton,
+     | ^^^^^^^
+> 21 |   SkeletonText,
+     | ^^^^^^^
+> 22 |   Center
+     | ^^^^^^^
+> 23 | } from '@chakra-ui/react';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  24 | import { 
+  25 |   ArrowLeft, 
+  26 |   ArrowRight, 
+
+The export useToast was not found in module [project]/node_modules/@chakra-ui/react/dist/esm/index.js [app-ssr] (ecmascript).
+Did you mean to import useTabs?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component Browser]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component SSR]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1920
+[  324268ms] [ERROR] ./src/app/dashboard/brand-dna/page.tsx:5:1
+Export useToast doesn't exist in target module
+   3 | import React, { useState, useEffect } from 'react';
+   4 | import { useRouter } from 'next/navigation';
+>  5 | import { 
+     | ^^^^^^^^^
+>  6 |   Box, 
+     | ^^^^^^^
+>  7 |   Flex, 
+     | ^^^^^^^
+>  8 |   Heading, 
+     | ^^^^^^^
+>  9 |   Text, 
+     | ^^^^^^^
+> 10 |   Button, 
+     | ^^^^^^^
+> 11 |   SimpleGrid, 
+     | ^^^^^^^
+> 12 |   Icon, 
+     | ^^^^^^^
+> 13 |   Stack, 
+     | ^^^^^^^
+> 14 |   Badge, 
+     | ^^^^^^^
+> 15 |   Circle, 
+     | ^^^^^^^
+> 16 |   Textarea, 
+     | ^^^^^^^
+> 17 |   Spinner, 
+     | ^^^^^^^
+> 18 |   Progress,
+     | ^^^^^^^
+> 19 |   useToast,
+     | ^^^^^^^
+> 20 |   Skeleton,
+     | ^^^^^^^
+> 21 |   SkeletonText,
+     | ^^^^^^^
+> 22 |   Center
+     | ^^^^^^^
+> 23 | } from '@chakra-ui/react';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  24 | import { 
+  25 |   ArrowLeft, 
+  26 |   ArrowRight, 
+
+The export useToast was not found in module [project]/node_modules/@chakra-ui/react/dist/esm/index.js [app-client] (ecmascript).
+Did you mean to import useTabs?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component Browser]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component SSR]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1920
+[  324268ms] [ERROR] ./src/app/dashboard/brand-dna/page.tsx:5:1
+Export useToast doesn't exist in target module
+   3 | import React, { useState, useEffect } from 'react';
+   4 | import { useRouter } from 'next/navigation';
+>  5 | import { 
+     | ^^^^^^^^^
+>  6 |   Box, 
+     | ^^^^^^^
+>  7 |   Flex, 
+     | ^^^^^^^
+>  8 |   Heading, 
+     | ^^^^^^^
+>  9 |   Text, 
+     | ^^^^^^^
+> 10 |   Button, 
+     | ^^^^^^^
+> 11 |   SimpleGrid, 
+     | ^^^^^^^
+> 12 |   Icon, 
+     | ^^^^^^^
+> 13 |   Stack, 
+     | ^^^^^^^
+> 14 |   Badge, 
+     | ^^^^^^^
+> 15 |   Circle, 
+     | ^^^^^^^
+> 16 |   Textarea, 
+     | ^^^^^^^
+> 17 |   Spinner, 
+     | ^^^^^^^
+> 18 |   Progress,
+     | ^^^^^^^
+> 19 |   useToast,
+     | ^^^^^^^
+> 20 |   Skeleton,
+     | ^^^^^^^
+> 21 |   SkeletonText,
+     | ^^^^^^^
+> 22 |   Center
+     | ^^^^^^^
+> 23 | } from '@chakra-ui/react';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  24 | import { 
+  25 |   ArrowLeft, 
+  26 |   ArrowRight, 
+
+The export useToast was not found in module [project]/node_modules/@chakra-ui/react/dist/esm/index.js [app-ssr] (ecmascript).
+Did you mean to import useTabs?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component Browser]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component SSR]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1920
+[  384113ms] [ERROR] ./src/app/dashboard/brand-dna/page.tsx:5:1
+Export useToast doesn't exist in target module
+   3 | import React, { useState, useEffect } from 'react';
+   4 | import { useRouter } from 'next/navigation';
+>  5 | import { 
+     | ^^^^^^^^^
+>  6 |   Box, 
+     | ^^^^^^^
+>  7 |   Flex, 
+     | ^^^^^^^
+>  8 |   Heading, 
+     | ^^^^^^^
+>  9 |   Text, 
+     | ^^^^^^^
+> 10 |   Button, 
+     | ^^^^^^^
+> 11 |   SimpleGrid, 
+     | ^^^^^^^
+> 12 |   Icon, 
+     | ^^^^^^^
+> 13 |   Stack, 
+     | ^^^^^^^
+> 14 |   Badge, 
+     | ^^^^^^^
+> 15 |   Circle, 
+     | ^^^^^^^
+> 16 |   Textarea, 
+     | ^^^^^^^
+> 17 |   Spinner, 
+     | ^^^^^^^
+> 18 |   Progress,
+     | ^^^^^^^
+> 19 |   useToast,
+     | ^^^^^^^
+> 20 |   Skeleton,
+     | ^^^^^^^
+> 21 |   SkeletonText,
+     | ^^^^^^^
+> 22 |   Center
+     | ^^^^^^^
+> 23 | } from '@chakra-ui/react';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  24 | import { 
+  25 |   ArrowLeft, 
+  26 |   ArrowRight, 
+
+The export useToast was not found in module [project]/node_modules/@chakra-ui/react/dist/esm/index.js [app-client] (ecmascript).
+Did you mean to import useTabs?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component Browser]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component SSR]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1920
+[  384113ms] [ERROR] ./src/app/dashboard/brand-dna/page.tsx:5:1
+Export useToast doesn't exist in target module
+   3 | import React, { useState, useEffect } from 'react';
+   4 | import { useRouter } from 'next/navigation';
+>  5 | import { 
+     | ^^^^^^^^^
+>  6 |   Box, 
+     | ^^^^^^^
+>  7 |   Flex, 
+     | ^^^^^^^
+>  8 |   Heading, 
+     | ^^^^^^^
+>  9 |   Text, 
+     | ^^^^^^^
+> 10 |   Button, 
+     | ^^^^^^^
+> 11 |   SimpleGrid, 
+     | ^^^^^^^
+> 12 |   Icon, 
+     | ^^^^^^^
+> 13 |   Stack, 
+     | ^^^^^^^
+> 14 |   Badge, 
+     | ^^^^^^^
+> 15 |   Circle, 
+     | ^^^^^^^
+> 16 |   Textarea, 
+     | ^^^^^^^
+> 17 |   Spinner, 
+     | ^^^^^^^
+> 18 |   Progress,
+     | ^^^^^^^
+> 19 |   useToast,
+     | ^^^^^^^
+> 20 |   Skeleton,
+     | ^^^^^^^
+> 21 |   SkeletonText,
+     | ^^^^^^^
+> 22 |   Center
+     | ^^^^^^^
+> 23 | } from '@chakra-ui/react';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  24 | import { 
+  25 |   ArrowLeft, 
+  26 |   ArrowRight, 
+
+The export useToast was not found in module [project]/node_modules/@chakra-ui/react/dist/esm/index.js [app-ssr] (ecmascript).
+Did you mean to import useTabs?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component Browser]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component SSR]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1920
+[  384223ms] [ERROR] ./src/app/dashboard/brand-dna/page.tsx:5:1
+Export useToast doesn't exist in target module
+   3 | import React, { useState, useEffect } from 'react';
+   4 | import { useRouter } from 'next/navigation';
+>  5 | import { 
+     | ^^^^^^^^^
+>  6 |   Box, 
+     | ^^^^^^^
+>  7 |   Flex, 
+     | ^^^^^^^
+>  8 |   Heading, 
+     | ^^^^^^^
+>  9 |   Text, 
+     | ^^^^^^^
+> 10 |   Button, 
+     | ^^^^^^^
+> 11 |   SimpleGrid, 
+     | ^^^^^^^
+> 12 |   Icon, 
+     | ^^^^^^^
+> 13 |   Stack, 
+     | ^^^^^^^
+> 14 |   Badge, 
+     | ^^^^^^^
+> 15 |   Circle, 
+     | ^^^^^^^
+> 16 |   Textarea, 
+     | ^^^^^^^
+> 17 |   Spinner, 
+     | ^^^^^^^
+> 18 |   Progress,
+     | ^^^^^^^
+> 19 |   useToast,
+     | ^^^^^^^
+> 20 |   Skeleton,
+     | ^^^^^^^
+> 21 |   SkeletonText,
+     | ^^^^^^^
+> 22 |   Center
+     | ^^^^^^^
+> 23 | } from '@chakra-ui/react';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  24 | import { 
+  25 |   ArrowLeft, 
+  26 |   ArrowRight, 
+
+The export useToast was not found in module [project]/node_modules/@chakra-ui/react/dist/esm/index.js [app-client] (ecmascript).
+Did you mean to import useTabs?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component Browser]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component SSR]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1920
+[  384223ms] [ERROR] ./src/app/dashboard/brand-dna/page.tsx:5:1
+Export useToast doesn't exist in target module
+   3 | import React, { useState, useEffect } from 'react';
+   4 | import { useRouter } from 'next/navigation';
+>  5 | import { 
+     | ^^^^^^^^^
+>  6 |   Box, 
+     | ^^^^^^^
+>  7 |   Flex, 
+     | ^^^^^^^
+>  8 |   Heading, 
+     | ^^^^^^^
+>  9 |   Text, 
+     | ^^^^^^^
+> 10 |   Button, 
+     | ^^^^^^^
+> 11 |   SimpleGrid, 
+     | ^^^^^^^
+> 12 |   Icon, 
+     | ^^^^^^^
+> 13 |   Stack, 
+     | ^^^^^^^
+> 14 |   Badge, 
+     | ^^^^^^^
+> 15 |   Circle, 
+     | ^^^^^^^
+> 16 |   Textarea, 
+     | ^^^^^^^
+> 17 |   Spinner, 
+     | ^^^^^^^
+> 18 |   Progress,
+     | ^^^^^^^
+> 19 |   useToast,
+     | ^^^^^^^
+> 20 |   Skeleton,
+     | ^^^^^^^
+> 21 |   SkeletonText,
+     | ^^^^^^^
+> 22 |   Center
+     | ^^^^^^^
+> 23 | } from '@chakra-ui/react';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  24 | import { 
+  25 |   ArrowLeft, 
+  26 |   ArrowRight, 
+
+The export useToast was not found in module [project]/node_modules/@chakra-ui/react/dist/esm/index.js [app-ssr] (ecmascript).
+Did you mean to import useTabs?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component Browser]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component SSR]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1920
+[  384301ms] [ERROR] ./src/app/dashboard/brand-dna/page.tsx:5:1
+Export useToast doesn't exist in target module
+   3 | import React, { useState, useEffect } from 'react';
+   4 | import { useRouter } from 'next/navigation';
+>  5 | import { 
+     | ^^^^^^^^^
+>  6 |   Box, 
+     | ^^^^^^^
+>  7 |   Flex, 
+     | ^^^^^^^
+>  8 |   Heading, 
+     | ^^^^^^^
+>  9 |   Text, 
+     | ^^^^^^^
+> 10 |   Button, 
+     | ^^^^^^^
+> 11 |   SimpleGrid, 
+     | ^^^^^^^
+> 12 |   Icon, 
+     | ^^^^^^^
+> 13 |   Stack, 
+     | ^^^^^^^
+> 14 |   Badge, 
+     | ^^^^^^^
+> 15 |   Circle, 
+     | ^^^^^^^
+> 16 |   Textarea, 
+     | ^^^^^^^
+> 17 |   Spinner, 
+     | ^^^^^^^
+> 18 |   Progress,
+     | ^^^^^^^
+> 19 |   useToast,
+     | ^^^^^^^
+> 20 |   Skeleton,
+     | ^^^^^^^
+> 21 |   SkeletonText,
+     | ^^^^^^^
+> 22 |   Center
+     | ^^^^^^^
+> 23 | } from '@chakra-ui/react';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  24 | import { 
+  25 |   ArrowLeft, 
+  26 |   ArrowRight, 
+
+The export useToast was not found in module [project]/node_modules/@chakra-ui/react/dist/esm/index.js [app-client] (ecmascript).
+Did you mean to import useTabs?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component Browser]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component SSR]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1920
+[  384301ms] [ERROR] ./src/app/dashboard/brand-dna/page.tsx:5:1
+Export useToast doesn't exist in target module
+   3 | import React, { useState, useEffect } from 'react';
+   4 | import { useRouter } from 'next/navigation';
+>  5 | import { 
+     | ^^^^^^^^^
+>  6 |   Box, 
+     | ^^^^^^^
+>  7 |   Flex, 
+     | ^^^^^^^
+>  8 |   Heading, 
+     | ^^^^^^^
+>  9 |   Text, 
+     | ^^^^^^^
+> 10 |   Button, 
+     | ^^^^^^^
+> 11 |   SimpleGrid, 
+     | ^^^^^^^
+> 12 |   Icon, 
+     | ^^^^^^^
+> 13 |   Stack, 
+     | ^^^^^^^
+> 14 |   Badge, 
+     | ^^^^^^^
+> 15 |   Circle, 
+     | ^^^^^^^
+> 16 |   Textarea, 
+     | ^^^^^^^
+> 17 |   Spinner, 
+     | ^^^^^^^
+> 18 |   Progress,
+     | ^^^^^^^
+> 19 |   useToast,
+     | ^^^^^^^
+> 20 |   Skeleton,
+     | ^^^^^^^
+> 21 |   SkeletonText,
+     | ^^^^^^^
+> 22 |   Center
+     | ^^^^^^^
+> 23 | } from '@chakra-ui/react';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  24 | import { 
+  25 |   ArrowLeft, 
+  26 |   ArrowRight, 
+
+The export useToast was not found in module [project]/node_modules/@chakra-ui/react/dist/esm/index.js [app-ssr] (ecmascript).
+Did you mean to import useTabs?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component Browser]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component SSR]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1920
+[  444101ms] [ERROR] ./src/app/dashboard/brand-dna/page.tsx:5:1
+Export useToast doesn't exist in target module
+   3 | import React, { useState, useEffect } from 'react';
+   4 | import { useRouter } from 'next/navigation';
+>  5 | import { 
+     | ^^^^^^^^^
+>  6 |   Box, 
+     | ^^^^^^^
+>  7 |   Flex, 
+     | ^^^^^^^
+>  8 |   Heading, 
+     | ^^^^^^^
+>  9 |   Text, 
+     | ^^^^^^^
+> 10 |   Button, 
+     | ^^^^^^^
+> 11 |   SimpleGrid, 
+     | ^^^^^^^
+> 12 |   Icon, 
+     | ^^^^^^^
+> 13 |   Stack, 
+     | ^^^^^^^
+> 14 |   Badge, 
+     | ^^^^^^^
+> 15 |   Circle, 
+     | ^^^^^^^
+> 16 |   Textarea, 
+     | ^^^^^^^
+> 17 |   Spinner, 
+     | ^^^^^^^
+> 18 |   Progress,
+     | ^^^^^^^
+> 19 |   useToast,
+     | ^^^^^^^
+> 20 |   Skeleton,
+     | ^^^^^^^
+> 21 |   SkeletonText,
+     | ^^^^^^^
+> 22 |   Center
+     | ^^^^^^^
+> 23 | } from '@chakra-ui/react';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  24 | import { 
+  25 |   ArrowLeft, 
+  26 |   ArrowRight, 
+
+The export useToast was not found in module [project]/node_modules/@chakra-ui/react/dist/esm/index.js [app-client] (ecmascript).
+Did you mean to import useTabs?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component Browser]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component SSR]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1920
+[  444102ms] [ERROR] ./src/app/dashboard/brand-dna/page.tsx:5:1
+Export useToast doesn't exist in target module
+   3 | import React, { useState, useEffect } from 'react';
+   4 | import { useRouter } from 'next/navigation';
+>  5 | import { 
+     | ^^^^^^^^^
+>  6 |   Box, 
+     | ^^^^^^^
+>  7 |   Flex, 
+     | ^^^^^^^
+>  8 |   Heading, 
+     | ^^^^^^^
+>  9 |   Text, 
+     | ^^^^^^^
+> 10 |   Button, 
+     | ^^^^^^^
+> 11 |   SimpleGrid, 
+     | ^^^^^^^
+> 12 |   Icon, 
+     | ^^^^^^^
+> 13 |   Stack, 
+     | ^^^^^^^
+> 14 |   Badge, 
+     | ^^^^^^^
+> 15 |   Circle, 
+     | ^^^^^^^
+> 16 |   Textarea, 
+     | ^^^^^^^
+> 17 |   Spinner, 
+     | ^^^^^^^
+> 18 |   Progress,
+     | ^^^^^^^
+> 19 |   useToast,
+     | ^^^^^^^
+> 20 |   Skeleton,
+     | ^^^^^^^
+> 21 |   SkeletonText,
+     | ^^^^^^^
+> 22 |   Center
+     | ^^^^^^^
+> 23 | } from '@chakra-ui/react';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  24 | import { 
+  25 |   ArrowLeft, 
+  26 |   ArrowRight, 
+
+The export useToast was not found in module [project]/node_modules/@chakra-ui/react/dist/esm/index.js [app-ssr] (ecmascript).
+Did you mean to import useTabs?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component Browser]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component SSR]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1920
+[  444201ms] [ERROR] ./src/app/dashboard/brand-dna/page.tsx:5:1
+Export useToast doesn't exist in target module
+   3 | import React, { useState, useEffect } from 'react';
+   4 | import { useRouter } from 'next/navigation';
+>  5 | import { 
+     | ^^^^^^^^^
+>  6 |   Box, 
+     | ^^^^^^^
+>  7 |   Flex, 
+     | ^^^^^^^
+>  8 |   Heading, 
+     | ^^^^^^^
+>  9 |   Text, 
+     | ^^^^^^^
+> 10 |   Button, 
+     | ^^^^^^^
+> 11 |   SimpleGrid, 
+     | ^^^^^^^
+> 12 |   Icon, 
+     | ^^^^^^^
+> 13 |   Stack, 
+     | ^^^^^^^
+> 14 |   Badge, 
+     | ^^^^^^^
+> 15 |   Circle, 
+     | ^^^^^^^
+> 16 |   Textarea, 
+     | ^^^^^^^
+> 17 |   Spinner, 
+     | ^^^^^^^
+> 18 |   Progress,
+     | ^^^^^^^
+> 19 |   useToast,
+     | ^^^^^^^
+> 20 |   Skeleton,
+     | ^^^^^^^
+> 21 |   SkeletonText,
+     | ^^^^^^^
+> 22 |   Center
+     | ^^^^^^^
+> 23 | } from '@chakra-ui/react';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  24 | import { 
+  25 |   ArrowLeft, 
+  26 |   ArrowRight, 
+
+The export useToast was not found in module [project]/node_modules/@chakra-ui/react/dist/esm/index.js [app-client] (ecmascript).
+Did you mean to import useTabs?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component Browser]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component SSR]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1920
+[  444201ms] [ERROR] ./src/app/dashboard/brand-dna/page.tsx:5:1
+Export useToast doesn't exist in target module
+   3 | import React, { useState, useEffect } from 'react';
+   4 | import { useRouter } from 'next/navigation';
+>  5 | import { 
+     | ^^^^^^^^^
+>  6 |   Box, 
+     | ^^^^^^^
+>  7 |   Flex, 
+     | ^^^^^^^
+>  8 |   Heading, 
+     | ^^^^^^^
+>  9 |   Text, 
+     | ^^^^^^^
+> 10 |   Button, 
+     | ^^^^^^^
+> 11 |   SimpleGrid, 
+     | ^^^^^^^
+> 12 |   Icon, 
+     | ^^^^^^^
+> 13 |   Stack, 
+     | ^^^^^^^
+> 14 |   Badge, 
+     | ^^^^^^^
+> 15 |   Circle, 
+     | ^^^^^^^
+> 16 |   Textarea, 
+     | ^^^^^^^
+> 17 |   Spinner, 
+     | ^^^^^^^
+> 18 |   Progress,
+     | ^^^^^^^
+> 19 |   useToast,
+     | ^^^^^^^
+> 20 |   Skeleton,
+     | ^^^^^^^
+> 21 |   SkeletonText,
+     | ^^^^^^^
+> 22 |   Center
+     | ^^^^^^^
+> 23 | } from '@chakra-ui/react';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  24 | import { 
+  25 |   ArrowLeft, 
+  26 |   ArrowRight, 
+
+The export useToast was not found in module [project]/node_modules/@chakra-ui/react/dist/esm/index.js [app-ssr] (ecmascript).
+Did you mean to import useTabs?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component Browser]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component SSR]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1920
+[  444281ms] [ERROR] ./src/app/dashboard/brand-dna/page.tsx:5:1
+Export useToast doesn't exist in target module
+   3 | import React, { useState, useEffect } from 'react';
+   4 | import { useRouter } from 'next/navigation';
+>  5 | import { 
+     | ^^^^^^^^^
+>  6 |   Box, 
+     | ^^^^^^^
+>  7 |   Flex, 
+     | ^^^^^^^
+>  8 |   Heading, 
+     | ^^^^^^^
+>  9 |   Text, 
+     | ^^^^^^^
+> 10 |   Button, 
+     | ^^^^^^^
+> 11 |   SimpleGrid, 
+     | ^^^^^^^
+> 12 |   Icon, 
+     | ^^^^^^^
+> 13 |   Stack, 
+     | ^^^^^^^
+> 14 |   Badge, 
+     | ^^^^^^^
+> 15 |   Circle, 
+     | ^^^^^^^
+> 16 |   Textarea, 
+     | ^^^^^^^
+> 17 |   Spinner, 
+     | ^^^^^^^
+> 18 |   Progress,
+     | ^^^^^^^
+> 19 |   useToast,
+     | ^^^^^^^
+> 20 |   Skeleton,
+     | ^^^^^^^
+> 21 |   SkeletonText,
+     | ^^^^^^^
+> 22 |   Center
+     | ^^^^^^^
+> 23 | } from '@chakra-ui/react';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  24 | import { 
+  25 |   ArrowLeft, 
+  26 |   ArrowRight, 
+
+The export useToast was not found in module [project]/node_modules/@chakra-ui/react/dist/esm/index.js [app-client] (ecmascript).
+Did you mean to import useTabs?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component Browser]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component SSR]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1920
+[  444281ms] [ERROR] ./src/app/dashboard/brand-dna/page.tsx:5:1
+Export useToast doesn't exist in target module
+   3 | import React, { useState, useEffect } from 'react';
+   4 | import { useRouter } from 'next/navigation';
+>  5 | import { 
+     | ^^^^^^^^^
+>  6 |   Box, 
+     | ^^^^^^^
+>  7 |   Flex, 
+     | ^^^^^^^
+>  8 |   Heading, 
+     | ^^^^^^^
+>  9 |   Text, 
+     | ^^^^^^^
+> 10 |   Button, 
+     | ^^^^^^^
+> 11 |   SimpleGrid, 
+     | ^^^^^^^
+> 12 |   Icon, 
+     | ^^^^^^^
+> 13 |   Stack, 
+     | ^^^^^^^
+> 14 |   Badge, 
+     | ^^^^^^^
+> 15 |   Circle, 
+     | ^^^^^^^
+> 16 |   Textarea, 
+     | ^^^^^^^
+> 17 |   Spinner, 
+     | ^^^^^^^
+> 18 |   Progress,
+     | ^^^^^^^
+> 19 |   useToast,
+     | ^^^^^^^
+> 20 |   Skeleton,
+     | ^^^^^^^
+> 21 |   SkeletonText,
+     | ^^^^^^^
+> 22 |   Center
+     | ^^^^^^^
+> 23 | } from '@chakra-ui/react';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  24 | import { 
+  25 |   ArrowLeft, 
+  26 |   ArrowRight, 
+
+The export useToast was not found in module [project]/node_modules/@chakra-ui/react/dist/esm/index.js [app-ssr] (ecmascript).
+Did you mean to import useTabs?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component Browser]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component SSR]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1920
+[  504104ms] [ERROR] ./src/app/dashboard/brand-dna/page.tsx:5:1
+Export useToast doesn't exist in target module
+   3 | import React, { useState, useEffect } from 'react';
+   4 | import { useRouter } from 'next/navigation';
+>  5 | import { 
+     | ^^^^^^^^^
+>  6 |   Box, 
+     | ^^^^^^^
+>  7 |   Flex, 
+     | ^^^^^^^
+>  8 |   Heading, 
+     | ^^^^^^^
+>  9 |   Text, 
+     | ^^^^^^^
+> 10 |   Button, 
+     | ^^^^^^^
+> 11 |   SimpleGrid, 
+     | ^^^^^^^
+> 12 |   Icon, 
+     | ^^^^^^^
+> 13 |   Stack, 
+     | ^^^^^^^
+> 14 |   Badge, 
+     | ^^^^^^^
+> 15 |   Circle, 
+     | ^^^^^^^
+> 16 |   Textarea, 
+     | ^^^^^^^
+> 17 |   Spinner, 
+     | ^^^^^^^
+> 18 |   Progress,
+     | ^^^^^^^
+> 19 |   useToast,
+     | ^^^^^^^
+> 20 |   Skeleton,
+     | ^^^^^^^
+> 21 |   SkeletonText,
+     | ^^^^^^^
+> 22 |   Center
+     | ^^^^^^^
+> 23 | } from '@chakra-ui/react';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  24 | import { 
+  25 |   ArrowLeft, 
+  26 |   ArrowRight, 
+
+The export useToast was not found in module [project]/node_modules/@chakra-ui/react/dist/esm/index.js [app-client] (ecmascript).
+Did you mean to import useTabs?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component Browser]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component SSR]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1920
+[  504104ms] [ERROR] ./src/app/dashboard/brand-dna/page.tsx:5:1
+Export useToast doesn't exist in target module
+   3 | import React, { useState, useEffect } from 'react';
+   4 | import { useRouter } from 'next/navigation';
+>  5 | import { 
+     | ^^^^^^^^^
+>  6 |   Box, 
+     | ^^^^^^^
+>  7 |   Flex, 
+     | ^^^^^^^
+>  8 |   Heading, 
+     | ^^^^^^^
+>  9 |   Text, 
+     | ^^^^^^^
+> 10 |   Button, 
+     | ^^^^^^^
+> 11 |   SimpleGrid, 
+     | ^^^^^^^
+> 12 |   Icon, 
+     | ^^^^^^^
+> 13 |   Stack, 
+     | ^^^^^^^
+> 14 |   Badge, 
+     | ^^^^^^^
+> 15 |   Circle, 
+     | ^^^^^^^
+> 16 |   Textarea, 
+     | ^^^^^^^
+> 17 |   Spinner, 
+     | ^^^^^^^
+> 18 |   Progress,
+     | ^^^^^^^
+> 19 |   useToast,
+     | ^^^^^^^
+> 20 |   Skeleton,
+     | ^^^^^^^
+> 21 |   SkeletonText,
+     | ^^^^^^^
+> 22 |   Center
+     | ^^^^^^^
+> 23 | } from '@chakra-ui/react';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  24 | import { 
+  25 |   ArrowLeft, 
+  26 |   ArrowRight, 
+
+The export useToast was not found in module [project]/node_modules/@chakra-ui/react/dist/esm/index.js [app-ssr] (ecmascript).
+Did you mean to import useTabs?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component Browser]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component SSR]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1920
+[  504208ms] [ERROR] ./src/app/dashboard/brand-dna/page.tsx:5:1
+Export useToast doesn't exist in target module
+   3 | import React, { useState, useEffect } from 'react';
+   4 | import { useRouter } from 'next/navigation';
+>  5 | import { 
+     | ^^^^^^^^^
+>  6 |   Box, 
+     | ^^^^^^^
+>  7 |   Flex, 
+     | ^^^^^^^
+>  8 |   Heading, 
+     | ^^^^^^^
+>  9 |   Text, 
+     | ^^^^^^^
+> 10 |   Button, 
+     | ^^^^^^^
+> 11 |   SimpleGrid, 
+     | ^^^^^^^
+> 12 |   Icon, 
+     | ^^^^^^^
+> 13 |   Stack, 
+     | ^^^^^^^
+> 14 |   Badge, 
+     | ^^^^^^^
+> 15 |   Circle, 
+     | ^^^^^^^
+> 16 |   Textarea, 
+     | ^^^^^^^
+> 17 |   Spinner, 
+     | ^^^^^^^
+> 18 |   Progress,
+     | ^^^^^^^
+> 19 |   useToast,
+     | ^^^^^^^
+> 20 |   Skeleton,
+     | ^^^^^^^
+> 21 |   SkeletonText,
+     | ^^^^^^^
+> 22 |   Center
+     | ^^^^^^^
+> 23 | } from '@chakra-ui/react';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  24 | import { 
+  25 |   ArrowLeft, 
+  26 |   ArrowRight, 
+
+The export useToast was not found in module [project]/node_modules/@chakra-ui/react/dist/esm/index.js [app-client] (ecmascript).
+Did you mean to import useTabs?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component Browser]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component SSR]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1920
+[  504208ms] [ERROR] ./src/app/dashboard/brand-dna/page.tsx:5:1
+Export useToast doesn't exist in target module
+   3 | import React, { useState, useEffect } from 'react';
+   4 | import { useRouter } from 'next/navigation';
+>  5 | import { 
+     | ^^^^^^^^^
+>  6 |   Box, 
+     | ^^^^^^^
+>  7 |   Flex, 
+     | ^^^^^^^
+>  8 |   Heading, 
+     | ^^^^^^^
+>  9 |   Text, 
+     | ^^^^^^^
+> 10 |   Button, 
+     | ^^^^^^^
+> 11 |   SimpleGrid, 
+     | ^^^^^^^
+> 12 |   Icon, 
+     | ^^^^^^^
+> 13 |   Stack, 
+     | ^^^^^^^
+> 14 |   Badge, 
+     | ^^^^^^^
+> 15 |   Circle, 
+     | ^^^^^^^
+> 16 |   Textarea, 
+     | ^^^^^^^
+> 17 |   Spinner, 
+     | ^^^^^^^
+> 18 |   Progress,
+     | ^^^^^^^
+> 19 |   useToast,
+     | ^^^^^^^
+> 20 |   Skeleton,
+     | ^^^^^^^
+> 21 |   SkeletonText,
+     | ^^^^^^^
+> 22 |   Center
+     | ^^^^^^^
+> 23 | } from '@chakra-ui/react';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  24 | import { 
+  25 |   ArrowLeft, 
+  26 |   ArrowRight, 
+
+The export useToast was not found in module [project]/node_modules/@chakra-ui/react/dist/esm/index.js [app-ssr] (ecmascript).
+Did you mean to import useTabs?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component Browser]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component SSR]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1920
+[  504308ms] [ERROR] ./src/app/dashboard/brand-dna/page.tsx:5:1
+Export useToast doesn't exist in target module
+   3 | import React, { useState, useEffect } from 'react';
+   4 | import { useRouter } from 'next/navigation';
+>  5 | import { 
+     | ^^^^^^^^^
+>  6 |   Box, 
+     | ^^^^^^^
+>  7 |   Flex, 
+     | ^^^^^^^
+>  8 |   Heading, 
+     | ^^^^^^^
+>  9 |   Text, 
+     | ^^^^^^^
+> 10 |   Button, 
+     | ^^^^^^^
+> 11 |   SimpleGrid, 
+     | ^^^^^^^
+> 12 |   Icon, 
+     | ^^^^^^^
+> 13 |   Stack, 
+     | ^^^^^^^
+> 14 |   Badge, 
+     | ^^^^^^^
+> 15 |   Circle, 
+     | ^^^^^^^
+> 16 |   Textarea, 
+     | ^^^^^^^
+> 17 |   Spinner, 
+     | ^^^^^^^
+> 18 |   Progress,
+     | ^^^^^^^
+> 19 |   useToast,
+     | ^^^^^^^
+> 20 |   Skeleton,
+     | ^^^^^^^
+> 21 |   SkeletonText,
+     | ^^^^^^^
+> 22 |   Center
+     | ^^^^^^^
+> 23 | } from '@chakra-ui/react';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  24 | import { 
+  25 |   ArrowLeft, 
+  26 |   ArrowRight, 
+
+The export useToast was not found in module [project]/node_modules/@chakra-ui/react/dist/esm/index.js [app-client] (ecmascript).
+Did you mean to import useTabs?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component Browser]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component SSR]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1920
+[  504308ms] [ERROR] ./src/app/dashboard/brand-dna/page.tsx:5:1
+Export useToast doesn't exist in target module
+   3 | import React, { useState, useEffect } from 'react';
+   4 | import { useRouter } from 'next/navigation';
+>  5 | import { 
+     | ^^^^^^^^^
+>  6 |   Box, 
+     | ^^^^^^^
+>  7 |   Flex, 
+     | ^^^^^^^
+>  8 |   Heading, 
+     | ^^^^^^^
+>  9 |   Text, 
+     | ^^^^^^^
+> 10 |   Button, 
+     | ^^^^^^^
+> 11 |   SimpleGrid, 
+     | ^^^^^^^
+> 12 |   Icon, 
+     | ^^^^^^^
+> 13 |   Stack, 
+     | ^^^^^^^
+> 14 |   Badge, 
+     | ^^^^^^^
+> 15 |   Circle, 
+     | ^^^^^^^
+> 16 |   Textarea, 
+     | ^^^^^^^
+> 17 |   Spinner, 
+     | ^^^^^^^
+> 18 |   Progress,
+     | ^^^^^^^
+> 19 |   useToast,
+     | ^^^^^^^
+> 20 |   Skeleton,
+     | ^^^^^^^
+> 21 |   SkeletonText,
+     | ^^^^^^^
+> 22 |   Center
+     | ^^^^^^^
+> 23 | } from '@chakra-ui/react';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  24 | import { 
+  25 |   ArrowLeft, 
+  26 |   ArrowRight, 
+
+The export useToast was not found in module [project]/node_modules/@chakra-ui/react/dist/esm/index.js [app-ssr] (ecmascript).
+Did you mean to import useTabs?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component Browser]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component SSR]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1920
+[  564106ms] [ERROR] ./src/app/dashboard/brand-dna/page.tsx:5:1
+Export useToast doesn't exist in target module
+   3 | import React, { useState, useEffect } from 'react';
+   4 | import { useRouter } from 'next/navigation';
+>  5 | import { 
+     | ^^^^^^^^^
+>  6 |   Box, 
+     | ^^^^^^^
+>  7 |   Flex, 
+     | ^^^^^^^
+>  8 |   Heading, 
+     | ^^^^^^^
+>  9 |   Text, 
+     | ^^^^^^^
+> 10 |   Button, 
+     | ^^^^^^^
+> 11 |   SimpleGrid, 
+     | ^^^^^^^
+> 12 |   Icon, 
+     | ^^^^^^^
+> 13 |   Stack, 
+     | ^^^^^^^
+> 14 |   Badge, 
+     | ^^^^^^^
+> 15 |   Circle, 
+     | ^^^^^^^
+> 16 |   Textarea, 
+     | ^^^^^^^
+> 17 |   Spinner, 
+     | ^^^^^^^
+> 18 |   Progress,
+     | ^^^^^^^
+> 19 |   useToast,
+     | ^^^^^^^
+> 20 |   Skeleton,
+     | ^^^^^^^
+> 21 |   SkeletonText,
+     | ^^^^^^^
+> 22 |   Center
+     | ^^^^^^^
+> 23 | } from '@chakra-ui/react';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  24 | import { 
+  25 |   ArrowLeft, 
+  26 |   ArrowRight, 
+
+The export useToast was not found in module [project]/node_modules/@chakra-ui/react/dist/esm/index.js [app-client] (ecmascript).
+Did you mean to import useTabs?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component Browser]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component SSR]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1920
+[  564106ms] [ERROR] ./src/app/dashboard/brand-dna/page.tsx:5:1
+Export useToast doesn't exist in target module
+   3 | import React, { useState, useEffect } from 'react';
+   4 | import { useRouter } from 'next/navigation';
+>  5 | import { 
+     | ^^^^^^^^^
+>  6 |   Box, 
+     | ^^^^^^^
+>  7 |   Flex, 
+     | ^^^^^^^
+>  8 |   Heading, 
+     | ^^^^^^^
+>  9 |   Text, 
+     | ^^^^^^^
+> 10 |   Button, 
+     | ^^^^^^^
+> 11 |   SimpleGrid, 
+     | ^^^^^^^
+> 12 |   Icon, 
+     | ^^^^^^^
+> 13 |   Stack, 
+     | ^^^^^^^
+> 14 |   Badge, 
+     | ^^^^^^^
+> 15 |   Circle, 
+     | ^^^^^^^
+> 16 |   Textarea, 
+     | ^^^^^^^
+> 17 |   Spinner, 
+     | ^^^^^^^
+> 18 |   Progress,
+     | ^^^^^^^
+> 19 |   useToast,
+     | ^^^^^^^
+> 20 |   Skeleton,
+     | ^^^^^^^
+> 21 |   SkeletonText,
+     | ^^^^^^^
+> 22 |   Center
+     | ^^^^^^^
+> 23 | } from '@chakra-ui/react';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  24 | import { 
+  25 |   ArrowLeft, 
+  26 |   ArrowRight, 
+
+The export useToast was not found in module [project]/node_modules/@chakra-ui/react/dist/esm/index.js [app-ssr] (ecmascript).
+Did you mean to import useTabs?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component Browser]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component SSR]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1920
+[  564204ms] [ERROR] ./src/app/dashboard/brand-dna/page.tsx:5:1
+Export useToast doesn't exist in target module
+   3 | import React, { useState, useEffect } from 'react';
+   4 | import { useRouter } from 'next/navigation';
+>  5 | import { 
+     | ^^^^^^^^^
+>  6 |   Box, 
+     | ^^^^^^^
+>  7 |   Flex, 
+     | ^^^^^^^
+>  8 |   Heading, 
+     | ^^^^^^^
+>  9 |   Text, 
+     | ^^^^^^^
+> 10 |   Button, 
+     | ^^^^^^^
+> 11 |   SimpleGrid, 
+     | ^^^^^^^
+> 12 |   Icon, 
+     | ^^^^^^^
+> 13 |   Stack, 
+     | ^^^^^^^
+> 14 |   Badge, 
+     | ^^^^^^^
+> 15 |   Circle, 
+     | ^^^^^^^
+> 16 |   Textarea, 
+     | ^^^^^^^
+> 17 |   Spinner, 
+     | ^^^^^^^
+> 18 |   Progress,
+     | ^^^^^^^
+> 19 |   useToast,
+     | ^^^^^^^
+> 20 |   Skeleton,
+     | ^^^^^^^
+> 21 |   SkeletonText,
+     | ^^^^^^^
+> 22 |   Center
+     | ^^^^^^^
+> 23 | } from '@chakra-ui/react';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  24 | import { 
+  25 |   ArrowLeft, 
+  26 |   ArrowRight, 
+
+The export useToast was not found in module [project]/node_modules/@chakra-ui/react/dist/esm/index.js [app-client] (ecmascript).
+Did you mean to import useTabs?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component Browser]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component SSR]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1920
+[  564204ms] [ERROR] ./src/app/dashboard/brand-dna/page.tsx:5:1
+Export useToast doesn't exist in target module
+   3 | import React, { useState, useEffect } from 'react';
+   4 | import { useRouter } from 'next/navigation';
+>  5 | import { 
+     | ^^^^^^^^^
+>  6 |   Box, 
+     | ^^^^^^^
+>  7 |   Flex, 
+     | ^^^^^^^
+>  8 |   Heading, 
+     | ^^^^^^^
+>  9 |   Text, 
+     | ^^^^^^^
+> 10 |   Button, 
+     | ^^^^^^^
+> 11 |   SimpleGrid, 
+     | ^^^^^^^
+> 12 |   Icon, 
+     | ^^^^^^^
+> 13 |   Stack, 
+     | ^^^^^^^
+> 14 |   Badge, 
+     | ^^^^^^^
+> 15 |   Circle, 
+     | ^^^^^^^
+> 16 |   Textarea, 
+     | ^^^^^^^
+> 17 |   Spinner, 
+     | ^^^^^^^
+> 18 |   Progress,
+     | ^^^^^^^
+> 19 |   useToast,
+     | ^^^^^^^
+> 20 |   Skeleton,
+     | ^^^^^^^
+> 21 |   SkeletonText,
+     | ^^^^^^^
+> 22 |   Center
+     | ^^^^^^^
+> 23 | } from '@chakra-ui/react';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  24 | import { 
+  25 |   ArrowLeft, 
+  26 |   ArrowRight, 
+
+The export useToast was not found in module [project]/node_modules/@chakra-ui/react/dist/esm/index.js [app-ssr] (ecmascript).
+Did you mean to import useTabs?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component Browser]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component SSR]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1920
+[  564285ms] [ERROR] ./src/app/dashboard/brand-dna/page.tsx:5:1
+Export useToast doesn't exist in target module
+   3 | import React, { useState, useEffect } from 'react';
+   4 | import { useRouter } from 'next/navigation';
+>  5 | import { 
+     | ^^^^^^^^^
+>  6 |   Box, 
+     | ^^^^^^^
+>  7 |   Flex, 
+     | ^^^^^^^
+>  8 |   Heading, 
+     | ^^^^^^^
+>  9 |   Text, 
+     | ^^^^^^^
+> 10 |   Button, 
+     | ^^^^^^^
+> 11 |   SimpleGrid, 
+     | ^^^^^^^
+> 12 |   Icon, 
+     | ^^^^^^^
+> 13 |   Stack, 
+     | ^^^^^^^
+> 14 |   Badge, 
+     | ^^^^^^^
+> 15 |   Circle, 
+     | ^^^^^^^
+> 16 |   Textarea, 
+     | ^^^^^^^
+> 17 |   Spinner, 
+     | ^^^^^^^
+> 18 |   Progress,
+     | ^^^^^^^
+> 19 |   useToast,
+     | ^^^^^^^
+> 20 |   Skeleton,
+     | ^^^^^^^
+> 21 |   SkeletonText,
+     | ^^^^^^^
+> 22 |   Center
+     | ^^^^^^^
+> 23 | } from '@chakra-ui/react';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  24 | import { 
+  25 |   ArrowLeft, 
+  26 |   ArrowRight, 
+
+The export useToast was not found in module [project]/node_modules/@chakra-ui/react/dist/esm/index.js [app-client] (ecmascript).
+Did you mean to import useTabs?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component Browser]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component SSR]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1920
+[  564285ms] [ERROR] ./src/app/dashboard/brand-dna/page.tsx:5:1
+Export useToast doesn't exist in target module
+   3 | import React, { useState, useEffect } from 'react';
+   4 | import { useRouter } from 'next/navigation';
+>  5 | import { 
+     | ^^^^^^^^^
+>  6 |   Box, 
+     | ^^^^^^^
+>  7 |   Flex, 
+     | ^^^^^^^
+>  8 |   Heading, 
+     | ^^^^^^^
+>  9 |   Text, 
+     | ^^^^^^^
+> 10 |   Button, 
+     | ^^^^^^^
+> 11 |   SimpleGrid, 
+     | ^^^^^^^
+> 12 |   Icon, 
+     | ^^^^^^^
+> 13 |   Stack, 
+     | ^^^^^^^
+> 14 |   Badge, 
+     | ^^^^^^^
+> 15 |   Circle, 
+     | ^^^^^^^
+> 16 |   Textarea, 
+     | ^^^^^^^
+> 17 |   Spinner, 
+     | ^^^^^^^
+> 18 |   Progress,
+     | ^^^^^^^
+> 19 |   useToast,
+     | ^^^^^^^
+> 20 |   Skeleton,
+     | ^^^^^^^
+> 21 |   SkeletonText,
+     | ^^^^^^^
+> 22 |   Center
+     | ^^^^^^^
+> 23 | } from '@chakra-ui/react';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  24 | import { 
+  25 |   ArrowLeft, 
+  26 |   ArrowRight, 
+
+The export useToast was not found in module [project]/node_modules/@chakra-ui/react/dist/esm/index.js [app-ssr] (ecmascript).
+Did you mean to import useTabs?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component Browser]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component SSR]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1920
+[  624118ms] [ERROR] ./src/app/dashboard/brand-dna/page.tsx:5:1
+Export useToast doesn't exist in target module
+   3 | import React, { useState, useEffect } from 'react';
+   4 | import { useRouter } from 'next/navigation';
+>  5 | import { 
+     | ^^^^^^^^^
+>  6 |   Box, 
+     | ^^^^^^^
+>  7 |   Flex, 
+     | ^^^^^^^
+>  8 |   Heading, 
+     | ^^^^^^^
+>  9 |   Text, 
+     | ^^^^^^^
+> 10 |   Button, 
+     | ^^^^^^^
+> 11 |   SimpleGrid, 
+     | ^^^^^^^
+> 12 |   Icon, 
+     | ^^^^^^^
+> 13 |   Stack, 
+     | ^^^^^^^
+> 14 |   Badge, 
+     | ^^^^^^^
+> 15 |   Circle, 
+     | ^^^^^^^
+> 16 |   Textarea, 
+     | ^^^^^^^
+> 17 |   Spinner, 
+     | ^^^^^^^
+> 18 |   Progress,
+     | ^^^^^^^
+> 19 |   useToast,
+     | ^^^^^^^
+> 20 |   Skeleton,
+     | ^^^^^^^
+> 21 |   SkeletonText,
+     | ^^^^^^^
+> 22 |   Center
+     | ^^^^^^^
+> 23 | } from '@chakra-ui/react';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  24 | import { 
+  25 |   ArrowLeft, 
+  26 |   ArrowRight, 
+
+The export useToast was not found in module [project]/node_modules/@chakra-ui/react/dist/esm/index.js [app-client] (ecmascript).
+Did you mean to import useTabs?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component Browser]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component SSR]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1920
+[  624118ms] [ERROR] ./src/app/dashboard/brand-dna/page.tsx:5:1
+Export useToast doesn't exist in target module
+   3 | import React, { useState, useEffect } from 'react';
+   4 | import { useRouter } from 'next/navigation';
+>  5 | import { 
+     | ^^^^^^^^^
+>  6 |   Box, 
+     | ^^^^^^^
+>  7 |   Flex, 
+     | ^^^^^^^
+>  8 |   Heading, 
+     | ^^^^^^^
+>  9 |   Text, 
+     | ^^^^^^^
+> 10 |   Button, 
+     | ^^^^^^^
+> 11 |   SimpleGrid, 
+     | ^^^^^^^
+> 12 |   Icon, 
+     | ^^^^^^^
+> 13 |   Stack, 
+     | ^^^^^^^
+> 14 |   Badge, 
+     | ^^^^^^^
+> 15 |   Circle, 
+     | ^^^^^^^
+> 16 |   Textarea, 
+     | ^^^^^^^
+> 17 |   Spinner, 
+     | ^^^^^^^
+> 18 |   Progress,
+     | ^^^^^^^
+> 19 |   useToast,
+     | ^^^^^^^
+> 20 |   Skeleton,
+     | ^^^^^^^
+> 21 |   SkeletonText,
+     | ^^^^^^^
+> 22 |   Center
+     | ^^^^^^^
+> 23 | } from '@chakra-ui/react';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  24 | import { 
+  25 |   ArrowLeft, 
+  26 |   ArrowRight, 
+
+The export useToast was not found in module [project]/node_modules/@chakra-ui/react/dist/esm/index.js [app-ssr] (ecmascript).
+Did you mean to import useTabs?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component Browser]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component SSR]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1920
+[  624216ms] [ERROR] ./src/app/dashboard/brand-dna/page.tsx:5:1
+Export useToast doesn't exist in target module
+   3 | import React, { useState, useEffect } from 'react';
+   4 | import { useRouter } from 'next/navigation';
+>  5 | import { 
+     | ^^^^^^^^^
+>  6 |   Box, 
+     | ^^^^^^^
+>  7 |   Flex, 
+     | ^^^^^^^
+>  8 |   Heading, 
+     | ^^^^^^^
+>  9 |   Text, 
+     | ^^^^^^^
+> 10 |   Button, 
+     | ^^^^^^^
+> 11 |   SimpleGrid, 
+     | ^^^^^^^
+> 12 |   Icon, 
+     | ^^^^^^^
+> 13 |   Stack, 
+     | ^^^^^^^
+> 14 |   Badge, 
+     | ^^^^^^^
+> 15 |   Circle, 
+     | ^^^^^^^
+> 16 |   Textarea, 
+     | ^^^^^^^
+> 17 |   Spinner, 
+     | ^^^^^^^
+> 18 |   Progress,
+     | ^^^^^^^
+> 19 |   useToast,
+     | ^^^^^^^
+> 20 |   Skeleton,
+     | ^^^^^^^
+> 21 |   SkeletonText,
+     | ^^^^^^^
+> 22 |   Center
+     | ^^^^^^^
+> 23 | } from '@chakra-ui/react';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  24 | import { 
+  25 |   ArrowLeft, 
+  26 |   ArrowRight, 
+
+The export useToast was not found in module [project]/node_modules/@chakra-ui/react/dist/esm/index.js [app-client] (ecmascript).
+Did you mean to import useTabs?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component Browser]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component SSR]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1920
+[  624216ms] [ERROR] ./src/app/dashboard/brand-dna/page.tsx:5:1
+Export useToast doesn't exist in target module
+   3 | import React, { useState, useEffect } from 'react';
+   4 | import { useRouter } from 'next/navigation';
+>  5 | import { 
+     | ^^^^^^^^^
+>  6 |   Box, 
+     | ^^^^^^^
+>  7 |   Flex, 
+     | ^^^^^^^
+>  8 |   Heading, 
+     | ^^^^^^^
+>  9 |   Text, 
+     | ^^^^^^^
+> 10 |   Button, 
+     | ^^^^^^^
+> 11 |   SimpleGrid, 
+     | ^^^^^^^
+> 12 |   Icon, 
+     | ^^^^^^^
+> 13 |   Stack, 
+     | ^^^^^^^
+> 14 |   Badge, 
+     | ^^^^^^^
+> 15 |   Circle, 
+     | ^^^^^^^
+> 16 |   Textarea, 
+     | ^^^^^^^
+> 17 |   Spinner, 
+     | ^^^^^^^
+> 18 |   Progress,
+     | ^^^^^^^
+> 19 |   useToast,
+     | ^^^^^^^
+> 20 |   Skeleton,
+     | ^^^^^^^
+> 21 |   SkeletonText,
+     | ^^^^^^^
+> 22 |   Center
+     | ^^^^^^^
+> 23 | } from '@chakra-ui/react';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  24 | import { 
+  25 |   ArrowLeft, 
+  26 |   ArrowRight, 
+
+The export useToast was not found in module [project]/node_modules/@chakra-ui/react/dist/esm/index.js [app-ssr] (ecmascript).
+Did you mean to import useTabs?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component Browser]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component SSR]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1920
+[  624291ms] [ERROR] ./src/app/dashboard/brand-dna/page.tsx:5:1
+Export useToast doesn't exist in target module
+   3 | import React, { useState, useEffect } from 'react';
+   4 | import { useRouter } from 'next/navigation';
+>  5 | import { 
+     | ^^^^^^^^^
+>  6 |   Box, 
+     | ^^^^^^^
+>  7 |   Flex, 
+     | ^^^^^^^
+>  8 |   Heading, 
+     | ^^^^^^^
+>  9 |   Text, 
+     | ^^^^^^^
+> 10 |   Button, 
+     | ^^^^^^^
+> 11 |   SimpleGrid, 
+     | ^^^^^^^
+> 12 |   Icon, 
+     | ^^^^^^^
+> 13 |   Stack, 
+     | ^^^^^^^
+> 14 |   Badge, 
+     | ^^^^^^^
+> 15 |   Circle, 
+     | ^^^^^^^
+> 16 |   Textarea, 
+     | ^^^^^^^
+> 17 |   Spinner, 
+     | ^^^^^^^
+> 18 |   Progress,
+     | ^^^^^^^
+> 19 |   useToast,
+     | ^^^^^^^
+> 20 |   Skeleton,
+     | ^^^^^^^
+> 21 |   SkeletonText,
+     | ^^^^^^^
+> 22 |   Center
+     | ^^^^^^^
+> 23 | } from '@chakra-ui/react';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  24 | import { 
+  25 |   ArrowLeft, 
+  26 |   ArrowRight, 
+
+The export useToast was not found in module [project]/node_modules/@chakra-ui/react/dist/esm/index.js [app-client] (ecmascript).
+Did you mean to import useTabs?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component Browser]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component SSR]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1920
+[  624291ms] [ERROR] ./src/app/dashboard/brand-dna/page.tsx:5:1
+Export useToast doesn't exist in target module
+   3 | import React, { useState, useEffect } from 'react';
+   4 | import { useRouter } from 'next/navigation';
+>  5 | import { 
+     | ^^^^^^^^^
+>  6 |   Box, 
+     | ^^^^^^^
+>  7 |   Flex, 
+     | ^^^^^^^
+>  8 |   Heading, 
+     | ^^^^^^^
+>  9 |   Text, 
+     | ^^^^^^^
+> 10 |   Button, 
+     | ^^^^^^^
+> 11 |   SimpleGrid, 
+     | ^^^^^^^
+> 12 |   Icon, 
+     | ^^^^^^^
+> 13 |   Stack, 
+     | ^^^^^^^
+> 14 |   Badge, 
+     | ^^^^^^^
+> 15 |   Circle, 
+     | ^^^^^^^
+> 16 |   Textarea, 
+     | ^^^^^^^
+> 17 |   Spinner, 
+     | ^^^^^^^
+> 18 |   Progress,
+     | ^^^^^^^
+> 19 |   useToast,
+     | ^^^^^^^
+> 20 |   Skeleton,
+     | ^^^^^^^
+> 21 |   SkeletonText,
+     | ^^^^^^^
+> 22 |   Center
+     | ^^^^^^^
+> 23 | } from '@chakra-ui/react';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  24 | import { 
+  25 |   ArrowLeft, 
+  26 |   ArrowRight, 
+
+The export useToast was not found in module [project]/node_modules/@chakra-ui/react/dist/esm/index.js [app-ssr] (ecmascript).
+Did you mean to import useTabs?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component Browser]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component SSR]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1920
+[  684113ms] [ERROR] ./src/app/dashboard/brand-dna/page.tsx:5:1
+Export useToast doesn't exist in target module
+   3 | import React, { useState, useEffect } from 'react';
+   4 | import { useRouter } from 'next/navigation';
+>  5 | import { 
+     | ^^^^^^^^^
+>  6 |   Box, 
+     | ^^^^^^^
+>  7 |   Flex, 
+     | ^^^^^^^
+>  8 |   Heading, 
+     | ^^^^^^^
+>  9 |   Text, 
+     | ^^^^^^^
+> 10 |   Button, 
+     | ^^^^^^^
+> 11 |   SimpleGrid, 
+     | ^^^^^^^
+> 12 |   Icon, 
+     | ^^^^^^^
+> 13 |   Stack, 
+     | ^^^^^^^
+> 14 |   Badge, 
+     | ^^^^^^^
+> 15 |   Circle, 
+     | ^^^^^^^
+> 16 |   Textarea, 
+     | ^^^^^^^
+> 17 |   Spinner, 
+     | ^^^^^^^
+> 18 |   Progress,
+     | ^^^^^^^
+> 19 |   useToast,
+     | ^^^^^^^
+> 20 |   Skeleton,
+     | ^^^^^^^
+> 21 |   SkeletonText,
+     | ^^^^^^^
+> 22 |   Center
+     | ^^^^^^^
+> 23 | } from '@chakra-ui/react';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  24 | import { 
+  25 |   ArrowLeft, 
+  26 |   ArrowRight, 
+
+The export useToast was not found in module [project]/node_modules/@chakra-ui/react/dist/esm/index.js [app-client] (ecmascript).
+Did you mean to import useTabs?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component Browser]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component SSR]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1920
+[  684113ms] [ERROR] ./src/app/dashboard/brand-dna/page.tsx:5:1
+Export useToast doesn't exist in target module
+   3 | import React, { useState, useEffect } from 'react';
+   4 | import { useRouter } from 'next/navigation';
+>  5 | import { 
+     | ^^^^^^^^^
+>  6 |   Box, 
+     | ^^^^^^^
+>  7 |   Flex, 
+     | ^^^^^^^
+>  8 |   Heading, 
+     | ^^^^^^^
+>  9 |   Text, 
+     | ^^^^^^^
+> 10 |   Button, 
+     | ^^^^^^^
+> 11 |   SimpleGrid, 
+     | ^^^^^^^
+> 12 |   Icon, 
+     | ^^^^^^^
+> 13 |   Stack, 
+     | ^^^^^^^
+> 14 |   Badge, 
+     | ^^^^^^^
+> 15 |   Circle, 
+     | ^^^^^^^
+> 16 |   Textarea, 
+     | ^^^^^^^
+> 17 |   Spinner, 
+     | ^^^^^^^
+> 18 |   Progress,
+     | ^^^^^^^
+> 19 |   useToast,
+     | ^^^^^^^
+> 20 |   Skeleton,
+     | ^^^^^^^
+> 21 |   SkeletonText,
+     | ^^^^^^^
+> 22 |   Center
+     | ^^^^^^^
+> 23 | } from '@chakra-ui/react';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  24 | import { 
+  25 |   ArrowLeft, 
+  26 |   ArrowRight, 
+
+The export useToast was not found in module [project]/node_modules/@chakra-ui/react/dist/esm/index.js [app-ssr] (ecmascript).
+Did you mean to import useTabs?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component Browser]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component SSR]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1920
+[  684212ms] [ERROR] ./src/app/dashboard/brand-dna/page.tsx:5:1
+Export useToast doesn't exist in target module
+   3 | import React, { useState, useEffect } from 'react';
+   4 | import { useRouter } from 'next/navigation';
+>  5 | import { 
+     | ^^^^^^^^^
+>  6 |   Box, 
+     | ^^^^^^^
+>  7 |   Flex, 
+     | ^^^^^^^
+>  8 |   Heading, 
+     | ^^^^^^^
+>  9 |   Text, 
+     | ^^^^^^^
+> 10 |   Button, 
+     | ^^^^^^^
+> 11 |   SimpleGrid, 
+     | ^^^^^^^
+> 12 |   Icon, 
+     | ^^^^^^^
+> 13 |   Stack, 
+     | ^^^^^^^
+> 14 |   Badge, 
+     | ^^^^^^^
+> 15 |   Circle, 
+     | ^^^^^^^
+> 16 |   Textarea, 
+     | ^^^^^^^
+> 17 |   Spinner, 
+     | ^^^^^^^
+> 18 |   Progress,
+     | ^^^^^^^
+> 19 |   useToast,
+     | ^^^^^^^
+> 20 |   Skeleton,
+     | ^^^^^^^
+> 21 |   SkeletonText,
+     | ^^^^^^^
+> 22 |   Center
+     | ^^^^^^^
+> 23 | } from '@chakra-ui/react';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  24 | import { 
+  25 |   ArrowLeft, 
+  26 |   ArrowRight, 
+
+The export useToast was not found in module [project]/node_modules/@chakra-ui/react/dist/esm/index.js [app-client] (ecmascript).
+Did you mean to import useTabs?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component Browser]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component SSR]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1920
+[  684212ms] [ERROR] ./src/app/dashboard/brand-dna/page.tsx:5:1
+Export useToast doesn't exist in target module
+   3 | import React, { useState, useEffect } from 'react';
+   4 | import { useRouter } from 'next/navigation';
+>  5 | import { 
+     | ^^^^^^^^^
+>  6 |   Box, 
+     | ^^^^^^^
+>  7 |   Flex, 
+     | ^^^^^^^
+>  8 |   Heading, 
+     | ^^^^^^^
+>  9 |   Text, 
+     | ^^^^^^^
+> 10 |   Button, 
+     | ^^^^^^^
+> 11 |   SimpleGrid, 
+     | ^^^^^^^
+> 12 |   Icon, 
+     | ^^^^^^^
+> 13 |   Stack, 
+     | ^^^^^^^
+> 14 |   Badge, 
+     | ^^^^^^^
+> 15 |   Circle, 
+     | ^^^^^^^
+> 16 |   Textarea, 
+     | ^^^^^^^
+> 17 |   Spinner, 
+     | ^^^^^^^
+> 18 |   Progress,
+     | ^^^^^^^
+> 19 |   useToast,
+     | ^^^^^^^
+> 20 |   Skeleton,
+     | ^^^^^^^
+> 21 |   SkeletonText,
+     | ^^^^^^^
+> 22 |   Center
+     | ^^^^^^^
+> 23 | } from '@chakra-ui/react';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  24 | import { 
+  25 |   ArrowLeft, 
+  26 |   ArrowRight, 
+
+The export useToast was not found in module [project]/node_modules/@chakra-ui/react/dist/esm/index.js [app-ssr] (ecmascript).
+Did you mean to import useTabs?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component Browser]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component SSR]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1920
+[  684275ms] [ERROR] ./src/app/dashboard/brand-dna/page.tsx:5:1
+Export useToast doesn't exist in target module
+   3 | import React, { useState, useEffect } from 'react';
+   4 | import { useRouter } from 'next/navigation';
+>  5 | import { 
+     | ^^^^^^^^^
+>  6 |   Box, 
+     | ^^^^^^^
+>  7 |   Flex, 
+     | ^^^^^^^
+>  8 |   Heading, 
+     | ^^^^^^^
+>  9 |   Text, 
+     | ^^^^^^^
+> 10 |   Button, 
+     | ^^^^^^^
+> 11 |   SimpleGrid, 
+     | ^^^^^^^
+> 12 |   Icon, 
+     | ^^^^^^^
+> 13 |   Stack, 
+     | ^^^^^^^
+> 14 |   Badge, 
+     | ^^^^^^^
+> 15 |   Circle, 
+     | ^^^^^^^
+> 16 |   Textarea, 
+     | ^^^^^^^
+> 17 |   Spinner, 
+     | ^^^^^^^
+> 18 |   Progress,
+     | ^^^^^^^
+> 19 |   useToast,
+     | ^^^^^^^
+> 20 |   Skeleton,
+     | ^^^^^^^
+> 21 |   SkeletonText,
+     | ^^^^^^^
+> 22 |   Center
+     | ^^^^^^^
+> 23 | } from '@chakra-ui/react';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  24 | import { 
+  25 |   ArrowLeft, 
+  26 |   ArrowRight, 
+
+The export useToast was not found in module [project]/node_modules/@chakra-ui/react/dist/esm/index.js [app-client] (ecmascript).
+Did you mean to import useTabs?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component Browser]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component SSR]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1920
+[  684275ms] [ERROR] ./src/app/dashboard/brand-dna/page.tsx:5:1
+Export useToast doesn't exist in target module
+   3 | import React, { useState, useEffect } from 'react';
+   4 | import { useRouter } from 'next/navigation';
+>  5 | import { 
+     | ^^^^^^^^^
+>  6 |   Box, 
+     | ^^^^^^^
+>  7 |   Flex, 
+     | ^^^^^^^
+>  8 |   Heading, 
+     | ^^^^^^^
+>  9 |   Text, 
+     | ^^^^^^^
+> 10 |   Button, 
+     | ^^^^^^^
+> 11 |   SimpleGrid, 
+     | ^^^^^^^
+> 12 |   Icon, 
+     | ^^^^^^^
+> 13 |   Stack, 
+     | ^^^^^^^
+> 14 |   Badge, 
+     | ^^^^^^^
+> 15 |   Circle, 
+     | ^^^^^^^
+> 16 |   Textarea, 
+     | ^^^^^^^
+> 17 |   Spinner, 
+     | ^^^^^^^
+> 18 |   Progress,
+     | ^^^^^^^
+> 19 |   useToast,
+     | ^^^^^^^
+> 20 |   Skeleton,
+     | ^^^^^^^
+> 21 |   SkeletonText,
+     | ^^^^^^^
+> 22 |   Center
+     | ^^^^^^^
+> 23 | } from '@chakra-ui/react';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  24 | import { 
+  25 |   ArrowLeft, 
+  26 |   ArrowRight, 
+
+The export useToast was not found in module [project]/node_modules/@chakra-ui/react/dist/esm/index.js [app-ssr] (ecmascript).
+Did you mean to import useTabs?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component Browser]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component SSR]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1920
+[  689223ms] [ERROR] ./src/app/dashboard/brand-dna/page.tsx:5:1
+Export useToast doesn't exist in target module
+   3 | import React, { useState, useEffect } from 'react';
+   4 | import { useRouter } from 'next/navigation';
+>  5 | import { 
+     | ^^^^^^^^^
+>  6 |   Box, 
+     | ^^^^^^^
+>  7 |   Flex, 
+     | ^^^^^^^
+>  8 |   Heading, 
+     | ^^^^^^^
+>  9 |   Text, 
+     | ^^^^^^^
+> 10 |   Button, 
+     | ^^^^^^^
+> 11 |   SimpleGrid, 
+     | ^^^^^^^
+> 12 |   Icon, 
+     | ^^^^^^^
+> 13 |   Stack, 
+     | ^^^^^^^
+> 14 |   Badge, 
+     | ^^^^^^^
+> 15 |   Circle, 
+     | ^^^^^^^
+> 16 |   Textarea, 
+     | ^^^^^^^
+> 17 |   Spinner, 
+     | ^^^^^^^
+> 18 |   Progress,
+     | ^^^^^^^
+> 19 |   useToast,
+     | ^^^^^^^
+> 20 |   Skeleton,
+     | ^^^^^^^
+> 21 |   SkeletonText,
+     | ^^^^^^^
+> 22 |   Center
+     | ^^^^^^^
+> 23 | } from '@chakra-ui/react';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  24 | import { 
+  25 |   ArrowLeft, 
+  26 |   ArrowRight, 
+
+The export useToast was not found in module [project]/node_modules/@chakra-ui/react/dist/esm/index.js [app-client] (ecmascript).
+Did you mean to import useTabs?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component Browser]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component SSR]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1920
+[  689224ms] [ERROR] ./src/app/dashboard/brand-dna/page.tsx:5:1
+Export useToast doesn't exist in target module
+   3 | import React, { useState, useEffect } from 'react';
+   4 | import { useRouter } from 'next/navigation';
+>  5 | import { 
+     | ^^^^^^^^^
+>  6 |   Box, 
+     | ^^^^^^^
+>  7 |   Flex, 
+     | ^^^^^^^
+>  8 |   Heading, 
+     | ^^^^^^^
+>  9 |   Text, 
+     | ^^^^^^^
+> 10 |   Button, 
+     | ^^^^^^^
+> 11 |   SimpleGrid, 
+     | ^^^^^^^
+> 12 |   Icon, 
+     | ^^^^^^^
+> 13 |   Stack, 
+     | ^^^^^^^
+> 14 |   Badge, 
+     | ^^^^^^^
+> 15 |   Circle, 
+     | ^^^^^^^
+> 16 |   Textarea, 
+     | ^^^^^^^
+> 17 |   Spinner, 
+     | ^^^^^^^
+> 18 |   Progress,
+     | ^^^^^^^
+> 19 |   useToast,
+     | ^^^^^^^
+> 20 |   Skeleton,
+     | ^^^^^^^
+> 21 |   SkeletonText,
+     | ^^^^^^^
+> 22 |   Center
+     | ^^^^^^^
+> 23 | } from '@chakra-ui/react';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  24 | import { 
+  25 |   ArrowLeft, 
+  26 |   ArrowRight, 
+
+The export useToast was not found in module [project]/node_modules/@chakra-ui/react/dist/esm/index.js [app-ssr] (ecmascript).
+Did you mean to import useTabs?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component Browser]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component SSR]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1920
+[  689462ms] [ERROR] ./src/app/dashboard/brand-dna/page.tsx:5:1
+Export useToast doesn't exist in target module
+   3 | import React, { useState, useEffect } from 'react';
+   4 | import { useRouter } from 'next/navigation';
+>  5 | import { 
+     | ^^^^^^^^^
+>  6 |   Box, 
+     | ^^^^^^^
+>  7 |   Flex, 
+     | ^^^^^^^
+>  8 |   Heading, 
+     | ^^^^^^^
+>  9 |   Text, 
+     | ^^^^^^^
+> 10 |   Button, 
+     | ^^^^^^^
+> 11 |   SimpleGrid, 
+     | ^^^^^^^
+> 12 |   Icon, 
+     | ^^^^^^^
+> 13 |   Stack, 
+     | ^^^^^^^
+> 14 |   Badge, 
+     | ^^^^^^^
+> 15 |   Circle, 
+     | ^^^^^^^
+> 16 |   Textarea, 
+     | ^^^^^^^
+> 17 |   Spinner, 
+     | ^^^^^^^
+> 18 |   Progress,
+     | ^^^^^^^
+> 19 |   useToast,
+     | ^^^^^^^
+> 20 |   Skeleton,
+     | ^^^^^^^
+> 21 |   SkeletonText,
+     | ^^^^^^^
+> 22 |   Center
+     | ^^^^^^^
+> 23 | } from '@chakra-ui/react';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  24 | import { 
+  25 |   ArrowLeft, 
+  26 |   ArrowRight, 
+
+The export useToast was not found in module [project]/node_modules/@chakra-ui/react/dist/esm/index.js [app-client] (ecmascript).
+Did you mean to import useTabs?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component Browser]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component SSR]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1920
+[  689462ms] [ERROR] ./src/app/dashboard/brand-dna/page.tsx:5:1
+Export useToast doesn't exist in target module
+   3 | import React, { useState, useEffect } from 'react';
+   4 | import { useRouter } from 'next/navigation';
+>  5 | import { 
+     | ^^^^^^^^^
+>  6 |   Box, 
+     | ^^^^^^^
+>  7 |   Flex, 
+     | ^^^^^^^
+>  8 |   Heading, 
+     | ^^^^^^^
+>  9 |   Text, 
+     | ^^^^^^^
+> 10 |   Button, 
+     | ^^^^^^^
+> 11 |   SimpleGrid, 
+     | ^^^^^^^
+> 12 |   Icon, 
+     | ^^^^^^^
+> 13 |   Stack, 
+     | ^^^^^^^
+> 14 |   Badge, 
+     | ^^^^^^^
+> 15 |   Circle, 
+     | ^^^^^^^
+> 16 |   Textarea, 
+     | ^^^^^^^
+> 17 |   Spinner, 
+     | ^^^^^^^
+> 18 |   Progress,
+     | ^^^^^^^
+> 19 |   useToast,
+     | ^^^^^^^
+> 20 |   Skeleton,
+     | ^^^^^^^
+> 21 |   SkeletonText,
+     | ^^^^^^^
+> 22 |   Center
+     | ^^^^^^^
+> 23 | } from '@chakra-ui/react';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  24 | import { 
+  25 |   ArrowLeft, 
+  26 |   ArrowRight, 
+
+The export useToast was not found in module [project]/node_modules/@chakra-ui/react/dist/esm/index.js [app-ssr] (ecmascript).
+Did you mean to import useTabs?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component Browser]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/dashboard/brand-dna/page.tsx [Client Component SSR]
+    ./src/app/dashboard/brand-dna/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1920
+[  736705ms] [WARNING] [Fast Refresh] performing full reload because your application had an unrecoverable error @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1206
+[  739664ms] [ERROR] Fetch failed, using fallback data Error: `headers` was called outside a request scope. Read more: https://nextjs.org/docs/messages/next-dynamic-api-wrong-context
+    at throwForMissingRequestStore (http://localhost:3000/_next/static/chunks/node_modules_next_dist_f3530cac._.js:3733:33)
+    at headers (http://localhost:3000/_next/static/chunks/node_modules_next_dist_server_16408950._.js:1267:67)
+    at getServerSession (http://localhost:3000/_next/static/chunks/node_modules_next-auth_575f2ea6._.js:3608:47)
+    at getAuthHeaders (http://localhost:3000/_next/static/chunks/src_b5cc678e._.js:24:188)
+    at fetchWithAuth (http://localhost:3000/_next/static/chunks/src_b5cc678e._.js:35:31)
+    at getBrandDNA (http://localhost:3000/_next/static/chunks/src_b5cc678e._.js:163:12)
+    at fetchData (http://localhost:3000/_next/static/chunks/src_b5cc678e._.js:658:189)
+    at BrandDNAPage.useEffect (http://localhost:3000/_next/static/chunks/src_b5cc678e._.js:669:13)
+    at Object.react_stack_bottom_frame (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:14876:22)
+    at runWithFiberInDEV (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:965:74)
+    at commitHookEffectListMount (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:7266:167)
+    at commitHookPassiveMountEffects (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:7301:60)
+    at commitPassiveMountOnFiber (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:8696:33)
+    at recursivelyTraversePassiveMountEffects (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:8683:316)
+    at commitPassiveMountOnFiber (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:8695:17)
+    at recursivelyTraversePassiveMountEffects (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:8683:316)
+    at commitPassiveMountOnFiber (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:8695:17)
+    at recursivelyTraversePassiveMountEffects (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:8683:316)
+    at commitPassiveMountOnFiber (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:8757:17)
+    at recursivelyTraversePassiveMountEffects (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:8683:316)
+    at commitPassiveMountOnFiber (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:8757:17)
+    at recursivelyTraversePassiveMountEffects (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:8683:316)
+    at commitPassiveMountOnFiber (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:8695:17)
+    at recursivelyTraversePassiveMountEffects (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:8683:316)
+    at commitPassiveMountOnFiber (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:8700:17)
+    at recursivelyTraversePassiveMountEffects (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:8683:316)
+    at commitPassiveMountOnFiber (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:8695:17)
+    at recursivelyTraversePassiveMountEffects (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:8683:316)
+    at commitPassiveMountOnFiber (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:8695:17)
+    at recursivelyTraversePassiveMountEffects (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:8683:316)
+    at commitPassiveMountOnFiber (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:8695:17)
+    at recursivelyTraversePassiveMountEffects (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:8683:316)
+    at commitPassiveMountOnFiber (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:8695:17)
+    at recursivelyTraversePassiveMountEffects (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:8683:316)
+    at commitPassiveMountOnFiber (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:8700:17)
+    at recursivelyTraversePassiveMountEffects (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:8683:316)
+    at commitPassiveMountOnFiber (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:8695:17)
+    at recursivelyTraversePassiveMountEffects (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:8683:316)
+    at commitPassiveMountOnFiber (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:8695:17)
+    at recursivelyTraversePassiveMountEffects (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:8683:316)
+    at commitPassiveMountOnFiber (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:8757:17)
+    at recursivelyTraversePassiveMountEffects (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:8683:316)
+    at commitPassiveMountOnFiber (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:8757:17)
+    at recursivelyTraversePassiveMountEffects (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:8683:316)
+    at commitPassiveMountOnFiber (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:8695:17)
+    at recursivelyTraversePassiveMountEffects (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:8683:316)
+    at commitPassiveMountOnFiber (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:8695:17)
+    at recursivelyTraversePassiveMountEffects (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:8683:316)
+    at commitPassiveMountOnFiber (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:8757:17)
+    at recursivelyTraversePassiveMountEffects (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:8683:316) @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_f3530cac._.js:3127
