@@ -1,9 +1,14 @@
 "use client";
 
-import { Box } from "@chakra-ui/react";
-import { useToolState } from "@/hooks/useToolState";
+import { useCallback } from "react";
+import { useRouter } from "next/navigation";
+import { Box, Flex, Text } from "@chakra-ui/react";
+import { useOnboardingFlow } from "@/hooks";
+import { useAuth, AuthProvider } from "@/store/AuthProvider";
+
 import ToolNavbar from "@/components/tool/ToolNavbar";
 import StepBar from "@/components/tool/StepBar";
+import Footer from "@/components/layout/Footer";
 import AuthModal from "@/components/tool/AuthModal";
 import Toast from "@/components/tool/Toast";
 import Page1URL from "@/components/tool/Page1URL";
@@ -27,53 +32,146 @@ export default function ToolPage() {
   } = useToolState();
 
   return (
-    <LightMode>
-      <Box className="tool-app" bg="bg" minH="100vh">
-        <ToolNavbar
-        auth={auth}
-        onLogin={() => { setModalMode("login"); setModalOpen(true); }}
-        onSignup={() => { setModalMode("signup"); setModalOpen(true); }}
-        onLogout={handleLogout}
-        onHome={handleNewAnalysis}
+    <Box bg="#faf5ff" minH="100vh" overflowX="hidden">
+      {/* Tool Navbar */}
+      <ToolNavbar
+        user={user}
+        onLoginClick={ts.openLogin}
+        onSignupClick={ts.openSignup}
+        onLogout={signOut}
+        onHome={onHome}
       />
-      <StepBar curStep={curStep} maxReached={maxReached} onNav={goStep} />
-      <AuthModal
-        open={modalOpen}
-        mode={modalMode}
-        onClose={() => setModalOpen(false)}
-        onSwitch={setModalMode}
-        onAuth={handleAuth}
-      />
-      <Toast msg={toastMsg} visible={toastVisible} />
 
-      {curStep === 1 && <Page1URL onAnalyse={handleAnalyse} />}
-      {curStep === 2 && <Page2Analysing url={url} brandName={brandName} onDone={handleAnalysisDone} />}
-      {curStep === 3 && (
-        <Page3Results
-          url={url} ctx={ctx} ratings={ratings} bm={bm} likes={likes} selCtx={selCtx}
-          onSelect={handleSelectCtx} onRate={handleRate} onToggleBm={handleToggleBm}
-          onToggleLike={handleToggleLike} onUseSelected={handleUseSelected}
-          onNewAnalysis={handleNewAnalysis} onCopy={copyToCB}
+      {/* Step Bar */}
+      <StepBar
+        curStep={ts.curStep}
+        maxReached={ts.maxReached}
+        onNav={ts.goTo}
+      />
+
+      {/* Auth Modal */}
+      <AuthModal
+        open={ts.modalOpen}
+        mode={ts.modalMode}
+        onClose={ts.closeModal}
+        onSwitch={ts.setModalMode}
+        onAuthSuccess={handleAuthSuccess}
+      />
+
+      {/* Pages */}
+      {ts.curStep === 1 && <URLInput onAnalyse={ts.handleAnalyse} />}
+
+      {ts.curStep === 2 && (
+        <BrandAnalysis
+          url={ts.url}
+          brandName={ts.brandName}
+          token={session?.access_token}
+          onDone={() => ts.goTo(3)}
+          onBack={() => ts.goTo(1)}
         />
       )}
-      {curStep === 4 && (
-        <Page4SelectContext ctx={ctx} selCtx={selCtx} onSelect={handleSelectCtx} onBack={() => goStep(3)} onNext={handleGoTemplates} />
-      )}
-      {curStep === 5 && (
-        <Page5TemplateOptions
-          ctx={ctx} selCtx={selCtx} selTpl={selTpl} selIgTpl={selIgTpl}
-          platform={platform} tone={tone} emoji={emoji} cta={cta} offer={offer} slideN={slideN} auth={auth}
-          onBack={() => goStep(4)} onSelPlatform={setPlatform} onSelTpl={setSelTpl}
-          onSelIgTpl={setSelIgTpl} onSelTone={setTone} onSelEmoji={setEmoji}
-          onSetCta={setCta} onSetOffer={setOffer} onSetSlideN={setSlideN}
-          onSetField={handleSetField} onGenerate={handleGenerate} onOpenLogin={() => { setModalMode("login"); setModalOpen(true); }}
+
+      {ts.curStep === 3 && (
+        <ContextResults
+          url={ts.url}
+          ctx={ts.ctx}
+          ratings={ts.ratings}
+          bm={ts.bm}
+          likes={ts.likes}
+          selCtx={ts.selCtx}
+          onSelect={ts.selectCtx}
+          onRate={ts.rateCtx}
+          onToggleBm={ts.toggleBm}
+          onToggleLike={ts.toggleLike}
+          onUseSelected={ts.useSelected}
+          onNewAnalysis={ts.newAnalysis}
+          onCopy={ts.copyText}
         />
       )}
-      {curStep === 6 && <Page6Generating onDone={handleGenerateDone} />}
-      {curStep === 7 && gen && (
-        <Page7Output gen={gen} onCopy={copyToCB} onBack={() => goStep(5)} onNewAnalysis={handleNewAnalysis} />
+
+      {ts.curStep === 4 && (
+        <ContextSelector
+          ctx={ts.ctx}
+          selCtx={ts.selCtx}
+          onSelect={ts.selectCtx}
+          onBack={ts.prev}
+          onNext={ts.next}
+        />
       )}
-      </Box>
-    </LightMode>
+
+      {ts.curStep === 5 && (
+        <TemplateOptions
+          ctx={ts.ctx}
+          selCtx={ts.selCtx}
+          selTpl={ts.selTpl}
+          selIgTpl={ts.selIgTpl}
+          platform={ts.platform}
+          tone={ts.tone}
+          emoji={ts.emoji}
+          cta={ts.cta}
+          offer={ts.offer}
+          slideN={ts.slideN}
+          isLoggedIn={!!user}
+          onBack={ts.prev}
+          onSelPlatform={ts.setPlatform}
+          onSelTpl={ts.setSelTpl}
+          onSelIgTpl={ts.setSelIgTpl}
+          onSelTone={(t: string) => ts.setTone(t)}
+          onSelEmoji={ts.setEmoji}
+          onSetCta={ts.setCta}
+          onSetOffer={ts.setOffer}
+          onSetSlideN={ts.setSlideN}
+          onSetField={ts.setField}
+          onGenerate={ts.handleGenerate}
+          onOpenLogin={ts.openLogin}
+        />
+      )}
+
+      {ts.curStep === 6 && <AdGeneration onDone={handleGenDone} />}
+
+      {ts.curStep === 7 && ts.gen && (
+        <AdOutput
+          gen={ts.gen}
+          onCopy={ts.copyText}
+          onBack={ts.prev}
+          onNewAnalysis={ts.newAnalysis}
+        />
+      )}
+
+      {/* Toast notification */}
+      {ts.toastVisible && (
+        <Flex
+          position="fixed"
+          bottom={6}
+          left="50%"
+          transform="translateX(-50%)"
+          bg="#111827"
+          color="white"
+          px={5}
+          py={3}
+          rounded="full"
+          boxShadow="0 10px 40px rgba(0,0,0,0.15)"
+          align="center"
+          gap={2}
+          zIndex={1000}
+          fontSize="sm"
+          fontWeight="bold"
+        >
+          <Text>✓</Text>
+          <Text>{ts.toastMsg}</Text>
+        </Flex>
+      )}
+
+      {/* Footer */}
+      <Footer />
+    </Box>
+  );
+}
+
+export default function OnboardingPage() {
+  return (
+    <AuthProvider>
+      <ToolContent />
+    </AuthProvider>
   );
 }

@@ -3,7 +3,9 @@
 import { Box, Flex, Heading, Text, Image } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const MotionBox = motion.create(Box as React.ComponentType<any>);
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const MotionFlex = motion.create(Flex as React.ComponentType<any>);
 
 const useCases = [

@@ -4,7 +4,9 @@ import { Box, Flex, Grid, Heading, Text, Icon } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { ScanSearch, FileChartColumn, Sparkles, CalendarClock, Share2, BarChart3 } from "lucide-react";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const MotionBox = motion.create(Box as React.ComponentType<any>);
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const MotionGrid = motion.create(Grid as React.ComponentType<any>);
 
 const containerVariants = {
@@ -111,7 +113,7 @@ export default function FeatureGrid() {
             </Flex>
             <Heading as="h3" fontSize={{ base: "lg", md: "xl" }} fontWeight="700" mb="2" color="gray.900">Multi-Platform Distribution</Heading>
             <Text color="gray.500" fontSize={{ base: "sm", md: "md" }} lineHeight="1.7" mb="5">
-              Publish and manage your ads across every major platform. AdForge formats each creative perfectly for the channel and audience it's targeting.
+              Publish and manage your ads across every major platform. AdForge formats each creative perfectly for the channel and audience it&apos;s targeting.
             </Text>
             <Flex direction="column" gap="3" mt="auto">
               {[["Instagram", "#d946ef"], ["Facebook", "#2563eb"], ["LinkedIn", "#0891b2"], ["Twitter / X", "#374151"]].map(([name, color]) => (

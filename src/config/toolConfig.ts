@@ -1,4 +1,4 @@
-import { BrandContext, Template, IGTemplate, ContextMeta } from "@/types/tool";
+import { BrandContext, Template, IGTemplate, ContextMeta } from "@/types/onboarding.types";
 
 export const CTXS: BrandContext[] = [
   {

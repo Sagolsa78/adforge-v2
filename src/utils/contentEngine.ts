@@ -1,5 +1,5 @@
-import { ToolState, GeneratedContent, BrandContext, Template, IGTemplate } from "@/types/tool";
-import { TPLS, IG_TPLS } from "@/config/toolData";
+import { ToolState, GeneratedContent, Template, IGTemplate } from "@/types/onboarding.types";
+import { TPLS, IG_TPLS } from "@/config";
 
 export function buildContent(state: ToolState): GeneratedContent {
   const ctx = state.ctx.find((x) => x.id === state.selCtx);

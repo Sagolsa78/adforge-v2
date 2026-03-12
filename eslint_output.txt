@@ -1,0 +1,50 @@
+
+/mnt/Drive_01/Bhuexpert01/adforge_design/adforge-app/src/components/landing/FeatureGrid.tsx
+    7:60   error  Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+    8:62   error  Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  114:143  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+/mnt/Drive_01/Bhuexpert01/adforge_design/adforge-app/src/components/landing/FinalCTA.tsx
+  7:60  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  8:62  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/mnt/Drive_01/Bhuexpert01/adforge_design/adforge-app/src/components/landing/HeroSection.tsx
+  7:60  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  8:62  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/mnt/Drive_01/Bhuexpert01/adforge_design/adforge-app/src/components/landing/HowItWorks.tsx
+  7:60  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  8:62  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/mnt/Drive_01/Bhuexpert01/adforge_design/adforge-app/src/components/landing/UseCases.tsx
+  6:60  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  7:62  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/mnt/Drive_01/Bhuexpert01/adforge_design/adforge-app/src/components/tool/AuthModal.tsx
+  4:50  warning  'HStack' is defined but never used  @typescript-eslint/no-unused-vars
+
+/mnt/Drive_01/Bhuexpert01/adforge_design/adforge-app/src/components/tool/ContextResults.tsx
+  44:7  warning  Expected an assignment or function call and instead saw an expression  @typescript-eslint/no-unused-expressions
+
+/mnt/Drive_01/Bhuexpert01/adforge_design/adforge-app/src/components/tool/TemplateOptions.tsx
+   14:3   warning  'HStack' is defined but never used         @typescript-eslint/no-unused-vars
+  377:77  error    Unexpected any. Specify a different type   @typescript-eslint/no-explicit-any
+  578:29  error    Unexpected any. Specify a different type   @typescript-eslint/no-explicit-any
+  908:23  warning  The value for aria-label must be a string  jsx-a11y/aria-proptypes
+
+/mnt/Drive_01/Bhuexpert01/adforge_design/adforge-app/src/components/tool/ToolNavbar.tsx
+  5:35  warning  'Container' is defined but never used  @typescript-eslint/no-unused-vars
+
+/mnt/Drive_01/Bhuexpert01/adforge_design/adforge-app/src/components/ui/color-mode.tsx
+  10:18  error  An interface declaring no members is equivalent to its supertype  @typescript-eslint/no-empty-object-type
+  49:11  error  An interface declaring no members is equivalent to its supertype  @typescript-eslint/no-empty-object-type
+
+/mnt/Drive_01/Bhuexpert01/adforge_design/adforge-app/src/hooks/useOnboardingFlow.ts
+  87:7  warning  Expected an assignment or function call and instead saw an expression  @typescript-eslint/no-unused-expressions
+  95:7  warning  Expected an assignment or function call and instead saw an expression  @typescript-eslint/no-unused-expressions
+
+/mnt/Drive_01/Bhuexpert01/adforge_design/adforge-app/src/utils/contentEngine.ts
+  1:39  warning  'BrandContext' is defined but never used  @typescript-eslint/no-unused-vars
+
+✖ 23 problems (15 errors, 8 warnings)
+

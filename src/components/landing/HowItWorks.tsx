@@ -4,7 +4,9 @@ import { Box, Flex, Heading, Text } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { Globe, BrainCircuit, LayoutTemplate, CalendarClock } from "lucide-react";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const MotionBox = motion.create(Box as React.ComponentType<any>);
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const MotionFlex = motion.create(Flex as React.ComponentType<any>);
 
 const steps = [
@@ -61,7 +63,7 @@ export default function HowItWorks() {
       bg="linear-gradient(180deg, #faf5ff 0%, #ffffff 100%)"
       id="how-it-works"
     >
-      <Box maxW={{ base: "100%", md: "5xl" }} mx="auto">
+      <Box maxW={{ base: "100%", md: "6xl" }} mx="auto">
         {/* Header */}
         <MotionBox
           textAlign="center"

@@ -1,1 +1,2 @@
-export default { experimental: { optimizePackageImports: ["@chakra-ui/react"] } }
+const nextConfig = { experimental: { optimizePackageImports: ["@chakra-ui/react"] } };
+export default nextConfig;
