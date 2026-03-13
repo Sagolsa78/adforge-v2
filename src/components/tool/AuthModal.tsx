@@ -3,7 +3,8 @@
 import { useState } from "react";
 import { Box, Flex, Text, Button, Input, VStack, IconButton, Spinner } from "@chakra-ui/react";
 import { X, Check, Mail } from "lucide-react";
-import { useAuth } from "@/store/AuthProvider";
+import { signIn } from "next-auth/react";
+import { signUp } from "@/lib/api";
 
 interface Props {
   open: boolean;
@@ -14,8 +15,6 @@ interface Props {
 }
 
 export default function AuthModal({ open, mode, onClose, onSwitch, onAuthSuccess }: Props) {
-  const { signInWithEmail, signUpWithEmail, signInWithGoogle, signInWithMagicLink } = useAuth();
-
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
@@ -45,15 +44,53 @@ export default function AuthModal({ open, mode, onClose, onSwitch, onAuthSuccess
     setLoading(true);
     try {
       if (mode === "login") {
-        await signInWithEmail(email, pass);
+        console.log("Attempting NextAuth signIn with credentials...");
+        const res = await signIn("credentials", {
+          email,
+          password: pass,
+          redirect: false,
+        });
+        
+        console.log("NextAuth signIn response:", res);
+        
+        if (res?.error) {
+          console.error("SignIn error reported by NextAuth:", res.error);
+          if (res.error === "CredentialsSignin") {
+            setErr("Invalid email or password. Please check your credentials and try again.");
+          } else if (res.error.includes("Supabase")) {
+            setErr("Authentication service error. Please try again later.");
+          } else {
+            setErr(res.error);
+          }
+        } else {
+          console.log("SignIn success!");
+          onAuthSuccess();
+          resetForm();
+        }
       } else {
-        await signUpWithEmail(email, pass, name);
+        // Sign up logic
+        const signUpRes = await signUp(email, pass, name);
+        if (!signUpRes) {
+          throw new Error("Failed to create account. Please try again.");
+        }
+
+        // After signup, sign in automatically
+        const res = await signIn("credentials", {
+          email,
+          password: pass,
+          redirect: false,
+        });
+        
+        if (res?.error) {
+          setErr("Account created successfully, but automatic sign-in failed. Please use the Sign In tab to continue.");
+        } else {
+          onAuthSuccess();
+          resetForm();
+        }
       }
-      resetForm();
-      onAuthSuccess();
-    } catch (e: unknown) {
-      const error = e as { message?: string };
-      setErr(error.message || "Authentication failed. Please try again.");
+    } catch (e: any) {
+      console.error("Auth error:", e);
+      setErr(e.message || "An unexpected error occurred during authentication.");
     } finally {
       setLoading(false);
     }
@@ -62,7 +99,7 @@ export default function AuthModal({ open, mode, onClose, onSwitch, onAuthSuccess
   const handleGoogle = async () => {
     setErr("");
     try {
-      await signInWithGoogle();
+      await signIn("google", { callbackUrl: "/dashboard" });
     } catch (e: unknown) {
       const error = e as { message?: string };
       setErr(error.message || "Google sign-in failed.");
@@ -77,7 +114,7 @@ export default function AuthModal({ open, mode, onClose, onSwitch, onAuthSuccess
     setErr("");
     setLoading(true);
     try {
-      await signInWithMagicLink(email);
+      await signIn("email", { email, callbackUrl: "/dashboard" });
       setMagicSent(true);
     } catch (e: unknown) {
       const error = e as { message?: string };
@@ -189,8 +226,6 @@ export default function AuthModal({ open, mode, onClose, onSwitch, onAuthSuccess
 
         {/* Body */}
         <Box p={8}>
-          {/* Signup features */}
-          
           {/* Error display */}
           {err && (
             <Box bg="red.50" border="1px solid" borderColor="red.100" color="red.600" fontSize="sm" p={3} rounded="xl" mb={5}>

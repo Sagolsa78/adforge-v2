@@ -143,10 +143,10 @@ export function Sidebar({ isCollapsed = false, onToggleSidebar }: SidebarProps) 
         {/* Upgrade Card - only if not collapsed */}
         {!isCollapsed && (
             <Box p={4} borderRadius="20px" bg="bgBase" border="1px solid" borderColor="borderCore" position="relative" overflow="hidden">
-                 <Box position="absolute" top="-10px" right="-10px" opacity={0.1}>
+                 {/* <Box position="absolute" top="-10px" right="-10px" opacity={0.1}>
                     <Sparkles size={60} color="#7C3AED" />
-                 </Box>
-                 <Text fontSize="xs" fontWeight="bold" color="textPrimary" mb={1}>Pro Plan</Text>
+                 </Box> */}
+                 {/* <Text fontSize="xs" fontWeight="bold" color="textPrimary" mb={1}>Pro Plan</Text>
                  <Text fontSize="10px" color="textMuted" mb={3}>Unlock unlimited AI ad generations.</Text>
                  <SidebarButton 
                     bg="accentViolet" 
@@ -157,7 +157,7 @@ export function Sidebar({ isCollapsed = false, onToggleSidebar }: SidebarProps) 
                     fontWeight="bold"
                  >
                     Upgrade Now
-                 </SidebarButton>
+                 </SidebarButton> */}
             </Box>
         )}
       </VStack>

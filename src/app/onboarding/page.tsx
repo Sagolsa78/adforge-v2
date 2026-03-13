@@ -2,7 +2,6 @@
 
 import { Box, Flex, Text } from "@chakra-ui/react";
 import { useOnboardingFlow } from "@/hooks";
-import { AuthProvider } from "@/store/AuthProvider";
 
 import ToolNavbar from "@/components/tool/ToolNavbar";
 import StepBar from "@/components/tool/StepBar";
@@ -42,7 +41,10 @@ function ToolContent() {
         mode={ts.modalMode}
         onClose={ts.closeModal}
         onSwitch={ts.setModalMode}
-        onAuthSuccess={() => {}}
+        onAuthSuccess={() => {
+          ts.closeModal();
+          window.location.href = "/dashboard";
+        }}
       />
 
       {/* Pages */}
@@ -147,8 +149,6 @@ function ToolContent() {
 
 export default function OnboardingPage() {
   return (
-    <AuthProvider>
-      <ToolContent />
-    </AuthProvider>
+    <ToolContent />
   );
 }

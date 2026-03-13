@@ -3,13 +3,21 @@
 import { Box, Flex, Heading, Text } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import { useSession } from "next-auth/react";
+import Link from "next/link";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const MotionBox = motion.create(Box as React.ComponentType<any>);
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const MotionFlex = motion.create(Flex as React.ComponentType<any>);
 
-export default function FinalCTA() {
+interface FinalCTAProps {
+}
+
+export default function FinalCTA({}: FinalCTAProps) {
+  const { status } = useSession();
+  const isAuthenticated = status === "authenticated";
+
   return (
     <Box
       as="section"
@@ -115,29 +123,31 @@ export default function FinalCTA() {
             direction={{ base: "column", sm: "row" }}
             align="center"
           >
-            <MotionBox
-              as="button"
-              whileHover={{ scale: 1.04 }}
-              whileTap={{ scale: 0.97 }}
-              bg="white"
-              color="#4c1d95"
-              px={{ base: "6", md: "8" }}
-              py={{ base: "3.5", md: "4" }}
-              rounded="full"
-              fontSize={{ base: "sm", md: "md" }}
-              fontWeight="700"
-              display="inline-flex"
-              alignItems="center"
-              justifyContent="center"
-              gap="2"
-              boxShadow="0 4px 20px rgba(0,0,0,0.2)"
-              cursor="pointer"
-              _hover={{ bg: "gray.50" }}
-              w={{ base: "full", sm: "auto" }}
-            >
-              Analyze My Brand
-              <ArrowRight size={18} />
-            </MotionBox>
+            <Link href={isAuthenticated ? "/dashboard" : "/onboarding"} style={{ width: '100%' }}>
+              <MotionBox
+                as="button"
+                whileHover={{ scale: 1.04 }}
+                whileTap={{ scale: 0.97 }}
+                bg="white"
+                color="#4c1d95"
+                px={{ base: "6", md: "8" }}
+                py={{ base: "3.5", md: "4" }}
+                rounded="full"
+                fontSize={{ base: "sm", md: "md" }}
+                fontWeight="700"
+                display="inline-flex"
+                alignItems="center"
+                justifyContent="center"
+                gap="2"
+                boxShadow="0 4px 20px rgba(0,0,0,0.2)"
+                cursor="pointer"
+                _hover={{ bg: "gray.50" }}
+                w="full"
+              >
+                {isAuthenticated ? "Go to Dashboard" : "Analyze My Brand"}
+                <ArrowRight size={18} />
+              </MotionBox>
+            </Link>
             <MotionBox
               as="button"
               whileHover={{ scale: 1.04 }}

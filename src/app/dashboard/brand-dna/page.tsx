@@ -1,7 +1,8 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/navigation'
+import { useSession } from 'next-auth/react'
 import { 
   Box, 
   Flex, 
@@ -13,19 +14,18 @@ import {
   Stack, 
   Badge, 
   Circle, 
-  Textarea, 
   Spinner, 
   Center,
   VStack,
   HStack,
   Image,
-  Separator
+  Separator,
+  Grid
 } from '@chakra-ui/react'
 import { 
   Check, 
   Sparkles, 
   Target, 
-  Globe,
   Facebook,
   Instagram,
   Linkedin,
@@ -33,36 +33,49 @@ import {
   Layout,
   RotateCcw,
   Zap,
-  ArrowRight
+  ArrowRight,
+  Eye,
+  Calendar,
+  MoreVertical,
+  ChevronRight
 } from 'lucide-react'
 import { getBrandDNA } from '@/lib/api/dashboard'
-import { generateCampaign } from '@/lib/api/campaigns'
-import { BrandDNA, Platform } from '@/lib/api/types'
+import { generateCampaign, getCampaign } from '@/lib/api/campaigns'
+import { BrandDNA, CampaignDetail, ContentPiece } from '@/lib/api/types'
 import { toaster } from '@/components/ui/toaster'
 import { ProgressRoot, ProgressBar } from '@/components/ui/progress'
 import { Skeleton } from '@/components/ui/skeleton'
 
-import { PLATFORMS, TEMPLATES } from '@/lib/constants'
+import { TEMPLATES } from '@/lib/constants'
 
 export default function BrandDNAPage() {
+  const { data: session } = useSession()
   const router = useRouter()
+  const resultsRef = useRef<HTMLDivElement>(null)
+  
   const [loading, setLoading] = useState(true)
   const [brandDna, setBrandDna] = useState<BrandDNA | null>(null)
   
   // Selection State
   const [selectedUSPs, setSelectedUSPs] = useState<string[]>([])
   const [selectedTemplates, setSelectedTemplates] = useState<string[]>([])
-  const [selectedPlatforms, setSelectedPlatforms] = useState<Platform[]>([])
-  const [campaignGoal, setCampaignGoal] = useState('')
   
   const [isGenerating, setIsGenerating] = useState(false)
   const [generatingText, setGeneratingText] = useState('Initializing AI engine...')
   const [progress, setProgress] = useState(0)
 
-  const userId = 'user_123'
+  const [generatedCampaign, setGeneratedCampaign] = useState<CampaignDetail | null>(null)
+
+  const userId = (session?.user as any)?.id || 'user_123'
 
   useEffect(() => {
     async function fetchData() {
+      if (!session && userId === 'user_123') {
+          // Allow dev fallback
+      } else if (!session) {
+          return
+      }
+
       try {
         const data = await getBrandDNA(userId)
         setBrandDna(data)
@@ -73,7 +86,7 @@ export default function BrandDNAPage() {
       }
     }
     fetchData()
-  }, [userId])
+  }, [userId, session])
 
   useEffect(() => {
     if (isGenerating) {
@@ -109,34 +122,41 @@ export default function BrandDNAPage() {
     }
   }
 
-  const selectAll = (allList: string[], setList: (val: string[] | any) => void) => {
+  const selectAll = (allList: string[], setList: (val: string[]) => void) => {
     setList(allList)
   }
 
-  const clearAll = (setList: (val: any) => void) => {
+  const clearAll = (setList: (val: string[]) => void) => {
     setList([])
   }
 
   const handleGenerate = async () => {
     if (!brandDna) return
     setIsGenerating(true)
+    setGeneratedCampaign(null)
     
     try {
-      // In a real app, this would be an API call
-      // For now, we simulate generation and show the sidebar
       const result = await generateCampaign({
         userId,
         brandDnaId: brandDna.id || 'dna_123',
         uspsSelected: selectedUSPs,
         templatesSelected: selectedTemplates,
-        platformsSelected: selectedPlatforms,
-        goal: campaignGoal
+        platformsSelected: ['IG', 'FB'], // Default platforms since they are removed from UI
+        goal: "Drive high-intent traffic and conversions" // Default goal
       })
       
-      // Simulate progress and then redirect
+      // Simulate progress duration
+      await new Promise(resolve => setTimeout(resolve, 5000))
+      
+      // Fetch the generated data
+      const campaignData = await getCampaign(result.campaignId)
+      setGeneratedCampaign(campaignData)
+      setIsGenerating(false)
+      
+      // Scroll to results
       setTimeout(() => {
-        router.push(`/dashboard/campaigns/${result.campaignId}`)
-      }, 3000)
+        resultsRef.current?.scrollIntoView({ behavior: 'smooth' })
+      }, 100)
       
     } catch (error) {
       setIsGenerating(false)
@@ -159,11 +179,11 @@ export default function BrandDNAPage() {
           <HStack gap={2} mb={4}>
             <Badge variant="subtle" colorPalette="purple" size="sm" borderRadius="full">AI CAMPAIGN ENGINE</Badge>
           </HStack>
-          <Heading fontSize="40px" fontWeight="black" color="textPrimary" mb={2}>
+          <Heading fontSize="40px" fontWeight="black" color="gray.900" mb={2}>
             Campaign Generator
           </Heading>
-          <Text color="textMuted" fontSize="md">
-            Configure all aspects of your campaign in one place.
+          <Text color="gray.500" fontSize="md">
+            Select your USPs and Templates to generate high-converting ad variations.
           </Text>
       </Flex>
 
@@ -189,12 +209,12 @@ export default function BrandDNAPage() {
             </SimpleGrid>
         </Stack>
 
-        <Separator borderColor="borderCore/50" />
+        <Separator borderColor="gray.100" />
 
-        {/* SECTION 2: Templates & Goal */}
+        {/* SECTION 2: Templates */}
         <Stack gap={6}>
             <SectionHeader 
-                title="2. Strategic Templates & Goal" 
+                title="2. Strategic Templates" 
                 onSelectAll={() => selectAll(TEMPLATES.map(t => t.id), setSelectedTemplates)}
                 onClearAll={() => clearAll(setSelectedTemplates)}
                 count={selectedTemplates.length}
@@ -210,113 +230,228 @@ export default function BrandDNAPage() {
                 />
                 ))}
             </SimpleGrid>
-
-            {/* Campaign Goal Integrated */}
-            <Box mt={2} p={6} bg="white" borderRadius="24px" border="1px solid" borderColor="borderCore" shadow="sm">
-                <HStack mb={4} gap={2}>
-                    <Icon color="accentViolet" size="sm"><Target size={16} /></Icon>
-                    <Text fontWeight="bold" fontSize="sm" color="textPrimary">Specific Campaign Goal</Text>
-                    <Badge variant="outline" size="xs" colorPalette="gray">Optional</Badge>
-                </HStack>
-                <Textarea 
-                    placeholder="e.g. Drive sales for the summer collection or increase brand awareness." 
-                    value={campaignGoal}
-                    onChange={(e) => setCampaignGoal(e.target.value)}
-                    borderRadius="16px"
-                    borderColor="borderCore"
-                    bg="bgBase/40"
-                    color="textPrimary"
-                    p={4}
-                    fontSize="sm"
-                    _placeholder={{ color: 'textMuted' }}
-                    _focus={{ borderColor: 'accentViolet', bg: 'white', ring: "2px", ringColor: 'accentViolet/10' }}
-                    minH="90px"
-                />
-            </Box>
-        </Stack>
-
-        <Separator borderColor="borderCore/50" />
-
-        {/* SECTION 3: Platforms */}
-        <Stack gap={6}>
-            <SectionHeader 
-                title="3. Distribution Platforms" 
-                onSelectAll={() => selectAll(PLATFORMS.map(p => p.id), setSelectedPlatforms)}
-                onClearAll={() => clearAll(setSelectedPlatforms)}
-                count={selectedPlatforms.length}
-            />
-            <SimpleGrid columns={{ base: 1, sm: 2, md: 4 }} gap={4}>
-                {PLATFORMS.map((p) => (
-                <NeoPlatformCard 
-                    key={p.id}
-                    platform={p}
-                    isSelected={selectedPlatforms.includes(p.id)}
-                    onClick={() => toggleSelection(selectedPlatforms as any, setSelectedPlatforms as any, p.id)}
-                />
-                ))}
-            </SimpleGrid>
         </Stack>
       </Stack>
 
-      {/* Sticky Action Footer */}
-      <Box 
-        position="fixed" 
-        bottom="0" 
-        left={{ base: 0, md: "auto" }} 
-        right="0"
-        w={{ base: "full", md: "calc(100% - 280px)" }}
-        p={6}
-        bg="rgba(255, 255, 255, 0.8)"
-        backdropFilter="blur(16px)"
-        borderTop="1px solid"
-        borderColor="borderCore"
-        zIndex={100}
-      >
-        <Flex maxW="1100px" mx="auto" align="center" justify="space-between">
-            <HStack gap={6} display={{ base: 'none', lg: 'flex' }}>
-                <StatsItem label="USPs" value={selectedUSPs.length} />
-                <Separator orientation="vertical" h="24px" />
-                <StatsItem label="Templates" value={selectedTemplates.length} />
-                <Separator orientation="vertical" h="24px" />
-                <StatsItem label="Platforms" value={selectedPlatforms.length} />
-            </HStack>
-
-            <HStack gap={4}>
-                <Box textAlign="right" display={{ base: 'none', sm: 'block' }}>
-                    <Text fontSize="xs" color="textMuted" fontWeight="bold">ESTIMATED OUTPUT</Text>
-                    <Text fontSize="sm" fontWeight="black" color="accentViolet">
-                        {selectedTemplates.length * 5} variations
-                    </Text>
-                </Box>
-                <Button 
-                    bg="accentViolet" 
-                    color="white" 
-                    borderRadius="xl" 
-                    px={10} 
-                    h="60px"
-                    fontWeight="black"
-                    onClick={handleGenerate}
-                    disabled={!selectedUSPs.length || !selectedTemplates.length || !selectedPlatforms.length}
-                    _hover={{ bg: '#6D28D9', transform: 'translateY(-2px)' }}
-                    transition="all 0.2s"
-                    shadow="xl"
-                    shadowColor="accentViolet/40"
-                >
-                    Generate All Campaigns <ArrowRight size={20} style={{ marginLeft: '12px' }} />
+      {/* Results Section */}
+      {generatedCampaign && (
+        <Box mt={20} ref={resultsRef} animation="fadeIn 0.8s ease-out">
+            <Flex align="center" justify="space-between" mb={8}>
+                <VStack align="start" gap={1}>
+                    <Heading fontSize="32px" fontWeight="black" color="gray.900">Generated Variations</Heading>
+                    <Text color="gray.500">AI-optimized copies based on your brand DNA.</Text>
+                </VStack>
+                <Button variant="outline" borderRadius="full" size="sm" onClick={() => setGeneratedCampaign(null)}>
+                    <RotateCcw size={14} style={{ marginRight: '8px' }} /> Reset Generator
                 </Button>
-            </HStack>
-        </Flex>
-      </Box>
+            </Flex>
+
+            <Stack gap={6}>
+                {generatedCampaign.contentPieces.map((piece, idx) => (
+                    <AdResultCard key={piece.id} piece={piece} index={idx} />
+                ))}
+            </Stack>
+
+            <Center mt={12}>
+                <Button 
+                    bg="purple.600" 
+                    color="white" 
+                    size="lg" 
+                    h="64px" 
+                    px={12} 
+                    borderRadius="2xl"
+                    fontWeight="black"
+                    onClick={() => router.push(`/dashboard/campaigns/${generatedCampaign.id}`)}
+                    _hover={{ bg: 'purple.700', transform: 'translateY(-2px)' }}
+                    shadow="xl"
+                >
+                    Finalize & Schedule Campaign <ChevronRight size={20} style={{ marginLeft: '12px' }} />
+                </Button>
+            </Center>
+        </Box>
+      )}
+
+      {/* Sticky Action Footer */}
+      {!generatedCampaign && (
+        <Box 
+            position="fixed" 
+            bottom="0" 
+            left={{ base: 0, md: "auto" }} 
+            right="0"
+            w={{ base: "full", md: "calc(100% - 280px)" }}
+            p={6}
+            bg="rgba(255, 255, 255, 0.8)"
+            backdropFilter="blur(16px)"
+            borderTop="1px solid"
+            borderColor="gray.200"
+            zIndex={100}
+        >
+            <Flex maxW="1100px" mx="auto" align="center" justify="space-between">
+                <HStack gap={6} display={{ base: 'none', lg: 'flex' }}>
+                    <StatsItem label="USPs" value={selectedUSPs.length} />
+                    <Separator orientation="vertical" h="24px" />
+                    <StatsItem label="Templates" value={selectedTemplates.length} />
+                </HStack>
+
+                <HStack gap={4}>
+                    <Box textAlign="right" display={{ base: 'none', sm: 'block' }}>
+                        <Text fontSize="xs" color="gray.500" fontWeight="bold">ESTIMATED OUTPUT</Text>
+                        <Text fontSize="sm" fontWeight="black" color="purple.600">
+                            {selectedTemplates.length * 5} variations
+                        </Text>
+                    </Box>
+                    <Button 
+                        bg="purple.600" 
+                        color="white" 
+                        borderRadius="xl" 
+                        px={10} 
+                        h="60px"
+                        fontWeight="black"
+                        onClick={handleGenerate}
+                        disabled={!selectedUSPs.length || !selectedTemplates.length}
+                        _hover={{ bg: 'purple.700', transform: 'translateY(-2px)' }}
+                        transition="all 0.2s"
+                        shadow="xl"
+                    >
+                        Generate All Campaigns <ArrowRight size={20} style={{ marginLeft: '12px' }} />
+                    </Button>
+                </HStack>
+            </Flex>
+        </Box>
+      )}
+
+      <style jsx global>{`
+          @keyframes fadeIn {
+              from { opacity: 0; transform: translateY(20px); }
+              to { opacity: 1; transform: translateY(0); }
+          }
+      `}</style>
     </Box>
   )
 }
 
 // UI Components
+function AdResultCard({ piece, index }: { piece: ContentPiece, index: number }) {
+    const PlatformIcon = piece.platform === 'IG' ? Instagram : piece.platform === 'FB' ? Facebook : piece.platform === 'LI' ? Linkedin : Twitter;
+    const platformColor = piece.platform === 'IG' ? '#E1306C' : piece.platform === 'FB' ? '#1877F2' : piece.platform === 'LI' ? '#0A66C2' : '#1DA1F2';
+
+    return (
+        <Box 
+            p={6} 
+            bg="white" 
+            borderRadius="32px" 
+            border="1px solid" 
+            borderColor="gray.100" 
+            shadow="sm"
+            _hover={{ shadow: 'md', borderColor: 'gray.200' }}
+            transition="all 0.3s"
+        >
+            <Grid templateColumns={{ base: "1fr", md: "300px 1fr" }} gap={8}>
+                {/* Visual Preview */}
+                <Box 
+                    bg="gray.50" 
+                    borderRadius="24px" 
+                    h="300px" 
+                    overflow="hidden" 
+                    position="relative"
+                    border="1px solid"
+                    borderColor="gray.100"
+                >
+                    {piece.imageUrl ? (
+                        <Image src={piece.imageUrl} w="full" h="full" objectFit="cover" alt="Ad Preview" />
+                    ) : (
+                        <Center h="full" p={8} textAlign="center">
+                            <VStack gap={2}>
+                                <Icon color="gray.300" size="xl"><Layout size={40} /></Icon>
+                                <Text fontSize="xs" color="gray.400" fontWeight="bold">AI IMAGE PENDING</Text>
+                            </VStack>
+                        </Center>
+                    )}
+                    <Badge 
+                        position="absolute" 
+                        top={4} 
+                        left={4} 
+                        bg={platformColor} 
+                        color="white" 
+                        p={2} 
+                        borderRadius="full"
+                        shadow="lg"
+                    >
+                        <PlatformIcon size={14} />
+                    </Badge>
+                </Box>
+
+                {/* Content Side */}
+                <VStack align="start" gap={6} flex="1">
+                    <Flex w="full" justify="space-between" align="center">
+                        <HStack gap={3}>
+                            <Circle size="40px" bg="purple.50" color="purple.600">
+                                <Text fontWeight="bold" fontSize="sm">#{index + 1}</Text>
+                            </Circle>
+                            <VStack align="start" gap={0}>
+                                <Text fontWeight="black" color="gray.900" fontSize="md">Ad Variation</Text>
+                                <Text color="gray.500" fontSize="xs">Optimized for {piece.platform}</Text>
+                            </VStack>
+                        </HStack>
+                        <HStack gap={2}>
+                            <Button variant="ghost" size="xs" color="gray.400"><MoreVertical size={16} /></Button>
+                        </HStack>
+                    </Flex>
+
+                    <Box 
+                        w="full" 
+                        p={5} 
+                        bg="gray.50" 
+                        borderRadius="20px" 
+                        border="1px solid" 
+                        borderColor="gray.100"
+                    >
+                        <Text color="gray.700" fontSize="sm" lineHeight="1.6" fontStyle="italic">
+                            "{piece.caption}"
+                        </Text>
+                    </Box>
+
+                    <SimpleGrid columns={3} w="full" gap={4}>
+                        <Box p={3} bg="gray.50" borderRadius="xl" textAlign="center">
+                            <Text fontSize="10px" color="gray.400" fontWeight="bold">EMOTION</Text>
+                            <Text fontSize="xs" fontWeight="bold" color="gray.700">Excitement</Text>
+                        </Box>
+                        <Box p={3} bg="gray.50" borderRadius="xl" textAlign="center">
+                            <Text fontSize="10px" color="gray.400" fontWeight="bold">TONE</Text>
+                            <Text fontSize="xs" fontWeight="bold" color="gray.700">Bold</Text>
+                        </Box>
+                        <Box p={3} bg="gray.50" borderRadius="xl" textAlign="center">
+                            <Text fontSize="10px" color="gray.400" fontWeight="bold">CTA</Text>
+                            <Text fontSize="xs" fontWeight="bold" color="gray.700">Shop Now</Text>
+                        </Box>
+                    </SimpleGrid>
+
+                    <Flex w="full" pt={2} borderTop="1px solid" borderColor="gray.50" justify="space-between" align="center">
+                        <HStack gap={4}>
+                            <HStack color="gray.400" gap={1}>
+                                <Eye size={14} />
+                                <Text fontSize="xs">Preview</Text>
+                            </HStack>
+                            <HStack color="gray.400" gap={1}>
+                                <Calendar size={14} />
+                                <Text fontSize="xs">Schedule</Text>
+                            </HStack>
+                        </HStack>
+                        <Button size="xs" variant="subtle" colorPalette="purple" fontWeight="bold" borderRadius="full">
+                            Approve Copy
+                        </Button>
+                    </Flex>
+                </VStack>
+            </Grid>
+        </Box>
+    )
+}
+
 function StatsItem({ label, value }: { label: string, value: number }) {
     return (
         <Box>
-            <Text fontSize="10px" color="textMuted" fontWeight="black" textTransform="uppercase" letterSpacing="widest">{label}</Text>
-            <Text fontSize="lg" fontWeight="black" color={value > 0 ? "textPrimary" : "textMuted"}>{value}</Text>
+            <Text fontSize="10px" color="gray.500" fontWeight="black" textTransform="uppercase" letterSpacing="widest">{label}</Text>
+            <Text fontSize="lg" fontWeight="black" color={value > 0 ? "gray.900" : "gray.400"}>{value}</Text>
         </Box>
     )
 }
@@ -325,15 +460,15 @@ function SectionHeader({ title, onSelectAll, onClearAll, count }: { title: strin
     return (
         <Flex align="center" justify="space-between">
             <HStack gap={3}>
-                <Heading fontSize="22px" fontWeight="black" letterSpacing="tight">{title}</Heading>
+                <Heading fontSize="22px" fontWeight="black" letterSpacing="tight" color="gray.900">{title}</Heading>
                 {count > 0 && <Badge colorPalette="purple" variant="solid" borderRadius="full" px={2}>{count}</Badge>}
             </HStack>
             <HStack gap={2}>
-                <Button variant="ghost" size="xs" color="accentViolet" fontWeight="bold" onClick={onSelectAll} _hover={{ bg: 'accentViolet/10' }}>
+                <Button variant="ghost" size="xs" color="purple.600" fontWeight="bold" onClick={onSelectAll} _hover={{ bg: 'purple.50' }}>
                     Select All
                 </Button>
                 <Separator orientation="vertical" h="12px" />
-                <Button variant="ghost" size="xs" color="textMuted" fontWeight="medium" onClick={onClearAll} _hover={{ bg: 'bgBase' }}>
+                <Button variant="ghost" size="xs" color="gray.500" fontWeight="medium" onClick={onClearAll} _hover={{ bg: 'gray.50' }}>
                     <RotateCcw size={10} style={{ marginRight: '4px' }} /> Clear
                 </Button>
             </HStack>
@@ -347,23 +482,23 @@ function NeoSelectableCard({ label, isSelected, onClick, icon: IconComp }: any) 
             as="button"
             onClick={onClick}
             p={5}
-            bg={isSelected ? '#7C3AED' : 'white'}
+            bg={isSelected ? 'purple.600' : 'white'}
             border="1px solid"
-            borderColor={isSelected ? '#7C3AED' : 'borderCore'}
+            borderColor={isSelected ? 'purple.600' : 'gray.200'}
             borderRadius="20px"
             transition="all 0.2s"
             shadow={isSelected ? 'lg' : 'sm'}
-            shadowColor={isSelected ? 'accentViolet/40' : 'transparent'}
-            _hover={{ borderColor: 'accentViolet', transform: 'translateY(-2px)' }}
+            _hover={{ borderColor: 'purple.600', transform: 'translateY(-2px)' }}
             textAlign="center"
             position="relative"
             overflow="hidden"
+            w="full"
         >
             <VStack gap={3}>
-                <Circle size="32px" bg={isSelected ? 'white/20' : 'bgBase'} color={isSelected ? 'white' : 'accentViolet'}>
+                <Circle size="32px" bg={isSelected ? 'white/20' : 'gray.50'} color={isSelected ? 'white' : 'purple.600'}>
                     <IconComp size={16} />
                 </Circle>
-                <Text fontWeight="bold" fontSize="sm" color={isSelected ? 'white' : 'textPrimary'}>{label}</Text>
+                <Text fontWeight="bold" fontSize="sm" color={isSelected ? 'white' : 'gray.900'}>{label}</Text>
             </VStack>
         </Box>
     )
@@ -375,60 +510,27 @@ function TemplateCard({ label, description, isSelected, onClick }: any) {
             as="button"
             onClick={onClick}
             p={6}
-            bg={isSelected ? '#7C3AED' : 'white'}
+            bg={isSelected ? 'purple.600' : 'white'}
             border="1px solid"
-            borderColor={isSelected ? '#7C3AED' : 'borderCore'}
+            borderColor={isSelected ? 'purple.600' : 'gray.200'}
             borderRadius="24px"
             transition="all 0.2s"
             textAlign="left"
-            _hover={{ borderColor: 'accentViolet' }}
+            _hover={{ borderColor: 'purple.600' }}
             position="relative"
             h="full"
+            w="full"
         >
             {isSelected && (
-                <Circle size="24px" bg="white" color="accentViolet" position="absolute" top={4} right={4} shadow="md">
+                <Circle size="24px" bg="white" color="purple.600" position="absolute" top={4} right={4} shadow="md">
                     <Check size={14} strokeWidth={3} />
                 </Circle>
             )}
-            <Heading fontSize="16px" fontWeight="bold" color={isSelected ? 'white' : 'textPrimary'} mb={2}>{label}</Heading>
-            <Text fontSize="12px" color={isSelected ? 'white/80' : 'textMuted'} lineHeight="tall">{description}</Text>
+            <Heading fontSize="16px" fontWeight="bold" color={isSelected ? 'white' : 'gray.900'} mb={2}>{label}</Heading>
+            <Text fontSize="12px" color={isSelected ? 'white/80' : 'gray.500'} lineHeight="tall">{description}</Text>
             <HStack mt={4} gap={2}>
                 <Badge variant="subtle" colorPalette={isSelected ? 'purple' : 'gray'} fontSize="10px">5 ADS</Badge>
             </HStack>
-        </Box>
-    )
-}
-
-function NeoPlatformCard({ platform, isSelected, onClick }: any) {
-    const IconComp = platform.icon
-    return (
-        <Box 
-            as="button"
-            onClick={onClick}
-            p={6}
-            bg={isSelected ? platform.color : 'white'}
-            border="1px solid"
-            borderColor={isSelected ? platform.color : 'borderCore'}
-            borderRadius="24px"
-            transition="all 0.2s"
-            _hover={{ borderColor: platform.color, transform: 'scale(1.02)' }}
-            position="relative"
-            display="flex"
-            flexDirection="column"
-            alignItems="center"
-            gap={4}
-            shadow={isSelected ? 'xl' : 'sm'}
-            shadowColor={isSelected ? `${platform.color}40` : 'transparent'}
-        >
-            <Circle size="56px" bg={isSelected ? 'white/20' : platform.accent} color={isSelected ? 'white' : platform.color}>
-                <IconComp size={24} />
-            </Circle>
-            <Text fontWeight="black" fontSize="sm" color={isSelected ? 'white' : 'textPrimary'}>{platform.label}</Text>
-            {isSelected && (
-                <Circle size="20px" bg="white" color={platform.color} position="absolute" top={3} right={3} shadow="md">
-                    <Check size={12} strokeWidth={4} />
-                </Circle>
-            )}
         </Box>
     )
 }
@@ -440,15 +542,15 @@ function ModernGeneratingView({ text, progress }: { text: string, progress: numb
                 <Box position="relative" h="200px" w="200px">
                     <Box 
                         w="200px" h="200px" borderRadius="full" border="2px solid" 
-                        borderColor="accentViolet/10" position="absolute" animation="pulse 2s infinite"
+                        borderColor="purple.100" position="absolute" animation="pulse 2s infinite"
                     />
                     <Box 
                         w="160px" h="160px" borderRadius="full" border="2px solid" 
-                        borderColor="accentViolet/20" position="absolute" top="20px" left="20px" animation="pulse 2s infinite 0.5s"
+                        borderColor="purple.200" position="absolute" top="20px" left="20px" animation="pulse 2s infinite 0.5s"
                     />
                     <Box 
                         position="absolute" inset="0" m="auto" w="100px" h="100px" 
-                        bg="accentViolet" borderRadius="40px" shadow="2xl" shadowColor="accentViolet"
+                        bg="purple.600" borderRadius="40px" shadow="2xl"
                         display="flex" alignItems="center" justifyContent="center" transform="rotate(45deg)"
                     >
                         <Box transform="rotate(-45deg)">
@@ -458,8 +560,8 @@ function ModernGeneratingView({ text, progress }: { text: string, progress: numb
                 </Box>
 
                 <VStack gap={4} textAlign="center">
-                    <Heading fontSize="28px" fontWeight="black" color="textPrimary">{text}</Heading>
-                    <Text color="textMuted" fontWeight="medium">Our neural networks are weaving your artifacts together.</Text>
+                    <Heading fontSize="28px" fontWeight="black" color="gray.900">{text}</Heading>
+                    <Text color="gray.500" fontWeight="medium">Our neural networks are weaving your artifacts together.</Text>
                 </VStack>
 
                 <Box w="full" px={10}>
@@ -467,19 +569,11 @@ function ModernGeneratingView({ text, progress }: { text: string, progress: numb
                         <ProgressBar borderRadius="full" />
                     </ProgressRoot>
                     <Flex justify="space-between" mt={3}>
-                        <Text fontSize="xs" fontWeight="bold" color="textMuted" textTransform="uppercase" letterSpacing="widest">Neural Link</Text>
-                        <Text fontSize="xs" fontWeight="black" color="accentViolet">{Math.round(progress)}%</Text>
+                        <Text fontSize="xs" fontWeight="bold" color="gray.500" textTransform="uppercase" letterSpacing="widest">Neural Link</Text>
+                        <Text fontSize="xs" fontWeight="black" color="purple.600">{Math.round(progress)}%</Text>
                     </Flex>
                 </Box>
             </VStack>
-            
-            <style jsx global>{`
-                @keyframes pulse {
-                    0% { transform: scale(0.95); opacity: 0.8; }
-                    50% { transform: scale(1.05); opacity: 0.4; }
-                    100% { transform: scale(0.95); opacity: 0.8; }
-                }
-            `}</style>
         </Center>
     )
 }

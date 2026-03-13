@@ -3,6 +3,7 @@
 import { Box, Flex, Heading, Text, Container } from "@chakra-ui/react";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { useSession } from "next-auth/react";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const MotionBox = motion.create(Box as React.ComponentType<any>);
@@ -19,7 +20,13 @@ const itemVariants = {
   visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.85, ease: [0.22, 1, 0.36, 1] } },
 };
 
-export default function HeroSection() {
+interface HeroSectionProps {
+}
+
+export default function HeroSection({}: HeroSectionProps) {
+  const { status } = useSession();
+  const isAuthenticated = status === "authenticated";
+
   return (
     <Box
       as="section"
@@ -109,7 +116,7 @@ export default function HeroSection() {
             w={{ base: "full", sm: "auto" }}
             px={{ base: "4", sm: "0" }}
           >
-            <Link href="/onboarding">
+            <Link href={isAuthenticated ? "/dashboard" : "/onboarding"} style={{ width: isAuthenticated ? 'auto' : '100%' }}>
               <Box
                 as="button"
                 bg="#8a2ce2"
@@ -123,8 +130,9 @@ export default function HeroSection() {
                 boxShadow="0 4px 14px rgba(138,44,226,0.3)"
                 w={{ base: "full", sm: "auto" }}
                 _hover={{ bg: "#7c28cb", transform: "translateY(-2px)", boxShadow: "0 6px 20px rgba(138,44,226,0.4)" }}
+                cursor="pointer"
               >
-                Analyze My Brand →
+                {isAuthenticated ? "Go to Dashboard →" : "Analyze My Brand →"}
               </Box>
             </Link>
             <Flex

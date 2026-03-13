@@ -15,36 +15,45 @@ function apiError(message: string, status: number): never {
 
 // ─── Auth endpoints ──────────────────────────────────────────────────
 
+import { supabase } from "./supabase";
+
 export async function signUp(
   email: string,
-  password: string
-): Promise<{ token: string; user_id: string }> {
-  const res = await fetch(`${BASE_URL}${API_ENDPOINTS.SIGNUP}`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ email, password }),
+  password: string,
+  name?: string
+): Promise<{ user_id: string }> {
+  const { data, error } = await supabase.auth.signUp({
+    email,
+    password,
+    options: {
+      data: { full_name: name || email.split("@")[0] },
+    },
   });
-  if (!res.ok) {
-    const body = await res.json().catch(() => ({}));
-    apiError(body.message || "Sign-up failed", res.status);
+
+  if (error || !data.user) {
+    apiError(error?.message || "Sign-up failed", 400);
   }
-  return res.json();
+
+  return { user_id: data.user.id };
 }
 
 export async function signIn(
   email: string,
   password: string
-): Promise<{ token: string; user_id: string }> {
-  const res = await fetch(`${BASE_URL}${API_ENDPOINTS.SIGNIN}`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ email, password }),
+): Promise<{ user_id: string; token: string }> {
+  const { data, error } = await supabase.auth.signInWithPassword({
+    email,
+    password,
   });
-  if (!res.ok) {
-    const body = await res.json().catch(() => ({}));
-    apiError(body.message || "Sign-in failed", res.status);
+
+  if (error || !data.user || !data.session) {
+    apiError(error?.message || "Sign-in failed", 401);
   }
-  return res.json();
+
+  return { 
+    user_id: data.user.id, 
+    token: data.session.access_token 
+  };
 }
 
 // ─── Brand SSE stream ────────────────────────────────────────────────
