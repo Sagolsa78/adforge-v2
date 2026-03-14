@@ -8,6 +8,9 @@ import { ROUTES } from "@/constants";
 import { getClaimedBrandId } from "@/lib/delayedAuth";
 import CreativesShell from "@/components/creatives/CreativesShell";
 
+// Skip static generation - this page requires authentication
+export const dynamic = "force-dynamic";
+
 function CreativesGate() {
   const { user, isLoading } = useAuth();
   const router = useRouter();
