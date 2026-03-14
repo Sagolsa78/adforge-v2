@@ -1,7 +1,8 @@
-import { useState, useCallback, useMemo } from "react";
-import { BrandContext, GeneratedContent } from "@/types/onboarding.types";
+import { useState, useCallback, useRef, useMemo } from "react";
+import { BrandContext, GeneratedContent, CampaignStatus, CampaignAsset } from "@/types/onboarding.types";
 import { CTXS } from "@/config";
 import { buildContent } from "@/utils/contentEngine";
+import { pollCampaignStatus, getCampaignAssets } from "@/api";
 
 interface AuthState {
   loggedIn: boolean;
@@ -28,6 +29,10 @@ export function useToolState() {
   const [offer, setOffer] = useState("");
   const [slideN, setSlideN] = useState(6);
   const [gen, setGen] = useState<GeneratedContent | null>(null);
+  const [campaignId, setCampaignId] = useState<string | null>(null);
+  const [campaignStatus, setCampaignStatus] = useState<CampaignStatus | null>(null);
+  const [campaignAssets, setCampaignAssets] = useState<Record<string, CampaignAsset[]>>({});
+  const pollRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const [auth, setAuth] = useState<AuthState>({ loggedIn: false, name: "", email: "" });
   const [modalOpen, setModalOpen] = useState(false);
   const [modalMode, setModalMode] = useState<"login" | "signup">("login");
@@ -189,6 +194,60 @@ export function useToolState() {
     setDynFields((p) => ({ ...p, [key]: val }));
   }, []);
 
+  /**
+   * Called after POST /brands/{id}/ad-variations returns {campaign_id, total}.
+   * Polls GET /campaigns/{id}/status every 3 s and fetches assets per context
+   * as they complete, enabling progressive UI reveal.
+   */
+  const startCampaignPolling = useCallback((cmpId: string, token: string) => {
+    setCampaignId(cmpId);
+    setCampaignStatus(null);
+    setCampaignAssets({});
+
+    // Clear any previous poll
+    if (pollRef.current) clearInterval(pollRef.current);
+
+    const fetchedContexts = new Set<string>();
+
+    pollRef.current = setInterval(async () => {
+      try {
+        const status = await pollCampaignStatus(cmpId, token);
+        setCampaignStatus(status);
+
+        // For each context that just became fully complete, fetch its assets once
+        for (const [ctx, prog] of Object.entries(status.by_context)) {
+          if (prog.complete === prog.total && prog.total > 0 && !fetchedContexts.has(ctx)) {
+            fetchedContexts.add(ctx);
+            try {
+              const assets = await getCampaignAssets(cmpId, token, Number(ctx));
+              setCampaignAssets((prev) => ({
+                ...prev,
+                ...(assets.by_context),
+              }));
+            } catch {
+              // Non-fatal — assets will be retried on next poll cycle
+            }
+          }
+        }
+
+        // Stop polling when everything is done
+        if (status.status === "complete") {
+          if (pollRef.current) clearInterval(pollRef.current);
+          pollRef.current = null;
+        }
+      } catch {
+        // Network hiccup — keep polling
+      }
+    }, 3000);
+  }, []);
+
+  const stopCampaignPolling = useCallback(() => {
+    if (pollRef.current) {
+      clearInterval(pollRef.current);
+      pollRef.current = null;
+    }
+  }, []);
+
   const handleNewAnalysis = useCallback(() => {
     setUrl("");
     setBrandName("");
@@ -203,7 +262,11 @@ export function useToolState() {
     setDynFields({});
     setCurStep(1);
     setMaxReached(1);
-  }, []);
+    setCampaignId(null);
+    setCampaignStatus(null);
+    setCampaignAssets({});
+    stopCampaignPolling();
+  }, [stopCampaignPolling]);
 
   const memoedBm = useMemo(() => bm, [bm]);
   const memoedLikes = useMemo(() => likes, [likes]);
@@ -212,9 +275,13 @@ export function useToolState() {
     curStep, maxReached, url, brandName, ctx, ratings, bm: memoedBm, likes: memoedLikes,
     selCtx, selTpl, selIgTpl, tone, emoji, platform, cta, offer, slideN, gen, auth,
     modalOpen, modalMode, toastMsg, toastVisible,
+    // Campaign async generation state
+    campaignId, campaignStatus, campaignAssets,
     setModalMode, setModalOpen, setPlatform, setSelTpl, setSelIgTpl, setTone, setEmoji, setCta, setOffer, setSlideN,
     goStep, handleAnalyse, handleAnalysisDone, handleUpdateContexts, handleSelectCtx, handleRate, handleToggleBm, handleToggleLike,
     handleUseSelected, handleGoTemplates, handleGenerate, handleGenerateDone, handleAuth, handleLogout,
-    handleSetField, handleNewAnalysis, copyToCB
+    handleSetField, handleNewAnalysis, copyToCB,
+    // Campaign polling controls
+    startCampaignPolling, stopCampaignPolling,
   };
 }

@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import { Badge, Box, Button, Flex, Text, Textarea, VStack } from "@chakra-ui/react";
 import { BadgeCheck, Megaphone, Rocket, Sparkles, Tags } from "lucide-react";
 import { generateAdVariations } from "@/api";
-import type { AdVariation, ContextBlock } from "@/types/onboarding.types";
+import type { AdVariation, RenderedAd, ContextBlock } from "@/types/onboarding.types";
 import type { LucideIcon } from "lucide-react";
 
 interface TemplateOption {
@@ -19,7 +19,7 @@ interface GeneratedTemplateBatch {
   contextTitle: string;
   templateId: string;
   templateLabel: string;
-  variations: AdVariation[];
+  variations: RenderedAd[];
 }
 
 interface ContentTabBrand {
@@ -38,7 +38,7 @@ const CONTENT_TEMPLATE_OPTIONS: TemplateOption[] = [
   { id: "awareness", label: "Awareness", description: "Top-of-funnel concepts for reach and recall.", icon: Megaphone },
   { id: "sale", label: "Sales / Offer", description: "Direct-response angles with clear conversion intent.", icon: Tags },
   { id: "launch", label: "Launch", description: "New product or campaign momentum creatives.", icon: Rocket },
-  { id: "testimonial", label: "Testimonial", description: "Proof-driven variations built on trust.", icon: BadgeCheck },
+  { id: "story_narrative", label: "Story / Narrative", description: "Brand story and origin-driven creatives.", icon: BadgeCheck },
   { id: "engagement", label: "Engagement", description: "Interactive hooks designed to start response.", icon: Sparkles },
 ];
 
@@ -148,13 +148,13 @@ export default function ContentTab({ brand, contextBlocks, token }: ContentTabPr
               token
             );
 
-            return response.ad_types.map((group) => ({
+            return [{
               contextIndex: contextBlock.context_index,
               contextTitle: contextBlock.title,
-              templateId: group.ad_type,
-              templateLabel: template?.label || group.ad_type,
-              variations: group.variations,
-            }));
+              templateId: templateId,
+              templateLabel: template?.label || templateId,
+              variations: response.rendered_ads,
+            }];
           })
         )
       );
@@ -406,22 +406,22 @@ export default function ContentTab({ brand, contextBlocks, token }: ContentTabPr
                 </Badge>
               </Flex>
               <VStack align="stretch" gap={4}>
-                {batch.variations.map((variation, index) => (
+                {batch.variations.map((renderedAd, index) => (
                   <Box key={`${batch.templateId}-${index}`} border="1px solid" borderColor="#ECECEC" borderRadius="18px" p={4} bg="#FAFAFA">
                     <Text fontSize="16px" fontWeight="700" color="#111111" mb={1}>
-                      {variation.headline}
+                      {renderedAd.variation.headline}
                     </Text>
                     <Text fontSize="14px" fontWeight="600" color="#4F46E5" mb={2}>
-                      {variation.subheadline}
+                      {renderedAd.variation.subheadline}
                     </Text>
                     <Text fontSize="14px" color="#5B6472" mb={3}>
-                      {variation.body_text}
+                      {renderedAd.variation.body_text}
                     </Text>
                     <Text fontSize="13px" fontWeight="700" color="#111111" mb={1}>
                       CTA
                     </Text>
                     <Text fontSize="14px" color="#5B6472">
-                      {variation.cta_text}
+                      {renderedAd.variation.cta_text}
                     </Text>
                   </Box>
                 ))}

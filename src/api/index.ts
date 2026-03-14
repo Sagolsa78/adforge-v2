@@ -274,16 +274,17 @@ export async function claimBrand(
   }
 }
 
-// ─── Generate ad variations ──────────────────────────────────────────
+// ─── Generate ad variations (async queue) ────────────────────────────
 
 /**
- * Generates ad variations for a brand
+ * Queues image generation for a brand context.
+ * Returns immediately with campaign_id — images are generated in the background.
  */
 export async function generateAdVariations(
   brandId: string,
   payload: AdVariationsPayload,
   token: string
-): Promise<AdVariationsResponse> {
+): Promise<{ campaign_id: string; total: number; status: string; variations_data: unknown[] }> {
   const res = await fetch(`${BASE_URL}${API_ENDPOINTS.BRAND_VARIATIONS(brandId)}`, {
     method: "POST",
     headers: {
@@ -294,7 +295,55 @@ export async function generateAdVariations(
   });
   if (!res.ok) {
     const body = await res.json().catch(() => ({}));
-    apiError(body.message || "Failed to generate ad variations", res.status);
+    apiError(body.message || "Failed to queue ad generation", res.status);
   }
+  return res.json();
+}
+
+/**
+ * Polls per-context progress for a running campaign.
+ */
+export async function pollCampaignStatus(
+  campaignId: string,
+  token: string
+): Promise<{
+  campaign_id: string;
+  total: number;
+  complete: number;
+  status: "queued" | "running" | "complete";
+  by_context: Record<string, { complete: number; total: number }>;
+}> {
+  const res = await fetch(`${BASE_URL}${API_ENDPOINTS.CAMPAIGN_STATUS(campaignId)}`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  if (!res.ok) apiError("Failed to fetch campaign status", res.status);
+  return res.json();
+}
+
+/**
+ * Fetches completed rendered ads for a campaign, optionally for one context.
+ */
+export async function getCampaignAssets(
+  campaignId: string,
+  token: string,
+  contextIndex?: number
+): Promise<{
+  campaign_id: string;
+  total_assets: number;
+  by_context: Record<string, Array<{
+    variation_id: string;
+    ad_type: string;
+    variation_index: number;
+    image_url: string | null;
+    html: string | null;
+    variation_data: Record<string, unknown>;
+  }>>;
+}> {
+  const url = new URL(`${BASE_URL}${API_ENDPOINTS.CAMPAIGN_ASSETS(campaignId)}`);
+  if (contextIndex !== undefined) url.searchParams.set("context_index", String(contextIndex));
+  const res = await fetch(url.toString(), {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  if (!res.ok) apiError("Failed to fetch campaign assets", res.status);
   return res.json();
 }

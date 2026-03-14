@@ -150,18 +150,60 @@ export interface AdVariation {
   image_prompt: string;
   image_url?: string | null;
   offer_text?: string;
-  quote_author?: string;
+  story_theme?: string;
   tagline?: string;
   launch_label?: string;
 }
 
-export interface AdTypeVariations {
+export interface RenderedAd {
+  variation_id: string;
   ad_type: string;
-  variations: AdVariation[];
+  variation: AdVariation;
+  html: string;
 }
 
+/** Legacy sync response shape (kept for type compatibility) */
 export interface AdVariationsResponse {
-  ad_types: AdTypeVariations[];
+  status: string;
+  rendered_ads: RenderedAd[];
+  variations_data: unknown[];
+}
+
+/** Async queue response — returned immediately by POST /brands/{id}/ad-variations */
+export interface AdVariationsQueueResponse {
+  status: "queued";
+  campaign_id: string;
+  total: number;
+  context_index: number;
+  variations_data: unknown[];
+}
+
+export interface CampaignContextProgress {
+  complete: number;
+  total: number;
+}
+
+export interface CampaignStatus {
+  campaign_id: string;
+  total: number;
+  complete: number;
+  status: "queued" | "running" | "complete";
+  by_context: Record<string, CampaignContextProgress>;
+}
+
+export interface CampaignAsset {
+  variation_id: string;
+  ad_type: string;
+  variation_index: number;
+  image_url: string | null;
+  html: string | null;
+  variation_data: Record<string, unknown>;
+}
+
+export interface CampaignAssets {
+  campaign_id: string;
+  total_assets: number;
+  by_context: Record<string, CampaignAsset[]>;
 }
 
 export interface AuthUser {

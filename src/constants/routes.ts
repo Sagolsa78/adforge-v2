@@ -9,6 +9,7 @@ export const ROUTES = {
   ONBOARDING: "/onboarding",
   LOGIN: "/login",
   DASHBOARD: "/dashboard",
+  CREATIVES: "/creatives",
 } as const;
 
 export const STORAGE_KEYS = {
