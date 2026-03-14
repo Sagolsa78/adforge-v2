@@ -5,6 +5,7 @@ import type {
   ContextFeedbackPayload,
   ContextFeedbackResponse,
   ContextFeedbackStreamEvent,
+  RenderedAd,
 } from "@/types/onboarding.types";
 import { API_BASE_URL, API_ENDPOINTS } from "@/constants";
 
@@ -284,7 +285,7 @@ export async function generateAdVariations(
   brandId: string,
   payload: AdVariationsPayload,
   token: string
-): Promise<{ campaign_id: string; total: number; status: string; variations_data: unknown[] }> {
+): Promise<{ campaign_id: string; total: number; status: string; variations_data: RenderedAd[] }> {
   const res = await fetch(`${BASE_URL}${API_ENDPOINTS.BRAND_VARIATIONS(brandId)}`, {
     method: "POST",
     headers: {

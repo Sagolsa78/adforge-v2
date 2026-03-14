@@ -153,7 +153,7 @@ export default function ContentTab({ brand, contextBlocks, token }: ContentTabPr
               contextTitle: contextBlock.title,
               templateId: templateId,
               templateLabel: template?.label || templateId,
-              variations: response.rendered_ads,
+              variations: response.variations_data,
             }];
           })
         )

@@ -7,6 +7,8 @@ export const API_BASE_URL =
 
 // Campaign status/assets endpoints live under /data (same router as brands)
 export const API_ENDPOINTS = {
+  SIGNUP: "/auth/signup",
+  SIGNIN: "/auth/signin",
   BRANDS: "/brands",
   BRAND_CONTEXT: (id: string | number) => `/brands/${id}/context`,
   BRAND_CONTEXT_FEEDBACK: (id: string | number) =>
