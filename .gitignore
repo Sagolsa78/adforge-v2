@@ -24,6 +24,8 @@
 /blob-report/
 /playwright/.cache/
 test-results.json
+/test-results/
+/test-results-mobile/
 
 
 # production
@@ -54,3 +56,4 @@ next-env.d.ts
 # Playwright
 node_modules/
 /playwright/.auth/
+/e2e/test-results/
