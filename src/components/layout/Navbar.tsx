@@ -6,7 +6,7 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 
 import { NAV_LINKS } from "@/constants";
-
+import Image from "next/image";
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -29,29 +29,24 @@ export default function Navbar() {
           alignItems="center"
         >
           {/* Logo */}
+         
           <Flex align="center" gap="2.5">
-            <Flex
-              w="8"
-              h="8"
-              bg="#4F46E5"
-              rounded="lg"
-              align="center"
-              justify="center"
-            >
-              <Text color="white" fontWeight="800" fontSize="sm">
-                I
-              </Text>
-            </Flex>
+            <Image
+              src="/plug_andPlay_logo.jpeg"
+              alt="Plug and Play Agent"
+              width={32}
+              height={32}
+              style={{ objectFit: "contain" }}
+            />
             <Text
               fontSize="lg"
               fontWeight="800"
               color="#1a1a2e"
               letterSpacing="-0.02em"
             >
-              Insta Agent
+              Plug and Play Agent
             </Text>
           </Flex>
-
           {/* Desktop Nav */}
           <Flex
             display={{ base: "none", md: "flex" }}
@@ -72,7 +67,6 @@ export default function Navbar() {
               </Link>
             ))}
           </Flex>
-
           {/* Desktop CTA */}
           <Flex display={{ base: "none", md: "flex" }} align="center" gap="4">
             <Link href="/login">
@@ -106,7 +100,6 @@ export default function Navbar() {
               </Box>
             </Link>
           </Flex>
-
           {/* Mobile Hamburger */}
           <Box
             display={{ base: "flex", md: "none" }}

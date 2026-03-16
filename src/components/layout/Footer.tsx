@@ -72,7 +72,11 @@ export default function Footer() {
           </Grid>
 
           {/* Last Update Card */}
-          <Box display="flex" justifyContent={{ base: "flex-start", lg: "flex-end" }} w={{ lg: "30%" }}>
+          <Box
+            display="flex"
+            justifyContent={{ base: "flex-start", lg: "flex-end" }}
+            w={{ lg: "30%" }}
+          >
             <Box
               bg="rgba(255, 255, 255, 0.05)"
               p={{ base: "4", md: "5" }}
@@ -84,11 +88,23 @@ export default function Footer() {
               borderColor="whiteAlpha.200"
               backdropFilter="blur(10px)"
             >
-              <Text fontSize="11px" mb="1" color="purple.300" fontWeight="600" textTransform="uppercase" letterSpacing="0.1em">
+              <Text
+                fontSize="11px"
+                mb="1"
+                color="purple.300"
+                fontWeight="600"
+                textTransform="uppercase"
+                letterSpacing="0.1em"
+              >
                 Latest Update
               </Text>
-              <Text color="white" fontSize={{ base: "13px", md: "14px" }} mb="1" fontWeight="600">
-                Insta Agent v2.4
+              <Text
+                color="white"
+                fontSize={{ base: "13px", md: "14px" }}
+                mb="1"
+                fontWeight="600"
+              >
+                Plug and Play Agent v2.4
               </Text>
               <Text fontSize="11px" color="purple.200">
                 Released March 2026
@@ -96,10 +112,17 @@ export default function Footer() {
             </Box>
           </Box>
         </Flex>
-        
-        <Box mt={20} pt={8} borderTop="1px solid" borderColor="whiteAlpha.100" textAlign="center">
+
+        <Box
+          mt={20}
+          pt={8}
+          borderTop="1px solid"
+          borderColor="whiteAlpha.100"
+          textAlign="center"
+        >
           <Text fontSize="xs" color="purple.300">
-            © {new Date().getFullYear()} Insta Agent. Built for Instagram growth.
+            © {new Date().getFullYear()} Plug and Play Agent. Built for
+            Instagram growth.
           </Text>
         </Box>
       </Box>

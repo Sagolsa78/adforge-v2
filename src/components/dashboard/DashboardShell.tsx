@@ -1,8 +1,24 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Box, Button, Flex, Text, VStack, Spinner, Textarea, IconButton } from "@chakra-ui/react";
-import { Sparkles, FileText, Plus, Building2, Star, LogOut } from "lucide-react";
+import {
+  Box,
+  Button,
+  Flex,
+  Text,
+  VStack,
+  Spinner,
+  Textarea,
+  IconButton,
+} from "@chakra-ui/react";
+import {
+  Sparkles,
+  FileText,
+  Plus,
+  Building2,
+  Star,
+  LogOut,
+} from "lucide-react";
 import { streamContextFeedback } from "@/api";
 import { navItems } from "@/constants/dashboard";
 import { DashboardShellProps } from "@/props/DashboardShell";
@@ -18,6 +34,7 @@ import { splitContextMd } from "@/lib/contextSplitter";
 import { useAuth } from "@/store/AuthProvider";
 import type { ContextBlock } from "@/types/onboarding.types";
 import { useCampaignPolling } from "@/hooks/useCampaignPolling";
+import Image from "next/image";
 
 interface BrandData {
   id: string;
@@ -72,16 +89,34 @@ function getPrimaryObjective(context: string | null): string {
   return firstSentence || "No primary objective available yet.";
 }
 
-function getContextTags(block: { title: string; content: string }, industry: string | null): string[] {
+function getContextTags(
+  block: { title: string; content: string },
+  industry: string | null,
+): string[] {
   const baseTags = industry ? [industry] : [];
   const keywordMap = [
-    { label: "Employer Branding", keywords: ["employee", "team", "culture", "retention", "workforce"] },
-    { label: "Compliance", keywords: ["compliance", "certificate", "reporting", "esg"] },
+    {
+      label: "Employer Branding",
+      keywords: ["employee", "team", "culture", "retention", "workforce"],
+    },
+    {
+      label: "Compliance",
+      keywords: ["compliance", "certificate", "reporting", "esg"],
+    },
     { label: "B2B Culture", keywords: ["b2b", "corporate", "business"] },
-    { label: "Sustainability", keywords: ["sustainability", "environmental", "eco", "carbon"] },
-    { label: "Community", keywords: ["community", "movement", "participation"] },
+    {
+      label: "Sustainability",
+      keywords: ["sustainability", "environmental", "eco", "carbon"],
+    },
+    {
+      label: "Community",
+      keywords: ["community", "movement", "participation"],
+    },
     { label: "Innovation", keywords: ["innovation", "design", "technology"] },
-    { label: "Data-Driven", keywords: ["data", "measurable", "analytics", "dashboard"] },
+    {
+      label: "Data-Driven",
+      keywords: ["data", "measurable", "analytics", "dashboard"],
+    },
   ];
   const source = `${block.title} ${block.content}`.toLowerCase();
   const derivedTags = keywordMap
@@ -117,8 +152,13 @@ function splitSentences(value: string): string[] {
     .filter(Boolean);
 }
 
-function getHighlightedParagraphs(currentContent: string, previousContent?: string) {
-  const previousSentences = new Set(splitSentences(previousContent || "").map(normalizeSentence));
+function getHighlightedParagraphs(
+  currentContent: string,
+  previousContent?: string,
+) {
+  const previousSentences = new Set(
+    splitSentences(previousContent || "").map(normalizeSentence),
+  );
 
   return currentContent.split("\n").map((paragraph) => {
     const trimmed = paragraph.trim();
@@ -126,12 +166,17 @@ function getHighlightedParagraphs(currentContent: string, previousContent?: stri
 
     return splitSentences(trimmed).map((sentence) => ({
       text: sentence,
-      isChanged: previousContent ? !previousSentences.has(normalizeSentence(sentence)) : false,
+      isChanged: previousContent
+        ? !previousSentences.has(normalizeSentence(sentence))
+        : false,
     }));
   });
 }
 
-function parseStreamedContextBlock(rawMarkdown: string, fallback: ContextBlock): ContextBlock {
+function parseStreamedContextBlock(
+  rawMarkdown: string,
+  fallback: ContextBlock,
+): ContextBlock {
   const cleaned = rawMarkdown
     .replace(/^```markdown\s*/, "")
     .replace(/^```\s*/, "")
@@ -141,7 +186,9 @@ function parseStreamedContextBlock(rawMarkdown: string, fallback: ContextBlock):
   const headingMatch = cleaned.match(/^##\s*(\d+)\.\s*(.+)$/m);
   const title = headingMatch?.[2]?.trim() || fallback.title;
   const content = headingMatch
-    ? cleaned.slice(cleaned.indexOf(headingMatch[0]) + headingMatch[0].length).trim()
+    ? cleaned
+        .slice(cleaned.indexOf(headingMatch[0]) + headingMatch[0].length)
+        .trim()
     : cleaned;
 
   return {
@@ -157,7 +204,9 @@ function parseStreamedContextBlock(rawMarkdown: string, fallback: ContextBlock):
  */
 export default function DashboardShell({ brandId }: DashboardShellProps) {
   const { user, session, signOut } = useAuth();
-  const noticeTimeoutsRef = useRef<Record<string, ReturnType<typeof setTimeout>>>({});
+  const noticeTimeoutsRef = useRef<
+    Record<string, ReturnType<typeof setTimeout>>
+  >({});
   const feedbackFieldChrome = {
     bg: "white",
     border: "1px solid",
@@ -177,27 +226,46 @@ export default function DashboardShell({ brandId }: DashboardShellProps) {
       boxShadow: "0 0 0 4px rgba(79, 70, 229, 0.14)",
     },
   } as const;
-  const [activeView, setActiveView] = useState<"brands" | "content" | "assets" | "calendar" | "integrations" | "settings" | "support">("brands");
+  const [activeView, setActiveView] = useState<
+    | "brands"
+    | "content"
+    | "assets"
+    | "calendar"
+    | "integrations"
+    | "settings"
+    | "support"
+  >("brands");
   const [isCreateOpen, setIsCreateOpen] = useState(false);
   const [allBrands, setAllBrands] = useState<BrandData[]>([]);
   const [selectedBrandId, setSelectedBrandId] = useState<string | null>(null);
-  const campaign = useCampaignPolling(session?.access_token, selectedBrandId ?? undefined);
+  const campaign = useCampaignPolling(
+    session?.access_token,
+    selectedBrandId ?? undefined,
+  );
   const [isLoadingBrands, setIsLoadingBrands] = useState(false);
   const [createdBrandId, setCreatedBrandId] = useState<string | null>(null);
   const [ratings, setRatings] = useState<Record<string, number>>({});
-  const [feedbackDrafts, setFeedbackDrafts] = useState<Record<string, string>>({});
+  const [feedbackDrafts, setFeedbackDrafts] = useState<Record<string, string>>(
+    {},
+  );
   const [openFeedbackKey, setOpenFeedbackKey] = useState<string | null>(null);
   const [isSigningOut, setIsSigningOut] = useState(false);
   const [submittingKey, setSubmittingKey] = useState<string | null>(null);
-  const [cardNotices, setCardNotices] = useState<Record<string, CardNoticeState>>({});
+  const [cardNotices, setCardNotices] = useState<
+    Record<string, CardNoticeState>
+  >({});
   const [cardDiffs, setCardDiffs] = useState<Record<string, CardDiffState>>({});
-  const [streamingBlocks, setStreamingBlocks] = useState<Record<string, ContextBlock>>({});
+  const [streamingBlocks, setStreamingBlocks] = useState<
+    Record<string, ContextBlock>
+  >({});
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
 
   useEffect(() => {
     const timeoutRegistry = noticeTimeoutsRef.current;
     return () => {
-      Object.values(timeoutRegistry).forEach((timeoutId) => clearTimeout(timeoutId));
+      Object.values(timeoutRegistry).forEach((timeoutId) =>
+        clearTimeout(timeoutId),
+      );
     };
   }, []);
 
@@ -217,7 +285,9 @@ export default function DashboardShell({ brandId }: DashboardShellProps) {
       try {
         let query = supabase
           .from("brands")
-          .select("id, name, website_url, manifest, guardrails, industry, created_at")
+          .select(
+            "id, name, website_url, manifest, guardrails, industry, created_at",
+          )
           .order("created_at", { ascending: false });
 
         if (user?.id) {
@@ -231,7 +301,9 @@ export default function DashboardShell({ brandId }: DashboardShellProps) {
         } else {
           setAllBrands(data || []);
           if (data && data.length > 0) {
-            setSelectedBrandId((current) => current || createdBrandId || brandId || data[0].id);
+            setSelectedBrandId(
+              (current) => current || createdBrandId || brandId || data[0].id,
+            );
           }
         }
       } catch (err) {
@@ -245,8 +317,13 @@ export default function DashboardShell({ brandId }: DashboardShellProps) {
   }, [user?.id, createdBrandId, brandId]);
 
   const selectedBrand = allBrands.find((b) => b.id === selectedBrandId) || null;
-  const selectedBrandSummary = selectedBrand ? getBrandSummary(selectedBrand) : null;
-  const contextBlocks = useMemo(() => selectedBrandSummary?.contextBlocks ?? [], [selectedBrandSummary]);
+  const selectedBrandSummary = selectedBrand
+    ? getBrandSummary(selectedBrand)
+    : null;
+  const contextBlocks = useMemo(
+    () => selectedBrandSummary?.contextBlocks ?? [],
+    [selectedBrandSummary],
+  );
 
   const handleSelectActiveBrand = (brandIdValue: string) => {
     setSelectedBrandId(brandIdValue);
@@ -320,10 +397,13 @@ export default function DashboardShell({ brandId }: DashboardShellProps) {
     if (submittingKey) return;
 
     if (!selectedBrand || !session?.access_token) {
-      setCardNotice(getFeedbackKey(selectedBrand?.id || "unknown", block.context_index), {
-        type: "error",
-        message: "You need an authenticated session to regenerate context.",
-      });
+      setCardNotice(
+        getFeedbackKey(selectedBrand?.id || "unknown", block.context_index),
+        {
+          type: "error",
+          message: "You need an authenticated session to regenerate context.",
+        },
+      );
       return;
     }
 
@@ -359,7 +439,7 @@ export default function DashboardShell({ brandId }: DashboardShellProps) {
           rating: rating as 1 | 2,
           feedback: feedbackDrafts[key]?.trim() || undefined,
         },
-        session.access_token
+        session.access_token,
       )) {
         if (event.event === "context_chunk" && event.data.chunk) {
           streamedMarkdown += event.data.chunk;
@@ -370,15 +450,19 @@ export default function DashboardShell({ brandId }: DashboardShellProps) {
         }
 
         if (event.event === "error") {
-          throw { message: event.data.message || "Failed to regenerate this context." };
+          throw {
+            message: event.data.message || "Failed to regenerate this context.",
+          };
         }
 
         if (event.event === "complete" && event.data.data) {
           const responseData = event.data.data;
           setAllBrands((prev) =>
             prev.map((brand) =>
-              brand.id === selectedBrand.id ? { ...brand, manifest: responseData.context_md } : brand
-            )
+              brand.id === selectedBrand.id
+                ? { ...brand, manifest: responseData.context_md }
+                : brand,
+            ),
           );
           setCardDiffs((prev) => ({
             ...prev,
@@ -502,7 +586,11 @@ export default function DashboardShell({ brandId }: DashboardShellProps) {
                   borderColor={isSelected ? "#4F46E5" : "#ECECEC"}
                   borderRadius="24px"
                   p={{ base: 5, md: 8 }}
-                  boxShadow={isSelected ? "0 14px 36px rgba(79, 70, 229, 0.14)" : "0 12px 48px rgba(0, 0, 0, 0.04)"}
+                  boxShadow={
+                    isSelected
+                      ? "0 14px 36px rgba(79, 70, 229, 0.14)"
+                      : "0 12px 48px rgba(0, 0, 0, 0.04)"
+                  }
                   transition="all 0.2s ease"
                   _hover={{
                     borderColor: "#4F46E5",
@@ -528,10 +616,19 @@ export default function DashboardShell({ brandId }: DashboardShellProps) {
                         {getInitials(brand.name)}
                       </Flex>
                       <Box minW={0}>
-                        <Text fontSize={{ base: "xl", md: "2xl" }} fontWeight="700" color="#111111" lineHeight="1.15">
+                        <Text
+                          fontSize={{ base: "xl", md: "2xl" }}
+                          fontWeight="700"
+                          color="#111111"
+                          lineHeight="1.15"
+                        >
                           {brand.name}
                         </Text>
-                        <Text fontSize={{ base: "lg", md: "xl" }} color="#6B7280" truncate>
+                        <Text
+                          fontSize={{ base: "lg", md: "xl" }}
+                          color="#6B7280"
+                          truncate
+                        >
                           {summary.hostname}
                         </Text>
                       </Box>
@@ -553,15 +650,31 @@ export default function DashboardShell({ brandId }: DashboardShellProps) {
                   </Flex>
 
                   <Box borderTop="1px solid" borderColor="#ECECEC" pt={5}>
-                    <Text fontSize="11px" fontWeight="800" color="#6B7280" letterSpacing="0.08em" mb={3}>
+                    <Text
+                      fontSize="11px"
+                      fontWeight="800"
+                      color="#6B7280"
+                      letterSpacing="0.08em"
+                      mb={3}
+                    >
                       MAIN OBJECTIVE
                     </Text>
-                    <Text fontSize={{ base: "15px", md: "16px" }} lineHeight="1.55" color="#111111" mb={6}>
+                    <Text
+                      fontSize={{ base: "15px", md: "16px" }}
+                      lineHeight="1.55"
+                      color="#111111"
+                      mb={6}
+                    >
                       {summary.primaryObjective}
                     </Text>
 
                     {brand.manifest && (
-                      <Flex align="center" gap={2} fontSize="12px" color="#6B7280">
+                      <Flex
+                        align="center"
+                        gap={2}
+                        fontSize="12px"
+                        color="#6B7280"
+                      >
                         <FileText size={14} />
                         <Text>Context generated</Text>
                       </Flex>
@@ -592,17 +705,24 @@ export default function DashboardShell({ brandId }: DashboardShellProps) {
         <VStack align="stretch" gap={6}>
           {contextBlocks.map((block) => {
             const tags = getContextTags(block, selectedBrand.industry);
-            const feedbackKey = getFeedbackKey(selectedBrand.id, block.context_index);
+            const feedbackKey = getFeedbackKey(
+              selectedBrand.id,
+              block.context_index,
+            );
             const renderedBlock = streamingBlocks[feedbackKey] || block;
             const selectedRating = ratings[feedbackKey] ?? 0;
             const isFeedbackOpen = openFeedbackKey === feedbackKey;
             const isSubmitting = submittingKey === feedbackKey;
             const cardNotice = cardNotices[feedbackKey];
             const cardDiff = cardDiffs[feedbackKey];
-            const previousContent = cardDiff?.updatedSection.context_index === block.context_index
-              ? cardDiff.previousSection.content
-              : undefined;
-            const highlightedParagraphs = getHighlightedParagraphs(renderedBlock.content, previousContent);
+            const previousContent =
+              cardDiff?.updatedSection.context_index === block.context_index
+                ? cardDiff.previousSection.content
+                : undefined;
+            const highlightedParagraphs = getHighlightedParagraphs(
+              renderedBlock.content,
+              previousContent,
+            );
             const hasTitleChanged =
               cardDiff?.updatedSection.context_index === block.context_index &&
               cardDiff.previousSection.title !== renderedBlock.title;
@@ -682,7 +802,11 @@ export default function DashboardShell({ brandId }: DashboardShellProps) {
                   color="#111111"
                   lineHeight="1.15"
                   mb={5}
-                  bg={hasTitleChanged ? "rgba(254, 240, 138, 0.45)" : "transparent"}
+                  bg={
+                    hasTitleChanged
+                      ? "rgba(254, 240, 138, 0.45)"
+                      : "transparent"
+                  }
                   display="inline"
                   px={hasTitleChanged ? 1.5 : 0}
                   py={hasTitleChanged ? 0.5 : 0}
@@ -701,19 +825,25 @@ export default function DashboardShell({ brandId }: DashboardShellProps) {
                   <VStack align="stretch" gap={3}>
                     {highlightedParagraphs.map((paragraph, paragraphIndex) => (
                       <Text key={`${feedbackKey}-paragraph-${paragraphIndex}`}>
-                        {paragraph.length === 0 ? "\u00A0" : paragraph.map((sentence, sentenceIndex) => (
-                          <Box
-                            as="span"
-                            key={`${feedbackKey}-sentence-${paragraphIndex}-${sentenceIndex}`}
-                            bg={sentence.isChanged ? "rgba(254, 240, 138, 0.55)" : "transparent"}
-                            borderRadius={sentence.isChanged ? "8px" : "0"}
-                            px={sentence.isChanged ? 1 : 0}
-                            py={sentence.isChanged ? 0.5 : 0}
-                            transition="background-color 0.2s ease"
-                          >
-                            {sentence.text}{" "}
-                          </Box>
-                        ))}
+                        {paragraph.length === 0
+                          ? "\u00A0"
+                          : paragraph.map((sentence, sentenceIndex) => (
+                              <Box
+                                as="span"
+                                key={`${feedbackKey}-sentence-${paragraphIndex}-${sentenceIndex}`}
+                                bg={
+                                  sentence.isChanged
+                                    ? "rgba(254, 240, 138, 0.55)"
+                                    : "transparent"
+                                }
+                                borderRadius={sentence.isChanged ? "8px" : "0"}
+                                px={sentence.isChanged ? 1 : 0}
+                                py={sentence.isChanged ? 0.5 : 0}
+                                transition="background-color 0.2s ease"
+                              >
+                                {sentence.text}{" "}
+                              </Box>
+                            ))}
                       </Text>
                     ))}
                   </VStack>
@@ -744,12 +874,18 @@ export default function DashboardShell({ brandId }: DashboardShellProps) {
                         _hover={{ transform: "translateY(-1px)" }}
                         _disabled={{ opacity: 0.45, cursor: "not-allowed" }}
                         disabled={Boolean(submittingKey)}
-                        aria-label={`Rate ${index + 1} star${index + 1 > 1 ? 's' : ''}`}
+                        aria-label={`Rate ${index + 1} star${index + 1 > 1 ? "s" : ""}`}
                       >
                         <Star
                           size={24}
-                          color={index + 1 <= selectedRating ? "#F59E0B" : "#D1D5DB"}
-                          fill={index + 1 <= selectedRating ? "#FDE68A" : "transparent"}
+                          color={
+                            index + 1 <= selectedRating ? "#F59E0B" : "#D1D5DB"
+                          }
+                          fill={
+                            index + 1 <= selectedRating
+                              ? "#FDE68A"
+                              : "transparent"
+                          }
                           strokeWidth={1.8}
                         />
                       </IconButton>
@@ -762,8 +898,12 @@ export default function DashboardShell({ brandId }: DashboardShellProps) {
                     mt={5}
                     bg={cardNotice.type === "success" ? "green.50" : "red.50"}
                     border="1px solid"
-                    borderColor={cardNotice.type === "success" ? "green.200" : "red.200"}
-                    color={cardNotice.type === "success" ? "green.700" : "red.600"}
+                    borderColor={
+                      cardNotice.type === "success" ? "green.200" : "red.200"
+                    }
+                    color={
+                      cardNotice.type === "success" ? "green.700" : "red.600"
+                    }
                     fontSize="sm"
                     borderRadius="14px"
                     p={4}
@@ -779,11 +919,17 @@ export default function DashboardShell({ brandId }: DashboardShellProps) {
                     borderColor="#ECECEC"
                     pt={6}
                   >
-                    <Text fontSize="14px" fontWeight="700" color="#111111" mb={2}>
+                    <Text
+                      fontSize="14px"
+                      fontWeight="700"
+                      color="#111111"
+                      mb={2}
+                    >
                       Optional feedback for regeneration
                     </Text>
                     <Text fontSize="13px" color="#6B7280" mb={4}>
-                      This will regenerate only this context section and update the stored markdown.
+                      This will regenerate only this context section and update
+                      the stored markdown.
                     </Text>
                     <Textarea
                       placeholder="Tell the agent what to fix in this direction."
@@ -820,7 +966,11 @@ export default function DashboardShell({ brandId }: DashboardShellProps) {
                         onClick={() => handleRegenerateContext(block)}
                         disabled={Boolean(submittingKey)}
                       >
-                        {isSubmitting ? <Spinner size="sm" /> : "Regenerate Section"}
+                        {isSubmitting ? (
+                          <Spinner size="sm" />
+                        ) : (
+                          "Regenerate Section"
+                        )}
                       </Button>
                       <Button
                         variant="outline"
@@ -832,7 +982,11 @@ export default function DashboardShell({ brandId }: DashboardShellProps) {
                         fontWeight="600"
                         borderColor="#E5E7EB"
                         color="#6B7280"
-                        _hover={{ bg: "#F8F8F6", color: "#111111", borderColor: "#D1D5DB" }}
+                        _hover={{
+                          bg: "#F8F8F6",
+                          color: "#111111",
+                          borderColor: "#D1D5DB",
+                        }}
                         onClick={() => setOpenFeedbackKey(null)}
                         disabled={Boolean(submittingKey)}
                       >
@@ -895,20 +1049,23 @@ export default function DashboardShell({ brandId }: DashboardShellProps) {
         zIndex={100}
       >
         {/* Logo */}
-        <Flex align="center" gap={3} px={5} py={6}>
-          <Flex
-            w="32px"
-            h="32px"
-            borderRadius="10px"
-            bg="#4F46E5"
-            align="center"
-            justify="center"
-            color="white"
+
+        <Flex align="center" gap="3" px={5} py={6}>
+          <Image
+            src="/plug_andPlay_logo.jpeg"
+            alt="Plug and Play Agent"
+            width={32}
+            height={32}
+            style={{ objectFit: "contain", display: "block", borderRadius: "8px" }}
+          />
+          <Text
+            fontSize="15px"
+            fontWeight="800"
+            color="#1a1a2e"
+            letterSpacing="-0.02em"
+            lineHeight="1.2"
           >
-            <Sparkles size={18} strokeWidth={2.5} />
-          </Flex>
-          <Text fontWeight="700" fontSize="lg" color="#111111">
-            Insta Agent
+            Plug and Play Agent
           </Text>
         </Flex>
 
@@ -932,7 +1089,10 @@ export default function DashboardShell({ brandId }: DashboardShellProps) {
                 bg={isActive ? "#F0EEFF" : "transparent"}
                 fontWeight={isActive ? "600" : "500"}
                 cursor="pointer"
-                _hover={{ bg: isActive ? "#F0EEFF" : "#F8F8F6", color: isActive ? "#4F46E5" : "#111111" }}
+                _hover={{
+                  bg: isActive ? "#F0EEFF" : "#F8F8F6",
+                  color: isActive ? "#4F46E5" : "#111111",
+                }}
                 transition="all 0.15s ease"
                 fontSize="14px"
                 onClick={() => {
@@ -943,8 +1103,14 @@ export default function DashboardShell({ brandId }: DashboardShellProps) {
                 <Icon size={18} />
                 <Text>{item.label}</Text>
                 {hasAssetsBadge && (
-                  <Box w="8px" h="8px" borderRadius="full" bg="#4F46E5" ml="auto"
-                    style={{ animation: "pulse 1.5s ease-in-out infinite" }} />
+                  <Box
+                    w="8px"
+                    h="8px"
+                    borderRadius="full"
+                    bg="#4F46E5"
+                    ml="auto"
+                    style={{ animation: "pulse 1.5s ease-in-out infinite" }}
+                  />
                 )}
               </Flex>
             );
@@ -989,20 +1155,21 @@ export default function DashboardShell({ brandId }: DashboardShellProps) {
         py={3}
       >
         <Flex align="center" justify="space-between">
-          <Flex align="center" gap={3}>
-            <Flex
-              w="32px"
-              h="32px"
-              borderRadius="10px"
-              bg="#4F46E5"
-              align="center"
-              justify="center"
-              color="white"
+          <Flex align="center" gap={2.5}>
+            <Image
+              src="/plug_andPlay_logo.jpeg"
+              alt="Plug and Play Agent"
+              width={32}
+              height={32}
+              style={{ objectFit: "contain" }}
+            />
+            <Text
+              fontSize="lg"
+              fontWeight="800"
+              color="#1a1a2e"
+              letterSpacing="-0.02em"
             >
-              <Sparkles size={18} strokeWidth={2.5} />
-            </Flex>
-            <Text fontWeight="700" fontSize="lg" color="#111111">
-              Insta Agent
+              Plug and Play Agent
             </Text>
           </Flex>
           <Button
@@ -1092,7 +1259,11 @@ export default function DashboardShell({ brandId }: DashboardShellProps) {
           <Text fontSize="xl" fontWeight="700" color="#111111">
             {viewTitle}
           </Text>
-          <Flex direction={{ base: "column", sm: "row" }} gap={3} w={{ base: "full", md: "auto" }}>
+          <Flex
+            direction={{ base: "column", sm: "row" }}
+            gap={3}
+            w={{ base: "full", md: "auto" }}
+          >
             <Button
               bg="#4F46E5"
               color="white"
@@ -1138,7 +1309,15 @@ export default function DashboardShell({ brandId }: DashboardShellProps) {
             </Flex>
           ) : activeView === "content" ? (
             <ContentTab
-              brand={selectedBrand ? { id: selectedBrand.id, name: selectedBrand.name, industry: selectedBrand.industry } : null}
+              brand={
+                selectedBrand
+                  ? {
+                      id: selectedBrand.id,
+                      name: selectedBrand.name,
+                      industry: selectedBrand.industry,
+                    }
+                  : null
+              }
               contextBlocks={contextBlocks}
               token={session?.access_token}
               campaign={campaign}

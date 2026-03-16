@@ -8,6 +8,7 @@ import {
   Icon,
   Text,
   Badge,
+  SimpleGrid,
 } from "@chakra-ui/react";
 import { Check } from "lucide-react";
 import { motion } from "framer-motion";
@@ -17,22 +18,26 @@ const MotionBox = motion.create(Box as any);
 
 interface PricingCardProps {
   name: string;
-  price: string;
+  price?: string;
+  customPriceText?: string;
   description: string;
   features: string[];
   isFeatured?: boolean;
   badgeText?: string;
   buttonText: string;
+  ctaHref: string;
 }
 
 const PricingCard = ({
   name,
   price,
+  customPriceText,
   description,
   features,
   isFeatured = false,
   badgeText,
   buttonText,
+  ctaHref,
 }: PricingCardProps) => {
   return (
     <MotionBox
@@ -90,18 +95,32 @@ const PricingCard = ({
           {name}
         </Text>
         <Flex align="baseline" gap={1}>
-          <Text
-            fontSize="5xl"
-            fontWeight="800"
-            color={isFeatured ? "white" : "gray.900"}
-            letterSpacing="-0.04em"
-            lineHeight={1}
-          >
-            ${price}
-          </Text>
-          <Text fontSize="sm" color={isFeatured ? "blue.200" : "gray.400"} fontWeight="500">
-            / mo
-          </Text>
+          {customPriceText ? (
+            <Text
+              fontSize="5xl"
+              fontWeight="800"
+              color={isFeatured ? "white" : "gray.900"}
+              letterSpacing="-0.04em"
+              lineHeight={1}
+            >
+              {customPriceText}
+            </Text>
+          ) : (
+            <>
+              <Text
+                fontSize="5xl"
+                fontWeight="800"
+                color={isFeatured ? "white" : "gray.900"}
+                letterSpacing="-0.04em"
+                lineHeight={1}
+              >
+                ${price}
+              </Text>
+              <Text fontSize="sm" color={isFeatured ? "blue.200" : "gray.400"} fontWeight="500">
+                / mo
+              </Text>
+            </>
+          )}
         </Flex>
       </div>
 
@@ -147,6 +166,7 @@ const PricingCard = ({
       </div>
 
       <Button
+        asChild
         w="full"
         h="48px"
         borderRadius="14px"
@@ -161,7 +181,7 @@ const PricingCard = ({
         _active={{ transform: "translateY(0)" }}
         transition="all 0.2s"
       >
-        {buttonText}
+        <a href={ctaHref}>{buttonText}</a>
       </Button>
     </MotionBox>
   );
@@ -215,76 +235,23 @@ export default function Pricing() {
             Pick the plan that fits your brand. Upgrade or cancel anytime.
           </Text>
 
-          {/* Monthly / Annually toggle */}
-          <div style={{ marginTop: "16px" }}>
-            <Flex
-              bg="gray.100"
-              p={1}
-              borderRadius="full"
-              display="inline-flex"
-            >
-              <Button
-                size="sm"
-                borderRadius="full"
-                px={6}
-                h="36px"
-                bg="white"
-                color="gray.900"
-                fontWeight="700"
-                fontSize="sm"
-                boxShadow="sm"
-                _hover={{ bg: "white" }}
-              >
-                Monthly
-              </Button>
-              <Button
-                size="sm"
-                borderRadius="full"
-                px={6}
-                h="36px"
-                variant="ghost"
-                color="gray.500"
-                fontWeight="600"
-                fontSize="sm"
-                position="relative"
-                _hover={{ bg: "transparent", color: "gray.700" }}
-              >
-                Annually
-                <Badge
-                  bg="#ECFDF5"
-                  color="#059669"
-                  position="absolute"
-                  top="-22px"
-                  right="-8px"
-                  borderRadius="full"
-                  fontSize="10px"
-                  fontWeight="800"
-                  px={2}
-                  py={0.5}
-                  boxShadow="sm"
-                >
-                  −20%
-                </Badge>
-              </Button>
-            </Flex>
-          </div>
+
         </div>
 
         {/* Pricing cards */}
-        <div style={{
-          display: "flex",
-          flexDirection: "row",
-          gap: "24px",
-          maxWidth: "980px",
-          margin: "0 auto",
-          flexWrap: "wrap",
-          justifyContent: "center",
-        }}>
+        <SimpleGrid
+          columns={{ base: 1, md: 2 }}
+          gap={6}
+          maxW="3xl"
+          mx="auto"
+        >
+          
           <PricingCard
             name="Starter"
             price="19"
             description="Perfect for founders building their first personal brand."
-            buttonText="Get started"
+            buttonText="Get Started"
+            ctaHref="/onboarding"
             features={[
               "50 AI post generations / mo",
               "1 Workspace",
@@ -293,25 +260,13 @@ export default function Pricing() {
             ]}
           />
           <PricingCard
-            name="Pro"
-            price="49"
+            name="Custom"
+            customPriceText="Let's talk"
             isFeatured
-            badgeText="Most Popular"
-            description="For growing brands that need a consistent content engine."
-            buttonText="Upgrade to Pro"
-            features={[
-              "500 AI post generations / mo",
-              "3 Workspaces",
-              "Unlimited social accounts",
-              "Advanced storytelling templates",
-              "Invite up to 3 team members",
-            ]}
-          />
-          <PricingCard
-            name="Agency"
-            price="149"
+            badgeText="For Teams & Enterprises"
             description="For agencies managing content across multiple client brands."
-            buttonText="Upgrade to Agency"
+            buttonText="Contact Sales"
+            ctaHref="mailto:sales@yourdomain.com"
             features={[
               "Unlimited AI post generations",
               "Unlimited Workspaces",
@@ -320,7 +275,7 @@ export default function Pricing() {
               "Priority email support",
             ]}
           />
-        </div>
+        </SimpleGrid>
 
         {/* Stripe trust */}
         <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "10px", marginTop: "64px", color: "#9CA3AF" }}>

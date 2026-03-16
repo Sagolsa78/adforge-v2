@@ -70,7 +70,11 @@ export default function CreateBrandPanel({
   } = useDiscoveryStream();
 
   useEffect(() => {
-    if (status === "finished" && brandId && completedBrandIdRef.current !== brandId) {
+    if (
+      status === "finished" &&
+      brandId &&
+      completedBrandIdRef.current !== brandId
+    ) {
       completedBrandIdRef.current = brandId;
       saveClaimedBrandId(brandId);
       onBrandCreated(brandId);
@@ -148,7 +152,10 @@ export default function CreateBrandPanel({
           </Flex>
 
           <Grid
-            templateColumns={{ base: "1fr", xl: "minmax(0, 1.15fr) minmax(380px, 0.85fr)" }}
+            templateColumns={{
+              base: "1fr",
+              xl: "minmax(0, 1.15fr) minmax(380px, 0.85fr)",
+            }}
             gap={6}
             alignItems="start"
           >
@@ -201,9 +208,17 @@ export default function CreateBrandPanel({
                   </Box>
                 </Box>
               )}
-              <Flex align="center" gap={2} mt={4} color="#6B7280" fontSize="12px">
+              <Flex
+                align="center"
+                gap={2}
+                mt={4}
+                color="#6B7280"
+                fontSize="12px"
+              >
                 <ShieldCheck size={14} />
-                <Text>Guardrails are applied during brand identity generation.</Text>
+                <Text>
+                  Guardrails are applied during brand identity generation.
+                </Text>
               </Flex>
             </Box>
 
@@ -211,7 +226,12 @@ export default function CreateBrandPanel({
               <VStack align="stretch" gap={4} mb={6}>
                 <Box>
                   <Flex align="center" justify="space-between" mb={2}>
-                    <Text fontSize="12px" fontWeight="700" color="#111111" letterSpacing="0.02em">
+                    <Text
+                      fontSize="12px"
+                      fontWeight="700"
+                      color="#111111"
+                      letterSpacing="0.02em"
+                    >
                       Website URL
                     </Text>
                     <Text fontSize="11px" fontWeight="600" color="#4F46E5">
@@ -242,13 +262,19 @@ export default function CreateBrandPanel({
                     />
                   </Box>
                   <Text fontSize="12px" color="#6B7280" mt={2}>
-                    Paste the homepage or landing page you want the agent to inspect.
+                    Paste the homepage or landing page you want the agent to
+                    inspect.
                   </Text>
                 </Box>
 
                 <Box>
                   <Flex align="center" justify="space-between" mb={2}>
-                    <Text fontSize="12px" fontWeight="700" color="#111111" letterSpacing="0.02em">
+                    <Text
+                      fontSize="12px"
+                      fontWeight="700"
+                      color="#111111"
+                      letterSpacing="0.02em"
+                    >
                       Brand Name
                     </Text>
                     <Text fontSize="11px" fontWeight="600" color="#4F46E5">
@@ -268,7 +294,7 @@ export default function CreateBrandPanel({
                       <Signature size={16} />
                     </Flex>
                     <Input
-                      placeholder="Insta Agent"
+                      placeholder="Plug and Play Agent"
                       value={brandName}
                       onChange={(e) => setBrandName(e.target.value)}
                       h="52px"
@@ -284,7 +310,12 @@ export default function CreateBrandPanel({
 
                 <Box>
                   <Flex align="center" justify="space-between" mb={2}>
-                    <Text fontSize="12px" fontWeight="700" color="#111111" letterSpacing="0.02em">
+                    <Text
+                      fontSize="12px"
+                      fontWeight="700"
+                      color="#111111"
+                      letterSpacing="0.02em"
+                    >
                       Guardrails
                     </Text>
                     <Text fontSize="11px" fontWeight="600" color="#6B7280">
@@ -303,7 +334,8 @@ export default function CreateBrandPanel({
                     {...fieldChrome}
                   />
                   <Text fontSize="12px" color="#6B7280" mt={2}>
-                    Add tone, compliance, or messaging constraints for the discovery output.
+                    Add tone, compliance, or messaging constraints for the
+                    discovery output.
                   </Text>
                 </Box>
               </VStack>

@@ -5,7 +5,13 @@ import Link from "next/link";
 
 export default function FinalCTA() {
   return (
-    <Box as="section" py={{ base: 14, md: 24 }} px={{ base: 4, md: 6 }} bg="#ffffff" color="white">
+    <Box
+      as="section"
+      py={{ base: 14, md: 24 }}
+      px={{ base: 4, md: 6 }}
+      bg="#ffffff"
+      color="white"
+    >
       <Box
         maxW="6xl"
         mx="auto"
@@ -18,18 +24,57 @@ export default function FinalCTA() {
         overflow="hidden"
       >
         {/* Decorative elements */}
-        <Box position="absolute" top="-10%" right="-10%" w="300px" h="300px" bg="blue.600" filter="blur(100px)" opacity={0.3} borderRadius="full" />
-        <Box position="absolute" bottom="-10%" left="-10%" w="240px" h="240px" bg="blue.400" filter="blur(80px)" opacity={0.2} borderRadius="full" />
+        <Box
+          position="absolute"
+          top="-10%"
+          right="-10%"
+          w="300px"
+          h="300px"
+          bg="blue.600"
+          filter="blur(100px)"
+          opacity={0.3}
+          borderRadius="full"
+        />
+        <Box
+          position="absolute"
+          bottom="-10%"
+          left="-10%"
+          w="240px"
+          h="240px"
+          bg="blue.400"
+          filter="blur(80px)"
+          opacity={0.2}
+          borderRadius="full"
+        />
 
         <Box position="relative" zIndex={1}>
-          <Text fontSize="sm" letterSpacing="0.2em" textTransform="uppercase" color="blue.200" fontWeight="700">
+          <Text
+            fontSize="sm"
+            letterSpacing="0.2em"
+            textTransform="uppercase"
+            color="blue.200"
+            fontWeight="700"
+          >
             Ready to scale?
           </Text>
-          <Heading mt={4} fontSize={{ base: "3xl", md: "5xl" }} fontWeight="800" lineHeight="1.2">
-            Turn your website into 30 days of <br /> Instagram content in minutes.
+          <Heading
+            mt={4}
+            fontSize={{ base: "3xl", md: "5xl" }}
+            fontWeight="800"
+            lineHeight="1.2"
+          >
+            Turn your website into 30 days of <br /> Instagram content in
+            minutes.
           </Heading>
-          <Text mt={6} color="blue.100" maxW="700px" mx="auto" fontSize={{ base: "md", md: "lg" }}>
-            Stop wasting hours on content creation. Let Insta Agent handle the heavy lifting while you focus on growing your brand.
+          <Text
+            mt={6}
+            color="blue.100"
+            maxW="700px"
+            mx="auto"
+            fontSize={{ base: "md", md: "lg" }}
+          >
+            Stop wasting hours on content creation. Let Plug and Play Agent
+            handle the heavy lifting while you focus on growing your brand.
           </Text>
           <Flex mt={10} gap={4} flexWrap="wrap" justify="center">
             <Link href="/onboarding">
@@ -42,7 +87,11 @@ export default function FinalCTA() {
                 py={7}
                 fontSize="lg"
                 fontWeight="700"
-                _hover={{ bg: "#4338CA", transform: "translateY(-2px)", boxShadow: "0 30px 60px rgba(79,70,229,0.45)" }}
+                _hover={{
+                  bg: "#4338CA",
+                  transform: "translateY(-2px)",
+                  boxShadow: "0 30px 60px rgba(79,70,229,0.45)",
+                }}
                 transition="all 0.2s"
               >
                 Start Free Trial

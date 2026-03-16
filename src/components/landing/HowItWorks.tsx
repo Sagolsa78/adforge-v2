@@ -8,7 +8,11 @@ const MotionBox = motion.create(Box as React.ComponentType<any>);
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const MotionFlex = motion.create(Flex as React.ComponentType<any>);
 
-import { HOW_IT_WORKS_STEPS, CONTAINER_VARIANTS, ITEM_VARIANTS } from "@/constants";
+import {
+  HOW_IT_WORKS_STEPS,
+  CONTAINER_VARIANTS,
+  ITEM_VARIANTS,
+} from "@/constants";
 
 /**
  * Alternating timeline section illustrating the 4-step brand-to-campaign workflow.
@@ -34,16 +38,39 @@ export default function HowItWorks() {
           transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
         >
           <Flex justify="center" mb="4">
-            <Box px="4" py="1.5" bg="blue.50" color="blue.600" rounded="full" fontSize={{ base: "xs", md: "sm" }} fontWeight="600">
+            <Box
+              px="4"
+              py="1.5"
+              bg="blue.50"
+              color="blue.600"
+              rounded="full"
+              fontSize={{ base: "xs", md: "sm" }}
+              fontWeight="600"
+            >
               How It Works
             </Box>
           </Flex>
-          <Heading as="h2" fontSize={{ base: "2xl", sm: "3xl", md: "5xl" }} fontWeight="800" mb="4" lineHeight="1.1" color="gray.900">
+          <Heading
+            as="h2"
+            fontSize={{ base: "2xl", sm: "3xl", md: "5xl" }}
+            fontWeight="800"
+            mb="4"
+            lineHeight="1.1"
+            color="gray.900"
+          >
             From brand scan to live content in{" "}
-            <Box as="span" color="#4F46E5">3 steps</Box>
+            <Box as="span" color="#4F46E5">
+              3 steps
+            </Box>
           </Heading>
-          <Text color="gray.500" fontSize={{ base: "sm", md: "lg" }} maxW="2xl" mx="auto">
-            No marketing expertise needed. Insta Agent handles the insights, creatives, and scheduling automatically.
+          <Text
+            color="gray.500"
+            fontSize={{ base: "sm", md: "lg" }}
+            maxW="2xl"
+            mx="auto"
+          >
+            No marketing expertise needed. Plug and Play Agent handles the
+            insights, creatives, and scheduling automatically.
           </Text>
         </MotionBox>
 
@@ -85,11 +112,22 @@ export default function HowItWorks() {
             const stepColor = "#4F46E5";
             const stepBg = "#EEF2FF";
             return (
-              <Box key={step.num} mb={{ base: "8", md: "14" }} position="relative" zIndex={1} _last={{ mb: 0 }}>
+              <Box
+                key={step.num}
+                mb={{ base: "8", md: "14" }}
+                position="relative"
+                zIndex={1}
+                _last={{ mb: 0 }}
+              >
                 {/* Mobile layout */}
-                <Flex display={{ base: "flex", md: "none" }} align="flex-start" gap="5">
+                <Flex
+                  display={{ base: "flex", md: "none" }}
+                  align="flex-start"
+                  gap="5"
+                >
                   <Flex
-                    w="12" h="12"
+                    w="12"
+                    h="12"
                     bg="white"
                     border="2px solid"
                     borderColor={stepColor}
@@ -118,11 +156,29 @@ export default function HowItWorks() {
                     _hover={{ boxShadow: "0 12px 32px rgba(79,70,229,0.08)" }}
                     transition="all 0.3s ease"
                   >
-                    <Flex w="12" h="12" bg={stepBg} rounded="xl" align="center" justify="center" mb="3">
+                    <Flex
+                      w="12"
+                      h="12"
+                      bg={stepBg}
+                      rounded="xl"
+                      align="center"
+                      justify="center"
+                      mb="3"
+                    >
                       <step.icon size={20} color={stepColor} />
                     </Flex>
-                    <Heading as="h3" fontSize="lg" fontWeight="700" mb="2" color="gray.900">{step.title}</Heading>
-                    <Text color="gray.500" fontSize="sm" lineHeight="1.7">{step.description}</Text>
+                    <Heading
+                      as="h3"
+                      fontSize="lg"
+                      fontWeight="700"
+                      mb="2"
+                      color="gray.900"
+                    >
+                      {step.title}
+                    </Heading>
+                    <Text color="gray.500" fontSize="sm" lineHeight="1.7">
+                      {step.description}
+                    </Text>
                   </MotionBox>
                 </Flex>
 
@@ -149,13 +205,34 @@ export default function HowItWorks() {
                       maxW="md"
                       w="full"
                       transition="all 0.3s ease"
-                      _hover={{ transform: "translateY(-4px)", boxShadow: "0 16px 40px rgba(79,70,229,0.08)" }}
+                      _hover={{
+                        transform: "translateY(-4px)",
+                        boxShadow: "0 16px 40px rgba(79,70,229,0.08)",
+                      }}
                     >
-                      <Flex w="14" h="14" bg={stepBg} rounded="2xl" align="center" justify="center" mb="5">
+                      <Flex
+                        w="14"
+                        h="14"
+                        bg={stepBg}
+                        rounded="2xl"
+                        align="center"
+                        justify="center"
+                        mb="5"
+                      >
                         <step.icon size={26} color={stepColor} />
                       </Flex>
-                      <Heading as="h3" fontSize="xl" fontWeight="700" mb="3" color="gray.900">{step.title}</Heading>
-                      <Text color="gray.500" fontSize="md" lineHeight="1.7">{step.description}</Text>
+                      <Heading
+                        as="h3"
+                        fontSize="xl"
+                        fontWeight="700"
+                        mb="3"
+                        color="gray.900"
+                      >
+                        {step.title}
+                      </Heading>
+                      <Text color="gray.500" fontSize="md" lineHeight="1.7">
+                        {step.description}
+                      </Text>
                     </Box>
                   </MotionBox>
 
@@ -170,7 +247,8 @@ export default function HowItWorks() {
                     zIndex={2}
                   >
                     <Flex
-                      w="12" h="12"
+                      w="12"
+                      h="12"
                       bg="white"
                       border="2px solid"
                       borderColor={stepColor}
