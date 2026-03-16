@@ -13,6 +13,7 @@ import {
 import {
   ChevronDown,
   ChevronUp,
+  Coffee,
   Download,
   ImageIcon,
   Loader,
@@ -86,6 +87,14 @@ function ProgressHeader({ progress, isPolling, totalAssets, totalJobs }: {
               ? `${totalAssets} images generated and uploaded to your library.`
               : `${totalAssets} of ${totalJobs} images complete. New assets appear below as they finish.`}
           </Text>
+          {isPolling && !isComplete && (
+            <Flex align="center" gap={1.5} mt={1.5}>
+              <Coffee size={14} color="#A78BFA" />
+              <Text fontSize="13px" color="#7C3AED" fontWeight="500">
+                Go grab a coffee — this runs in the background, even if you close the tab.
+              </Text>
+            </Flex>
+          )}
         </Box>
 
         {/* Progress bar */}
@@ -195,9 +204,23 @@ function AssetCard({ asset }: { asset: CampaignAsset }) {
               backdropFilter="blur(4px)"
               _hover={{ bg: "rgba(255,255,255,0.35)" }}
               h="28px" w="28px" p={0} minW="28px"
-              onClick={(e) => {
+              onClick={async (e) => {
                 e.stopPropagation();
-                if (asset.image_url) window.open(asset.image_url, "_blank");
+                if (!asset.image_url) return;
+                try {
+                  const res = await fetch(asset.image_url);
+                  const blob = await res.blob();
+                  const url = URL.createObjectURL(blob);
+                  const a = document.createElement("a");
+                  a.href = url;
+                  a.download = `${asset.variation_id || "ad"}.webp`;
+                  document.body.appendChild(a);
+                  a.click();
+                  document.body.removeChild(a);
+                  URL.revokeObjectURL(url);
+                } catch {
+                  window.open(asset.image_url, "_blank");
+                }
               }}
             >
               <Download size={13} />
@@ -332,8 +355,8 @@ export default function AssetsTab({ trackers, statuses, assets, progress, isPoll
         <Text fontSize="xl" fontWeight="700" color="#111" mb={2}>
           No Assets Yet
         </Text>
-        <Text fontSize="15px" color="#6B7280" maxW="360px">
-          Go to the Content tab, select your contexts and templates, then hit Generate to create ad assets.
+        <Text fontSize="15px" color="#6B7280" maxW="400px">
+          Go to the Content tab, select your contexts and templates, then hit Generate. Your ads will be created in the background — feel free to grab a coffee while you wait.
         </Text>
       </Flex>
     );

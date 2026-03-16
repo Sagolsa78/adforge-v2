@@ -367,10 +367,13 @@ export default function ContentTab({ brand, contextBlocks, token, campaign, onNa
               <Loader size={28} color="#4F46E5" style={{ animation: "spin 1.5s linear infinite" }} />
             </Flex>
             <Text fontSize="22px" fontWeight="700" color="#111" mb={2}>
-              Generating Variations
+              Queuing {totalPosts} Ads
             </Text>
-            <Text fontSize="15px" color="#6B7280" lineHeight="1.5" mb={4}>
-              Creating {totalPosts} ad variations across {selectedContextIds.length} context{selectedContextIds.length > 1 ? "s" : ""} and {selectedTemplateIds.length} template{selectedTemplateIds.length > 1 ? "s" : ""}. This takes a few seconds.
+            <Text fontSize="15px" color="#6B7280" lineHeight="1.5" mb={2}>
+              Setting up {totalPosts} ad variations across {selectedContextIds.length} context{selectedContextIds.length > 1 ? "s" : ""} and {selectedTemplateIds.length} template{selectedTemplateIds.length > 1 ? "s" : ""}.
+            </Text>
+            <Text fontSize="14px" color="#7C3AED" fontWeight="500" lineHeight="1.5" mb={4}>
+              Go grab a coffee — everything generates in the background, even if you close this tab.
             </Text>
             <Flex justify="center" gap={1.5}>
               {[0, 1, 2].map((i) => (
