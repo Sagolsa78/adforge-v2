@@ -126,52 +126,51 @@ export default function ContentTab({ brand, contextBlocks, token, campaign, onNa
     );
   };
 
-  const handleGenerateContent = async () => {
+  const handleGenerateContent = () => {
     if (!brand || !token || selectedContextIds.length === 0 || selectedTemplateIds.length === 0) return;
 
     setIsGenerating(true);
     setContentError(null);
     campaign.clearCampaigns();
 
-    try {
-      await Promise.all(
-        selectedContextIds.flatMap((contextIndex) =>
-          selectedTemplateIds.map(async (templateId) => {
-            const template = CONTENT_TEMPLATE_OPTIONS.find((o) => o.id === templateId);
-            const contextBlock = contextBlocks.find((b) => b.context_index === contextIndex);
-            if (!contextBlock) return;
+    // Navigate to assets page INSTANTLY
+    onNavigateToAssets();
 
-            const response = await generateAdVariations(
-              brand.id,
-              {
-                context_index: contextBlock.context_index,
-                user_brief: contentBrief.trim()
-                  ? `${contentBrief.trim()}\n\nFocus context: ${contextBlock.title}\nTemplate: ${template?.label || templateId}`
-                  : `Generate ${template?.label || templateId} variations for the context "${contextBlock.title}".`,
-                ad_type: templateId,
-              },
-              token
-            );
+    // Fire all API calls in the background (don't await)
+    const calls = selectedContextIds.flatMap((contextIndex) =>
+      selectedTemplateIds.map(async (templateId) => {
+        const template = CONTENT_TEMPLATE_OPTIONS.find((o) => o.id === templateId);
+        const contextBlock = contextBlocks.find((b) => b.context_index === contextIndex);
+        if (!contextBlock) return;
 
-            campaign.addCampaign({
-              campaignId: response.campaign_id,
-              contextIndex: contextBlock.context_index,
-              contextTitle: contextBlock.title,
-              templateId,
-              templateLabel: template?.label || templateId,
-            });
-          })
-        )
-      );
+        try {
+          const response = await generateAdVariations(
+            brand.id,
+            {
+              context_index: contextBlock.context_index,
+              user_brief: contentBrief.trim()
+                ? `${contentBrief.trim()}\n\nFocus context: ${contextBlock.title}\nTemplate: ${template?.label || templateId}`
+                : `Generate ${template?.label || templateId} variations for the context "${contextBlock.title}".`,
+              ad_type: templateId,
+            },
+            token
+          );
 
-      // Navigate to assets page to show live progress
-      onNavigateToAssets();
-    } catch (error) {
-      const apiError = error as { message?: string };
-      setContentError(apiError.message || "Failed to generate content variations.");
-    } finally {
-      setIsGenerating(false);
-    }
+          campaign.addCampaign({
+            campaignId: response.campaign_id,
+            contextIndex: contextBlock.context_index,
+            contextTitle: contextBlock.title,
+            templateId,
+            templateLabel: template?.label || templateId,
+          });
+        } catch (error) {
+          const apiError = error as { message?: string };
+          setContentError(apiError.message || "Failed to generate content variations.");
+        }
+      })
+    );
+
+    Promise.all(calls).finally(() => setIsGenerating(false));
   };
 
   if (!brand) {

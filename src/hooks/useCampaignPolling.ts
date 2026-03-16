@@ -94,10 +94,9 @@ export function useCampaignPolling(token: string | undefined) {
           return next;
         });
 
-        // Fetch assets for newly completed campaigns
+        // Fetch assets for campaigns that have any completed images
         for (const status of results) {
-          if (status.status === "complete" && !fetchedCampaigns.current.has(status.campaign_id)) {
-            fetchedCampaigns.current.add(status.campaign_id);
+          if (status.complete > 0) {
             try {
               const assetData = await getCampaignAssets(status.campaign_id, token);
               const allAssets = Object.values(assetData.by_context).flat();
@@ -108,6 +107,10 @@ export function useCampaignPolling(token: string | undefined) {
             } catch {
               // Assets fetch failed, don't block
             }
+          }
+          // Mark fully complete campaigns so we stop polling them
+          if (status.status === "complete") {
+            fetchedCampaigns.current.add(status.campaign_id);
           }
         }
       } catch (err) {
