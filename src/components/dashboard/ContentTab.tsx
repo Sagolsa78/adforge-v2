@@ -18,7 +18,7 @@ import {
   Sparkles,
   Tags,
 } from "lucide-react";
-import { generateAdVariations } from "@/api";
+import { generateAdVariationsBulk } from "@/api";
 import { useCampaignPolling } from "@/hooks/useCampaignPolling";
 import type { ContextBlock } from "@/types/onboarding.types";
 import type { LucideIcon } from "lucide-react";
@@ -134,37 +134,37 @@ export default function ContentTab({ brand, contextBlocks, token, campaign, onNa
     setContentError(null);
     campaign.clearCampaigns();
 
-    // Fire all API calls — modal is visible while these run
-    const calls = selectedContextIds.flatMap((contextIndex) =>
-      selectedTemplateIds.map(async (templateId) => {
+    // Build all items for a single bulk request
+    const items = selectedContextIds.flatMap((contextIndex) =>
+      selectedTemplateIds.map((templateId) => {
         const template = CONTENT_TEMPLATE_OPTIONS.find((o) => o.id === templateId);
         const contextBlock = contextBlocks.find((b) => b.context_index === contextIndex);
-        if (!contextBlock) return;
-
-        const response = await generateAdVariations(
-          brand.id,
-          {
-            context_index: contextBlock.context_index,
-            user_brief: contentBrief.trim()
-              ? `${contentBrief.trim()}\n\nFocus context: ${contextBlock.title}\nTemplate: ${template?.label || templateId}`
-              : `Generate ${template?.label || templateId} variations for the context "${contextBlock.title}".`,
-            ad_type: templateId,
-          },
-          token
-        );
-
-        campaign.addCampaign({
-          campaignId: response.campaign_id,
-          contextIndex: contextBlock.context_index,
-          contextTitle: contextBlock.title,
-          templateId,
-          templateLabel: template?.label || templateId,
-        });
+        return {
+          context_index: (contextBlock?.context_index ?? contextIndex) as 1 | 2 | 3 | 4 | 5,
+          user_brief: contentBrief.trim()
+            ? `${contentBrief.trim()}\n\nFocus context: ${contextBlock?.title || contextIndex}\nTemplate: ${template?.label || templateId}`
+            : `Generate ${template?.label || templateId} variations for the context "${contextBlock?.title || contextIndex}".`,
+          ad_type: templateId,
+        };
       })
     );
 
     try {
-      await Promise.all(calls);
+      // Single API call — returns all campaign_ids in <1s
+      const result = await generateAdVariationsBulk(brand.id, items, token);
+
+      for (const c of result.campaigns) {
+        const contextBlock = contextBlocks.find((b) => b.context_index === c.context_index);
+        const template = CONTENT_TEMPLATE_OPTIONS.find((o) => o.id === c.ad_type);
+        campaign.addCampaign({
+          campaignId: c.campaign_id,
+          contextIndex: c.context_index,
+          contextTitle: contextBlock?.title || `Context ${c.context_index}`,
+          templateId: c.ad_type,
+          templateLabel: template?.label || c.ad_type,
+        });
+      }
+
       onNavigateToAssets();
     } catch (error) {
       const apiError = error as { message?: string };

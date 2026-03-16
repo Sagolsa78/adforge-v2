@@ -302,6 +302,37 @@ export async function generateAdVariations(
 }
 
 /**
+ * Bulk ad variation generation: single request for all context+template combos.
+ * Returns all campaign_ids immediately; LLM + image gen happen server-side.
+ */
+export async function generateAdVariationsBulk(
+  brandId: string,
+  items: AdVariationsPayload[],
+  token: string
+): Promise<{
+  campaigns: Array<{
+    campaign_id: string;
+    context_index: number;
+    ad_type: string;
+    total: number;
+  }>;
+}> {
+  const res = await fetch(`${BASE_URL}${API_ENDPOINTS.BRAND_VARIATIONS_BULK(brandId)}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({ items }),
+  });
+  if (!res.ok) {
+    const body = await res.json().catch(() => ({}));
+    apiError(body.message || "Failed to queue bulk ad generation", res.status);
+  }
+  return res.json();
+}
+
+/**
  * Lists all campaigns for the current user, optionally filtered by brand.
  */
 export async function listCampaigns(

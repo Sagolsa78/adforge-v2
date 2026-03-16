@@ -15,6 +15,7 @@ export const API_ENDPOINTS = {
     `/brands/${id}/context-feedback`,
   BRAND_CLAIM: (id: string | number) => `/brands/${id}/claim`,
   BRAND_VARIATIONS: (id: string | number) => `/brands/${id}/ad-variations`,
+  BRAND_VARIATIONS_BULK: (id: string | number) => `/brands/${id}/ad-variations/bulk`,
   CAMPAIGNS: "/campaigns",
   CAMPAIGN_STATUS: (id: string) => `/campaigns/${id}/status`,
   CAMPAIGN_ASSETS: (id: string) => `/campaigns/${id}/assets`,
