@@ -45,7 +45,8 @@ export async function GET(request: NextRequest) {
     // Fallback to Supabase user_metadata
     const metaConnection = user.user_metadata?.meta_connection;
     console.log("Meta connection in metadata:", !!metaConnection);
-    
+    console.log("Full user_metadata:", JSON.stringify(user.user_metadata, null, 2));
+
     if (metaConnection && metaConnection.connected_at) {
       console.log("Found Meta connection:", {
         hasToken: !!metaConnection.access_token,
