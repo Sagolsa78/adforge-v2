@@ -101,16 +101,51 @@ export default function OAuthCallbackPage() {
 
         // Now call our API to process the connection
         console.log("Calling API to process OAuth...");
-        const response = await fetch("/api/integrations/meta/callback", {
+        
+        // First, get user profile from Facebook
+        let facebookUserId = null;
+        let facebookName = null;
+        let pagesData = [];
+        
+        try {
+          const userResponse = await fetch(
+            `https://graph.facebook.com/v18.0/me?fields=id,name&access_token=${providerToken || accessToken}`
+          );
+          const userData = await userResponse.json();
+          facebookUserId = userData.id;
+          facebookName = userData.name;
+          
+          const pagesResponse = await fetch(
+            `https://graph.facebook.com/v18.0/me/accounts?fields=id,name,access_token,instagram_business_account{id,name}&access_token=${providerToken || accessToken}`
+          );
+          const pagesDataResponse = await pagesResponse.json();
+          if (pagesDataResponse.data) {
+            pagesData = pagesDataResponse.data.map((page: any) => ({
+              id: page.id,
+              name: page.name,
+              access_token: page.access_token,
+              instagram_id: page.instagram_business_account?.id,
+              instagram_name: page.instagram_business_account?.name,
+            }));
+          }
+        } catch (graphError) {
+          console.error("Error fetching Facebook data:", graphError);
+        }
+        
+        // Call backend API to store connection
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'https://content.bhuexpert/api/v1/data'}/integrations/meta/callback`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            "Authorization": `Bearer ${accessToken}`, // Pass token in header
+            "Authorization": `Bearer ${accessToken}`, // Pass token for auth
           },
           body: JSON.stringify({
             access_token: providerToken || accessToken,
             refresh_token: refreshToken,
             expires_in: expiresIn,
+            facebook_user_id: facebookUserId,
+            facebook_name: facebookName,
+            pages: pagesData,
           }),
         });
 
