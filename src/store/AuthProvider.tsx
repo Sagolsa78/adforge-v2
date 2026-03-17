@@ -245,10 +245,16 @@ export function AuthProvider({ children, onDelayedAuthComplete, onDelayedAuthErr
   }, []);
 
   const signInWithFacebook = useCallback(async () => {
-    const redirectTo = `${window.location.origin}${window.location.pathname}`;
+    const redirectTo = `${window.location.origin}/api/integrations/meta/callback`;
     const { error } = await supabase.auth.signInWithOAuth({
       provider: "facebook",
-      options: { redirectTo },
+      options: { 
+        redirectTo,
+        queryParams: {
+          access_type: "offline",
+          prompt: "consent",
+        },
+      },
     });
     if (error) throw { message: error.message, status: 400 };
   }, []);

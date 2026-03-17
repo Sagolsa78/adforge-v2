@@ -1,6 +1,11 @@
 "use client";
 
-import { Box, Button, Flex, SimpleGrid, Text, VStack } from "@chakra-ui/react";
+import { useState, useEffect } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { Box, Button, Flex, SimpleGrid, Text, VStack, Link, Badge } from "@chakra-ui/react";
+import { useAuth } from "@/store/AuthProvider";
+import { toaster } from "@/components/ui/toaster";
+import NextLink from "next/link";
 
 // ─── Inline SVG logos ────────────────────────────────────────────────────────
 
@@ -67,23 +72,122 @@ function PlatformPlaceholderLogo({ label, color }: { label: string; color: strin
   );
 }
 
+// ─── Types ────────────────────────────────────────────────────────────────────
+
+interface MetaConnection {
+  connected: boolean;
+  pageName?: string;
+  pageId?: string;
+  instagramConnected?: boolean;
+  instagramName?: string;
+}
+
 // ─── Main component ───────────────────────────────────────────────────────────
 
 export default function IntegrationsTab() {
-  const CONNECTED_PLATFORMS = [
-    {
-      key: "meta",
-      name: "Meta (Facebook)",
-      description: "Connect your Facebook Page to publish and track posts.",
-      Logo: MetaLogo,
-    },
-    {
-      key: "instagram",
-      name: "Instagram",
-      description: "Link Instagram Business to auto-publish Reels and Carousels.",
-      Logo: InstagramLogo,
-    },
-  ];
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const { signInWithFacebook, user } = useAuth();
+  const [isConnecting, setIsConnecting] = useState(false);
+  const [isDisconnecting, setIsDisconnecting] = useState(false);
+  const [metaConnection, setMetaConnection] = useState<MetaConnection>({ connected: false });
+  const [isLoading, setIsLoading] = useState(true);
+
+  // Check for OAuth callback
+  useEffect(() => {
+    const code = searchParams.get("code");
+    const state = searchParams.get("state");
+    
+    if (code || state?.includes("facebook")) {
+      // OAuth callback - check connection status
+      checkConnectionStatus();
+      // Clean URL
+      window.history.replaceState({}, document.title, "/dashboard?tab=integrations");
+      toaster.create({
+        title: "Facebook Connected",
+        description: "Your Facebook account has been successfully connected.",
+        type: "success",
+        duration: 5000,
+      });
+    } else {
+      checkConnectionStatus();
+    }
+  }, [searchParams]);
+
+  const checkConnectionStatus = async () => {
+    try {
+      const response = await fetch("/api/integrations/meta/status");
+      const data = await response.json();
+      setMetaConnection(data);
+    } catch (error) {
+      console.error("Error checking connection status:", error);
+      setMetaConnection({ connected: false });
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleConnectFacebook = async () => {
+    if (!user) {
+      toaster.create({
+        title: "Authentication Required",
+        description: "Please sign in to connect Facebook.",
+        type: "warning",
+        duration: 5000,
+      });
+      return;
+    }
+
+    setIsConnecting(true);
+    try {
+      await signInWithFacebook();
+      // User will be redirected to Facebook
+      // After redirect back, useEffect will handle the callback
+    } catch (error: any) {
+      toaster.create({
+        title: "Connection Failed",
+        description: error.message || "Failed to initiate Facebook connection.",
+        type: "error",
+        duration: 5000,
+      });
+    } finally {
+      setIsConnecting(false);
+    }
+  };
+
+  const handleDisconnect = async () => {
+    if (!confirm("Are you sure you want to disconnect Facebook? This will remove access to your Facebook Pages and Instagram account.")) {
+      return;
+    }
+
+    setIsDisconnecting(true);
+    try {
+      const response = await fetch("/api/integrations/meta/disconnect", {
+        method: "POST",
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to disconnect");
+      }
+
+      setMetaConnection({ connected: false });
+      toaster.create({
+        title: "Disconnected",
+        description: "Facebook has been disconnected from your account.",
+        type: "success",
+        duration: 5000,
+      });
+    } catch (error: any) {
+      toaster.create({
+        title: "Disconnect Failed",
+        description: error.message || "Failed to disconnect Facebook.",
+        type: "error",
+        duration: 5000,
+      });
+    } finally {
+      setIsDisconnecting(false);
+    }
+  };
 
   const COMING_SOON = [
     { key: "tiktok", name: "TikTok", abbr: "TT", color: "#010101" },
@@ -103,6 +207,43 @@ export default function IntegrationsTab() {
         </Text>
       </Box>
 
+      {/* Info note */}
+      <Box
+        bg="#EFF6FF"
+        border="1px solid"
+        borderColor="#BFDBFE"
+        borderRadius="16px"
+        p={4}
+      >
+        <Flex gap={3} align="flex-start">
+          <Box flexShrink={0}>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="10" cy="10" r="8" fill="#3B82F6" opacity="0.1"/>
+              <path d="M10 6.5V10.5M10 13.5H10.01" stroke="#3B82F6" strokeWidth="1.5" strokeLinecap="round"/>
+            </svg>
+          </Box>
+          <Box>
+            <Text fontSize="13px" fontWeight="600" color="#1E40AF" mb={1}>
+              Connecting via Personal Account
+            </Text>
+            <Text fontSize="12px" color="#1E40AF" lineHeight="1.5">
+              When connecting Facebook, you'll authenticate with your personal Facebook account. 
+              After authorization, you can select which Facebook Pages to connect. 
+              For Instagram, you'll need an Instagram Business account linked to your Facebook Page.
+              <Link
+                href="/privacy"
+                color="#1E40AF"
+                textDecoration="underline"
+                fontWeight="600"
+                ml={1}
+              >
+                Learn more
+              </Link>
+            </Text>
+          </Box>
+        </Flex>
+      </Box>
+
       {/* Connected Platforms section */}
       <Box>
         <Text fontSize="13px" fontWeight="800" color="#6B7280" letterSpacing="0.06em" textTransform="uppercase" mb={4}>
@@ -110,26 +251,26 @@ export default function IntegrationsTab() {
         </Text>
 
         <SimpleGrid columns={{ base: 1, md: 2 }} gap={5}>
-          {CONNECTED_PLATFORMS.map(({ key, name, description, Logo }) => (
-            <Box
-              key={key}
-              bg="white"
-              border="1px solid"
-              borderColor="#ECECEC"
-              borderRadius="24px"
-              p={6}
-              boxShadow="0 12px 48px rgba(0,0,0,0.04)"
-              transition="all 0.2s ease"
-              _hover={{ borderColor: "#D1D5DB", boxShadow: "0 16px 56px rgba(0,0,0,0.07)" }}
-            >
-              {/* Logo + title row */}
-              <Flex align="center" gap={4} mb={4}>
-                <Logo />
-                <Box>
-                  <Text fontSize="17px" fontWeight="700" color="#111111" lineHeight="1.2">
-                    {name}
-                  </Text>
-                  {/* Not Connected badge */}
+          {/* Meta (Facebook) Card */}
+          <Box
+            bg="white"
+            border="1px solid"
+            borderColor="#ECECEC"
+            borderRadius="24px"
+            p={6}
+            boxShadow="0 12px 48px rgba(0,0,0,0.04)"
+          >
+            <Flex align="center" gap={4} mb={4}>
+              <MetaLogo />
+              <Box flex={1}>
+                <Text fontSize="17px" fontWeight="700" color="#111111" lineHeight="1.2">
+                  Meta (Facebook)
+                </Text>
+                {metaConnection.connected ? (
+                  <Badge colorScheme="green" mt={1.5}>
+                    Connected{metaConnection.pageName && ` - ${metaConnection.pageName}`}
+                  </Badge>
+                ) : (
                   <Box
                     display="inline-block"
                     mt={1.5}
@@ -144,29 +285,131 @@ export default function IntegrationsTab() {
                       Not Connected
                     </Text>
                   </Box>
-                </Box>
-              </Flex>
+                )}
+              </Box>
+            </Flex>
 
-              {/* Description */}
-              <Text fontSize="14px" color="#6B7280" lineHeight="1.55" mb={5}>
-                {description}
-              </Text>
+            <Text fontSize="14px" color="#6B7280" lineHeight="1.55" mb={5}>
+              Connect your Facebook Page to publish and track posts.
+            </Text>
 
-              {/* Connect button */}
+            {metaConnection.connected ? (
               <Button
                 w="full"
-                bg="#4F46E5"
+                variant="outline"
+                borderColor="#FECACA"
+                color="#DC2626"
+                bg="white"
+                borderRadius="12px"
+                h="42px"
+                fontSize="14px"
+                fontWeight="600"
+                _hover={{ bg: "#FEF2F2", borderColor: "#FCA5A5" }}
+                onClick={handleDisconnect}
+                loading={isDisconnecting}
+              >
+                Disconnect
+              </Button>
+            ) : (
+              <Button
+                w="full"
+                bg="#1877F2"
                 color="white"
                 borderRadius="14px"
                 h="44px"
                 fontSize="14px"
                 fontWeight="600"
-                _hover={{ bg: "#4338CA" }}
+                _hover={{ bg: "#166FE5" }}
+                loading={isConnecting}
+                onClick={handleConnectFacebook}
               >
-                Connect
+                {isConnecting ? "Connecting..." : "Connect with Facebook"}
               </Button>
-            </Box>
-          ))}
+            )}
+          </Box>
+
+          {/* Instagram Card */}
+          <Box
+            bg="white"
+            border="1px solid"
+            borderColor={metaConnection.connected ? "#ECECEC" : "#F3F4F6"}
+            borderRadius="24px"
+            p={6}
+            boxShadow="0 12px 48px rgba(0,0,0,0.04)"
+            opacity={metaConnection.connected ? 1 : 0.6}
+          >
+            <Flex align="center" gap={4} mb={4}>
+              <InstagramLogo />
+              <Box>
+                <Text fontSize="17px" fontWeight="700" color="#111111" lineHeight="1.2">
+                  Instagram
+                </Text>
+                {metaConnection.instagramConnected ? (
+                  <Badge colorScheme="green" mt={1.5}>
+                    Connected{metaConnection.instagramName && ` - ${metaConnection.instagramName}`}
+                  </Badge>
+                ) : metaConnection.connected ? (
+                  <Box
+                    display="inline-block"
+                    mt={1.5}
+                    px={2.5}
+                    py={0.5}
+                    bg="#FEF3C7"
+                    borderRadius="999px"
+                    border="1px solid"
+                    borderColor="#FDE68A"
+                  >
+                    <Text fontSize="11px" fontWeight="600" color="#92400E">
+                      Connect Facebook First
+                    </Text>
+                  </Box>
+                ) : (
+                  <Box
+                    display="inline-block"
+                    mt={1.5}
+                    px={2.5}
+                    py={0.5}
+                    bg="#F3F4F6"
+                    borderRadius="999px"
+                    border="1px solid"
+                    borderColor="#E5E7EB"
+                  >
+                    <Text fontSize="11px" fontWeight="600" color="#6B7280">
+                      Requires Facebook
+                    </Text>
+                  </Box>
+                )}
+              </Box>
+            </Flex>
+
+            <Text fontSize="14px" color="#6B7280" lineHeight="1.55" mb={5}>
+              Link Instagram Business to auto-publish Reels and Carousels. Requires Facebook connection.
+            </Text>
+
+            <Button
+              w="full"
+              bg="#E5E7EB"
+              color="#6B7280"
+              borderRadius="14px"
+              h="44px"
+              fontSize="14px"
+              fontWeight="600"
+              cursor={metaConnection.connected ? "pointer" : "not-allowed"}
+              disabled={!metaConnection.connected}
+              onClick={() => {
+                if (metaConnection.connected) {
+                  toaster.create({
+                    title: "Instagram Connection",
+                    description: "Instagram is automatically connected when you link it to your Facebook Page. Make sure your Instagram Business account is linked in Facebook Page settings.",
+                    type: "info",
+                    duration: 8000,
+                  });
+                }
+              }}
+            >
+              {metaConnection.connected ? "Configure Instagram" : "Connect Facebook First"}
+            </Button>
+          </Box>
         </SimpleGrid>
       </Box>
 
