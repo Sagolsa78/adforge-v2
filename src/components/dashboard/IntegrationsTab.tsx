@@ -184,9 +184,37 @@ export default function IntegrationsTab() {
   const checkConnectionStatus = async () => {
     console.log("IntegrationsTab: Checking connection status...");
     try {
+      // First, check from current session (client-side, always up-to-date)
+      const { data: { session } } = await supabase.auth.getSession();
+      const metaConnection = session?.user?.user_metadata?.meta_connection;
+      
+      console.log("IntegrationsTab: Session meta_connection:", metaConnection);
+
+      if (metaConnection && metaConnection.connected_at) {
+        console.log("IntegrationsTab: Found connection in session, using it");
+        const data = {
+          connected: true,
+          facebook_user_id: metaConnection.facebook_user_id,
+          facebook_name: metaConnection.facebook_name,
+          pageName: metaConnection.pages?.[0]?.name,
+          pageId: metaConnection.selected_page_id,
+          pages: metaConnection.pages || [],
+          instagramConnected: metaConnection.instagram_connected,
+          instagramName: metaConnection.instagram_pages?.[0]?.instagram_name,
+          hasValidToken: !!metaConnection.access_token,
+        };
+        setMetaConnection(data);
+        if (data.pages && data.pages.length > 0) {
+          setPendingPages(data.pages);
+        }
+        return data;
+      }
+
+      // Fallback to backend API if not in session
+      console.log("IntegrationsTab: No connection in session, trying backend API...");
       const response = await fetch("/api/integrations/meta/status");
       const data = await response.json();
-      console.log("IntegrationsTab: Connection status response:", data);
+      console.log("IntegrationsTab: Backend status response:", data);
       setMetaConnection(data);
 
       // Store pages for selector if available
