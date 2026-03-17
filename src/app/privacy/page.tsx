@@ -378,7 +378,6 @@ export default function PrivacyPolicyPage() {
                     support@postgini.com
                   </Link>
                 </li>
-                <li>Address: [Your Business Address]</li>
               </Box>
             </Box>
           </Box>
