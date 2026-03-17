@@ -22,11 +22,36 @@ import type { CampaignAsset } from "@/types/onboarding.types";
 import type { CampaignTracker } from "@/hooks/useCampaignPolling";
 import {
   type TemplateProps,
+  // Awareness variations
   AwarenessVariation1,
+  AwarenessVariation2,
+  AwarenessVariation3,
+  AwarenessVariation4,
+  AwarenessVariation5,
+  // Sale variations
   SaleVariation1,
+  SaleVariation2,
+  SaleVariation3,
+  SaleVariation4,
+  SaleVariation5,
+  // Launch variations
   LaunchVariation1,
+  LaunchVariation2,
+  LaunchVariation3,
+  LaunchVariation4,
+  LaunchVariation5,
+  // Engagement variations
   EngagementVariation1,
+  EngagementVariation2,
+  EngagementVariation3,
+  EngagementVariation4,
+  EngagementVariation5,
+  // Story Narrative variations
   StoryNarrativeVariation1,
+  StoryNarrativeVariation2,
+  StoryNarrativeVariation3,
+  StoryNarrativeVariation4,
+  StoryNarrativeVariation5,
 } from "./templates";
 
 /* ─── Types ──────────────────────────────────────────────────────────── */
@@ -161,14 +186,58 @@ function AssetCard({ asset }: { asset: CampaignAsset }) {
   const accent = vd.accent_color || "#7C3AED";
   const templateProps: TemplateProps = { vd, imageUrl: asset.image_url, primary, secondary, accent };
 
-  // Select template based on ad type - uses Variation 1 from each template family
+  // Get variation index (1-5) to select the correct template variation
+  const variationIndex = asset.variation_index || 1;
+
+  // Select template based on ad type AND variation index
   const TemplateComponent = (() => {
     switch (asset.ad_type) {
-      case "sale": return SaleVariation1;
-      case "launch": return LaunchVariation1;
-      case "story_narrative": return StoryNarrativeVariation1;
-      case "engagement": return EngagementVariation1;
-      default: return AwarenessVariation1;
+      case "sale":
+        switch (variationIndex) {
+          case 1: return SaleVariation1;
+          case 2: return SaleVariation2;
+          case 3: return SaleVariation3;
+          case 4: return SaleVariation4;
+          case 5: return SaleVariation5;
+          default: return SaleVariation1;
+        }
+      case "launch":
+        switch (variationIndex) {
+          case 1: return LaunchVariation1;
+          case 2: return LaunchVariation2;
+          case 3: return LaunchVariation3;
+          case 4: return LaunchVariation4;
+          case 5: return LaunchVariation5;
+          default: return LaunchVariation1;
+        }
+      case "story_narrative":
+        switch (variationIndex) {
+          case 1: return StoryNarrativeVariation1;
+          case 2: return StoryNarrativeVariation2;
+          case 3: return StoryNarrativeVariation3;
+          case 4: return StoryNarrativeVariation4;
+          case 5: return StoryNarrativeVariation5;
+          default: return StoryNarrativeVariation1;
+        }
+      case "engagement":
+        switch (variationIndex) {
+          case 1: return EngagementVariation1;
+          case 2: return EngagementVariation2;
+          case 3: return EngagementVariation3;
+          case 4: return EngagementVariation4;
+          case 5: return EngagementVariation5;
+          default: return EngagementVariation1;
+        }
+      case "awareness":
+      default:
+        switch (variationIndex) {
+          case 1: return AwarenessVariation1;
+          case 2: return AwarenessVariation2;
+          case 3: return AwarenessVariation3;
+          case 4: return AwarenessVariation4;
+          case 5: return AwarenessVariation5;
+          default: return AwarenessVariation1;
+        }
     }
   })();
 
