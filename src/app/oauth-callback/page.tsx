@@ -86,8 +86,21 @@ export default function OAuthCallbackPage() {
         }
 
         console.log("Session set successfully");
+        
+        // Wait a moment for the session cookie to be available
+        await new Promise(resolve => setTimeout(resolve, 100));
+
+        // Get fresh session to confirm it's set
+        const { data: { session: confirmedSession } } = await supabase.auth.getSession();
+        console.log("Session confirmed:", !!confirmedSession);
+
+        if (!confirmedSession) {
+          console.error("Session not available after setSession");
+          throw new Error("Session not persisted");
+        }
 
         // Now call our API to process the connection
+        console.log("Calling API to process OAuth...");
         const response = await fetch("/api/integrations/meta/callback", {
           method: "POST",
           headers: {
