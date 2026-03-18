@@ -275,6 +275,19 @@ export async function claimBrand(
   }
 }
 
+// ─── Delete brand ────────────────────────────────────────────────────
+
+export async function deleteBrand(brandId: string, token: string): Promise<void> {
+  const res = await fetch(`${BASE_URL}${API_ENDPOINTS.BRAND_DELETE(brandId)}`, {
+    method: "DELETE",
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  if (!res.ok) {
+    const body = await res.json().catch(() => ({}));
+    apiError(body.message || "Failed to delete brand", res.status);
+  }
+}
+
 // ─── Generate ad variations (async queue) ────────────────────────────
 
 /**

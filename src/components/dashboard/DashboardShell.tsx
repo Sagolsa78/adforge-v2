@@ -18,8 +18,9 @@ import {
   Building2,
   Star,
   LogOut,
+  Trash2,
 } from "lucide-react";
-import { streamContextFeedback } from "@/api";
+import { streamContextFeedback, deleteBrand } from "@/api";
 import { navItems } from "@/constants/dashboard";
 import { DashboardShellProps } from "@/props/DashboardShell";
 import CreateBrandPanel from "@/components/dashboard/CreateBrandPanel";
@@ -243,6 +244,7 @@ export default function DashboardShell({ brandId }: DashboardShellProps) {
     selectedBrandId ?? undefined,
   );
   const [isLoadingBrands, setIsLoadingBrands] = useState(false);
+  const [deletingBrandId, setDeletingBrandId] = useState<string | null>(null);
   const [createdBrandId, setCreatedBrandId] = useState<string | null>(null);
   const [ratings, setRatings] = useState<Record<string, number>>({});
   const [feedbackDrafts, setFeedbackDrafts] = useState<Record<string, string>>(
@@ -329,6 +331,24 @@ export default function DashboardShell({ brandId }: DashboardShellProps) {
     setSelectedBrandId(brandIdValue);
     if (typeof window !== "undefined") {
       window.localStorage.setItem(ACTIVE_BRAND_STORAGE_KEY, brandIdValue);
+    }
+  };
+
+  const handleDeleteBrand = async (brandId: string) => {
+    if (!session?.access_token) return;
+    if (!window.confirm("Delete this brand? This cannot be undone.")) return;
+    setDeletingBrandId(brandId);
+    try {
+      await deleteBrand(brandId, session.access_token);
+      setAllBrands((prev) => prev.filter((b) => b.id !== brandId));
+      if (selectedBrandId === brandId) {
+        const remaining = allBrands.filter((b) => b.id !== brandId);
+        setSelectedBrandId(remaining[0]?.id ?? null);
+      }
+    } catch (err) {
+      console.error("Failed to delete brand:", err);
+    } finally {
+      setDeletingBrandId(null);
     }
   };
 
@@ -633,20 +653,37 @@ export default function DashboardShell({ brandId }: DashboardShellProps) {
                         </Text>
                       </Box>
                     </Flex>
-                    <Button
-                      size="sm"
-                      bg={isSelected ? "#EEF2FF" : "#4F46E5"}
-                      color={isSelected ? "#4338CA" : "white"}
-                      borderRadius="999px"
-                      px={4}
-                      _hover={{ bg: isSelected ? "#E0E7FF" : "#4338CA" }}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleSelectActiveBrand(brand.id);
-                      }}
-                    >
-                      {isSelected ? "Active Brand" : "Set Active"}
-                    </Button>
+                    <Flex gap={2} align="center">
+                      <Button
+                        size="sm"
+                        bg={isSelected ? "#EEF2FF" : "#4F46E5"}
+                        color={isSelected ? "#4338CA" : "white"}
+                        borderRadius="999px"
+                        px={4}
+                        _hover={{ bg: isSelected ? "#E0E7FF" : "#4338CA" }}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleSelectActiveBrand(brand.id);
+                        }}
+                      >
+                        {isSelected ? "Active Brand" : "Set Active"}
+                      </Button>
+                      <IconButton
+                        aria-label="Delete brand"
+                        size="sm"
+                        variant="ghost"
+                        color="#9CA3AF"
+                        borderRadius="999px"
+                        loading={deletingBrandId === brand.id}
+                        _hover={{ bg: "#FEE2E2", color: "#DC2626" }}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleDeleteBrand(brand.id);
+                        }}
+                      >
+                        <Trash2 size={15} />
+                      </IconButton>
+                    </Flex>
                   </Flex>
 
                   <Box borderTop="1px solid" borderColor="#ECECEC" pt={5}>
