@@ -1,5 +1,8 @@
-import { NextRequest, NextResponse } from "next/server";
-import { createClient } from "@supabase/supabase-js";
+// ─────────────────────────────────────────────────────────────────────────────
+// OLD: Meta / Facebook select-page — no longer needed with Instagram Login
+// ─────────────────────────────────────────────────────────────────────────────
+// import { NextRequest, NextResponse } from "next/server";
+// import { createClient } from "@supabase/supabase-js";
 
 const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const SUPABASE_ANON_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;

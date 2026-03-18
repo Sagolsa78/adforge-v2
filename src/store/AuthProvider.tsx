@@ -244,22 +244,10 @@ export function AuthProvider({ children, onDelayedAuthComplete, onDelayedAuthErr
     if (error) throw { message: error.message, status: 400 };
   }, []);
 
+  // signInWithFacebook removed — Instagram Login flow handled via
+  // /api/integrations/instagram/connect (server-side redirect, no Supabase OAuth)
   const signInWithFacebook = useCallback(async () => {
-    // Redirect to OAuth callback page that handles hash fragments
-    const redirectTo = `${window.location.origin}/oauth-callback`;
-    
-    const { error } = await supabase.auth.signInWithOAuth({
-      provider: "facebook",
-      options: { 
-        redirectTo,
-        queryParams: {
-          access_type: "offline",
-          prompt: "consent",
-        },
-      },
-    });
-    
-    if (error) throw { message: error.message, status: 400 };
+    throw new Error("Facebook Login is no longer used. Use Instagram Login via /api/integrations/instagram/connect");
   }, []);
 
   const signInWithMagicLink = useCallback(async (email: string) => {

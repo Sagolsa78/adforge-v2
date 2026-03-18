@@ -1,3 +1,9 @@
+// ─────────────────────────────────────────────────────────────────────────────
+// OLD: Facebook OAuth callback page — replaced by Instagram Login
+// New Instagram callback: /api/integrations/instagram/callback (server-side)
+// Client fallback: /oauth-callback/instagram/page.tsx
+// ─────────────────────────────────────────────────────────────────────────────
+
 "use client";
 
 import { useEffect, useState } from "react";
