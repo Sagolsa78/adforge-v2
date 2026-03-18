@@ -2,7 +2,12 @@
 
 import { Box, Flex, Heading, Text } from "@chakra-ui/react";
 import { motion } from "framer-motion";
-import { Globe, BrainCircuit, LayoutTemplate, CalendarClock } from "lucide-react";
+import {
+  Globe,
+  BrainCircuit,
+  LayoutTemplate,
+  CalendarClock,
+} from "lucide-react";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const MotionBox = motion.create(Box as React.ComponentType<any>);
@@ -14,7 +19,8 @@ const steps = [
     num: "01",
     icon: Globe,
     title: "Paste Your Website URL",
-    description: "Enter your website URL and AdForge instantly crawls your brand — scanning your messaging, colors, tone, and identity to build a complete brand profile.",
+    description:
+      "Enter your website URL and plug and playa gents instantly crawls your brand — scanning your messaging, colors, tone, and identity to build a complete brand profile.",
     color: "#8a2ce2",
     bgColor: "#f3e8ff",
   },
@@ -22,7 +28,8 @@ const steps = [
     num: "02",
     icon: BrainCircuit,
     title: "Get Your Brand Analysis Report",
-    description: "Receive a detailed AI-generated brand analysis report covering your audience, tone of voice, key value propositions, and competitor positioning.",
+    description:
+      "Receive a detailed AI-generated brand analysis report covering your audience, tone of voice, key value propositions, and competitor positioning.",
     color: "#ea580c",
     bgColor: "#fff7ed",
   },
@@ -30,7 +37,8 @@ const steps = [
     num: "03",
     icon: LayoutTemplate,
     title: "Generate Tailored Ad Creatives",
-    description: "Select your campaign goals and target context. AdForge generates multiple ad creatives — images, copy, and formats — precisely matched to your brand.",
+    description:
+      "Select your campaign goals and target context. plug and playa gents generates multiple ad creatives — images, copy, and formats — precisely matched to your brand.",
     color: "#0891b2",
     bgColor: "#ecfeff",
   },
@@ -38,7 +46,8 @@ const steps = [
     num: "04",
     icon: CalendarClock,
     title: "Schedule & Run Your Campaign",
-    description: "Pick your platforms, set your schedule, and launch. AdForge publishes and manages your ad campaign automatically across all selected channels.",
+    description:
+      "Pick your platforms, set your schedule, and launch. plug and playa gents publishes and manages your ad campaign automatically across all selected channels.",
     color: "#059669",
     bgColor: "#ecfdf5",
   },
@@ -51,7 +60,12 @@ const containerVariants = {
 
 const itemVariants = {
   hidden: { opacity: 0, y: 60, scale: 0.98 },
-  visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.85, ease: [0.22, 1, 0.36, 1] } },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { duration: 0.85, ease: [0.22, 1, 0.36, 1] },
+  },
 };
 
 export default function HowItWorks() {
@@ -74,16 +88,39 @@ export default function HowItWorks() {
           transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
         >
           <Flex justify="center" mb="4">
-            <Box px="4" py="1.5" bg="#ede9fe" color="#7c3aed" rounded="full" fontSize={{ base: "xs", md: "sm" }} fontWeight="600">
+            <Box
+              px="4"
+              py="1.5"
+              bg="#ede9fe"
+              color="#7c3aed"
+              rounded="full"
+              fontSize={{ base: "xs", md: "sm" }}
+              fontWeight="600"
+            >
               How It Works
             </Box>
           </Flex>
-          <Heading as="h2" fontSize={{ base: "2xl", sm: "3xl", md: "5xl" }} fontWeight="800" mb="4" lineHeight="1.1" color="gray.900">
+          <Heading
+            as="h2"
+            fontSize={{ base: "2xl", sm: "3xl", md: "5xl" }}
+            fontWeight="800"
+            mb="4"
+            lineHeight="1.1"
+            color="gray.900"
+          >
             From brand scan to live campaign in{" "}
-            <Box as="span" color="#8a2ce2">4 steps</Box>
+            <Box as="span" color="#8a2ce2">
+              4 steps
+            </Box>
           </Heading>
-          <Text color="gray.500" fontSize={{ base: "sm", md: "lg" }} maxW="2xl" mx="auto">
-            No marketing expertise needed. AdForge handles the strategy, creatives, and scheduling automatically.
+          <Text
+            color="gray.500"
+            fontSize={{ base: "sm", md: "lg" }}
+            maxW="2xl"
+            mx="auto"
+          >
+            No marketing expertise needed. plug and playa gents handles the
+            strategy, creatives, and scheduling automatically.
           </Text>
         </MotionBox>
 
@@ -123,11 +160,22 @@ export default function HowItWorks() {
           {steps.map((step, idx) => {
             const isEven = idx % 2 === 0;
             return (
-              <Box key={step.num} mb={{ base: "8", md: "14" }} position="relative" zIndex={1} _last={{ mb: 0 }}>
+              <Box
+                key={step.num}
+                mb={{ base: "8", md: "14" }}
+                position="relative"
+                zIndex={1}
+                _last={{ mb: 0 }}
+              >
                 {/* Mobile layout */}
-                <Flex display={{ base: "flex", md: "none" }} align="flex-start" gap="5">
+                <Flex
+                  display={{ base: "flex", md: "none" }}
+                  align="flex-start"
+                  gap="5"
+                >
                   <Flex
-                    w="12" h="12"
+                    w="12"
+                    h="12"
                     bg="white"
                     border="2px solid"
                     borderColor={step.color}
@@ -156,11 +204,29 @@ export default function HowItWorks() {
                     _hover={{ boxShadow: "0 12px 32px rgba(0,0,0,0.08)" }}
                     transition="all 0.3s ease"
                   >
-                    <Flex w="12" h="12" bg={step.bgColor} rounded="xl" align="center" justify="center" mb="3">
+                    <Flex
+                      w="12"
+                      h="12"
+                      bg={step.bgColor}
+                      rounded="xl"
+                      align="center"
+                      justify="center"
+                      mb="3"
+                    >
                       <step.icon size={20} color={step.color} />
                     </Flex>
-                    <Heading as="h3" fontSize="lg" fontWeight="700" mb="2" color="gray.900">{step.title}</Heading>
-                    <Text color="gray.500" fontSize="sm" lineHeight="1.7">{step.description}</Text>
+                    <Heading
+                      as="h3"
+                      fontSize="lg"
+                      fontWeight="700"
+                      mb="2"
+                      color="gray.900"
+                    >
+                      {step.title}
+                    </Heading>
+                    <Text color="gray.500" fontSize="sm" lineHeight="1.7">
+                      {step.description}
+                    </Text>
                   </MotionBox>
                 </Flex>
 
@@ -187,13 +253,34 @@ export default function HowItWorks() {
                       maxW="md"
                       w="full"
                       transition="all 0.3s ease"
-                      _hover={{ transform: "translateY(-4px)", boxShadow: "0 16px 40px rgba(0,0,0,0.08)" }}
+                      _hover={{
+                        transform: "translateY(-4px)",
+                        boxShadow: "0 16px 40px rgba(0,0,0,0.08)",
+                      }}
                     >
-                      <Flex w="14" h="14" bg={step.bgColor} rounded="2xl" align="center" justify="center" mb="5">
+                      <Flex
+                        w="14"
+                        h="14"
+                        bg={step.bgColor}
+                        rounded="2xl"
+                        align="center"
+                        justify="center"
+                        mb="5"
+                      >
                         <step.icon size={26} color={step.color} />
                       </Flex>
-                      <Heading as="h3" fontSize="xl" fontWeight="700" mb="3" color="gray.900">{step.title}</Heading>
-                      <Text color="gray.500" fontSize="md" lineHeight="1.7">{step.description}</Text>
+                      <Heading
+                        as="h3"
+                        fontSize="xl"
+                        fontWeight="700"
+                        mb="3"
+                        color="gray.900"
+                      >
+                        {step.title}
+                      </Heading>
+                      <Text color="gray.500" fontSize="md" lineHeight="1.7">
+                        {step.description}
+                      </Text>
                     </Box>
                   </MotionBox>
 
@@ -208,7 +295,8 @@ export default function HowItWorks() {
                     zIndex={2}
                   >
                     <Flex
-                      w="12" h="12"
+                      w="12"
+                      h="12"
                       bg="white"
                       border="2px solid"
                       borderColor={step.color}

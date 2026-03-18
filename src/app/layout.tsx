@@ -8,6 +8,10 @@ export const metadata: Metadata = {
   title: "Plug and Play Agent | 30 Days of Instagram Content, Automatically",
   description:
     "Analyze your brand and generate a month's worth of Instagram Reels, Carousels, and Hooks in minutes.",
+    icons: {
+    icon: "/plug_andPlay_logo.jpeg",
+    apple: "/plug_andPlay_logo.jpeg",
+  },
 };
 
 export default function RootLayout({

@@ -1,7 +1,16 @@
 "use client";
 
 import { useState } from "react";
-import { Box, Flex, Text, Button, Input, VStack, IconButton, Spinner } from "@chakra-ui/react";
+import {
+  Box,
+  Flex,
+  Text,
+  Button,
+  Input,
+  VStack,
+  IconButton,
+  Spinner,
+} from "@chakra-ui/react";
 import { X, Check, Mail } from "lucide-react";
 import { useAuth } from "@/store/AuthProvider";
 import { AuthModalProps } from "@/props/AuthModal";
@@ -10,8 +19,19 @@ import { AuthModalProps } from "@/props/AuthModal";
  * Authentication modal supporting login, signup, magic link, and Google OAuth.
  * Toggles between sign-in and create-account modes.
  */
-export default function AuthModal({ open, mode, onClose, onSwitch, onAuthSuccess }: AuthModalProps) {
-  const { signInWithEmail, signUpWithEmail, signInWithGoogle, signInWithMagicLink } = useAuth();
+export default function AuthModal({
+  open,
+  mode,
+  onClose,
+  onSwitch,
+  onAuthSuccess,
+}: AuthModalProps) {
+  const {
+    signInWithEmail,
+    signUpWithEmail,
+    signInWithGoogle,
+    signInWithMagicLink,
+  } = useAuth();
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -97,14 +117,22 @@ export default function AuthModal({ open, mode, onClose, onSwitch, onAuthSuccess
   return (
     <Flex
       position="fixed"
-      top="0" left="0" right="0" bottom="0"
+      top="0"
+      left="0"
+      right="0"
+      bottom="0"
       bg="blackAlpha.600"
       zIndex="1000"
       align="center"
       justify="center"
       p={4}
       backdropFilter="blur(4px)"
-      onClick={(e) => { if (e.target === e.currentTarget) { resetForm(); onClose(); } }}
+      onClick={(e) => {
+        if (e.target === e.currentTarget) {
+          resetForm();
+          onClose();
+        }
+      }}
     >
       <Box
         data-testid="auth-modal"
@@ -123,7 +151,10 @@ export default function AuthModal({ open, mode, onClose, onSwitch, onAuthSuccess
           right={4}
           variant="ghost"
           size="sm"
-          onClick={() => { resetForm(); onClose(); }}
+          onClick={() => {
+            resetForm();
+            onClose();
+          }}
           aria-label="Close"
           color="gray.500"
           _hover={{ bg: "gray.100", color: "gray.900" }}
@@ -133,11 +164,20 @@ export default function AuthModal({ open, mode, onClose, onSwitch, onAuthSuccess
         </IconButton>
 
         {/* Header */}
-        <Box bg="gray.50" px={8} pt={8} pb={6} borderBottom="1px solid" borderColor="gray.100" textAlign="center">
+        <Box
+          bg="gray.50"
+          px={8}
+          pt={8}
+          pb={6}
+          borderBottom="1px solid"
+          borderColor="gray.100"
+          textAlign="center"
+        >
           <Box
             display="inline-flex"
             alignItems="center"
-            px={3} py={1}
+            px={3}
+            py={1}
             rounded="full"
             bg="white"
             border="1px solid"
@@ -150,7 +190,7 @@ export default function AuthModal({ open, mode, onClose, onSwitch, onAuthSuccess
             🔐 Secure Access
           </Box>
           <Text fontSize="2xl" fontWeight="black" color="gray.900" mb={2}>
-            {mode === "login" ? "Welcome back" : "Join AdForge"}
+            {mode === "login" ? "Welcome back" : "Join plug and playa gents"}
           </Text>
           <Text fontSize="sm" color="gray.500" mb={6}>
             {mode === "login"
@@ -190,10 +230,19 @@ export default function AuthModal({ open, mode, onClose, onSwitch, onAuthSuccess
         {/* Body */}
         <Box p={8}>
           {/* Signup features */}
-          
+
           {/* Error display */}
           {err && (
-            <Box bg="red.50" border="1px solid" borderColor="red.100" color="red.600" fontSize="sm" p={3} rounded="xl" mb={5}>
+            <Box
+              bg="red.50"
+              border="1px solid"
+              borderColor="red.100"
+              color="red.600"
+              fontSize="sm"
+              p={3}
+              rounded="xl"
+              mb={5}
+            >
               {err}
             </Box>
           )}
@@ -202,7 +251,14 @@ export default function AuthModal({ open, mode, onClose, onSwitch, onAuthSuccess
           <VStack gap={4} align="stretch">
             {mode === "signup" && (
               <Box>
-                <Text fontSize="13px" fontWeight="bold" color="gray.900" mb={1.5}>Full Name</Text>
+                <Text
+                  fontSize="13px"
+                  fontWeight="bold"
+                  color="gray.900"
+                  mb={1.5}
+                >
+                  Full Name
+                </Text>
                 <Input
                   h="44px"
                   pl="20px"
@@ -212,14 +268,20 @@ export default function AuthModal({ open, mode, onClose, onSwitch, onAuthSuccess
                   borderColor="gray.200"
                   rounded="xl"
                   fontSize="14px"
-                  _focus={{ borderColor: "#8a2ce2", bg: "white", boxShadow: "0 0 0 3px rgba(138,44,226,0.12)" }}
+                  _focus={{
+                    borderColor: "#8a2ce2",
+                    bg: "white",
+                    boxShadow: "0 0 0 3px rgba(138,44,226,0.12)",
+                  }}
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                 />
               </Box>
             )}
             <Box>
-              <Text fontSize="13px" fontWeight="bold" color="gray.900" mb={1.5}>Email Address</Text>
+              <Text fontSize="13px" fontWeight="bold" color="gray.900" mb={1.5}>
+                Email Address
+              </Text>
               <Input
                 h="44px"
                 pl="20px"
@@ -230,13 +292,19 @@ export default function AuthModal({ open, mode, onClose, onSwitch, onAuthSuccess
                 borderColor="gray.200"
                 rounded="xl"
                 fontSize="14px"
-                _focus={{ borderColor: "#8a2ce2", bg: "white", boxShadow: "0 0 0 3px rgba(138,44,226,0.12)" }}
+                _focus={{
+                  borderColor: "#8a2ce2",
+                  bg: "white",
+                  boxShadow: "0 0 0 3px rgba(138,44,226,0.12)",
+                }}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
             </Box>
             <Box>
-              <Text fontSize="13px" fontWeight="bold" color="gray.900" mb={1.5}>Password</Text>
+              <Text fontSize="13px" fontWeight="bold" color="gray.900" mb={1.5}>
+                Password
+              </Text>
               <Input
                 h="44px"
                 pl="20px"
@@ -247,14 +315,25 @@ export default function AuthModal({ open, mode, onClose, onSwitch, onAuthSuccess
                 borderColor="gray.200"
                 rounded="xl"
                 fontSize="14px"
-                _focus={{ borderColor: "#8a2ce2", bg: "white", boxShadow: "0 0 0 3px rgba(138,44,226,0.12)" }}
+                _focus={{
+                  borderColor: "#8a2ce2",
+                  bg: "white",
+                  boxShadow: "0 0 0 3px rgba(138,44,226,0.12)",
+                }}
                 value={pass}
                 onChange={(e) => setPass(e.target.value)}
               />
             </Box>
 
             {mode === "login" && (
-              <Text textAlign="right" fontSize="12px" fontWeight="semibold" color="#8a2ce2" cursor="pointer" mt="-2">
+              <Text
+                textAlign="right"
+                fontSize="12px"
+                fontWeight="semibold"
+                color="#8a2ce2"
+                cursor="pointer"
+                mt="-2"
+              >
                 Forgot password?
               </Text>
             )}
@@ -274,7 +353,13 @@ export default function AuthModal({ open, mode, onClose, onSwitch, onAuthSuccess
               boxShadow="0 4px 14px rgba(138,44,226,0.3)"
               transition="all 0.2s"
             >
-              {loading ? <Spinner size="sm" /> : mode === "login" ? "Sign In" : "Create Account"}
+              {loading ? (
+                <Spinner size="sm" />
+              ) : mode === "login" ? (
+                "Sign In"
+              ) : (
+                "Create Account"
+              )}
             </Button>
           </VStack>
 
@@ -317,7 +402,9 @@ export default function AuthModal({ open, mode, onClose, onSwitch, onAuthSuccess
           {/* Divider */}
           <Flex align="center" my={6}>
             <Box flex="1" h="1px" bg="gray.200" />
-            <Text px={3} fontSize="12px" color="gray.400" fontWeight="medium">or continue with</Text>
+            <Text px={3} fontSize="12px" color="gray.400" fontWeight="medium">
+              or continue with
+            </Text>
             <Box flex="1" h="1px" bg="gray.200" />
           </Flex>
 
@@ -334,11 +421,29 @@ export default function AuthModal({ open, mode, onClose, onSwitch, onAuthSuccess
             fontWeight="bold"
             onClick={handleGoogle}
           >
-            <svg width="18" height="18" viewBox="0 0 24 24" style={{ marginRight: 8 }} fill="none">
-              <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4" />
-              <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853" />
-              <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05" />
-              <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335" />
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              style={{ marginRight: 8 }}
+              fill="none"
+            >
+              <path
+                d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+                fill="#4285F4"
+              />
+              <path
+                d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+                fill="#34A853"
+              />
+              <path
+                d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"
+                fill="#FBBC05"
+              />
+              <path
+                d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
+                fill="#EA4335"
+              />
             </svg>
             Continue with Google
           </Button>
@@ -346,14 +451,28 @@ export default function AuthModal({ open, mode, onClose, onSwitch, onAuthSuccess
           {/* Switch mode link */}
           <Text textAlign="center" fontSize="13px" color="gray.500" mt={6}>
             {mode === "login" ? (
-              <>Don&apos;t have an account?{" "}
-                <Text as="span" color="#8a2ce2" fontWeight="semibold" cursor="pointer" onClick={() => handleSwitchMode("signup")}>
+              <>
+                Don&apos;t have an account?{" "}
+                <Text
+                  as="span"
+                  color="#8a2ce2"
+                  fontWeight="semibold"
+                  cursor="pointer"
+                  onClick={() => handleSwitchMode("signup")}
+                >
                   Create one free →
                 </Text>
               </>
             ) : (
-              <>Already have an account?{" "}
-                <Text as="span" color="#8a2ce2" fontWeight="semibold" cursor="pointer" onClick={() => handleSwitchMode("login")}>
+              <>
+                Already have an account?{" "}
+                <Text
+                  as="span"
+                  color="#8a2ce2"
+                  fontWeight="semibold"
+                  cursor="pointer"
+                  onClick={() => handleSwitchMode("login")}
+                >
                   Sign in →
                 </Text>
               </>

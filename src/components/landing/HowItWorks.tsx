@@ -60,7 +60,7 @@ export default function HowItWorks() {
           >
             From brand scan to live content in{" "}
             <Box as="span" color="#4F46E5">
-              3 steps
+              4 steps
             </Box>
           </Heading>
           <Text

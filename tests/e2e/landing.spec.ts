@@ -24,10 +24,11 @@ test.describe('Landing Page', () => {
       await page.getByRole('button', { name: 'Toggle Navigation' }).click();
     }
 
-    // Nav links: Features, How It Works, Use Cases
+    // Nav links: Features, How It Works, Pricing, Contact
     await expect(page.getByRole('link', { name: 'Features' })).toBeVisible();
     await expect(page.getByRole('link', { name: 'How It Works' })).toBeVisible();
-    await expect(page.getByRole('link', { name: 'Use Cases' })).toBeVisible();
+    await expect(page.getByRole('link', { name: 'Pricing' })).toBeVisible();
+    await expect(page.getByRole('link', { name: 'Contact',exact:true })).toBeVisible();
 
     // "Get Started" CTA in desktop navbar
     if (!isMobile) {

@@ -29,9 +29,9 @@ export default function Navbar() {
           alignItems="center"
         >
           {/* Logo */}
-         
+         <Link href="/">
           <Flex align="center" gap="2.5">
-            <Image
+         <Image
               src="/plug_andPlay_logo.jpeg"
               alt="Plug and Play Agent"
               width={32}
@@ -47,6 +47,7 @@ export default function Navbar() {
               Plug and Play Agent
             </Text>
           </Flex>
+          </Link>
           {/* Desktop Nav */}
           <Flex
             display={{ base: "none", md: "flex" }}

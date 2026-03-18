@@ -13,7 +13,7 @@ export const USE_CASES = [
       { label: "competitor scan", color: "#0a1e7a", bg: "#cfd8ff" },
     ],
     description:
-      "AdForge scans your website, notes your tone, audience, and positioning, and delivers a one-page brand blueprint before you spend a rupee on ads.",
+      "plug-and-play-agents scans your website, notes your tone, audience, and positioning, and delivers a one-page brand blueprint before you spend a rupee on ads.",
     image: "/usecase-website-ads.png",
     bgColor: "#e4edff",
     direction: "row" as const,
@@ -26,7 +26,7 @@ export const USE_CASES = [
       { label: "auto-schedule", color: "#0a1e7a", bg: "#e1e7ff" },
     ],
     description:
-      "Go from brand analysis to a scheduled launch in under 10 minutes. AdForge writes the strategy, copy, and publishing schedule for you.",
+      "Go from brand analysis to a scheduled launch in under 10 minutes. plug and playa gents writes the strategy, copy, and publishing schedule for you.",
     image: "/usecase-campaign-launch.png",
     bgColor: "#dfe7ff",
     direction: "row-reverse" as const,
@@ -53,12 +53,14 @@ export const USE_CASES = [
       { label: "A/B variants", color: "#0a1e7a", bg: "#e1e7ff" },
     ],
     description:
-      "Choose your campaign context and AdForge outputs multiple visual and copy variations that keep your tone and goals aligned.",
+      "Choose your campaign context and plug and playa gents outputs multiple visual and copy variations that keep your tone and goals aligned.",
     image: "/usecase-html-banners.png",
     bgColor: "#e8f0ff",
     direction: "row-reverse" as const,
   },
 ] as const;
+
+// src/constants/landing.ts — HOW_IT_WORKS_STEPS section only (rest stays the same)
 
 export const HOW_IT_WORKS_STEPS = [
   {
@@ -66,7 +68,7 @@ export const HOW_IT_WORKS_STEPS = [
     icon: Globe,
     title: "Paste your website URL",
     description:
-      "Point AdForge at your website and it crawls your brand to understand tone, messaging, and positioning.",
+      "Point the agent at your website and it crawls your brand to understand tone, messaging, and positioning.",
     color: "#0F4BF3",
     bgColor: "rgba(15, 75, 243, 0.12)",
   },
@@ -75,7 +77,7 @@ export const HOW_IT_WORKS_STEPS = [
     icon: BrainCircuit,
     title: "Review the brand analysis",
     description:
-      "See a tailored report summarizing your audience, values, and creative direction before generating ads.",
+      "See a tailored report summarizing your audience, values, and creative direction — review and confirm before generating posts.",
     color: "#0F4BF3",
     bgColor: "rgba(15, 75, 243, 0.16)",
   },
@@ -84,16 +86,16 @@ export const HOW_IT_WORKS_STEPS = [
     icon: LayoutTemplate,
     title: "Generate tailored creatives",
     description:
-      "Choose your campaign context and let AdForge output reels, carousels, captions, and copy aligned with your identity.",
+      "Choose your content context and get reels, carousels, captions, and copy — built specifically for Instagram and aligned with your identity.",
     color: "#0F4BF3",
     bgColor: "rgba(15, 75, 243, 0.1)",
   },
   {
     num: "04",
     icon: CalendarClock,
-    title: "Schedule & launch",
+    title: "Schedule & launch on Instagram",
     description:
-      "Pick the platforms, set the calendar, and watch AdForge publish your campaigns automatically.",
+      "Set your calendar and watch the agent publish your Instagram content automatically — no manual work needed.",
     color: "#0F4BF3",
     bgColor: "rgba(15, 75, 243, 0.18)",
   },

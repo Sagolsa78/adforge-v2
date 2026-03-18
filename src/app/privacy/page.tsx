@@ -1,3 +1,4 @@
+
 "use client";
 
 import { Box, Container, Text, VStack, Heading, Link, Flex } from "@chakra-ui/react";
@@ -415,5 +416,6 @@ export default function PrivacyPolicyPage() {
         </VStack>
       </Container>
     </Box>
+
   );
 }

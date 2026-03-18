@@ -37,6 +37,7 @@ import { useAuth } from "@/store/AuthProvider";
 import type { ContextBlock } from "@/types/onboarding.types";
 import { useCampaignPolling } from "@/hooks/useCampaignPolling";
 import Image from "next/image";
+import Link from "next/link";
 
 interface BrandData {
   id: string;
@@ -242,7 +243,15 @@ export default function DashboardShell({ brandId }: DashboardShellProps) {
   // Sync ?tab= query param → activeView on mount and when it changes
   useEffect(() => {
     const tab = searchParams.get("tab");
-    const valid = ["brands", "content", "assets", "calendar", "integrations", "settings", "support"];
+    const valid = [
+      "brands",
+      "content",
+      "assets",
+      "calendar",
+      "integrations",
+      "settings",
+      "support",
+    ];
     if (tab && valid.includes(tab)) {
       setActiveView(tab as typeof activeView);
     }
@@ -1099,24 +1108,30 @@ export default function DashboardShell({ brandId }: DashboardShellProps) {
       >
         {/* Logo */}
 
-        <Flex align="center" gap="3" px={5} py={6}>
-          <Image
-            src="/plug_andPlay_logo.jpeg"
-            alt="Plug and Play Agent"
-            width={32}
-            height={32}
-            style={{ objectFit: "contain", display: "block", borderRadius: "8px" }}
-          />
-          <Text
-            fontSize="15px"
-            fontWeight="800"
-            color="#1a1a2e"
-            letterSpacing="-0.02em"
-            lineHeight="1.2"
-          >
-            Plug and Play Agent
-          </Text>
-        </Flex>
+        <Link href="/">
+          <Flex align="center" gap="3" px={5} py={6}>
+            <Image
+              src="/plug_andPlay_logo.jpeg"
+              alt="Plug and Play Agent"
+              width={32}
+              height={32}
+              style={{
+                objectFit: "contain",
+                display: "block",
+                borderRadius: "8px",
+              }}
+            />
+            <Text
+              fontSize="15px"
+              fontWeight="800"
+              color="#1a1a2e"
+              letterSpacing="-0.02em"
+              lineHeight="1.2"
+            >
+              Plug and Play Agent
+            </Text>
+          </Flex>
+        </Link>
 
         {/* Nav Items */}
         <VStack gap={1} align="stretch" px={3} flex={1}>

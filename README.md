@@ -1,5 +1,5 @@
 <div align="center">
-  <h1>AdForge v2</h1>
+  <h1>plug-and-play-agents</h1>
   <p><strong>AI-powered brand analysis and ad generation — from URL to campaign in minutes.</strong></p>
 
   <p>
@@ -35,7 +35,7 @@
 
 ## Overview
 
-Users enter a website URL → AdForge scrapes and analyses brand signals via SSE streaming.
+Users enter a website URL → plug and playa gents scrapes and analyses brand signals via SSE streaming.
 
 Generates 5 distinct brand positioning contexts (Brand Overview, Target Audience, Value Proposition, Tone & Voice, Key Differentiators). User selects a context, picks an ad template, configures tone/platform/CTA.
 
@@ -45,42 +45,42 @@ Authenticated users get AI-generated ad variations (headlines, body copy, CTAs) 
 
 ## ✨ Features
 
-| Feature | Description |
-|---|---|
-| Guest brand analysis | No login required for initial URL analysis. |
-| SSE real-time streaming | Real-time progress updates during brand signal processing. |
-| 5 AI context blocks | Automatically generated positioning contexts. |
-| Ad template engine | LinkedIn + Instagram ad creation. |
-| Delayed authentication | Guest → claim → generate seamless flow. |
-| Supabase Auth | Google OAuth + Magic Link + Email/Password. |
-| Responsive design | Mobile-first, fluid layout across devices. |
-| Space Grotesk identity | Custom purple/orange brand identity with modern typography. |
-| 7-step guided flow | Clear, navigable step bar orchestrating the tool logic. |
+| Feature                 | Description                                                 |
+| ----------------------- | ----------------------------------------------------------- |
+| Guest brand analysis    | No login required for initial URL analysis.                 |
+| SSE real-time streaming | Real-time progress updates during brand signal processing.  |
+| 5 AI context blocks     | Automatically generated positioning contexts.               |
+| Ad template engine      | LinkedIn + Instagram ad creation.                           |
+| Delayed authentication  | Guest → claim → generate seamless flow.                     |
+| Supabase Auth           | Google OAuth + Magic Link + Email/Password.                 |
+| Responsive design       | Mobile-first, fluid layout across devices.                  |
+| Space Grotesk identity  | Custom purple/orange brand identity with modern typography. |
+| 7-step guided flow      | Clear, navigable step bar orchestrating the tool logic.     |
 
 ---
 
 ## 🖥️ Tech Stack
 
-| Layer | Technology | Notes |
-|---|---|---|
-| Framework | Next.js 16 (App Router) | Core React framework. |
-| UI Library | Chakra UI v3 | Accessible component system. |
-| Animation | Framer Motion v12 | Fluid transitions & micro-interactions. |
-| Language | TypeScript 5 | Strict type-safety. |
-| Auth | Supabase Auth (@supabase/supabase-js) | Backend-as-a-service auth. |
-| Styling | Tailwind CSS v4 + Chakra tokens | Combined utility & token styling. |
-| Icons | Lucide React | Minimalist SVG icons. |
-| Font | Space Grotesk | Google Fonts via `next/font`. |
-| State | React Context + custom hooks | No Redux/Zustand required. |
-| Testing | Playwright | Full E2E test coverage. |
-| Deployment | Vercel | Seamless edge deployment. |
+| Layer      | Technology                            | Notes                                   |
+| ---------- | ------------------------------------- | --------------------------------------- |
+| Framework  | Next.js 16 (App Router)               | Core React framework.                   |
+| UI Library | Chakra UI v3                          | Accessible component system.            |
+| Animation  | Framer Motion v12                     | Fluid transitions & micro-interactions. |
+| Language   | TypeScript 5                          | Strict type-safety.                     |
+| Auth       | Supabase Auth (@supabase/supabase-js) | Backend-as-a-service auth.              |
+| Styling    | Tailwind CSS v4 + Chakra tokens       | Combined utility & token styling.       |
+| Icons      | Lucide React                          | Minimalist SVG icons.                   |
+| Font       | Space Grotesk                         | Google Fonts via `next/font`.           |
+| State      | React Context + custom hooks          | No Redux/Zustand required.              |
+| Testing    | Playwright                            | Full E2E test coverage.                 |
+| Deployment | Vercel                                | Seamless edge deployment.               |
 
 ---
 
 ## 📁 Project Structure
 
 ```bash
-adforge-v2/
+plug-and-play-agents-v2/
 ├── src/
 │   ├── app/
 │   │   ├── layout.tsx              # Root layout — Chakra Provider, Space Grotesk font
@@ -147,14 +147,15 @@ adforge-v2/
 ## 🚀 Getting Started
 
 **Prerequisites:**
+
 - Node.js >= 18.17.0
 - npm >= 9.0.0
 - A Supabase project
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/Sagolsa78/adforge-v2.git
-cd adforge-v2
+git clone https://github.com/Sagolsa78/plug and playa gents-v2.git
+cd plug and playa gents-v2
 
 # 2. Install dependencies
 npm install
@@ -174,17 +175,18 @@ npm run dev
 
 ## ⚙️ Environment Variables
 
-| Variable | Required | Description |
-|---|---|---|
-| `NEXT_PUBLIC_SUPABASE_URL` | ✅ Yes | Your Supabase project URL |
-| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | ✅ Yes | Supabase anon/public key |
-| `NEXT_PUBLIC_API_URL` | ✅ Yes | AdForge backend base URL |
+| Variable                        | Required | Description                           |
+| ------------------------------- | -------- | ------------------------------------- |
+| `NEXT_PUBLIC_SUPABASE_URL`      | ✅ Yes   | Your Supabase project URL             |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | ✅ Yes   | Supabase anon/public key              |
+| `NEXT_PUBLIC_API_URL`           | ✅ Yes   | plug and playa gents backend base URL |
 
 ---
 
 ## 🔐 Authentication
 
-AdForge uses two distinct authentication flows:
+plug and playa gents uses two distinct authentication flows:
+
 - **Standard flow (returning user)**: Sign in → JWT → all API calls authenticated.
 - **Delayed auth flow (new/guest user)**: Discover the tool completely free up to generating final assets. Friction is introduced only at the end.
 
@@ -225,30 +227,30 @@ npx playwright show-report
 
 ## 📦 Available Scripts
 
-| Script | Description |
-|---|---|
-| `npm run dev` | Start dev server on port 3000 |
-| `npm run build` | Production build |
-| `npm run start` | Start production server |
-| `npm run lint` | Run ESLint |
-| `npm run test:e2e` | Run Playwright E2E tests headlessly |
-| `npm run test:e2e:ui` | Run Playwright with interactive UI |
-| `npx tsc --noEmit` | TypeScript type check (no output) |
+| Script                | Description                         |
+| --------------------- | ----------------------------------- |
+| `npm run dev`         | Start dev server on port 3000       |
+| `npm run build`       | Production build                    |
+| `npm run start`       | Start production server             |
+| `npm run lint`        | Run ESLint                          |
+| `npm run test:e2e`    | Run Playwright E2E tests headlessly |
+| `npm run test:e2e:ui` | Run Playwright with interactive UI  |
+| `npx tsc --noEmit`    | TypeScript type check (no output)   |
 
 ---
 
 ## 🌐 API Reference
 
-Brief summary of the AdForge backend API structure. Full reference can be found in [`docs/API.md`](docs/API.md).
+Brief summary of the plug and playa gents backend API structure. Full reference can be found in [`docs/API.md`](docs/API.md).
 
-| Method | Endpoint | Auth | Description |
-|---|---|---|---|
-| POST | `/auth/signup` | None | Register new user |
-| POST | `/auth/signin` | None | Authenticate user |
-| POST | `/brands` | None | Create brand + SSE stream |
-| GET | `/brands/{id}/context` | Bearer | Get brand context_md |
-| POST | `/brands/{id}/claim` | Bearer | Claim guest brand |
-| POST | `/brands/{id}/ad-variations` | Bearer | Generate ad variations |
+| Method | Endpoint                     | Auth   | Description               |
+| ------ | ---------------------------- | ------ | ------------------------- |
+| POST   | `/auth/signup`               | None   | Register new user         |
+| POST   | `/auth/signin`               | None   | Authenticate user         |
+| POST   | `/brands`                    | None   | Create brand + SSE stream |
+| GET    | `/brands/{id}/context`       | Bearer | Get brand context_md      |
+| POST   | `/brands/{id}/claim`         | Bearer | Claim guest brand         |
+| POST   | `/brands/{id}/ad-variations` | Bearer | Generate ad variations    |
 
 ---
 
@@ -258,7 +260,7 @@ We welcome contributions! Please read [`docs/CONTRIBUTING.md`](docs/CONTRIBUTING
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the LICENSE file for details. Copyright © 2026 AdForge.
+This project is licensed under the MIT License - see the LICENSE file for details. Copyright © 2026 plug and playa gents.
 
 ## 🙏 Acknowledgements
 

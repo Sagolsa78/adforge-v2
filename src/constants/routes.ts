@@ -2,7 +2,7 @@
  * Route Constants
  */
 
-export const APP_NAME = "AdForge" as const;
+export const APP_NAME = "plug and playa gents" as const;
 
 export const ROUTES = {
   HOME: "/",
@@ -13,9 +13,9 @@ export const ROUTES = {
 } as const;
 
 export const STORAGE_KEYS = {
-  PENDING_BRAND_ID: "adforge_pending_brand_id",
-  PENDING_ACTION: "adforge_pending_action",
-  CLAIMED_BRAND_ID: "adforge_claimed_brand_id",
+  PENDING_BRAND_ID: "plug and playa gents_pending_brand_id",
+  PENDING_ACTION: "plug and playa gents_pending_action",
+  CLAIMED_BRAND_ID: "plug and playa gents_claimed_brand_id",
 } as const;
 
 export const SUPABASE_PROJECT_URL =

@@ -33,7 +33,7 @@ const cardVariants = {
 
 /**
  * Bento-grid style feature showcase section with staggered scroll animations.
- * Highlights six core AdForge capabilities.
+ * Highlights six core plug and playa gents capabilities.
  */
 export default function FeatureGrid() {
   return (

@@ -38,147 +38,163 @@ export default function HeroSection() {
         zIndex={0}
       />
 
-      <div style={{ maxWidth: "760px", margin: "0 auto", padding: "0 24px", position: "relative", zIndex: 1, display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", gap: "32px" }}>
-
-          {/* Pill badge */}
-          <MotionBox
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.45 }}
-          >
-            <Flex
-              display="inline-flex"
-              align="center"
-              gap={2}
-              px={4}
-              py={1.5}
-              bg="blue.50"
-              border="1px solid"
-              borderColor="blue.100"
-              borderRadius="full"
-            >
-              <Box w={2} h={2} bg="blue.500" borderRadius="full" flexShrink={0} />
-              <Text fontSize="sm" fontWeight="600" color="blue.700" letterSpacing="0.01em">
-                Instagram-only AI content workspace
-              </Text>
-            </Flex>
-          </MotionBox>
-
-          {/* Headline */}
-          <MotionBox
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.45, delay: 0.08 }}
-          >
-            <Heading
-              as="h1"
-              fontSize={{ base: "4xl", sm: "5xl", md: "6xl", lg: "7xl" }}
-              fontWeight="800"
-              lineHeight="1.0"
-              letterSpacing="-0.04em"
-              color="gray.900"
-              textAlign="center"
-              mx="auto"
-            >
-              Turn your website into{" "}
-              <Box as="span" color="blue.600">
-                30 days of Instagram content
-              </Box>
-            </Heading>
-          </MotionBox>
-
-          {/* Sub-copy */}
-          <MotionBox
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.45, delay: 0.14 }}
-          >
-            <Text
-              fontSize={{ base: "md", md: "lg" }}
-              color="gray.500"
-              lineHeight="1.75"
-              maxW="480px"
-              mx="auto"
-              textAlign="center"
-            >
-              Paste your URL. Get reel hooks, carousel ideas, captions, CTAs, and
-              hashtags — all in one clean workflow, in under 60 seconds.
-            </Text>
-          </MotionBox>
-
-          {/* CTA buttons */}
-          <MotionFlex
-            direction={{ base: "column", sm: "row" }}
-            gap={3}
-            justify="center"
+      <div
+        style={{
+          maxWidth: "760px",
+          margin: "0 auto",
+          padding: "0 24px",
+          position: "relative",
+          zIndex: 1,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          textAlign: "center",
+          gap: "32px",
+        }}
+      >
+        {/* Pill badge */}
+        <MotionBox
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.45 }}
+        >
+          <Flex
+            display="inline-flex"
             align="center"
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.45, delay: 0.2 }}
+            gap={2}
+            px={4}
+            py={1.5}
+            bg="blue.50"
+            border="1px solid"
+            borderColor="blue.100"
+            borderRadius="full"
           >
-            <Link href="/onboarding">
-              <Button
-                h="52px"
-                px={8}
-                fontSize="md"
-                fontWeight="700"
-                bg="blue.600"
-                color="white"
-                borderRadius="14px"
-                _hover={{
-                  bg: "blue.700",
-                  transform: "translateY(-2px)",
-                  boxShadow: "0 10px 24px rgba(37,99,235,0.3)",
-                }}
-                _active={{ transform: "translateY(0)" }}
-                transition="all 0.2s"
-                gap={2}
-              >
-                Start for free
-                <ArrowRight size={16} />
-              </Button>
-            </Link>
+            <Box w={2} h={2} bg="blue.500" borderRadius="full" flexShrink={0} />
+            <Text
+              fontSize="sm"
+              fontWeight="600"
+              color="blue.700"
+              letterSpacing="0.01em"
+            >
+              Instagram-only AI content workspace
+            </Text>
+          </Flex>
+        </MotionBox>
+
+        {/* Headline */}
+        <MotionBox
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.45, delay: 0.08 }}
+        >
+          <Heading
+            as="h1"
+            fontSize={{ base: "4xl", sm: "5xl", md: "6xl", lg: "7xl" }}
+            fontWeight="800"
+            lineHeight="1.0"
+            letterSpacing="-0.04em"
+            color="gray.900"
+            textAlign="center"
+            mx="auto"
+          >
+            Turn your website into{" "}
+            <Box as="span" color="blue.600">
+              30 days of Instagram content
+            </Box>
+          </Heading>
+        </MotionBox>
+
+        {/* Sub-copy */}
+        <MotionBox
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.45, delay: 0.14 }}
+        >
+          <Text
+            fontSize={{ base: "md", md: "lg" }}
+            color="gray.500"
+            lineHeight="1.75"
+            maxW="480px"
+            mx="auto"
+            textAlign="center"
+          >
+            Paste your URL. Get reel hooks, carousel ideas, captions, CTAs, and
+            hashtags — all in one clean workflow, in under 60 seconds.
+          </Text>
+        </MotionBox>
+
+        {/* CTA buttons */}
+        <MotionFlex
+          direction={{ base: "column", sm: "row" }}
+          gap={3}
+          justify="center"
+          align="center"
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.45, delay: 0.2 }}
+        >
+          <Link href="/onboarding">
             <Button
               h="52px"
               px={8}
               fontSize="md"
-              fontWeight="600"
-              variant="outline"
-              borderColor="gray.200"
-              bg="white"
-              color="gray.700"
+              fontWeight="700"
+              bg="blue.600"
+              color="white"
               borderRadius="14px"
-              _hover={{ bg: "gray.50", borderColor: "gray.300" }}
+              _hover={{
+                bg: "blue.700",
+                transform: "translateY(-2px)",
+                boxShadow: "0 10px 24px rgba(37,99,235,0.3)",
+              }}
+              _active={{ transform: "translateY(0)" }}
               transition="all 0.2s"
+              gap={2}
             >
-              See how it works
+              Start for free
+              <ArrowRight size={16} />
             </Button>
-          </MotionFlex>
-
-          {/* Trust row */}
-          <MotionFlex
-            gap={{ base: 4, sm: 8 }}
-            justify="center"
-            align="center"
-            wrap="wrap"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.35 }}
+          </Link>
+          <Button
+            h="52px"
+            px={8}
+            fontSize="md"
+            fontWeight="600"
+            variant="outline"
+            borderColor="gray.200"
+            bg="white"
+            color="gray.700"
+            borderRadius="14px"
+            _hover={{ bg: "gray.50", borderColor: "gray.300" }}
+            transition="all 0.2s"
           >
-            {[
-              "No credit card required",
-              "30 posts in one run",
-              "Built only for Instagram",
-            ].map((item) => (
-              <Flex key={item} align="center" gap={1.5}>
-                <Check size={14} color="#2563EB" strokeWidth={2.5} />
-                <Text fontSize="sm" fontWeight="500" color="gray.500">
-                  {item}
-                </Text>
-              </Flex>
-            ))}
-          </MotionFlex>
+            See how it works
+          </Button>
+        </MotionFlex>
 
+        {/* Trust row */}
+        <MotionFlex
+          gap={{ base: 4, sm: 8 }}
+          justify="center"
+          align="center"
+          wrap="wrap"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.35 }}
+        >
+          {[
+            "No credit card required",
+            "30 posts in one run",
+            "Built only for Instagram",
+          ].map((item) => (
+            <Flex key={item} align="center" gap={1.5}>
+              <Check size={14} color="#2563EB" strokeWidth={2.5} />
+              <Text fontSize="sm" fontWeight="500" color="gray.500">
+                {item}
+              </Text>
+            </Flex>
+          ))}
+        </MotionFlex>
       </div>
 
       {/* Dashboard mockup — wider than text */}
@@ -258,13 +274,32 @@ export default function HeroSection() {
               gap={1}
             >
               <Box h="26px" w="100px" bg="gray.200" borderRadius="md" mb={5} />
-              <Flex align="center" gap={3} px={3} py={2.5} bg="blue.50" borderRadius="lg">
-                <Box w={4} h={4} bg="blue.200" borderRadius="sm" flexShrink={0} />
+              <Flex
+                align="center"
+                gap={3}
+                px={3}
+                py={2.5}
+                bg="blue.50"
+                borderRadius="lg"
+              >
+                <Box
+                  w={4}
+                  h={4}
+                  bg="blue.200"
+                  borderRadius="sm"
+                  flexShrink={0}
+                />
                 <Box h="11px" w="52px" bg="blue.200" borderRadius="sm" />
               </Flex>
               {[56, 44, 64, 48, 36, 52].map((w, i) => (
                 <Flex key={i} align="center" gap={3} px={3} py={2.5}>
-                  <Box w={4} h={4} bg="gray.100" borderRadius="sm" flexShrink={0} />
+                  <Box
+                    w={4}
+                    h={4}
+                    bg="gray.100"
+                    borderRadius="sm"
+                    flexShrink={0}
+                  />
                   <Box h="11px" bg="gray.100" borderRadius="sm" w={`${w}px`} />
                 </Flex>
               ))}
@@ -275,7 +310,14 @@ export default function HeroSection() {
               {/* Header */}
               <Flex justify="space-between" align="center" mb={5}>
                 <Box>
-                  <Box h="16px" w="130px" bg="gray.800" borderRadius="md" mb={2} opacity={0.85} />
+                  <Box
+                    h="16px"
+                    w="130px"
+                    bg="gray.800"
+                    borderRadius="md"
+                    mb={2}
+                    opacity={0.85}
+                  />
                   <Box h="11px" w="170px" bg="gray.200" borderRadius="sm" />
                 </Box>
                 <Box px={3} py={1.5} bg="#ECFDF5" borderRadius="full">
@@ -298,8 +340,20 @@ export default function HeroSection() {
                     border="1px solid"
                     borderColor="gray.100"
                   >
-                    <Box h="9px" w="56px" bg="gray.200" borderRadius="sm" mb={2} />
-                    <Box h="20px" w="28px" bg="gray.700" borderRadius="sm" opacity={0.8} />
+                    <Box
+                      h="9px"
+                      w="56px"
+                      bg="gray.200"
+                      borderRadius="sm"
+                      mb={2}
+                    />
+                    <Box
+                      h="20px"
+                      w="28px"
+                      bg="gray.700"
+                      borderRadius="sm"
+                      opacity={0.8}
+                    />
                   </Box>
                 ))}
               </SimpleGrid>
@@ -337,11 +391,28 @@ export default function HeroSection() {
                         {row.type}
                       </Box>
                       <Box>
-                        <Box h="11px" w={{ base: "80px", md: "180px" }} bg="gray.200" borderRadius="sm" mb={1.5} />
-                        <Box h="9px" w={{ base: "60px", md: "140px" }} bg="gray.100" borderRadius="sm" />
+                        <Box
+                          h="11px"
+                          w={{ base: "80px", md: "180px" }}
+                          bg="gray.200"
+                          borderRadius="sm"
+                          mb={1.5}
+                        />
+                        <Box
+                          h="9px"
+                          w={{ base: "60px", md: "140px" }}
+                          bg="gray.100"
+                          borderRadius="sm"
+                        />
                       </Box>
                     </Flex>
-                    <Box h="11px" w="40px" bg="blue.200" borderRadius="sm" flexShrink={0} />
+                    <Box
+                      h="11px"
+                      w="40px"
+                      bg="blue.200"
+                      borderRadius="sm"
+                      flexShrink={0}
+                    />
                   </Flex>
                 ))}
               </VStack>
@@ -377,11 +448,17 @@ export default function HeroSection() {
               <Zap size={15} fill="currentColor" />
             </Flex>
             <Box style={{ textAlign: "left" }}>
-              <Text fontSize="9px" fontWeight="700" opacity={0.75} letterSpacing="0.07em" mb={0.5}>
+              <Text
+                fontSize="9px"
+                fontWeight="700"
+                opacity={0.75}
+                letterSpacing="0.07em"
+                mb={0.5}
+              >
                 GENERATION TIME
               </Text>
               <Text fontSize="sm" fontWeight="800" lineHeight={1}>
-                12s / post
+                30 days in 30 mins
               </Text>
             </Box>
           </Flex>

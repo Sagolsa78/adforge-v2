@@ -113,17 +113,17 @@ export const CTXS: BrandContext[] = [
   {
     id: 3,
     title: "The Contrarian View",
-    body: `Most people think you need a massive ad budget to scale your SaaS.\n\nThey're entirely wrong.\n\nThe businesses that scale fastest aren't the ones spending most — they've achieved brand resonance precision. They know exactly who they're for, say it clearly, and every piece of content filters out the wrong people and magnetises the right ones.\n\nHere's the uncomfortable truth: most startups have already written everything they need. It's on their homepage, buried in their about page, scattered across LinkedIn posts from last quarter.\n\nAdForge doesn't generate ideas from thin air. It reads what you've already built, finds the throughline, and crystallises it into five actionable brand contexts.`,
+    body: `Most people think you need a massive ad budget to scale your SaaS.\n\nThey're entirely wrong.\n\nThe businesses that scale fastest aren't the ones spending most — they've achieved brand resonance precision. They know exactly who they're for, say it clearly, and every piece of content filters out the wrong people and magnetises the right ones.\n\nHere's the uncomfortable truth: most startups have already written everything they need. It's on their homepage, buried in their about page, scattered across LinkedIn posts from last quarter.\n\nplug and playa gents doesn't generate ideas from thin air. It reads what you've already built, finds the throughline, and crystallises it into five actionable brand contexts.`,
   },
   {
     id: 4,
     title: "Social Proof",
-    body: `When Meridian SaaS came to us, they had a 4% trial-to-paid conversion rate.\n\nTheir product solved a real problem. Their support was excellent. But their positioning was creating friction at exactly the wrong moment.\n\nIn 20 minutes, AdForge processed their website and LinkedIn. It surfaced something the team had missed: they were speaking to VP-level buyers with language designed for individual contributors.\n\nThey rewrote their homepage headline and two email sequences based on our output.\n\nSix weeks later: 11.3% trial-to-paid. Zero product changes. We just helped them say the right thing to the right person.`,
+    body: `When Meridian SaaS came to us, they had a 4% trial-to-paid conversion rate.\n\nTheir product solved a real problem. Their support was excellent. But their positioning was creating friction at exactly the wrong moment.\n\nIn 20 minutes, plug and playa gents processed their website and LinkedIn. It surfaced something the team had missed: they were speaking to VP-level buyers with language designed for individual contributors.\n\nThey rewrote their homepage headline and two email sequences based on our output.\n\nSix weeks later: 11.3% trial-to-paid. Zero product changes. We just helped them say the right thing to the right person.`,
   },
   {
     id: 5,
     title: "Problem → Solution",
-    body: `You've got a great product. A growing team. A marketing budget. So why does every campaign still feel like a gamble?\n\nHere's what nobody tells early-stage B2B founders: the bottleneck isn't your offer. It's your brand positioning.\n\nRight now, your website speaks one language. Your LinkedIn speaks another. Your ads speak a third. And your prospects — skimming everything in under eight seconds — are hearing noise.\n\nAdForge breaks this cycle. By extracting the positioning intelligence already embedded in your digital presence, we generate five distinct brand contexts — each one a complete messaging framework you can deploy immediately.`,
+    body: `You've got a great product. A growing team. A marketing budget. So why does every campaign still feel like a gamble?\n\nHere's what nobody tells early-stage B2B founders: the bottleneck isn't your offer. It's your brand positioning.\n\nRight now, your website speaks one language. Your LinkedIn speaks another. Your ads speak a third. And your prospects — skimming everything in under eight seconds — are hearing noise.\n\nplug and playa gents breaks this cycle. By extracting the positioning intelligence already embedded in your digital presence, we generate five distinct brand contexts — each one a complete messaging framework you can deploy immediately.`,
   },
 ];
 
@@ -374,6 +374,6 @@ export const TPL_EXAMPLES: Record<string, { h: string; b: string }[]> = {
   community: [
     { h: "This is for you if…", b: "You're building something real and tired of blending in." },
     { h: "You've tried the templates", b: 'The hooks, the frameworks, the "proven" formulas. Still — silence.' },
-    { h: "Welcome to AdForge 💜", b: "Your brand DNA — finally decoded. Every post builds from here." },
+    { h: "Welcome to plug-and-play-agents 💜", b: "Your brand DNA — finally decoded. Every post builds from here." },
   ],
 };

@@ -172,7 +172,7 @@ export function buildContent(state: ToolState): GeneratedContent {
       { h: "You've tried the templates", b: 'The hooks, the frameworks, the "proven" formulas. Still — silence.' },
       { h: "Here's what's actually missing", b: L[1]?.slice(0, 130) || "" },
       { h: "You deserve brand clarity", b: "Not tactics. A positioning foundation everything builds on." },
-      { h: `Welcome to AdForge ${e}`, b: `Your brand DNA — finally decoded.${offer ? " — " + offer : ""}` },
+      { h: `Welcome to plug and playa gents ${e}`, b: `Your brand DNA — finally decoded.${offer ? " — " + offer : ""}` },
       { h: "You're not alone", b: "Thousands of founders have been here. Clarity is the turning point." },
       { h: `Ready? ${e}`, b: `Your brand is already saying something. Let's make sure it's right.${offer ? " — " + offer : ""}` },
     ],

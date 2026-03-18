@@ -6,10 +6,16 @@ import { ChevronDown, LogOut } from "lucide-react";
 import { ToolNavbarProps } from "@/props/ToolNavbar";
 
 /**
- * Sticky navbar for the tool pages with AdForge branding.
+ * Sticky navbar for the tool pages with plug and playa gents branding.
  * Displays auth state (sign-in/signup buttons or user avatar dropdown).
  */
-export default function ToolNavbar({ user, onLoginClick, onSignupClick, onLogout, onHome }: ToolNavbarProps) {
+export default function ToolNavbar({
+  user,
+  onLoginClick,
+  onSignupClick,
+  onLogout,
+  onHome,
+}: ToolNavbarProps) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropRef = useRef<HTMLDivElement>(null);
 
@@ -25,7 +31,15 @@ export default function ToolNavbar({ user, onLoginClick, onSignupClick, onLogout
   }, []);
 
   return (
-    <Box as="nav" position="sticky" top="0" w="full" zIndex={100} px={{ base: "4", md: "6" }} py="4">
+    <Box
+      as="nav"
+      position="sticky"
+      top="0"
+      w="full"
+      zIndex={100}
+      px={{ base: "4", md: "6" }}
+      py="4"
+    >
       <Box
         maxW="7xl"
         mx="auto"
@@ -49,10 +63,17 @@ export default function ToolNavbar({ user, onLoginClick, onSignupClick, onLogout
               align="center"
               justify="center"
             >
-              <Text color="white" fontWeight="800" fontSize="sm">A</Text>
+              <Text color="white" fontWeight="800" fontSize="sm">
+                A
+              </Text>
             </Flex>
-            <Text fontSize="lg" fontWeight="800" color="gray.900" letterSpacing="-0.02em">
-              AdForge
+            <Text
+              fontSize="lg"
+              fontWeight="800"
+              color="gray.900"
+              letterSpacing="-0.02em"
+            >
+              plug and play agents
             </Text>
           </Flex>
 
@@ -107,7 +128,8 @@ export default function ToolNavbar({ user, onLoginClick, onSignupClick, onLogout
                     fontWeight="black"
                     color="white"
                     css={{
-                      backgroundImage: "linear-gradient(135deg, #8a2ce2, #ea580c)",
+                      backgroundImage:
+                        "linear-gradient(135deg, #8a2ce2, #ea580c)",
                     }}
                   >
                     {user.name.charAt(0).toUpperCase()}
@@ -139,7 +161,12 @@ export default function ToolNavbar({ user, onLoginClick, onSignupClick, onLogout
                     overflow="hidden"
                     zIndex={200}
                   >
-                    <Box px={4} py={3} borderBottom="1px solid" borderColor="gray.100">
+                    <Box
+                      px={4}
+                      py={3}
+                      borderBottom="1px solid"
+                      borderColor="gray.100"
+                    >
                       <Text fontSize="sm" fontWeight="bold" color="gray.900">
                         {user.name}
                       </Text>

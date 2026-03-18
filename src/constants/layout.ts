@@ -1,34 +1,30 @@
-/**
- * Layout Constants
- */
+// src/constants/layout.ts
 
 export const NAV_LINKS = [
-  { label: "Features", href: "#features" },
-  { label: "How It Works", href: "#how-it-works" },
-  { label: "Use Cases", href: "#use-cases" },
+  { label: "Features", href: "/#features" },
+  { label: "How It Works", href: "/#how-it-works" },
+  { label: "Pricing", href: "/#pricing" },
+  { label: "Contact", href: "/#contact" },
+  // "Use Cases" hidden — show once use case page is ready
 ] as const;
+
 
 export const FOOTER_LINKS = {
   Product: [
-    { label: "Updates", href: "#" },
-    { label: "Blog", href: "#" },
+    { label: "Updates", href: "/" },
+    { label: "Blog", href: "/blog" },
   ],
   Resources: [
-    { label: "Support", href: "#" },
+    { label: "Support", href: "/support" },
     { label: "Affiliate program", href: "#" },
-    { label: "Privacy Policy", href: "#" },
+    { label: "Privacy Policy", href: "/privacy-policy" },
     { label: "Cookie Preferences", href: "#" },
-    { label: "Terms of service", href: "#" },
-    { label: "Contacts", href: "#" },
+    { label: "Terms of service", href: "/terms-of-service" },
+    { label: "Contact Us", href: "/contact" },
   ],
-  Download: [
-    { label: "iOS", href: "#" },
-    { label: "Android", href: "#" },
-    { label: "Mac", href: "#" },
-    { label: "Sign In", href: "#" },
-  ],
+  // "Download" column removed
   "Get in touch": [
-    { label: "hi@adforge.ai", href: "#" },
+    { label: "contact@plugandplayagents.com", href: "mailto:contact@plugandplayagents.com" },
     { label: "Discord", href: "#" },
     { label: "Instagram", href: "#" },
     { label: "X", href: "#" },
@@ -38,6 +34,5 @@ export const FOOTER_LINKS = {
 export const HEADING_COLORS: Record<string, string> = {
   Product: "#a78bfa",
   Resources: "#818cf8",
-  Download: "#c4b5fd",
   "Get in touch": "#e879f9",
 } as const;

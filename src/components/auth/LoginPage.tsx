@@ -15,6 +15,7 @@ import { Check, Mail, Sparkles } from "lucide-react";
 import { useAuth } from "@/store/AuthProvider";
 import { ROUTES } from "@/constants";
 import { LoginPageProps } from "@/props/LoginPage";
+import Image from "next/image";
 
 /**
  * LoginPage Component
@@ -136,19 +137,20 @@ export default function LoginPage({
           borderBottom="1px solid"
           borderColor="#ECECEC"
         >
-          <Flex align="center" gap={3} mb={4}>
-            <Flex
-              w="32px"
-              h="32px"
-              borderRadius="10px"
-              bg="#4F46E5"
-              align="center"
-              justify="center"
-              color="white"
+          <Flex align="center" gap="2.5">
+            <Image
+              src="/plug_andPlay_logo.jpeg"
+              alt="Plug and Play Agent"
+              width={32}
+              height={32}
+              style={{ objectFit: "contain" }}
+            />
+            <Text
+              fontSize="lg"
+              fontWeight="800"
+              color="#1a1a2e"
+              letterSpacing="-0.02em"
             >
-              <Sparkles size={18} strokeWidth={2.5} />
-            </Flex>
-            <Text fontWeight="700" fontSize="lg" color="#111111">
               Plug and Play Agent
             </Text>
           </Flex>

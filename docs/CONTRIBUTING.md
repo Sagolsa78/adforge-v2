@@ -1,31 +1,31 @@
-# Contributing to AdForge v2
+# Contributing to plug and playa gents v2
 
-Welcome to AdForge v2! We appreciate your interest in contributing to our codebase. Please review the following guidelines before submitting any code.
+Welcome to plug and playa gents v2! We appreciate your interest in contributing to our codebase. Please review the following guidelines before submitting any code.
 
 ## Code Style Rules
 
 We enforce a strict and modern development environment to ensure long-term stability:
 
-* **TypeScript Strictness**: We compile with strict mode enabled.
-* **No `any` Types**: Do not bypass the type system. You must strictly define your interfaces or use `unknown` if truly dynamic, forcing type guards later.
-* **Utility Purity**: Files within the `lib/` directory must utilize Named Exports exclusively. They must remain pure logic boundaries (No React, No JSX).
+- **TypeScript Strictness**: We compile with strict mode enabled.
+- **No `any` Types**: Do not bypass the type system. You must strictly define your interfaces or use `unknown` if truly dynamic, forcing type guards later.
+- **Utility Purity**: Files within the `lib/` directory must utilize Named Exports exclusively. They must remain pure logic boundaries (No React, No JSX).
 
 ## Branch Naming Convention
 
 Please prefix your branches correctly to help orchestrate CI workflows:
 
-* `feat/` — For all brand new features or significant components. (e.g., `feat/linkedin-templates`)
-* `fix/` — For patching bugs or state issues. (e.g., `fix/auth-modal-overflow`)
-* `chore/` — For dependency updates, typo fixes, or minor configuration adjustments.
+- `feat/` — For all brand new features or significant components. (e.g., `feat/linkedin-templates`)
+- `fix/` — For patching bugs or state issues. (e.g., `fix/auth-modal-overflow`)
+- `chore/` — For dependency updates, typo fixes, or minor configuration adjustments.
 
 ## Commit Message Format
 
-AdForge v2 uses the [Conventional Commits](https://www.conventionalcommits.org/) specification:
+plug and playa gents v2 uses the [Conventional Commits](https://www.conventionalcommits.org/) specification:
 
-* `feat:` A new feature.
-* `fix:` A bug fix.
-* `docs:` Documentation only changes.
-* `chore:` Changes to the build process or auxiliary tools and libraries such as documentation generation.
+- `feat:` A new feature.
+- `fix:` A bug fix.
+- `docs:` Documentation only changes.
+- `chore:` Changes to the build process or auxiliary tools and libraries such as documentation generation.
 
 Example: `feat: add Google OAuth support to login modal`
 
@@ -43,8 +43,9 @@ Before submitting a PR, ensure your branch successfully answers true to the foll
 Certain architectural boundaries within this application are considered fundamentally feature-complete or strictly managed.
 
 Unless explicitly approved via an architecture review issue, do **not** edit:
-* Any component residing in `components/landing/`
-* `components/layout/Navbar.tsx`
+
+- Any component residing in `components/landing/`
+- `components/layout/Navbar.tsx`
 
 If you feel changes are necessary here, open a Discussion thread first.
 
@@ -52,7 +53,7 @@ If you feel changes are necessary here, open a Discussion thread first.
 
 ```bash
 # Clone the repo
-git clone https://github.com/Sagolsa78/adforge-v2.git
+git clone https://github.com/Sagolsa78/plug and playa gents-v2.git
 
 # Install dependencies
 npm install
