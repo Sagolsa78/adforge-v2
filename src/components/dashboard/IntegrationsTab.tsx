@@ -99,7 +99,23 @@ export default function IntegrationsTab() {
 
     if (igConnected === "success") {
       window.history.replaceState({}, "", "/dashboard?tab=integrations");
-      supabase.auth.refreshSession().then(() => checkStatus()).catch(() => checkStatus());
+      supabase.auth.refreshSession().then(({ data: { user } }) => {
+        const igConn = user?.user_metadata?.ig_connection;
+        if (igConn?.access_token) {
+          setIgConnection({
+            connected: true,
+            ig_user_id: igConn.ig_user_id,
+            username: igConn.username,
+            name: igConn.name,
+            profile_picture_url: igConn.profile_picture_url,
+            expires_at: igConn.expires_at,
+            connected_at: igConn.connected_at,
+          });
+          setIsLoading(false);
+        } else {
+          checkStatus();
+        }
+      }).catch(() => checkStatus());
       toaster.create({
         title: "Instagram Connected",
         description: "Your Instagram account has been connected successfully.",

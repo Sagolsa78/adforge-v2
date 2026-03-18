@@ -545,6 +545,13 @@ export default function AssetsTab({ trackers, statuses, assets, progress, isPoll
     supabase.auth.getUser().then(({ data: { user } }) => {
       setIgConnected(!!user?.user_metadata?.ig_connection?.access_token);
     });
+
+    // Reactively update when session is refreshed (e.g. after connecting Instagram)
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setIgConnected(!!session?.user?.user_metadata?.ig_connection?.access_token);
+    });
+
+    return () => subscription.unsubscribe();
   }, []);
 
   // ── Load library_images from Supabase table ────────────────────────────────
