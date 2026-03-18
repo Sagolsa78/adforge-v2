@@ -556,7 +556,7 @@ export default function AssetsTab({ trackers, statuses, assets, progress, isPoll
 
       const { data, error } = await supabase
         .from("library_images")
-        .select("id, storage_path, format, label, created_at")
+        .select("id, storage_path, external_url, format, label, created_at")
         .eq("user_id", user.id)
         .order("created_at", { ascending: false });
 
@@ -565,7 +565,9 @@ export default function AssetsTab({ trackers, statuses, assets, progress, isPoll
       const files: LibraryFile[] = data.map(row => ({
         id:         row.id as string,
         name:       (row.storage_path as string).split("/").pop() || row.storage_path as string,
-        url:        supabase.storage.from(STORAGE_BUCKET).getPublicUrl(row.storage_path as string).data.publicUrl,
+        // Use external_url if present, otherwise derive from storage bucket
+        url:        (row.external_url as string | null) ||
+                    supabase.storage.from(STORAGE_BUCKET).getPublicUrl(row.storage_path as string).data.publicUrl,
         format:     row.format as ImageFormat,
         label:      row.label as string | null,
         created_at: row.created_at as string | null,
