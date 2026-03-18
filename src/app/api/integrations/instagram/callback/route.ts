@@ -181,7 +181,7 @@ export async function GET(request: NextRequest) {
     };
 
     const userRes = await supabase.auth.admin.getUserById(userId);
-    const currentMeta = userRes.user?.user_metadata || {};
+    const currentMeta = userRes.data?.user?.user_metadata || {};
 
     await supabase.auth.admin.updateUserById(userId, {
       user_metadata: {

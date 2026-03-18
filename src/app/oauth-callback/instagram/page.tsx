@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { supabase } from "@/lib/supabase";
 
@@ -9,7 +9,7 @@ import { supabase } from "@/lib/supabase";
  * Used when the server-side callback can't read the Supabase session cookie.
  * Reads session from client, then calls our API to store the IG connection.
  */
-export default function InstagramOAuthCallbackPage() {
+function InstagramOAuthCallbackInner() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [status, setStatus] = useState("Connecting Instagram...");
@@ -79,5 +79,33 @@ export default function InstagramOAuthCallbackPage() {
       }} />
       <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
     </div>
+  );
+}
+
+export default function InstagramOAuthCallbackPage() {
+  return (
+    <Suspense fallback={
+      <div style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        minHeight: "100vh",
+        flexDirection: "column",
+        gap: "16px",
+        fontFamily: "sans-serif",
+      }}>
+        <div style={{ fontSize: "20px", fontWeight: 600 }}>Connecting Instagram...</div>
+        <div style={{
+          width: "40px", height: "40px",
+          border: "4px solid #e5e7eb",
+          borderTop: "4px solid #E1306C",
+          borderRadius: "50%",
+          animation: "spin 1s linear infinite",
+        }} />
+        <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
+      </div>
+    }>
+      <InstagramOAuthCallbackInner />
+    </Suspense>
   );
 }
